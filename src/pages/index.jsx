@@ -300,7 +300,7 @@ export default function Home() {
                             <button
                                 type="button"
                                 onClick={() => scrollCarousel('next')}
-                                className="absolute left-1 top-1/2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-brand-purple/10 bg-white/95 text-brand-purple shadow-lg transition hover:bg-brand-purple hover:text-white"
+                                className="absolute left-1 top-1/2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-brand-purple/10 bg-white/95 text-brand-purple shadow-lg transition hover:bg-brand-purple hover:text-white rotate-180"
                                 aria-label="التحرك إلى البطاقات التالية"
                             >
                                 <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.5">
