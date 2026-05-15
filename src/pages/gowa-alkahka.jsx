@@ -114,7 +114,7 @@ const articles = [
             },
             {
                 heading: "رأي المتخصصين: التوافق أهم من الانجذاب",
-                text: "التوافق في القيم وطريقة التفكير أصبح عاملاً أساسيًا في نجاح العلاقة. كثير من العلاقات تفشل رغم وجود الحب بسبب غياب هذا التوافق. الوعي بهذه النقطة هو ما يميز الاختيارات الناضجة عن غيرها."
+                text: "التوافق في القيم وطريقة التفكير أصبح عاملاً أساسياً في نجاح العلاقة. كثير من العلاقات تفشل رغم وجود الحب بسبب غياب هذا التوافق. الوعي بهذه النقطة هو ما يميز الاختيارات الناضجة عن غيرها."
             },
             {
                 heading: "ما وراء الاختيار: تأثير التجارب والواقع",
@@ -219,7 +219,7 @@ export default function GowaAlkahkaPage() {
     }, [selectedArticle])
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-brand-offwhite" dir="rtl">
+        <div className="relative min-h-screen overflow-hidden bg-brand-offwhite font-arabic" dir="rtl">
             <BackgroundSVG />
             <NavBar />
             
@@ -310,6 +310,63 @@ export default function GowaAlkahkaPage() {
                         )}
                     </div>
                 </section>
+
+                {/* Modal Reader Overlay */}
+                {selectedArticle && (
+                    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-brand-brown/60 p-2 md:p-6 backdrop-blur-xl"
+                         onClick={() => setSelectedArticle(null)}>
+                        
+                        <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-brand-offwhite rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-2xl h-full md:h-auto max-h-[95vh] md:max-h-[85vh] border border-brand-brown/10"
+                             onClick={(e) => e.stopPropagation()}>
+                            
+                            {/* Sticky Header for Mobile */}
+                            <div className="flex items-center justify-between p-6 border-b border-brand-brown/5 bg-brand-offwhite z-20 md:hidden">
+                                <h2 className="text-xl font-black text-brand-brown leading-tight line-clamp-1">{selectedArticle.title}</h2>
+                                <button onClick={() => setSelectedArticle(null)} className="p-2 rounded-full bg-brand-brown text-white shadow-lg">
+                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
+                                </button>
+                            </div>
+
+                            {/* Sidebar (Desktop Only) */}
+                            <div className="hidden md:flex md:w-1/3 bg-brand-brown p-12 flex-col justify-center text-white relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+                                <span className="text-brand-orange font-black text-sm uppercase mb-4 block underline decoration-4 underline-offset-8">تحقيق خاص</span>
+                                <h2 className="text-5xl font-black leading-tight mb-6 relative z-10">{selectedArticle.title}</h2>
+                                <div className="w-16 h-1 bg-brand-orange/30 mb-6 relative z-10"></div>
+                                <p className="text-brand-offwhite/50 italic leading-relaxed relative z-10">"{selectedArticle.category}"</p>
+                            </div>
+
+                            {/* Main Content Area */}
+                            <div className="flex-1 flex flex-col min-w-0 h-full relative">
+                                {/* Desktop Close Button */}
+                                <button onClick={() => setSelectedArticle(null)} className="absolute left-8 top-8 z-50 rounded-full bg-brand-brown text-white p-4 shadow-xl hover:bg-brand-orange transition-all hidden md:block">
+                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
+                                </button>
+
+                                {/* Scrollable Content */}
+                                <div className="flex-1 p-6 md:p-16 overflow-y-auto text-right custom-scrollbar bg-brand-offwhite">
+                                    <span className="inline-block rounded-full bg-brand-orange/10 px-5 py-2 text-xs font-black text-brand-orange mb-8 uppercase tracking-widest">{selectedArticle.category}</span>
+                                    
+                                    <div className="space-y-10 max-w-4xl">
+                                        <p className="text-xl md:text-2xl font-black text-brand-brown leading-relaxed border-r-4 border-brand-orange pr-6 italic mb-12">
+                                            {selectedArticle.content}
+                                        </p>
+
+                                        {selectedArticle.fullContent?.map((section, idx) => (
+                                            <div key={idx} className="border-b border-brand-brown/5 pb-10 last:border-0 group">
+                                                <h3 className="text-lg md:text-xl font-black text-brand-brown mb-4 flex items-center gap-4 transition-colors group-hover:text-brand-orange">
+                                                    <span className="text-brand-orange/20 text-3xl font-serif">0{idx + 1}</span>
+                                                    {section.heading}
+                                                </h3>
+                                                <p className="text-base md:text-lg text-brand-brown/70 leading-loose font-medium">{section.text}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 {/* Sociological Glossary */}
                 <section className="mt-24">

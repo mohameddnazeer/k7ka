@@ -206,156 +206,106 @@ export default function BaraAlkahkaPage() {
             
             <main className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-12 sm:px-6 lg:px-8">
                 {/* Hero Section */}
-                <div className="relative mb-20 overflow-hidden rounded-[4rem] bg-brand-brown p-8 text-white sm:p-20 shadow-xl text-right">
-                    <div className="absolute left-0 top-0 h-full w-1/3 bg-gradient-to-r from-brand-orange/20 to-transparent"></div>
+                <div className="relative mb-20 overflow-hidden rounded-[2rem] md:rounded-[4rem] bg-brand-brown p-8 text-white sm:p-20 shadow-xl text-right">
                     <div className="relative z-10 max-w-3xl">
                         <span className="mb-4 inline-block rounded-full bg-brand-orange px-4 py-1 text-sm font-bold tracking-widest uppercase">
-                            بره الكحكة ((العمل، الشارع، المجتمع) — 7 موضوعات)
+                            بره الكحكة - 7 تحقيقات
                         </span>
-                        <h1 className="mb-6 text-5xl font-black leading-tight sm:text-7xl text-white">بره الكحكة</h1>
-                        <p className="text-xl font-medium leading-relaxed opacity-80 text-brand-offwhite/80">
-                            جولة في عالم السوسيولوجيا والظواهر الاجتماعية التي تهم البنات والشارع والمجتمع.. لنرى ما يحدث خلف الأبواب وفي الميادين.
-                        </p>
+                        <h1 className="mb-6 text-4xl font-black md:text-7xl text-white">بره الكحكة</h1>
+                        <p className="text-lg md:text-xl opacity-80">جولة في عالم السوشيال ميديا وأخلاقيات الشارع.</p>
                     </div>
                 </div>
 
                 {/* Filter Navigation */}
                 <div className="mb-16 flex flex-wrap items-center justify-center gap-4">
                     {[
-                        { id: "all", label: "كل التحقيقات" },
-                        { id: "digital", label: "السوشيال ميديا" },
-                        { id: "street", label: "أمان الشارع" },
-                        { id: "home", label: "البيت والسوق" }
-                    ].map((tab) => (
-                        <button
-                            key={tab.id}
-                            onClick={() => setActiveSection(tab.id)}
-                            className={`rounded-full px-8 py-3 text-lg font-black transition-all ${
-                                activeSection === tab.id 
-                                ? "bg-brand-orange text-white shadow-md shadow-brand-orange/10 scale-105" 
-                                : "bg-white text-brand-brown hover:bg-brand-brown/5"
-                            }`}
-                        >
-                            {tab.label}
+                        { id: "all", label: "الكل" },
+                        { id: "digital", label: "رقمي" },
+                        { id: "street", label: "الشارع" },
+                        { id: "home", label: "البيت" }
+                    ].map((btn) => (
+                        <button key={btn.id} onClick={() => setActiveSection(btn.id)}
+                            className={`rounded-full px-6 py-2 text-lg font-black transition-all ${activeSection === btn.id ? "bg-brand-orange text-white shadow-lg scale-105" : "bg-white text-brand-brown hover:bg-brand-brown/5"}`}>
+                            {btn.label}
                         </button>
                     ))}
                 </div>
 
                 {/* Grid */}
                 <div className="grid gap-8 md:grid-cols-12 mb-12">
-                    {(activeSection === "all" || activeSection === "digital") && (
-                        <>
-                            {socialMediaTopics.map((topic, idx) => (
-                                <div key={topic.id} 
-                                    className={`${idx === 0 ? "md:col-span-8" : "md:col-span-4"} group relative overflow-hidden rounded-[3rem] ${idx === 0 ? "bg-white" : "bg-brand-orange text-white"} p-10 border border-brand-brown/10 hover:border-brand-orange/30 transition-all cursor-pointer shadow-sm hover:shadow-md`}
-                                    onClick={() => setSelectedTopic(topic)}>
-                                    <div className="flex flex-col h-full justify-between">
-                                        <div className="flex flex-col md:flex-row gap-10 items-center text-right">
-                                            {idx === 0 && <div className="w-24 h-24 text-brand-orange flex-shrink-0">{topic.svg()}</div>}
-                                            <div className="flex-1 min-w-0">
-                                                <span className={`${idx === 0 ? "text-brand-orange" : "text-white/80"} font-bold text-sm mb-2 block uppercase tracking-widest`}>{topic.category}</span>
-                                                <h2 className={`text-4xl font-black mb-4 ${idx === 0 ? "text-brand-brown group-hover:text-brand-orange" : "text-white"} transition-colors break-words`}>{topic.title}</h2>
-                                                <p className={`text-lg leading-relaxed mb-6 ${idx === 0 ? "text-brand-brown/70" : "text-white/90"}`}>{topic.content}</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-2 font-black italic group-hover:gap-4 transition-all">
-                                            <span>تصفح التحقيق الكامل</span>
-                                            <svg className="w-6 h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </>
-                    )}
-
-                    {(activeSection === "all" || activeSection === "street") && (
-                        <>
-                            {streetTopics.map((topic, idx) => (
-                                <div key={topic.id} 
-                                     className={`p-10 rounded-[3rem] transition-all cursor-pointer group border border-brand-brown/10 hover:border-brand-orange/30 shadow-sm hover:shadow-md ${idx === 0 ? "md:col-span-12 bg-brand-brown text-white/90" : "md:col-span-12 bg-white text-brand-brown"}`}
-                                     onClick={() => setSelectedTopic(topic)}>
-                                    <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-                                        <div className="text-right flex-1 min-w-0">
-                                            <span className="text-brand-orange font-bold text-sm mb-2 block">{topic.category}</span>
-                                            <h3 className="text-3xl font-black mb-4 break-words">{topic.title}</h3>
-                                            <p className="text-lg opacity-80 leading-relaxed max-w-2xl">{topic.content}</p>
-                                        </div>
-                                        <div className="w-20 h-20 text-brand-orange opacity-40 group-hover:opacity-100 transition-opacity flex-shrink-0">
-                                            {topic.svg && topic.svg(idx === 0 ? "white" : "#C96A3D")}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </>
-                    )}
-
-                    {(activeSection === "all" || activeSection === "home") && (
-                        <>
-                            {homeTopics.map((topic) => (
-                                <div key={topic.id} 
-                                     className="md:col-span-4 p-10 rounded-[3rem] bg-brand-beige/30 transition-all cursor-pointer group border border-brand-brown/10 hover:border-brand-orange/30 shadow-sm hover:shadow-md"
-                                     onClick={() => setSelectedTopic(topic)}>
-                                    <div className="flex flex-col items-start gap-6 text-right h-full">
-                                        <div className="flex-1 min-w-0 w-full">
-                                            <span className="text-brand-orange font-bold text-sm mb-2 block">{topic.category}</span>
-                                            <h3 className="text-2xl font-black mb-4 text-brand-brown break-words leading-tight">{topic.title}</h3>
-                                            <p className="text-lg text-brand-brown/70 leading-relaxed">{topic.content}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </>
-                    )}
+                    {[...socialMediaTopics, ...streetTopics, ...homeTopics]
+                        .filter(t => activeSection === "all" || (activeSection === "digital" && t.id <= 2) || (activeSection === "street" && t.id === 3) || (activeSection === "home" && t.id > 3))
+                        .map((topic, idx) => (
+                            <div key={topic.id} 
+                                className={`p-8 rounded-[2.5rem] transition-all cursor-pointer border border-brand-brown/10 hover:border-brand-orange/30 shadow-sm hover:shadow-md bg-white text-brand-brown ${idx === 0 ? "md:col-span-8" : "md:col-span-4"}`}
+                                onClick={() => setSelectedTopic(topic)}>
+                                <h3 className="text-2xl font-black mb-4">{topic.title}</h3>
+                                <p className="opacity-70">{topic.content}</p>
+                            </div>
+                        ))}
                 </div>
             </main>
 
-            {/* Modal */}
+            {/* Modal Overlay - Fixed Visibility & Interaction */}
             {selectedTopic && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-brown/60 p-4 backdrop-blur-xl transition-all duration-500">
-                    <div className="relative w-full max-w-6xl overflow-hidden rounded-[4rem] bg-brand-offwhite shadow-2xl flex flex-col md:flex-row max-h-[90vh] border border-brand-brown/10">
-                        <div className="relative hidden md:flex w-2/5 bg-brand-brown p-16 flex-col justify-between overflow-hidden">
-                            <div className="relative z-10">
-                                <span className="text-brand-orange font-black text-sm tracking-widest uppercase mb-4 block underline decoration-brand-orange decoration-4 underline-offset-8">تحقيق خاص</span>
-                                <h2 className="text-6xl font-black text-white leading-tight mb-8 mt-4">{selectedTopic.title}</h2>
-                                <p className="text-brand-offwhite/60 text-xl font-medium leading-relaxed italic border-r-2 border-white/20 pr-6 mr-2">
-                                    "جزء من السلسلة الوثائقية لتسليط الضوء على أنماط الحياة الحديثة."
-                                </p>
-                            </div>
+                <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-brand-brown/60 p-2 md:p-6 backdrop-blur-xl"
+                     onClick={() => setSelectedTopic(null)}>
+                    
+                    {/* Modal Content - Fixed Scrolling */}
+                    <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-brand-offwhite rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-2xl h-full md:h-auto max-h-[95vh] md:max-h-[85vh] border border-brand-brown/10"
+                         onClick={(e) => e.stopPropagation()}>
+                        
+                        {/* Sidebar (Desktop Only) */}
+                        <div className="hidden md:flex md:w-1/3 bg-brand-brown p-12 flex-col justify-center text-white">
+                            <span className="text-brand-orange font-black text-sm uppercase mb-4 block underline decoration-4 underline-offset-8">تحقيق خاص</span>
+                            <h2 className="text-5xl font-black leading-tight mb-6">{selectedTopic.title}</h2>
+                            <div className="w-16 h-1 bg-brand-orange/30 mb-6"></div>
+                            <p className="text-brand-offwhite/50 italic leading-relaxed">"تحليل مجتمعي معمق لظواهر العصر الحديث."</p>
                         </div>
 
-                        <div className="flex-1 relative flex flex-col min-w-0">
-                            <div className="absolute top-0 right-0 left-0 h-12 bg-gradient-to-b from-brand-offwhite to-transparent z-10 pointer-events-none"></div>
-                            <div className="flex-1 p-8 md:p-16 overflow-y-auto text-right custom-scrollbar relative z-0">
-                                <button onClick={() => setSelectedTopic(null)} className="fixed md:absolute left-8 top-8 z-50 rounded-full bg-brand-brown text-white p-4 shadow-lg hover:bg-brand-orange transition-all scale-110">
+                        {/* Content Area - Scrollable */}
+                        <div className="flex-1 flex flex-col min-w-0 h-full">
+                            {/* Sticky Header for Mobile */}
+                            <div className="flex items-center justify-between p-6 border-b border-brand-brown/5 bg-brand-offwhite z-20 md:hidden">
+                                <h2 className="text-xl font-black text-brand-brown leading-tight line-clamp-1">{selectedTopic.title}</h2>
+                                <button onClick={() => setSelectedTopic(null)} className="p-2 rounded-full bg-brand-brown text-white shadow-lg">
                                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
                                 </button>
-                                <div className="max-w-[100%]">
-                                    <span className="inline-block rounded-full bg-brand-orange/10 px-6 py-2 text-sm font-black text-brand-orange mb-10">{selectedTopic.category}</span>
-                                    <div className="space-y-12 mb-16">
-                                        <p className="text-2xl font-black leading-relaxed text-brand-brown pr-8 mr-4 italic border-r-4 border-brand-orange">{selectedTopic.content}</p>
-                                        {selectedTopic.sections ? (
-                                            selectedTopic.sections.map((section, idx) => (
-                                                <div key={idx} className="group border-b border-brand-brown/5 pb-10 last:border-0">
-                                                    <h3 className="text-xl font-black text-brand-brown mb-4 group-hover:text-brand-orange transition-colors flex items-center gap-4">
-                                                        <span className="text-brand-orange/30 text-3xl font-serif">0{idx + 1}</span>
-                                                        {section.heading}
-                                                    </h3>
-                                                    <p className="text-lg leading-loose text-brand-brown/70 font-medium font-arabic">{section.body}</p>
-                                                </div>
-                                            ))
-                                        ) : (
-                                            <p className="text-lg leading-loose text-brand-brown/70 font-medium whitespace-pre-line font-arabic">{selectedTopic.details}</p>
-                                        )}
-                                        {selectedTopic.conclusion && (
-                                            <div className="bg-brand-brown p-10 rounded-[3rem] text-white">
-                                                <h4 className="text-xl font-black mb-4 text-brand-orange">كلمة أخيرة</h4>
-                                                <p className="text-lg font-bold opacity-90 leading-relaxed italic">{selectedTopic.conclusion}</p>
-                                            </div>
-                                        )}
-                                    </div>
+                            </div>
+
+                            {/* Desktop Close Button */}
+                            <button onClick={() => setSelectedTopic(null)} className="absolute left-8 top-8 z-50 rounded-full bg-brand-brown text-white p-4 shadow-xl hover:bg-brand-orange transition-all hidden md:block">
+                                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
+                            </button>
+
+                            {/* Scrollable Body */}
+                            <div className="flex-1 p-6 md:p-16 overflow-y-auto text-right custom-scrollbar">
+                                <span className="inline-block rounded-full bg-brand-orange/10 px-5 py-2 text-xs font-black text-brand-orange mb-8 uppercase tracking-widest">{selectedTopic.category}</span>
+                                
+                                <div className="space-y-10 max-w-4xl">
+                                    <p className="text-xl md:text-2xl font-black text-brand-brown leading-relaxed border-r-4 border-brand-orange pr-6 italic mb-12">
+                                        {selectedTopic.content}
+                                    </p>
+
+                                    {selectedTopic.sections?.map((section, idx) => (
+                                        <div key={idx} className="border-b border-brand-brown/5 pb-10 last:border-0 group">
+                                            <h3 className="text-lg md:text-xl font-black text-brand-brown mb-4 flex items-center gap-4 transition-colors group-hover:text-brand-orange">
+                                                <span className="text-brand-orange/20 text-3xl font-serif">0{idx + 1}</span>
+                                                {section.heading}
+                                            </h3>
+                                            <p className="text-base md:text-lg text-brand-brown/70 leading-loose font-medium">{section.body}</p>
+                                        </div>
+                                    ))}
+
+                                    {selectedTopic.conclusion && (
+                                        <div className="mt-12 bg-brand-brown p-8 md:p-12 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
+                                            <div className="absolute top-0 left-0 w-24 h-24 bg-brand-orange/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                                            <h4 className="text-xl font-black mb-4 text-brand-orange tracking-widest uppercase">الخلاصة</h4>
+                                            <p className="text-base md:text-lg font-bold opacity-90 leading-relaxed italic">{selectedTopic.conclusion}</p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
-                            <div className="absolute bottom-0 right-0 left-0 h-12 bg-gradient-to-t from-brand-offwhite to-transparent z-10 pointer-events-none"></div>
                         </div>
                     </div>
                 </div>
