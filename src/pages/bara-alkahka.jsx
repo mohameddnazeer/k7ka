@@ -156,14 +156,14 @@ const homeTopics = [
         id: 6,
         title: "الديكور",
         category: "ثقافة البيت",
-        svg: () => <div className="w-16 h-16 bg-brand-orange/20 rounded-full" />,
+        svg: () => <div className="w-16 h-16 bg-brand-orange/20 rounded-md" />,
         content: "لمسات فنية بسيطة تحول غرفتك إلى عالمك الخاص الذي يعبر عن شخصيتك."
     },
     {
         id: 7,
         title: "الموبيليا",
         category: "ثقافة البيت",
-        svg: () => <div className="w-16 h-16 bg-brand-brown/20 rounded-full" />,
+        svg: () => <div className="w-16 h-16 bg-brand-brown/20 rounded-md" />,
         content: "كيف تختارين قطع الأثاث التي تجمع بين الجمال والوظيفة وتعيش معك طويلاً؟"
     }
 ]
@@ -208,7 +208,7 @@ export default function BaraAlkahkaPage() {
                 {/* Hero Section */}
                 <div className="relative mb-20 overflow-hidden rounded-[2rem] md:rounded-[4rem] bg-brand-brown p-8 text-white sm:p-20 shadow-xl text-right">
                     <div className="relative z-10 max-w-3xl">
-                        <span className="mb-4 inline-block rounded-full bg-brand-orange px-4 py-1 text-sm font-bold tracking-widest uppercase">
+                        <span className="mb-4 inline-block rounded-md bg-brand-orange px-4 py-1 text-sm font-bold tracking-widest uppercase">
                             بره الكحكة - 7 تحقيقات
                         </span>
                         <h1 className="mb-6 text-4xl font-black md:text-7xl text-white">بره الكحكة</h1>
@@ -225,7 +225,7 @@ export default function BaraAlkahkaPage() {
                         { id: "home", label: "البيت" }
                     ].map((btn) => (
                         <button key={btn.id} onClick={() => setActiveSection(btn.id)}
-                            className={`rounded-full px-6 py-2 text-lg font-black transition-all ${activeSection === btn.id ? "bg-brand-orange text-white shadow-lg scale-105" : "bg-white text-brand-brown hover:bg-brand-brown/5"}`}>
+                            className={`rounded-md px-6 py-2 text-lg font-black transition-all ${activeSection === btn.id ? "bg-brand-orange text-white shadow-lg scale-105" : "bg-white text-brand-brown hover:bg-brand-brown/5"}`}>
                             {btn.label}
                         </button>
                     ))}
@@ -237,7 +237,7 @@ export default function BaraAlkahkaPage() {
                         .filter(t => activeSection === "all" || (activeSection === "digital" && t.id <= 2) || (activeSection === "street" && t.id === 3) || (activeSection === "home" && t.id > 3))
                         .map((topic, idx) => (
                             <div key={topic.id} 
-                                className={`p-8 rounded-[2.5rem] transition-all cursor-pointer border border-brand-brown/10 hover:border-brand-orange/30 shadow-sm hover:shadow-md bg-white text-brand-brown ${idx === 0 ? "md:col-span-8" : "md:col-span-4"}`}
+                                className={`p-8 rounded-[1rem] transition-all cursor-pointer border border-brand-brown/10 hover:border-brand-orange/30 shadow-sm hover:shadow-md bg-white text-brand-brown ${idx === 0 ? "md:col-span-8" : "md:col-span-4"}`}
                                 onClick={() => setSelectedTopic(topic)}>
                                 <h3 className="text-2xl font-black mb-4">{topic.title}</h3>
                                 <p className="opacity-70">{topic.content}</p>
@@ -252,7 +252,7 @@ export default function BaraAlkahkaPage() {
                      onClick={() => setSelectedTopic(null)}>
                     
                     {/* Modal Content - Fixed Scrolling */}
-                    <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-brand-offwhite rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-2xl h-full md:h-auto max-h-[95vh] md:max-h-[85vh] border border-brand-brown/10"
+                    <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-brand-offwhite rounded-[1rem] overflow-hidden shadow-2xl h-full md:h-auto max-h-[95vh] md:max-h-[85vh] border border-brand-brown/10"
                          onClick={(e) => e.stopPropagation()}>
                         
                         {/* Sidebar (Desktop Only) */}
@@ -268,19 +268,19 @@ export default function BaraAlkahkaPage() {
                             {/* Sticky Header for Mobile */}
                             <div className="flex items-center justify-between p-6 border-b border-brand-brown/5 bg-brand-offwhite z-20 md:hidden">
                                 <h2 className="text-xl font-black text-brand-brown leading-tight line-clamp-1">{selectedTopic.title}</h2>
-                                <button onClick={() => setSelectedTopic(null)} className="p-2 rounded-full bg-brand-brown text-white shadow-lg">
+                                <button onClick={() => setSelectedTopic(null)} className="p-2 rounded-md bg-brand-brown text-white shadow-lg">
                                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
                                 </button>
                             </div>
 
                             {/* Desktop Close Button */}
-                            <button onClick={() => setSelectedTopic(null)} className="absolute left-8 top-8 z-50 rounded-full bg-brand-brown text-white p-4 shadow-xl hover:bg-brand-orange transition-all hidden md:block">
+                            <button onClick={() => setSelectedTopic(null)} className="absolute left-8 top-8 z-50 rounded-md bg-brand-brown text-white p-4 shadow-xl hover:bg-brand-orange transition-all hidden md:block">
                                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
                             </button>
 
                             {/* Scrollable Body */}
                             <div className="flex-1 p-6 md:p-16 overflow-y-auto text-right custom-scrollbar">
-                                <span className="inline-block rounded-full bg-brand-orange/10 px-5 py-2 text-xs font-black text-brand-orange mb-8 uppercase tracking-widest">{selectedTopic.category}</span>
+                                <span className="inline-block rounded-md bg-brand-orange/10 px-5 py-2 text-xs font-black text-brand-orange mb-8 uppercase tracking-widest">{selectedTopic.category}</span>
                                 
                                 <div className="space-y-10 max-w-4xl">
                                     <p className="text-xl md:text-2xl font-black text-brand-brown leading-relaxed border-r-4 border-brand-orange pr-6 italic mb-12">
@@ -298,8 +298,8 @@ export default function BaraAlkahkaPage() {
                                     ))}
 
                                     {selectedTopic.conclusion && (
-                                        <div className="mt-12 bg-brand-brown p-8 md:p-12 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
-                                            <div className="absolute top-0 left-0 w-24 h-24 bg-brand-orange/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                                        <div className="mt-12 bg-brand-brown p-8 md:p-12 rounded-[1rem] text-white shadow-2xl relative overflow-hidden">
+                                            <div className="absolute top-0 left-0 w-24 h-24 bg-brand-orange/10 rounded-md -translate-x-1/2 -translate-y-1/2"></div>
                                             <h4 className="text-xl font-black mb-4 text-brand-orange tracking-widest uppercase">الخلاصة</h4>
                                             <p className="text-base md:text-lg font-bold opacity-90 leading-relaxed italic">{selectedTopic.conclusion}</p>
                                         </div>

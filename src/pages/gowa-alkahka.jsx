@@ -226,7 +226,7 @@ export default function GowaAlkahkaPage() {
             <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
                 {/* Header Section */}
                 <div className="mb-16 text-center">
-                    <span className="inline-block rounded-full bg-brand-orange/10 px-4 py-1.5 text-sm font-bold text-brand-orange mb-4">
+                    <span className="inline-block rounded-md bg-brand-orange/10 px-4 py-1.5 text-sm font-bold text-brand-orange mb-4">
                         جوه الكحكة
                     </span>
                     <h1 className="text-4xl font-black text-brand-brown sm:text-6xl mb-6 tracking-tight">
@@ -251,7 +251,7 @@ export default function GowaAlkahkaPage() {
                                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
                                 <div className="absolute top-4 right-4">
-                                    <span className="rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-brand-brown shadow-sm border border-brand-brown/5">
+                                    <span className="rounded-md bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-brand-brown shadow-sm border border-brand-brown/5">
                                         {article.category}
                                     </span>
                                 </div>
@@ -281,8 +281,8 @@ export default function GowaAlkahkaPage() {
                 </div>
 
                 {/* Interactive Poll Section */}
-                <section className="mt-24 rounded-[3rem] bg-brand-brown p-8 sm:p-16 text-white relative overflow-hidden shadow-2xl">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+                <section className="mt-24 rounded-[1.5rem] bg-brand-brown p-8 sm:p-16 text-white relative overflow-hidden shadow-2xl">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 rounded-md -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
                     <div className="relative z-10 max-w-3xl mx-auto text-center">
                         <h2 className="text-3xl font-black mb-6">سؤال للنقاش: هل تشعرين بضغط "البنت القوية"؟</h2>
                         <p className="text-lg text-white/70 mb-10 font-medium">نحن نهتم برأيك. هل تشعرين أن المجتمع يفرض عليك القوة كخيار وحيد؟</p>
@@ -316,20 +316,20 @@ export default function GowaAlkahkaPage() {
                     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-brand-brown/60 p-2 md:p-6 backdrop-blur-xl"
                          onClick={() => setSelectedArticle(null)}>
                         
-                        <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-brand-offwhite rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-2xl h-full md:h-auto max-h-[95vh] md:max-h-[85vh] border border-brand-brown/10"
+                        <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-brand-offwhite rounded-[1rem] overflow-hidden shadow-2xl h-full md:h-auto max-h-[95vh] md:max-h-[85vh] border border-brand-brown/10"
                              onClick={(e) => e.stopPropagation()}>
                             
                             {/* Sticky Header for Mobile */}
                             <div className="flex items-center justify-between p-6 border-b border-brand-brown/5 bg-brand-offwhite z-20 md:hidden">
                                 <h2 className="text-xl font-black text-brand-brown leading-tight line-clamp-1">{selectedArticle.title}</h2>
-                                <button onClick={() => setSelectedArticle(null)} className="p-2 rounded-full bg-brand-brown text-white shadow-lg">
+                                <button onClick={() => setSelectedArticle(null)} className="p-2 rounded-md bg-brand-brown text-white shadow-lg">
                                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
                                 </button>
                             </div>
 
                             {/* Sidebar (Desktop Only) */}
                             <div className="hidden md:flex md:w-1/3 bg-brand-brown p-12 flex-col justify-center text-white relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 rounded-md -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
                                 <span className="text-brand-orange font-black text-sm uppercase mb-4 block underline decoration-4 underline-offset-8">تحقيق خاص</span>
                                 <h2 className="text-5xl font-black leading-tight mb-6 relative z-10">{selectedArticle.title}</h2>
                                 <div className="w-16 h-1 bg-brand-orange/30 mb-6 relative z-10"></div>
@@ -339,13 +339,13 @@ export default function GowaAlkahkaPage() {
                             {/* Main Content Area */}
                             <div className="flex-1 flex flex-col min-w-0 h-full relative">
                                 {/* Desktop Close Button */}
-                                <button onClick={() => setSelectedArticle(null)} className="absolute left-8 top-8 z-50 rounded-full bg-brand-brown text-white p-4 shadow-xl hover:bg-brand-orange transition-all hidden md:block">
+                                <button onClick={() => setSelectedArticle(null)} className="absolute left-8 top-8 z-50 rounded-md bg-brand-brown text-white p-4 shadow-xl hover:bg-brand-orange transition-all hidden md:block">
                                     <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
                                 </button>
 
                                 {/* Scrollable Content */}
                                 <div className="flex-1 p-6 md:p-16 overflow-y-auto text-right custom-scrollbar bg-brand-offwhite">
-                                    <span className="inline-block rounded-full bg-brand-orange/10 px-5 py-2 text-xs font-black text-brand-orange mb-8 uppercase tracking-widest">{selectedArticle.category}</span>
+                                    <span className="inline-block rounded-md bg-brand-orange/10 px-5 py-2 text-xs font-black text-brand-orange mb-8 uppercase tracking-widest">{selectedArticle.category}</span>
                                     
                                     <div className="space-y-10 max-w-4xl">
                                         <p className="text-xl md:text-2xl font-black text-brand-brown leading-relaxed border-r-4 border-brand-orange pr-6 italic mb-12">
@@ -372,7 +372,7 @@ export default function GowaAlkahkaPage() {
                 <section className="mt-24">
                     <div className="mb-12 text-right">
                         <h2 className="text-3xl font-black text-brand-brown mb-4">قاموس المفاهيم</h2>
-                        <div className="h-1.5 w-24 bg-brand-orange rounded-full mr-0 ml-auto"></div>
+                        <div className="h-1.5 w-24 bg-brand-orange rounded-md mr-0 ml-auto"></div>
                     </div>
                     <div className="grid gap-8 md:grid-cols-3">
                         {[
@@ -380,7 +380,7 @@ export default function GowaAlkahkaPage() {
                             { title: "العبء العاطفي", desc: "المجهود غير المرئي الذي تبذله المرأة لإدارة مشاعر من حولها والحفاظ على توازن البيت." },
                             { title: "فخ الاستقلال", desc: "عندما يتحول الاعتماد على الذات من قوة إلى عزلة تمنع الفتاة من طلب الدعم عند الحاجة." }
                         ].map((item, i) => (
-                            <div key={i} className="p-8 rounded-[2rem] bg-white border border-brand-brown/10 shadow-sm hover:shadow-md transition-shadow text-right">
+                            <div key={i} className="p-8 rounded-[1rem] bg-white border border-brand-brown/10 shadow-sm hover:shadow-md transition-shadow text-right">
                                 <h3 className="text-xl font-black text-brand-orange mb-4">{item.title}</h3>
                                 <p className="text-brand-brown/70 font-medium leading-relaxed">{item.desc}</p>
                             </div>
@@ -391,7 +391,7 @@ export default function GowaAlkahkaPage() {
                 {/* Additional Content: Perspectives & Experts */}
                 <section className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Perspective Card 1 */}
-                    <div className="bg-brand-orange/5 rounded-[2.5rem] p-10 border border-brand-orange/10 relative overflow-hidden group">
+                    <div className="bg-brand-orange/5 rounded-[1.5rem] p-10 border border-brand-orange/10 relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                             <svg className="w-24 h-24 text-brand-orange" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16L9.01703 16C7.91246 16 7.01703 16.8954 7.01703 18L7.01703 21M14.017 21L17.017 21C18.1216 21 19.017 20.1046 19.017 19L19.017 12C19.017 10.8954 18.1216 10 17.017 10L7.01703 10C5.91246 10 5.01703 10.8954 5.01703 12L5.01703 19C5.01703 20.1046 5.91246 21 7.01703 21L10.017 21M14.017 21L14.017 12M10.017 21L10.017 12M15.017 6C15.017 7.65685 13.6739 9 12.017 9C10.3602 9 9.01703 7.65685 9.01703 6C9.01703 4.34315 10.3602 3 12.017 3C13.6739 3 15.017 4.34315 15.017 6Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -404,7 +404,7 @@ export default function GowaAlkahkaPage() {
                         <ul className="space-y-3 relative z-10">
                             {["أثر الاستقلال المادي", "صراع الأجيال", "مفهوم السكن النفسي"].map((tag, i) => (
                                 <li key={i} className="flex items-center gap-2 text-brand-orange font-bold">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
+                                    <span className="w-1.5 h-1.5 rounded-md bg-brand-orange"></span>
                                     {tag}
                                 </li>
                             ))}
@@ -412,7 +412,7 @@ export default function GowaAlkahkaPage() {
                     </div>
 
                     {/* Perspective Card 2 */}
-                    <div className="bg-brand-brown/5 rounded-[2.5rem] p-10 border border-brand-brown/10 relative overflow-hidden group">
+                    <div className="bg-brand-brown/5 rounded-[1rem] p-10 border border-brand-brown/10 relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                             <svg className="w-24 h-24 text-brand-brown" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -424,7 +424,7 @@ export default function GowaAlkahkaPage() {
                         </p>
                         <div className="flex flex-wrap gap-2 relative z-10">
                             {["الوعي الذاتي", "التوازن", "الدعم النفسي"].map((tip, i) => (
-                                <span key={i} className="bg-white px-4 py-2 rounded-full text-sm font-bold text-brand-brown shadow-sm border border-brand-brown/5">
+                                <span key={i} className="bg-white px-4 py-2 rounded-md text-sm font-bold text-brand-brown shadow-sm border border-brand-brown/5">
                                     {tip}
                                 </span>
                             ))}
@@ -444,12 +444,12 @@ export default function GowaAlkahkaPage() {
                 </section>
 
                 {/* Bottom CTA / Community Section */}
-                <section className="mt-24 rounded-[3rem] bg-gradient-to-br from-brand-brown to-brand-brown/95 p-8 text-white sm:p-20 relative overflow-hidden shadow-2xl shadow-brand-brown/20">
-                    <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-brand-orange/10 rounded-full blur-[120px]"></div>
-                    <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-[400px] h-[400px] bg-brand-gold/5 rounded-full blur-[100px]"></div>
+                <section className="mt-24 rounded-[1.5rem] bg-gradient-to-br from-brand-brown to-brand-brown/95 p-8 text-white sm:p-20 relative overflow-hidden shadow-2xl shadow-brand-brown/20">
+                    <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-brand-orange/10 rounded-md blur-[120px]"></div>
+                    <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-[400px] h-[400px] bg-brand-gold/5 rounded-md blur-[100px]"></div>
                     
                     <div className="relative z-10 text-center max-w-4xl mx-auto">
-                        <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-2 text-sm font-bold text-brand-offwhite mb-8 border border-white/10 backdrop-blur-md">
+                        <div className="inline-flex items-center gap-2 rounded-md bg-white/10 px-6 py-2 text-sm font-bold text-brand-offwhite mb-8 border border-white/10 backdrop-blur-md">
                             انضمي لحديثنا
                         </div>
                         <h2 className="text-4xl font-black sm:text-6xl mb-8 tracking-tight leading-tight">
