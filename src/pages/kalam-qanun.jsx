@@ -416,7 +416,7 @@ export default function KalamQanunPage() {
                 {/* ==========================================
                     UPGRADED FAQ SECTION (القسم المطور والمحدث)
                    ========================================== */}
-                <section className=" bg-gradient-to-b from-transparent to-slate-100/50 pt-12  rounded-[3rem]">
+                <section className=" bg-gradient-to-b from-transparent to-slate-100/50 pt-12 pb-8  rounded-[3rem]">
                     {/* عنوان القسم */}
                     <div className="mb-10 text-center">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-secondary/10 text-brand-secondary text-xs font-bold mb-3">
