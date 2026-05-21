@@ -80,25 +80,25 @@ export default function KalamQanunPage() {
             <BackgroundSVG />
             <NavBar />
             
-            <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+            <main className="relative z-10 mx-auto w-full  px-4 pb-24 sm:px-6 lg:px-8">
                 {/* Header Section */}
                 <div className="mb-16 text-center">
-                    <span className="inline-block rounded-full bg-brand-brown/10 px-4 py-1.5 text-sm font-bold text-brand-brown mb-4">
+                    <span className="badge-soft mb-4">
                         إعلام وتمكين
                     </span>
-                    <h1 className="text-4xl font-black text-brand-brown sm:text-6xl mb-6 tracking-tight">
+                    <h1 className="text-4xl font-black text-brand-ink sm:text-6xl mb-6 tracking-tight">
                         كلام قانون
                     </h1>
-                    <p className="mx-auto max-w-2xl text-lg text-brand-brown/70 font-medium">
+                    <p className="mx-auto max-w-2xl text-lg text-brand-inkMuted/80 font-medium">
                         تبسيط المفاهيم القانونية بالتعاون مع خبراء قانونيين ومؤسسة قضايا المرأة المصرية. الوعي هو أول خطوة لحماية حقوقك.
                     </p>
                 </div>
 
                 {/* Collaboration Box */}
-                <div className="mb-16 rounded-[2rem] bg-brand-brown text-white p-8 text-center shadow-xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+                <div className="mb-16 rounded-[2rem] bg-soft-flow text-brand-ink p-8 text-center relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/40 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
                     <h3 className="text-2xl font-bold mb-4 relative z-10">بروتوكول تعاون</h3>
-                    <p className="text-lg opacity-90 max-w-3xl mx-auto relative z-10 font-medium leading-relaxed">
+                    <p className="text-lg text-brand-inkMuted max-w-3xl mx-auto relative z-10 font-medium leading-relaxed">
                         مشروع "الكحكة" يتعاون مع <strong>مؤسسة قضايا المرأة المصرية</strong> لتقديم محتوى قانوني دقيق يهدف إلى توعية النساء بحقوقهن القانونية والاجتماعية.
                     </p>
                 </div>
@@ -108,28 +108,28 @@ export default function KalamQanunPage() {
                     {articles.map((article) => (
                         <article 
                             key={article.id}
-                            className="group flex flex-col overflow-hidden rounded-3xl border border-brand-brown/10 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-brown/5"
+                            className="group flex flex-col overflow-hidden rounded-3xl border border-brand-surface/70 bg-brand-surface transition-all hover:-translate-y-1"
                         >
-                            <div className="relative aspect-[16/10] overflow-hidden bg-brand-brown/5 flex items-center justify-center">
-                                <span className="text-brand-brown/20 font-black text-xl">قانون</span>
+                            <div className="relative aspect-[16/10] overflow-hidden bg-brand-surface flex items-center justify-center">
+                                <span className="text-brand-inkSubtle font-black text-xl">قانون</span>
                                 <div className="absolute top-4 right-4">
-                                    <span className="rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-brand-brown shadow-sm border border-brand-brown/5">
+                                    <span className="rounded-full bg-brand-surface/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-brand-ink border border-brand-surface/70">
                                         {article.category}
                                     </span>
                                 </div>
                             </div>
                             
                             <div className="flex flex-1 flex-col p-6 text-right">
-                                <h2 className="mb-4 text-xl font-black text-brand-brown leading-tight transition-colors group-hover:text-brand-orange">
+                                <h2 className="mb-4 text-xl font-black text-brand-ink leading-tight transition-colors group-hover:text-brand-secondary">
                                     {article.title}
                                 </h2>
-                                <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-brand-brown/60 font-medium whitespace-pre-wrap">
+                                <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-brand-inkMuted/80 font-medium whitespace-pre-wrap">
                                     {article.content}
                                 </p>
                                 <div className="mt-auto">
                                     <button 
                                         onClick={() => setSelectedArticle(article)}
-                                        className="inline-flex items-center gap-2 text-sm font-bold text-brand-orange transition hover:gap-3"
+                                        className="inline-flex items-center gap-2 text-sm font-bold text-brand-accent transition hover:gap-3"
                                     >
                                         إقرئي المزيد
                                         <svg className="h-4 w-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -145,8 +145,8 @@ export default function KalamQanunPage() {
                 {/* Legal FAQ Section */}
                 <section className="mt-24">
                     <div className="mb-12">
-                        <h2 className="text-3xl font-black text-brand-brown mb-4">أسئلة قانونية شائعة</h2>
-                        <div className="h-1.5 w-24 bg-brand-orange rounded-full"></div>
+                        <h2 className="text-3xl font-black text-brand-ink mb-4">أسئلة قانونية شائعة</h2>
+                        <div className="h-1.5 w-24 bg-brand-accent rounded-full"></div>
                     </div>
                     <div className="grid gap-6">
                         {[
@@ -154,39 +154,39 @@ export default function KalamQanunPage() {
                             { q: "ما هي عقوبة عدم الإنفاق على الزوجة والأبناء؟", a: "في حالة صدور حكم نهائي بالنفقة وامتناع الزوج، يحق للزوجة تفعيل المادة 293 من قانون العقوبات التي قد تصل عقوبتها للحبس سنة." },
                             { q: "هل يسقط حق الأم في الحضانة بزواجها؟", a: "نعم، يسقط الحق في الحضانة للأم بزواجها بغير محرم للمحضون من حيث الأصل، وتنتقل الحضانة لمن يليها في الترتيب القانوني (الجدة لأم عادة)." }
                         ].map((faq, idx) => (
-                            <div key={idx} className="bg-white p-8 rounded-3xl border border-brand-brown/10 text-right">
-                                <h4 className="text-xl font-black text-brand-orange mb-3">? {faq.q}</h4>
-                                <p className="text-lg text-brand-brown/70 font-medium leading-relaxed">{faq.a}</p>
+                            <div key={idx} className="bg-brand-surface p-8 rounded-3xl border border-brand-surface/70 text-right">
+                                <h4 className="text-xl font-black text-brand-secondary mb-3">? {faq.q}</h4>
+                                <p className="text-lg text-brand-inkMuted/80 font-medium leading-relaxed">{faq.a}</p>
                             </div>
                         ))}
                     </div>
                 </section>
 
                 {/* Legal Advice Card (Interactive Style) */}
-                <section className="mt-24 bg-brand-orange rounded-[3rem] p-10 sm:p-20 text-white relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+                <section className="mt-24 bg-soft-sheen rounded-[3rem] p-10 sm:p-20 text-brand-ink relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-64 h-64 bg-white/50 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
                     <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                         <div>
                             <h2 className="text-4xl font-black mb-6">احتاجي مساعدة قانونية؟</h2>
-                            <p className="text-xl opacity-90 mb-8 font-medium leading-relaxed">
+                            <p className="text-xl text-brand-inkMuted mb-8 font-medium leading-relaxed">
                                 توفر مؤسسة قضايا المرأة المصرية خطوطاً ساخنة ودعماً قانونياً مباشراً للسيدات. لا تترددي في طلب المشورة.
                             </p>
                             <div className="flex flex-wrap gap-4">
-                                <div className="bg-white/20 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
-                                    <span className="block text-xs uppercase font-bold opacity-70">الخط الساخن</span>
-                                    <span className="text-2xl font-black">16...</span>
+                                <div className="bg-brand-surface backdrop-blur-md px-6 py-3 rounded-2xl border border-brand-surface/70">
+                                    <span className="block text-xs uppercase font-bold text-brand-inkSubtle">الخط الساخن</span>
+                                    <span className="text-2xl font-black text-brand-ink">16...</span>
                                 </div>
-                                <div className="bg-white/20 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
-                                    <span className="block text-xs uppercase font-bold opacity-70">المقر الرئيسي</span>
-                                    <span className="text-xl font-black">القاهرة - الجيزة</span>
+                                <div className="bg-brand-surface backdrop-blur-md px-6 py-3 rounded-2xl border border-brand-surface/70">
+                                    <span className="block text-xs uppercase font-bold text-brand-inkSubtle">المقر الرئيسي</span>
+                                    <span className="text-xl font-black text-brand-ink">القاهرة - الجيزة</span>
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-white/10 backdrop-blur-sm rounded-[2rem] p-8 border border-white/20">
+                        <div className="bg-brand-surface backdrop-blur-sm rounded-[2rem] p-8 border border-brand-surface/70">
                             <h4 className="text-xl font-bold mb-4 italic">"الحق في المعرفة هو المدخل الأول لاسترداد الحقوق المسلوبة."</h4>
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-full bg-white/20"></div>
-                                <span className="font-bold">فريق التوعية القانونية</span>
+                                <div className="w-12 h-12 rounded-full bg-brand-surface"></div>
+                                <span className="font-bold text-brand-ink">فريق التوعية القانونية</span>
                             </div>
                         </div>
                     </div>
@@ -196,13 +196,13 @@ export default function KalamQanunPage() {
                 {selectedArticle && (
                     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
                         <div 
-                            className="absolute inset-0 bg-brand-brown/40 backdrop-blur-md"
+                            className="absolute inset-0 bg-brand-ink/30 backdrop-blur-md"
                             onClick={() => setSelectedArticle(null)}
                         ></div>
-                        <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[2.5rem] bg-white p-6 shadow-2xl sm:p-12 no-scrollbar">
+                        <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[2.5rem] bg-brand-surface p-6 sm:p-12 no-scrollbar">
                             <button 
                                 onClick={() => setSelectedArticle(null)}
-                                className="absolute top-6 left-6 rounded-full bg-brand-offwhite p-2 text-brand-brown transition hover:bg-brand-orange hover:text-white"
+                                className="absolute top-6 left-6 rounded-full bg-brand-surface p-2 text-brand-ink transition hover:bg-brand-secondary hover:text-white"
                             >
                                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -210,18 +210,18 @@ export default function KalamQanunPage() {
                             </button>
 
                             <div className="text-right">
-                                <span className="inline-block rounded-full bg-brand-orange/10 px-4 py-1 text-sm font-bold text-brand-orange mb-4">
+                                <span className="badge-soft mb-4">
                                     {selectedArticle.category}
                                 </span>
-                                <h2 className="text-3xl font-black text-brand-brown sm:text-5xl mb-12 leading-tight">
+                                <h2 className="text-3xl font-black text-brand-ink sm:text-5xl mb-12 leading-tight">
                                     {selectedArticle.title}
                                 </h2>
                                 
                                 <div className="space-y-12">
                                     {selectedArticle.fullContent?.map((section, idx) => (
-                                        <div key={idx} className="border-r-4 border-brand-orange pr-6">
-                                            <h3 className="text-2xl font-black text-brand-brown mb-4">{section.heading}</h3>
-                                            <p className="text-lg text-brand-brown/70 leading-relaxed font-medium">
+                                        <div key={idx} className="border-r-4 border-brand-accent/60 pr-6">
+                                            <h3 className="text-2xl font-black text-brand-ink mb-4">{section.heading}</h3>
+                                            <p className="text-lg text-brand-inkMuted/80 leading-relaxed font-medium">
                                                 {section.text}
                                             </p>
                                         </div>

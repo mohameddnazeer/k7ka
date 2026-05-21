@@ -2,8 +2,8 @@ import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 
-const paragraphClass = 'text-lg leading-9 text-brand-textSecondary'
-const sectionTitleClass = 'mb-3 text-2xl font-extrabold text-brand-brown'
+const paragraphClass = 'text-lg leading-9 text-brand-inkMuted'
+const sectionTitleClass = 'mb-3 text-2xl font-extrabold text-brand-ink'
 
 export default function AlaaqaPage() {
     return (
@@ -11,8 +11,8 @@ export default function AlaaqaPage() {
             <BackgroundSVG />
                 <NavBar />
                 <main className="relative z-10 mx-auto w-full  px-4 pb-16 sm:px-8">
-                    <article className="rounded-3xl border border-brand-brown/10 bg-white/85 p-6 shadow-card backdrop-blur sm:p-10">
-                        <h1 className="mb-8 text-center text-4xl font-extrabold leading-tight text-brand-brown sm:text-5xl">
+                    <article className="glass-card p-6 sm:p-10">
+                        <h1 className="mb-8 text-center text-4xl font-extrabold leading-tight text-brand-ink sm:text-5xl">
                             روتين التنظيف اليومي: بين مسؤولية الأم واستقرار الأسرة
                         </h1>
                         <p className={paragraphClass}>
@@ -21,7 +21,7 @@ export default function AlaaqaPage() {
                         <p className={`${paragraphClass} mt-4`}>
                             ويهدف هذا التحقيق إلى إلقاء الضوء على هذه العلاقة المتشابكة بين الأم وتنظيف المنزل، من زاوية نفسية واجتماعية، مستعرضًا كيف يمكن لهذه المسؤولية أن تؤثر في صحتها النفسية والجسدية، وفي طبيعة العلاقات داخل الأسرة. كما يسعى إلى استكشاف ما إذا كان تنظيف البيت يمثل عبئًا يوميًا مرهقًا، أم جزءًا من الهوية التي تُعيد الأم تشكيلها باستمرار داخل محيطها الأسري.
                         </p>
-                        <div className="my-8 rounded-2xl border-2 border-dashed border-brand-blue/35 bg-brand-beige/35 p-6 text-center text-brand-blue">
+                        <div className="my-8 rounded-2xl border-2 border-dashed border-brand-accent/40 bg-brand-surface p-6 text-center text-brand-inkMuted">
                             الإنفوجراف التالي يوضح الأبعاد النفسية والاجتماعية لعلاقة الأم بروتين تنظيف المنزل
                         </div>
                         <section className="mb-8">

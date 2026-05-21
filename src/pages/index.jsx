@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import HeroHeader from '../components/HeroHeader'
@@ -12,36 +12,42 @@ const topicCards = [
         to: '/sawtoha-masmoua',
         text: 'إجراء تحقيقات ميدانية توسيع شبكة المصادر والاعتماد على الشهادات الحية وتجارب النساء الواقعية.',
         image: '/imgs/3.png',
+        span: 'md:col-span-2'
     },
     {
         title: 'بودكاست',
         to: '/gowa-alkahka',
         text: 'مساحة صوتية لاستقبال قضايا الجمهور وإشراك المتابعات في اقتراح الموضوعات.',
         image: '/imgs/5.png',
+        span: 'md:col-span-1'
     },
     {
         title: 'التقارير',
         to: '/ala-alhamesh',
         text: 'خمسة عشر تقريراً صحفياً يعالج قضايا المرأة بمهنية عالية.',
         image: '/imgs/1.png',
+        span: 'md:col-span-1'
     },
     {
         title: 'الحوارات',
         to: '/hikayat-settat',
         text: 'خمسة حوارات معمقة تعبر عن صوت المرأة بعيداً عن التنميط.',
         image: '/imgs/2.png',
+        span: 'md:col-span-1'
     },
     {
         title: 'كلام قانون',
         to: '/kalam-qanun',
         text: 'دعم تمكين المرأة إعلامياً وقانونياً وتعزيز الوعي بحقوقها.',
         image: '/imgs/6.png',
+        span: 'md:col-span-1'
     },
     {
         title: 'الخطة المستقبلية',
         to: '/bara-alkahka',
         text: 'تطوير خطة النشر وفتح قنوات تواصل مباشرة وبروتوكول تعاون مع مؤسسة قضايا المرأة المصرية.',
         image: '/imgs/4.png',
+        span: 'md:col-span-2' // Fixed alignment span to compress layout footprint
     },
 ]
 
@@ -106,272 +112,292 @@ export default function Home() {
 
     const scrollCarousel = (direction) => {
         if (!emblaApi) return
-
         if (direction === 'next') {
             emblaApi.scrollNext()
             return
         }
-
         emblaApi.scrollPrev()
     }
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-brand-offwhite bg-hero-radial" dir="rtl">
+        <div className="relative min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-brand-secondary/20 selection:text-brand-ink" dir="rtl">
             <BackgroundSVG />
-                <NavBar />
-                <main className="relative z-10 mx-auto w-full px-4 pb-16 sm:px-8">
+            <NavBar />
+            
+            {/* Reduced dynamic space gaps from space-y-36 to space-y-24 */}
+            <main className="relative z-10 mx-auto w-full px-4 pb-20 sm:px-6 lg:px-12 space-y-24 pt-4 max-w-7xl">
+                
+                {/* Unified Hero Header Container */}
+                <div className="space-y-12">
                     <HeroHeader />
-
-                    <section className="rounded-3xl border border-brand-purple/10 bg-white/90 p-6 text-center backdrop-blur sm:p-10">
-                        <h2 className="mb-4 text-3xl font-black text-brand-purple sm:text-4xl">منصة أقرب لحياة النساء اليومية</h2>
-                        <p className="mx-auto mb-4 max-w-3xl text-lg leading-9 text-brand-textDark/80 font-medium">
-                            كحكة مساحة تحريرية تجمع التحقيقات، القصص، والمعرفة العملية في تصميم حديث يساعد القارئة على الوصول للمعلومة بسرعة ووضوح.
-                        </p>
-                        <p className="mx-auto mb-8 max-w-3xl text-lg leading-9 text-brand-textDark/80 font-medium">
-                            استعرضي الملفات حسب احتياجك: من الحقوق والقانون إلى ضغوط الداخل والحضور في المجتمع، مع محتوى قابل للتطبيق في الحياة اليومية.
-                        </p>
-                        <div className="flex flex-wrap items-center justify-center gap-3">
-                            <Link
-                                to="/alaaqa"
-                                className="rounded-full bg-brand-purple px-7 py-3 text-sm font-bold text-white transition hover:bg-brand-purpleMedium shadow-lg shadow-brand-purple/20"
-                            >
+                    <section className="relative px-4 max-w-4xl mx-auto text-center space-y-6">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 backdrop-blur-md shadow-sm">
+                            <span className="flex h-1.5 w-1.5 rounded-full bg-brand-secondary animate-pulse"></span>
+                            <span className="text-[11px] font-bold text-slate-600 tracking-wide">أهلاً بكِ في مساحتكِ الخاصة</span>
+                        </div>
+                        <div className="mx-auto max-w-3xl space-y-4 text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
+                            <p>
+                                كحكة مساحة تحريرية فريدة تجمع التحقيقات الميدانية والقصص الإنسانية والمعرفة العملية في قالب بصري حديث يساعدك على استكشاف المحتوى بسلاسة ووضوح.
+                            </p>
+                        </div>
+                        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                            <Link to="/alaaqa" className="rounded-xl bg-brand-ink text-white px-6 py-3 text-sm font-bold shadow-lg shadow-brand-ink/10 transition-all duration-300 hover:bg-brand-secondary hover:shadow-brand-secondary/20 hover:-translate-y-0.5 outline-none">
                                 ابدئي من الملف الرئيسي
                             </Link>
-                            <Link
-                                to="/hikayat-settat"
-                                className="rounded-full border border-brand-purple px-7 py-3 text-sm font-bold text-brand-purple transition hover:bg-brand-purple hover:text-white"
-                            >
+                            <Link to="/hikayat-settat" className="rounded-xl bg-white border border-slate-200 text-slate-700 px-6 py-3 text-sm font-bold transition-all duration-300 hover:bg-slate-50 hover:border-slate-300 hover:-translate-y-0.5 outline-none">
                                 اكتشفي الحكايات
                             </Link>
                         </div>
                     </section>
+                </div>
 
-                    <section className="mt-10 overflow-hidden rounded-3xl border border-brand-purple/10 bg-white shadow-sm">
-                        <div className="grid items-stretch md:grid-cols-2">
-                            <div className="p-6 sm:p-10">
-                                <h3 className="mt-4 text-3xl font-black text-brand-purple sm:text-4xl">أهداف المشروع</h3>
-                                <div className="mt-5 space-y-4 text-base leading-relaxed text-brand-textDark/80 sm:text-lg">
-                                    <p className="flex items-center gap-2">
-                                        <span className="h-1.5 w-1.5 rounded-full bg-brand-purple"></span>
-                                        نشر الوعى بقضايا المرأة من خلال معالجة صحفية مهنية
-                                    </p>
-                                    <p className="flex items-center gap-2">
-                                        <span className="h-1.5 w-1.5 rounded-full bg-brand-purple"></span>
-                                        تقديم محتوى توعوى وتحليلى يعتمد على التحقيقات والتقارير
-                                    </p>
-                                    <p className="flex items-center gap-2">
-                                        <span className="h-1.5 w-1.5 rounded-full bg-brand-purple"></span>
-                                        دعم تمكين المرأة إعلامياً وقانونياً
-                                    </p>
-                                    <p className="flex items-center gap-2">
-                                        <span className="h-1.5 w-1.5 rounded-full bg-brand-purple"></span>
-                                        خلق منصة صحفية تعبر عن صوت المرأة بعيداً عن التنميط
-                                    </p>
+                {/* 2. سيكشن أهداف المشروع */}
+                <section className="grid items-center gap-8 lg:grid-cols-12">
+                    <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
+                        <div className="space-y-1">
+                            <span className="text-[11px] font-black tracking-widest text-brand-secondary uppercase bg-brand-secondary/10 px-2.5 py-0.5 rounded">رؤيتنا ورسالتنا</span>
+                            <h2 className="text-2xl font-black text-brand-ink sm:text-4xl tracking-tight">أهداف نسعى لتحقيقها معاً</h2>
+                        </div>
+                        
+                        <div className="grid gap-3.5 sm:grid-cols-2">
+                            {[
+                                { title: 'المعالجة المهنية', text: 'نشر الوعى الكامل بقضايا المرأة المعاصرة عبر أطروحات صحفية تتسم بالمصداقية والعمق.' },
+                                { title: 'التحقيقات الحية', text: 'تقديم محتوى توعوى وتحليلى رصين يعتمد كلياً على النزول للميدان والتقاط القصص المنسية.' },
+                                { title: 'التمكين الشامل', text: 'دعم حضور المرأة وإبراز فاعليتها إعلامياً وقانونياً وتعزيز الوعي بحقوقها اليومية.' },
+                                { title: 'كسر القوالب', text: 'خلق منصة صحفية حرة ومستقلة تعبر عن صوت المرأة الواقعي بعيداً عن أشكال التنميط التقليدي.' }
+                            ].map((target, idx) => (
+                                <div key={idx} className="group rounded-xl bg-white border border-slate-100 p-5 shadow-sm transition-all duration-300 hover:border-brand-secondary/30 hover:shadow-md">
+                                    <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-lg bg-slate-50 text-brand-secondary text-xs font-black group-hover:bg-brand-secondary group-hover:text-white transition-colors duration-300">
+                                        {idx + 1} ٠ 
+                                    </div>
+                                    <h3 className="text-base font-bold text-brand-ink mb-0.5">{target.title}</h3>
+                                    <p className="text-xs leading-relaxed text-slate-500 font-medium">{target.text}</p>
                                 </div>
-                                <ul className="mt-8 grid gap-2 text-sm text-brand-textDark/70 sm:grid-cols-2">
-                                    <li className="rounded-xl border border-brand-purple/10 bg-brand-offwhite px-3 py-2 flex items-center gap-2 transition hover:bg-brand-purple/5">
-                                        <span className="h-2 w-2 rounded-full bg-brand-pinkAccent"></span>
-                                        جمهورنا الأساسي: النساء (١٨-٤٥)
-                                    </li>
-                                    <li className="rounded-xl border border-brand-purple/10 bg-brand-offwhite px-3 py-2 flex items-center gap-2 transition hover:bg-brand-purple/5">
-                                        <span className="h-2 w-2 rounded-full bg-brand-blueViolet"></span>
-                                        تحقيقات ميدانية واقعية
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="relative min-h-[290px] bg-gradient-to-br from-brand-purpleLight/10 via-brand-blueViolet/5 to-brand-offwhite p-8">
-                               <img 
-                                    src="/imgs/7.png" 
-                                    alt="كحكة Logo" 
-                                    className="p-1 w-full h-full object-contain"
-                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="lg:col-span-5 relative order-1 lg:order-2 flex justify-center">
+                        <div className="absolute -inset-4 bg-gradient-to-tr from-brand-secondary/5 to-brand-accent/5 rounded-full blur-2xl -z-10"></div>
+                        <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-white to-slate-50 p-6 border border-slate-200/60 shadow-md w-[80%] aspect-square flex items-center justify-center group">
+                            <img 
+                                src="/imgs/7.png" 
+                                alt="كحكة Logo" 
+                                className="w-full h-full object-contain filter drop-shadow-md transition-transform duration-500 group-hover:scale-105"
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                {/* 3. سيكشن الفيديو */}
+                <section className="relative overflow-hidden rounded-2xl bg-brand-ink text-white shadow-xl p-6 sm:p-10 lg:p-12">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(var(--brand-secondary-rgb),0.1),transparent_50%)]"></div>
+                    <div className="grid items-center gap-8 lg:grid-cols-12 relative z-10">
+                        <div className="lg:col-span-5 space-y-4">
+                            <span className="inline-block text-[11px] font-black tracking-widest text-brand-accent uppercase bg-white/10 px-2.5 py-0.5 rounded">الإنتاج البصري والسمعي</span>
+                            <h2 className="text-2xl font-black tracking-tight sm:text-4xl leading-tight">قوة المحتوى المرئي في نقل الواقع</h2>
+                            <p className="text-sm sm:text-base text-slate-300 font-medium leading-relaxed">
+                                نؤمن تماماً بأن الصورة والصوت هما أقصر الطرق لملامسة وجدان المتلقي. نأخذكِ خلف كواليس الأرقام والبيانات الجافة، لنحولها معاً إلى قصص إنسانية وثائقية تنبض بالحياة.
+                            </p>
+                            <div className="flex flex-wrap gap-2.5 pt-2">
+                                <Link to="/sawtoha-masmoua" className="rounded-lg bg-brand-secondary text-white font-bold px-5 py-2.5 text-xs shadow-md transition hover:bg-brand-secondary/90 outline-none">
+                                    متابعة ملف التحقيقات
+                                </Link>
+                                <Link to="/gowa-alkahka" className="rounded-lg border border-white/20 bg-white/5 font-bold px-5 py-2.5 text-xs transition hover:bg-white/10 outline-none">
+                                    استمعي للبودكاست
+                                </Link>
                             </div>
                         </div>
-                    </section>
 
-                    <section className="mt-10 overflow-hidden rounded-3xl border border-brand-purple/10 bg-brand-purpleLight/5">
-                        <div className="grid items-stretch md:grid-cols-2">
-                            <div className="relative min-h-[300px] overflow-hidden p-4 sm:p-6">
-                                <div className="h-full w-full overflow-hidden rounded-2xl border border-brand-purple/10 bg-black shadow-inner">
-                                    <video 
-                                        controls 
-                                        className="w-full h-full aspect-video object-cover"
-                                        poster="/imgs/newlogo.png"
-                                    >
-                                        <source src="/videos/video.mp4" type="video/mp4" />
-                                        المتصفح الخاص بك لا يدعم تشغيل الفيديو.
-                                    </video>
-                                </div>
-                            </div>
-                            <div className="p-6 sm:p-10 flex flex-col justify-center">
-                                <h3 className="text-3xl font-black text-brand-purple">قوة المحتوى المرئي</h3>
-                                <p className="mt-4 text-base leading-8 text-brand-textDark/80 sm:text-lg font-medium">
-                                    نؤمن بأن الصورة والصوت هما أقصر الطرق لقلوب النساء. شاهدوا كيف نحول الأرقام والبيانات الصماء إلى قصص إنسانية تنبض بالحياة، وتصل للعالم بجودة صحفية استثنائية.
-                                </p>
-                                <div className="mt-8 flex flex-wrap gap-4">
-                                    <Link
-                                        to="/sawtoha-masmoua"
-                                        className="rounded-full bg-brand-pinkAccent px-8 py-3 text-sm font-bold text-white transition hover:scale-105 shadow-lg shadow-brand-pinkAccent/20"
-                                    >
-                                        متابعة ملف التحقيقات
-                                    </Link>
-                                    <Link
-                                        to="/gowa-alkahka"
-                                        className="rounded-full bg-brand-blueViolet px-8 py-3 text-sm font-bold text-white transition hover:scale-105 shadow-lg shadow-brand-blueViolet/20"
-                                    >
-                                        استمعي للبودكاست
-                                    </Link>
-                                </div>
+                        <div className="lg:col-span-7">
+                            <div className="overflow-hidden rounded-xl border border-white/10 bg-black/40 shadow-xl">
+                                <video 
+                                    controls 
+                                    className="w-full aspect-video object-cover"
+                                    poster="/imgs/newlogo.png"
+                                >
+                                    <source src="/videos/video.mp4" type="video/mp4" />
+                                </video>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                    <section className="mt-10 rounded-3xl border border-brand-purple/10 bg-white p-6 sm:p-10 shadow-sm">
-                         <h3 className="mt-4 text-3xl font-black text-brand-purple sm:text-4xl text-center">الجمهور المستهدف</h3>
-                        <div className="mt-8 grid gap-6 md:grid-cols-2">
-                            <div className="rounded-2xl border border-brand-purple/10 bg-brand-purpleLight/5 p-6 text-center transition hover:bg-white hover:shadow-lg duration-300">
-                                <h4 className="text-2xl font-black text-brand-purpleMedium">جمهور أساسي</h4>
-                                <p className="mt-4 text-lg leading-relaxed text-brand-textDark/80 font-medium">النساء أو السيدات من سن ١٨ إلى ٤٥ عاماً، الباحثات عن مساحة تعبر عن واقعهن الحقيقي.</p>
-                            </div>
-                            <div className="rounded-2xl border border-brand-blueViolet/10 bg-brand-blueViolet/5 p-6 text-center transition hover:bg-white hover:shadow-lg duration-300">
-                                <h4 className="text-2xl font-black text-brand-blueViolet">جمهور ثانوِى</h4>
-                                <p className="mt-4 text-lg leading-relaxed text-brand-textDark/80 font-medium">المهتمون بقضايا المرأة، صناع الرأي، الإعلاميون، والحقوقيون الساعون للتوعية والتغيير.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="mt-10 rounded-3xl border border-brand-purple/10 bg-brand-purpleLight/5 p-5 sm:p-8">
-                        <div className="mb-10 text-center">
-                            <h3 className="mt-3 text-3xl font-black text-brand-purple sm:text-4xl text-center">استكشفي الأقسام الرئيسية</h3>
-                            <p className="mt-2 text-base text-brand-textDark/60 sm:text-lg">
-                                كل بطاقة تأخذكِ في رحلة استكشافية لمحتوى متخصص وفريد
+                {/* 4. سيكشن الجمهور المستهدف */}
+                <section className="space-y-6">
+                    <div className="max-w-xl mx-auto text-center">
+                        <span className="text-[11px] font-black tracking-widest text-slate-400 uppercase">لمن نكتب؟</span>
+                        <h2 className="text-2xl font-black text-brand-ink tracking-tight">الجمهور المستهدف وشراكة الوعي</h2>
+                    </div>
+                    
+                    <div className="grid gap-0 rounded-2xl overflow-hidden border border-slate-200/80 bg-white shadow-sm md:grid-cols-2 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-slate-100">
+                        <div className="p-6 sm:p-8 space-y-3 hover:bg-slate-50/40 transition-colors duration-300">
+                            <div className="inline-flex items-center justify-center rounded-lg bg-brand-secondary/10 text-brand-secondary px-2.5 py-0.5 text-xs font-bold">الحاضرة دائماً</div>
+                            <h3 className="text-xl font-black text-brand-ink">الجمهور المستهدف الأساسي</h3>
+                            <p className="text-sm leading-relaxed text-slate-600 font-medium">
+                                النساء والسيدات الشغوفات من سن ١٨ إلى ٤٥ عاماً، اللواتي يبحثن عن مساحات آمنة وحرة ومستقلة تعبر عن تفاصيل واقعهن اليومي المعاش.
                             </p>
                         </div>
+                        <div className="p-6 sm:p-8 space-y-3 hover:bg-slate-50/40 transition-colors duration-300">
+                            <div className="inline-flex items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent px-2.5 py-0.5 text-xs font-bold">شركاء التغيير</div>
+                            <h3 className="text-xl font-black text-brand-ink">الجمهور المستهدف الثانوي</h3>
+                            <p className="text-sm leading-relaxed text-slate-600 font-medium">
+                                الباحثون والمهتمون بقضايا الجندر، صناع القرار والرأي العام، الإعلاميون والحقوقيون الساعون دوماً لتطوير بيئات مجتمعية أكثر شمولاً وعدالة.
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
-                        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                            {topicCards.map((card) => (
-                                <Link
-                                    key={card.title}
-                                    to={card.to}
-                                    className="group block overflow-hidden rounded-2xl border border-brand-purple/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-brand-purple/30"
-                                >
-                                    <div className="relative h-48 w-full overflow-hidden bg-brand-purpleLight/10">
+                {/* 5. سيكشن الأقسام الرئيسية */}
+                <section className="space-y-8">
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200 pb-4">
+                        <div className="space-y-1">
+                            <span className="text-[11px] font-black tracking-widest text-brand-secondary uppercase">أبواب تحريرية</span>
+                            <h2 className="text-2xl font-black text-brand-ink tracking-tight sm:text-3xl">استكشفي الأقسام الرئيسية</h2>
+                        </div>
+                        <p className="text-sm text-slate-500 font-medium max-w-sm">
+                            كل نافذة تحريرية صُممت بعناية لتأخذكِ في رحلة استكشافية غنية بمحتوى صحفي متخصص.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                        {topicCards.map((card) => (
+                            <Link
+                                key={card.title}
+                                to={card.to}
+                                className={`group flex flex-col justify-between overflow-hidden rounded-xl bg-white border border-slate-200/60 shadow-sm transition-all duration-300 hover:shadow-md ${card.span}`}
+                            >
+                                <div className="space-y-3">
+                                    <div className="relative aspect-[21/9] md:aspect-video w-full overflow-hidden bg-slate-50">
                                         <img 
                                             src={card.image || '/imgs/newlogo.png'} 
                                             alt={card.title}
-                                            className="transition-transform duration-500 group-hover:scale-110 w-full h-full object-cover"
+                                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-102"
+                                            loading="lazy"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-brand-purple/80 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <span className="text-white font-bold text-sm">استكشفي الآن</span>
-                                        </div>
                                     </div>
-                                    <div className="p-6">
-                                        <h4 className="mb-2 text-xl font-black text-brand-purpleMedium group-hover:text-brand-purple transition-colors">{card.title}</h4>
-                                        <p className="text-sm leading-7 text-brand-textDark/70 font-medium line-clamp-2">{card.text}</p>
-                                        <div className="mt-4 flex items-center text-sm font-bold text-brand-pinkAccent">
-                                            <span>اقرئي المزيد</span>
-                                            <svg viewBox="0 0 24 24" className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" strokeWidth="3">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                                            </svg>
-                                        </div>
+                                    <div className="px-5 pt-1">
+                                        <h3 className="text-lg font-black text-brand-ink group-hover:text-brand-secondary transition-colors duration-200">{card.title}</h3>
+                                        <p className="mt-1 text-xs leading-relaxed text-slate-500 font-medium line-clamp-2">{card.text}</p>
                                     </div>
-                                </Link>
-                            ))}
-                        </div>
-                    </section>
+                                </div>
+                                
+                                <div className="px-5 pb-5 pt-3">
+                                    <div className="inline-flex items-center gap-1 text-xs font-black text-brand-secondary group-hover:gap-2 transition-all duration-300">
+                                        <span>تصفحي الملف التحريري</span>
+                                        <svg viewBox="0 0 24 24" className="h-3 w-3 transition-transform duration-300 group-hover:-translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="3">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
 
-                    <section className="mt-10 rounded-3xl border border-brand-purple/10 bg-white p-5 sm:p-8 shadow-sm">
-                        <div className="mb-8 text-center">
-                            <h3 className="text-3xl font-black text-brand-purple">مسارات سريعة</h3>
+                {/* 6. سيكشن مسارات سريعة */}
+                <section className="space-y-6">
+                    <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <div className="flex items-center gap-2">
+                            <div className="h-1.5 w-1.5 rounded-full bg-brand-accent"></div>
+                            <h2 className="text-xl font-black text-brand-ink sm:text-2xl tracking-tight">مسارات قراءة سريعة</h2>
                         </div>
-
-                        <div className="relative">
+                        <div className="flex gap-1">
                             <button
                                 type="button"
                                 onClick={() => scrollCarousel('prev')}
-                                className="absolute right-1 top-1/2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-brand-purple/10 bg-white/95 text-brand-purple shadow-lg transition hover:bg-brand-purple hover:text-white rotate-180"
-                                aria-label="التحرك إلى البطاقات السابقة"
+                                className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-600 transition hover:bg-brand-ink hover:text-white focus:outline-none"
+                                aria-label="السابق"
                             >
-                                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-
-                            <button
-                                type="button"
-                                onClick={() => scrollCarousel('next')}
-                                className="absolute left-1 top-1/2 z-10 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-brand-purple/10 bg-white/95 text-brand-purple shadow-lg transition hover:bg-brand-purple hover:text-white rotate-180"
-                                aria-label="التحرك إلى البطاقات التالية"
-                            >
-                                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="3">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
-
-                            <div className="overflow-hidden px-8 sm:px-10" ref={emblaRef} aria-label="مسارات محتوى أفقية">
-                                <div className="flex gap-4">
-                                    {carouselCards.map((card) => (
-                                        <article
-                                            key={card.title}
-                                            className="min-w-0 flex-[0_0_86%] rounded-3xl border border-brand-purple/10 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg sm:flex-[0_0_48%] lg:flex-[0_0_32%] group"
-                                        >
-                                            <h4 className="text-2xl font-black text-brand-purple">{card.title}</h4>
-                                            <p className="mt-4 text-base leading-7 text-brand-textDark/80 font-medium">{card.text}</p>
-                                            <Link
-                                                to={card.to}
-                                                className="mt-6 inline-flex rounded-full bg-brand-purple px-6 py-2.5 text-sm font-bold text-white transition hover:bg-brand-purpleMedium shadow-md shadow-brand-purple/20"
-                                            >
-                                                افتحي المسار
-                                            </Link>
-                                        </article>
-                                    ))}
-                                </div>
-                            </div>
+                            <button
+                                type="button"
+                                onClick={() => scrollCarousel('next')}
+                                className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-600 transition hover:bg-brand-ink hover:text-white focus:outline-none"
+                                aria-label="التالي"
+                            >
+                                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="3">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
                         </div>
-                    </section>
+                    </div>
 
-                    <section className="mt-10 rounded-3xl border border-brand-purple/10 bg-white p-5 sm:p-8 shadow-sm">
-                        <div className="mb-6 text-center">
-                            <h3 className="mt-3 text-3xl font-black text-brand-purple sm:text-4xl">سؤال وجواب</h3>
-                            <p className="mt-2 text-base text-brand-textDark/60 sm:text-lg">
-                                إجابات سريعة على أهم تساؤلات المتابعين حول المنصة
-                            </p>
-                        </div>
-
-                        <div className="space-y-4">
-                            {faqItems.map((item, index) => (
+                    <div className="relative overflow-hidden" ref={emblaRef}>
+                        <div className="flex gap-4">
+                            {carouselCards.map((card) => (
                                 <article
-                                    key={item.question}
-                                    className={`group overflow-hidden rounded-2xl border transition-all duration-300 ${
-                                        openFaqIndex === index ? 'border-brand-purple/30 bg-brand-purpleLight/5 shadow-md' : 'border-brand-purple/10 bg-brand-offwhite hover:border-brand-purple/20'
-                                    }`}
+                                    key={card.title}
+                                    className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_28%] rounded-xl bg-white border border-slate-200/60 p-5 shadow-sm flex flex-col justify-between group transition-all duration-300 hover:border-slate-300"
                                 >
-                                    <button
-                                        type="button"
-                                        onClick={() => setOpenFaqIndex((current) => (current === index ? -1 : index))}
-                                        className="flex w-full items-center justify-between gap-3 px-6 py-5 text-right text-base font-bold text-brand-purple sm:text-lg"
-                                        aria-expanded={openFaqIndex === index}
+                                    <div className="space-y-1.5">
+                                        <h3 className="text-base font-black text-brand-ink group-hover:text-brand-secondary transition-colors duration-200">{card.title}</h3>
+                                        <p className="text-xs leading-relaxed text-slate-500 font-medium">{card.text}</p>
+                                    </div>
+                                    <Link
+                                        to={card.to}
+                                        className="mt-4 inline-flex items-center justify-center rounded-lg bg-slate-50 border border-slate-100 px-3 py-2 text-xs font-black text-brand-ink transition hover:bg-brand-secondary hover:text-white focus:outline-none"
                                     >
-                                        <span>{item.question}</span>
-                                        <span
-                                            className={`inline-flex h-8 w-8 items-center justify-center rounded-full border border-brand-purple/20 text-brand-purple transition-all duration-300 ${
-                                                openFaqIndex === index ? 'rotate-90 bg-brand-purple text-white border-transparent' : 'bg-white'
-                                            }`}
-                                        >
-                                            {openFaqIndex === index ? '−' : '+'}
-                                        </span>
-                                    </button>
-                                    {openFaqIndex === index ? (
-                                        <div className="border-t border-brand-purple/10 bg-white/60 px-6 py-5">
-                                            <p className="text-base leading-8 text-brand-textDark/80 font-medium sm:text-lg">{item.answer}</p>
-                                        </div>
-                                    ) : null}
+                                        افتحي المسار المختصر
+                                    </Link>
                                 </article>
                             ))}
                         </div>
-                    </section>
-                </main>
-                <Footer />
-            </div>
+                    </div>
+                </section>
+
+                {/* 7. سيكشن سؤال وجواب */}
+                <section className=" mx-auto space-y-6">
+                    <div className="text-center">
+                        <span className="text-[11px] font-black tracking-widest text-brand-secondary uppercase">الأسئلة الشائعة</span>
+                        <h2 className="text-2xl font-black text-brand-ink tracking-tight">دليل إجابات كحكة الفوري</h2>
+                    </div>
+
+                    <div className="rounded-xl border border-slate-200/80 bg-white shadow-sm overflow-hidden divide-y divide-slate-100">
+                        {faqItems.map((item, index) => {
+                            const isOpen = openFaqIndex === index;
+                            return (
+                                <Fragment key={item.question}>
+                                    <article className="transition-colors duration-200">
+                                        <button
+                                            type="button"
+                                            onClick={() => setOpenFaqIndex(isOpen ? -1 : index)}
+                                            className="flex w-full items-center justify-between gap-4 px-5 py-4 text-right font-black text-brand-ink text-sm sm:text-base focus:outline-none hover:bg-slate-50/50"
+                                            aria-expanded={isOpen}
+                                        >
+                                            <span className={isOpen ? "text-brand-secondary transition-colors" : ""}>{item.question}</span>
+                                            <span
+                                                className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border text-[8px] font-black transition-all duration-200 ${
+                                                    isOpen 
+                                                        ? 'bg-brand-ink border-transparent text-white rotate-180' 
+                                                        : 'bg-slate-50 border-slate-200 text-slate-500'
+                                                }`}
+                                            >
+                                                {isOpen ? '▲' : '▼'}
+                                            </span>
+                                        </button>
+                                        
+                                        <div 
+                                            className={`transition-all duration-200 ease-in-out overflow-hidden ${
+                                                isOpen ? 'max-h-[300px]' : 'max-h-0'
+                                            }`}
+                                        >
+                                            <div className="px-5 pb-4 pt-0.5 text-slate-600 font-medium text-xs sm:text-sm leading-relaxed bg-slate-50/40">
+                                                {item.answer}
+                                            </div>
+                                        </div>
+                                    </article>
+                                </Fragment>
+                            )
+                        })}
+                    </div>
+                </section>
+            </main>
+            
+            <Footer />
+        </div>
     )
 }

@@ -1,59 +1,176 @@
-export default function HeroHeader() {
-    return (
-        <header className="relative mb-12 w-full pt-8 pb-12 overflow-hidden">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid items-center gap-12 lg:grid-cols-2">
-                    {/* Left Side: Text Content */}
-                    <div className="relative z-10 text-right">
-                        <div className="inline-flex items-center gap-2 rounded-full bg-brand-pinkAccent/10 px-4 py-1 text-sm font-bold text-brand-pinkAccent mb-6">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-pinkAccent opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-pinkAccent"></span>
-                            </span>
-                            منصة حكاياتها.. تصل صوتها
-                        </div>
-                        
-                        <h2 className="text-5xl font-black leading-[1.1] text-brand-purple sm:text-7xl mb-6">
-                            كحكة..<br />
-                            <span className="text-brand-blueViolet">شغل وبيت وحياة</span>
-                        </h2>
-                        
-                        <p className="max-w-xl text-lg leading-relaxed text-brand-textDark/80 mb-8 font-medium">
-                            كحكة هي تلك اللحظة التي تلم فيها المرأة شتات يومها لتبدأ رحلتها.. نحن هنا لتوثيق هذه الرحلة، بكل ما فيها من تحديات العمل، دفء البيت، وتفاصيل الحياة التي لا يراها الجميع.
-                        </p>
-                        
-                        <div className="flex flex-wrap gap-4 justify-start">
-                            <button className="rounded-full bg-brand-purple px-8 py-4 text-lg font-black text-white transition hover:bg-brand-purpleMedium shadow-xl shadow-brand-purple/20">
-                                استكشفي قصصنا
-                            </button>
-                            <button className="rounded-full border-2 border-brand-purple/20 px-8 py-4 text-lg font-black text-brand-purple transition hover:bg-brand-purple/5">
-                                انضمي إلينا
-                            </button>
-                        </div>
-                    </div>
+import { useEffect, useState, useCallback } from 'react'
+import { Link } from 'react-router-dom'
+import useEmblaCarousel from 'embla-carousel-react'
 
-                    {/* Right Side: Visual Image Representation */}
-                    <div className="relative lg:h-[600px] flex items-center justify-center">
-                        {/* Decorative background shapes */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-purple/5 rounded-full blur-[100px] -z-10"></div>
-                        
-                        <div className="relative w-full aspect-square max-w-[500px]">
-                            <div className="absolute inset-0 rounded-[40px] bg-gradient-to-tr from-brand-purple via-brand-pinkAccent to-brand-blueLight opacity-20 rotate-6 scale-105"></div>
-                            <div className="absolute inset-0 rounded-[40px] bg-white shadow-2xl skew-y-3 lg:skew-y-0 overflow-hidden border border-brand-purple/10">
-                                <img 
-                                    src="/imgs/1.png" 
-                                    alt="كحكة Lifestyle" 
-                                    className="transition-transform duration-700 hover:scale-110 h-full w-full object-cover"
-                                />
-                                {/* Overlay Logo */}
-                                <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-brand-purple/10">
-                                    <img src="/imgs/newlogo.png" width={40} height={40} alt="Logo" />
+const heroSlides = [
+    {
+        title: 'كحكة.. شغل وبيت وحياة',
+        subtitle: 'كحكة هي تلك اللحظة التي تلم فيها المرأة شتات يومها لتبدأ رحلتها.. نحن هنا لتوثيق هذه الرحلة، بكل ما فيها من تحديات العمل، دفء البيت، وتفاصيل الحياة التي لا يراها الجميع.',
+        image: '/imgs/carousel/Eradicating-female-illiteracy.jpeg',
+        to: '/sawtoha-masmoua',
+        badge: 'مواجهة الأمية لتمكين المرأة'
+    },
+    {
+        title: 'عام الأمومة الأول والتحولات',
+        subtitle: 'بين دفء الصغير الملتصق بالقلب وضغوط المهام اليومية المعقدة خلف الجدران المغلقة.',
+        image: '/imgs/carousel/First-year-of-motherhood.jpeg',
+        to: '/hikayat-settat',
+        badge: 'قصص وحكايات حية'
+    },
+    {
+        title: 'دوامة الأعمال المنزلية الرتيبة',
+        subtitle: 'المجهود الخفي غير المرئي لإبقاء تفاصيل الحياة متزنة ومنظمة ومستمرة كل يوم بسلام.',
+        image: '/imgs/carousel/house-cleaning-routine.jpeg',
+        to: '/gowa-alkahka',
+        badge: 'المجهود المنزلي الخفي'
+    },
+    {
+        title: 'صراعات الرحلة اليومية للمواصلات',
+        subtitle: 'المعاناة الصامتة للمرأة في الفضاءات العامة والمواصلات بحثاً عن مساحة آمنة ومريحة للوصول.',
+        image: '/imgs/carousel/suffering-of-women-on-public-transportation.jpeg',
+        to: '/ala-alhamesh',
+        badge: 'الفضاء العام والآمن'
+    },
+    {
+        title: 'بطلات خارقات خلف الأبواب المغلقة',
+        subtitle: 'أمهات ذوي الهمم.. عطاء استثنائي مستمر ومقدس يصنع المعجزات اليومية دون أي صخب إعلامي.',
+        image: '/imgs/carousel/The-mother-of-the-disabled-a-superhero-no-one-sees.jpeg',
+        to: '/kalam-qanun',
+        badge: 'أمهات استثنائيات'
+    },
+    {
+        title: 'معايير الجمال والهوس العصري',
+        subtitle: 'تفكيك شامل وجريء لكافة الضغوط البصرية المفروضة مجتمعياً على ملامح المرأة وهويتها الطبيعية.',
+        image: '/imgs/carousel/Women-obsession-with-beauty.jpeg',
+        to: '/bara-alkahka',
+        badge: 'تفكيك الصور النمطية'
+    }
+]
+
+export default function HeroHeader() {
+    const [emblaRef, emblaApi] = useEmblaCarousel({
+        direction: 'rtl',
+        loop: true,
+        align: 'start',
+        skipSnaps: false
+    })
+    
+    const [selectedIndex, setSelectedIndex] = useState(0)
+
+    const onSelect = useCallback(() => {
+        if (!emblaApi) return
+        setSelectedIndex(emblaApi.selectedScrollSnap())
+    }, [emblaApi])
+
+    useEffect(() => {
+        if (!emblaApi) return
+        emblaApi.on('select', onSelect)
+        
+        const autoplay = setInterval(() => {
+            emblaApi.scrollNext()
+        }, 6000) // Transitions fluidly every 6 seconds
+
+        return () => {
+            clearInterval(autoplay)
+            emblaApi.off('select', onSelect)
+        }
+    }, [emblaApi, onSelect])
+
+    return (
+        <header className="relative w-full overflow-hidden rounded-2xl border border-slate-200/40 shadow-lg bg-slate-950 mb-6" dir="rtl">
+            
+            {/* Full Screen View Window Wrapper */}
+            <div className="overflow-hidden relative h-[75vh] sm:h-[80vh] w-full" ref={emblaRef}>
+                <div className="flex h-full w-full">
+                    {heroSlides.map((slide, index) => (
+                        <div key={index} className="min-w-0 flex-[0_0_100%] h-full relative group">
+                            
+                            {/* Backdrop Immersive Image asset */}
+                            <img 
+                                src={slide.image} 
+                                alt={slide.title} 
+                                className="w-full h-full object-cover select-none transform scale-100 transition-transform duration-[6000ms] ease-out"
+                                draggable="false"
+                            />
+                            
+                            {/* Linear Gradient Scrim Layer for premium readability text matching */}
+                            <div className="absolute inset-0 bg-gradient-to-l from-black/90 via-black/40 to-transparent pointer-events-none" />
+                            <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+
+                            {/* Floating Metadata Container Content Layout */}
+                            <div className="absolute inset-0 flex flex-col justify-center items-start px-6 sm:px-12 lg:px-20 max-w-3xl space-y-6 text-white z-20">
+                                
+                                {/* Top Badging Metadata */}
+                                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-3 py-1 shadow-sm">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
+                                    </span>
+                                    <span className="text-xs font-bold tracking-wide text-slate-100">
+                                        منصة حكاياتها.. تصل صوتها • {slide.badge}
+                                    </span>
                                 </div>
+                                
+                                {/* Primary Massive Arabic Headline */}
+                                <h1 className="text-4xl font-black leading-[1.15] sm:text-5xl lg:text-6xl text-white drop-shadow-sm tracking-tight">
+                                    {index === 0 ? (
+                                        <>
+                                            كحكة..<br />
+                                            <span className="text-brand-secondary bg-clip-text">شغل وبيت وحياة</span>
+                                        </>
+                                    ) : (
+                                        slide.title
+                                    )}
+                                </h1>
+                                
+                                {/* Context Sub-paragraphs description text layout */}
+                                <p className="text-sm sm:text-base leading-relaxed text-slate-200/90 font-medium max-w-xl drop-shadow-sm">
+                                    {slide.subtitle}
+                                </p>
+                                
+                                {/* Interactive Trigger Target Action Button Layer */}
+                                <div className="pt-2">
+                                    <Link 
+                                        to={slide.to} 
+                                        className="inline-flex items-center justify-center rounded-xl bg-white text-slate-950 px-6 py-3.5 text-xs font-black shadow-lg shadow-black/20 hover:bg-brand-secondary hover:text-white transition-all duration-300 hover:-translate-y-0.5 outline-none"
+                                    >
+                                        <span>ابدئي من الملف الرئيسي</span>
+                                    </Link>
+                                </div>
+
                             </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
+
+            {/* Absolute Placed Carousel Indicators Controller Overlay */}
+            <div className="absolute bottom-6 left-6 right-6 z-30 flex items-center justify-between pointer-events-none">
+                
+                {/* Horizontal Bullet Navigation Pagination Dots */}
+                <div className="flex items-center gap-1.5 pointer-events-auto bg-black/20 backdrop-blur-xs p-1.5 rounded-full">
+                    {heroSlides.map((_, index) => (
+                        <button
+                            key={index}
+                            type="button"
+                            onClick={() => emblaApi && emblaApi.scrollTo(index)}
+                            className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
+                                selectedIndex === index 
+                                    ? 'w-6 bg-white shadow-sm' 
+                                    : 'w-1.5 bg-white/40 hover:bg-white/70'
+                            }`}
+                            aria-label={`الانتقال للوحة ${index + 1}`}
+                        />
+                    ))}
+                </div>
+
+                {/* Micro branding stamp tracking index view context */}
+                <div className="hidden sm:block text-[10px] font-bold text-white/60 tracking-widest bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/5">
+                    ٠{selectedIndex + 1} / ٠{heroSlides.length}
+                </div>
+
+            </div>
+
         </header>
     )
 }

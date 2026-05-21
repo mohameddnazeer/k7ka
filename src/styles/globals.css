@@ -8,11 +8,33 @@
         min-height: 100%;
         margin: 0;
         font-family: 'Cairo', sans-serif;
-        background-color: #f7f3ef;
-        color: #3b2a1e;
+        background-color: #E6E6E6;
+        color: #2C2844;
     }
 
     * {
         box-sizing: border-box;
+    }
+}
+
+@layer components {
+    .glass-card {
+        @apply rounded-3xl border border-brand-surface/70 bg-brand-surface;
+    }
+
+    .glass-panel {
+        @apply rounded-3xl border border-brand-surface/70 bg-brand-surface;
+    }
+
+    .btn-primary {
+        @apply rounded-full bg-brand-primary px-7 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5;
+    }
+
+    .btn-secondary {
+        @apply rounded-full border border-brand-secondary/60 bg-brand-surface px-7 py-3 text-sm font-bold text-brand-ink transition hover:bg-brand-surface/90;
+    }
+
+    .badge-soft {
+        @apply inline-flex items-center gap-2 rounded-full bg-brand-accent/25 px-4 py-1.5 text-sm font-bold text-brand-ink;
     }
 }

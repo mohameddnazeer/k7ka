@@ -193,26 +193,26 @@ export default function BaraAlkahkaPage() {
                     background: transparent;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: rgba(90, 56, 37, 0.1);
+                    background: rgba(181, 114, 232, 0.18);
                     border-radius: 10px;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: #C96A3D;
+                    background: #B572E8;
                 }
             `}</style>
             
             <BackgroundSVG />
             <NavBar />
             
-            <main className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-12 sm:px-6 lg:px-8">
+            <main className="relative z-10 mx-auto  px-4 pb-24 pt-12 sm:px-6 lg:px-8">
                 {/* Hero Section */}
-                <div className="relative mb-20 overflow-hidden rounded-[1rem] md:rounded-[1rem] bg-brand-brown p-8 text-white sm:p-20 shadow-xl text-right">
+                <div className="relative mb-20 overflow-hidden rounded-[1rem] md:rounded-[1rem] bg-soft-flow p-8 text-brand-ink sm:p-20 text-right">
                     <div className="relative z-10 max-w-3xl">
-                        <span className="mb-4 inline-block rounded-md bg-brand-orange px-4 py-1 text-sm font-bold tracking-widest uppercase">
+                        <span className="mb-4 inline-block rounded-md bg-brand-surface px-4 py-1 text-sm font-bold tracking-widest uppercase text-brand-ink">
                             بره الكحكة - 7 تحقيقات
                         </span>
-                        <h1 className="mb-6 text-4xl font-black md:text-7xl text-white">بره الكحكة</h1>
-                        <p className="text-lg md:text-xl opacity-80">جولة في عالم السوشيال ميديا وأخلاقيات الشارع.</p>
+                        <h1 className="mb-6 text-4xl font-black md:text-7xl text-brand-ink">بره الكحكة</h1>
+                        <p className="text-lg md:text-xl text-brand-inkMuted">جولة في عالم السوشيال ميديا وأخلاقيات الشارع.</p>
                     </div>
                 </div>
 
@@ -225,7 +225,7 @@ export default function BaraAlkahkaPage() {
                         { id: "home", label: "البيت" }
                     ].map((btn) => (
                         <button key={btn.id} onClick={() => setActiveSection(btn.id)}
-                            className={`rounded-full px-6 py-2 text-lg font-black transition-all ${activeSection === btn.id ? "bg-brand-orange text-white shadow-lg scale-105" : "bg-white text-brand-brown hover:bg-brand-brown/5"}`}>
+                            className={`rounded-full px-6 py-2 text-lg font-black transition-all ${activeSection === btn.id ? "bg-brand-secondary text-white scale-105" : "bg-brand-surface text-brand-ink hover:bg-brand-surface/70"}`}>
                             {btn.label}
                         </button>
                     ))}
@@ -237,10 +237,10 @@ export default function BaraAlkahkaPage() {
                         .filter(t => activeSection === "all" || (activeSection === "digital" && t.id <= 2) || (activeSection === "street" && t.id === 3) || (activeSection === "home" && t.id > 3))
                         .map((topic, idx) => (
                             <div key={topic.id} 
-                                className={`p-8 rounded-[1rem] transition-all cursor-pointer border border-brand-brown/10 hover:border-brand-orange/30 shadow-sm hover:shadow-md bg-white text-brand-brown ${idx === 0 ? "md:col-span-8" : "md:col-span-4"}`}
+                                className={`p-8 rounded-[1rem] transition-all cursor-pointer border border-brand-surface/70 hover:border-brand-secondary/60 bg-brand-surface text-brand-ink ${idx === 0 ? "md:col-span-8" : "md:col-span-4"}`}
                                 onClick={() => setSelectedTopic(topic)}>
                                 <h3 className="text-2xl font-black mb-4">{topic.title}</h3>
-                                <p className="opacity-70">{topic.content}</p>
+                                <p className="text-brand-inkMuted/80">{topic.content}</p>
                             </div>
                         ))}
                 </div>
@@ -248,61 +248,61 @@ export default function BaraAlkahkaPage() {
 
             {/* Modal Overlay - Fixed Visibility & Interaction */}
             {selectedTopic && (
-                <div className="fixed inset-0 z-[9999] flex justify-center items-start md:items-center bg-brand-brown/60 p-0 md:p-6 backdrop-blur-xl overflow-y-auto"
+                 <div className="fixed inset-0 z-[9999] flex justify-center items-start md:items-center bg-brand-ink/30 p-0 md:p-6 backdrop-blur-xl overflow-y-auto"
                      onClick={() => setSelectedTopic(null)}>
                     
                     {/* Modal Content - Fixed Scrolling */}
-                    <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-brand-offwhite md:rounded-[1rem] overflow-hidden shadow-2xl min-h-screen md:min-h-0 md:max-h-[85vh] border border-brand-brown/10"
+                    <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-brand-surface md:rounded-[1rem] overflow-hidden min-h-screen md:min-h-0 md:max-h-[85vh] border border-brand-surface/70"
                          onClick={(e) => e.stopPropagation()}>
                         
                         {/* Sticky Header for Mobile */}
-                        <div className="flex items-center justify-between p-6 border-b border-brand-brown/5 bg-brand-offwhite/80 backdrop-blur-md sticky top-0 z-30 md:hidden">
-                            <h2 className="text-xl font-black text-brand-brown leading-tight line-clamp-1">{selectedTopic.title}</h2>
-                            <button onClick={() => setSelectedTopic(null)} className="p-2 rounded-full bg-brand-brown text-white shadow-lg">
+                        <div className="flex items-center justify-between p-6 border-b border-brand-surface/70 bg-brand-surface/90 backdrop-blur-md sticky top-0 z-30 md:hidden">
+                            <h2 className="text-xl font-black text-brand-ink leading-tight line-clamp-1">{selectedTopic.title}</h2>
+                            <button onClick={() => setSelectedTopic(null)} className="p-2 rounded-full bg-brand-secondary text-white">
                                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
                             </button>
                         </div>
 
                         {/* Sidebar (Desktop Only) */}
-                        <div className="hidden md:flex md:w-1/3 bg-brand-brown p-12 flex-col justify-center text-white relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
-                            <span className="text-brand-orange font-black text-sm uppercase mb-4 block underline decoration-4 underline-offset-8">تحقيق خاص</span>
+                        <div className="hidden md:flex md:w-1/3 bg-soft-sheen p-12 flex-col justify-center text-brand-ink relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-white/50 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+                            <span className="text-brand-ink font-black text-sm uppercase mb-4 block underline decoration-4 underline-offset-8">تحقيق خاص</span>
                             <h2 className="text-5xl font-black leading-tight mb-6 relative z-10">{selectedTopic.title}</h2>
-                            <div className="w-16 h-1 bg-brand-orange/30 mb-6 relative z-10"></div>
-                            <p className="text-brand-offwhite/50 italic leading-relaxed relative z-10">"تحليل مجتمعي معمق لظواهر العصر الحديث."</p>
+                            <div className="w-16 h-1 bg-brand-accent/70 mb-6 relative z-10"></div>
+                            <p className="text-brand-inkSubtle italic leading-relaxed relative z-10">"تحليل مجتمعي معمق لظواهر العصر الحديث."</p>
                         </div>
 
                         {/* Content Area */}
                         <div className="flex-1 flex flex-col min-w-0">
                             {/* Desktop Close Button */}
-                            <button onClick={() => setSelectedTopic(null)} className="absolute left-8 top-8 z-50 rounded-full bg-brand-brown text-white p-4 shadow-xl hover:bg-brand-orange transition-all hidden md:block">
+                            <button onClick={() => setSelectedTopic(null)} className="absolute left-8 top-8 z-50 rounded-full bg-brand-secondary text-white p-4 transition-all hidden md:block">
                                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
                             </button>
 
                             {/* Scrollable Body */}
-                            <div className="md:overflow-y-auto p-6 md:p-16 text-right custom-scrollbar bg-brand-offwhite">
-                                <span className="inline-block rounded-full bg-brand-orange/10 px-5 py-2 text-xs font-black text-brand-orange mb-8 uppercase tracking-widest">{selectedTopic.category}</span>
+                            <div className="md:overflow-y-auto p-6 md:p-16 text-right custom-scrollbar bg-brand-surface">
+                                <span className="badge-soft mb-8 uppercase tracking-widest">{selectedTopic.category}</span>
                                 
                                 <div className="space-y-10 max-w-4xl">
-                                    <p className="text-xl md:text-2xl font-black text-brand-brown leading-relaxed border-r-4 border-brand-orange pr-6 italic mb-12">
+                                    <p className="text-xl md:text-2xl font-black text-brand-ink leading-relaxed border-r-4 border-brand-accent/60 pr-6 italic mb-12">
                                         {selectedTopic.content}
                                     </p>
 
                                     {selectedTopic.sections?.map((section, idx) => (
-                                        <div key={idx} className="border-b border-brand-brown/5 pb-10 last:border-0 group">
-                                            <h3 className="text-lg md:text-xl font-black text-brand-brown mb-4 flex items-center gap-4 transition-colors group-hover:text-brand-orange">
-                                                <span className="text-brand-orange/20 text-3xl font-serif">0{idx + 1}</span>
+                                        <div key={idx} className="border-b border-brand-surface/70 pb-10 last:border-0 group">
+                                            <h3 className="text-lg md:text-xl font-black text-brand-ink mb-4 flex items-center gap-4 transition-colors group-hover:text-brand-secondary">
+                                                <span className="text-brand-accent/40 text-3xl font-serif">0{idx + 1}</span>
                                                 {section.heading}
                                             </h3>
-                                            <p className="text-base md:text-lg text-brand-brown/70 leading-loose font-medium">{section.body}</p>
+                                            <p className="text-base md:text-lg text-brand-inkMuted/80 leading-loose font-medium">{section.body}</p>
                                         </div>
                                     ))}
 
                                     {selectedTopic.conclusion && (
-                                        <div className="mt-12 bg-brand-brown p-8 md:p-12 rounded-[1rem] text-white shadow-2xl relative overflow-hidden">
-                                            <div className="absolute top-0 left-0 w-24 h-24 bg-brand-orange/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                                            <h4 className="text-xl font-black mb-4 text-brand-orange tracking-widest uppercase">الخلاصة</h4>
-                                            <p className="text-base md:text-lg font-bold opacity-90 leading-relaxed italic">{selectedTopic.conclusion}</p>
+                                        <div className="mt-12 bg-soft-sheen p-8 md:p-12 rounded-[1rem] text-brand-ink relative overflow-hidden">
+                                            <div className="absolute top-0 left-0 w-24 h-24 bg-white/60 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+                                            <h4 className="text-xl font-black mb-4 text-brand-ink tracking-widest uppercase">الخلاصة</h4>
+                                            <p className="text-base md:text-lg font-bold text-brand-inkMuted leading-relaxed italic">{selectedTopic.conclusion}</p>
                                         </div>
                                     )}
                                 </div>

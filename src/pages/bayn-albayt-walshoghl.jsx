@@ -190,16 +190,16 @@ export default function BaynAlbaytWalshoghlPage() {
             <BackgroundSVG />
             <NavBar />
             
-            <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+            <main className="relative z-10 mx-auto w-full  px-4 pb-24 sm:px-6 lg:px-8">
                 {/* Header Section */}
                 <div className="mb-16 text-center">
-                    <span className="inline-block rounded-full bg-brand-orange/10 px-4 py-1.5 text-sm font-bold text-brand-orange mb-4">
+                    <span className="badge-soft mb-4">
                         بين البيت والشغل
                     </span>
-                    <h1 className="text-4xl font-black text-brand-brown sm:text-6xl mb-6">
+                    <h1 className="text-4xl font-black text-brand-ink sm:text-6xl mb-6">
                         إدارة الوقت والطاقة
                     </h1>
-                    <p className="mx-auto max-w-2xl text-lg text-brand-brown/70 font-medium">
+                    <p className="mx-auto max-w-2xl text-lg text-brand-inkMuted/80 font-medium">
                         مساحة تناقش يوميات المرأة بين متطلبات المنزل وضغط العمل، مع تقديم حلول عملية لتوازن واقعي.
                     </p>
                 </div>
@@ -209,7 +209,7 @@ export default function BaynAlbaytWalshoghlPage() {
                     {articles.map((article) => (
                         <article 
                             key={article.id}
-                            className="group flex flex-col overflow-hidden rounded-3xl border border-brand-brown/10 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-brown/5"
+                            className="group flex flex-col overflow-hidden rounded-3xl border border-brand-surface/70 bg-brand-surface transition-all hover:-translate-y-1"
                         >
                             <div className="relative aspect-[16/10] overflow-hidden">
                                 <img 
@@ -218,23 +218,23 @@ export default function BaynAlbaytWalshoghlPage() {
                                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
                                 <div className="absolute top-4 right-4">
-                                    <span className="rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-brand-brown shadow-sm border border-brand-brown/5">
+                                    <span className="rounded-full bg-brand-surface/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-brand-ink border border-brand-surface/70">
                                         {article.category}
                                     </span>
                                 </div>
                             </div>
                             
                             <div className="flex flex-1 flex-col p-6">
-                                <h2 className="mb-4 text-xl font-black text-brand-brown leading-tight transition-colors group-hover:text-brand-orange">
+                                <h2 className="mb-4 text-xl font-black text-brand-ink leading-tight transition-colors group-hover:text-brand-secondary">
                                     {article.title}
                                 </h2>
-                                <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-brand-brown/60 font-medium">
+                                <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-brand-inkMuted/80 font-medium">
                                     {article.content}
                                 </p>
                                 <div className="mt-auto flex items-center justify-between">
                                     <button 
                                         onClick={() => setSelectedArticle(article)}
-                                        className="inline-flex items-center gap-2 text-sm font-bold text-brand-orange transition hover:gap-3"
+                                        className="inline-flex items-center gap-2 text-sm font-bold text-brand-accent transition hover:gap-3"
                                     >
                                         إقرئي المزيد
                                         <svg className="h-4 w-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -251,13 +251,13 @@ export default function BaynAlbaytWalshoghlPage() {
                 {selectedArticle && (
                     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
                         <div 
-                            className="absolute inset-0 bg-brand-brown/40 backdrop-blur-md"
+                            className="absolute inset-0 bg-brand-ink/30 backdrop-blur-md"
                             onClick={() => setSelectedArticle(null)}
                         ></div>
-                        <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[2.5rem] bg-white p-6 shadow-2xl sm:p-12 no-scrollbar">
+                        <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[2.5rem] bg-brand-surface p-6 backdrop-blur-xl sm:p-12 no-scrollbar">
                             <button 
                                 onClick={() => setSelectedArticle(null)}
-                                className="absolute top-6 left-6 rounded-full bg-brand-offwhite p-2 text-brand-brown transition hover:bg-brand-orange hover:text-white"
+                                className="absolute top-6 left-6 rounded-full bg-brand-surface p-2 text-brand-ink transition hover:bg-brand-secondary hover:text-white"
                             >
                                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -265,10 +265,10 @@ export default function BaynAlbaytWalshoghlPage() {
                             </button>
 
                             <div className="mb-8 text-right">
-                                <span className="inline-block rounded-full bg-brand-orange/10 px-4 py-1 text-sm font-bold text-brand-orange mb-4">
+                                <span className="badge-soft mb-4">
                                     {selectedArticle.category}
                                 </span>
-                                <h2 className="text-3xl font-black text-brand-brown sm:text-5xl mb-6 leading-tight">
+                                <h2 className="text-3xl font-black text-brand-ink sm:text-5xl mb-6 leading-tight">
                                     {selectedArticle.title}
                                 </h2>
                                 <img 
@@ -276,15 +276,15 @@ export default function BaynAlbaytWalshoghlPage() {
                                     alt={selectedArticle.title} 
                                     className="w-full h-[300px] sm:h-[400px] object-cover rounded-[2rem] mb-8"
                                 />
-                                <p className="text-xl text-brand-brown/80 font-medium leading-relaxed mb-12">
+                                <p className="text-xl text-brand-inkMuted/80 font-medium leading-relaxed mb-12">
                                     {selectedArticle.content}
                                 </p>
 
                                 <div className="space-y-12">
                                     {selectedArticle.fullContent?.map((section, idx) => (
-                                        <div key={idx} className="border-r-4 border-brand-orange pr-6 text-right">
-                                            <h3 className="text-2xl font-black text-brand-brown mb-4">{section.heading}</h3>
-                                            <p className="text-lg text-brand-brown/70 leading-relaxed font-medium">
+                                        <div key={idx} className="border-r-4 border-brand-accent/60 pr-6 text-right">
+                                            <h3 className="text-2xl font-black text-brand-ink mb-4">{section.heading}</h3>
+                                            <p className="text-lg text-brand-inkMuted/80 leading-relaxed font-medium">
                                                 {section.text}
                                             </p>
                                         </div>
@@ -296,20 +296,20 @@ export default function BaynAlbaytWalshoghlPage() {
                 )}
 
                 {/* Interactive Tool Section */}
-                <section className="mt-24 rounded-[3rem] bg-gradient-to-br from-brand-orange to-brand-orange/80 p-8 text-white sm:p-20 relative overflow-hidden shadow-2xl">
+                <section className="mt-24 rounded-[3rem] bg-soft-sheen p-8 text-brand-ink sm:p-20 relative overflow-hidden">
                     <div className="relative z-10 flex flex-col md:flex-row items-center gap-12 text-right">
                         <div className="flex-1">
                             <h2 className="text-4xl font-black mb-6 leading-tight">مقياس التوازن الشخصي</h2>
-                            <p className="text-xl text-white/90 font-medium leading-relaxed mb-8">
+                            <p className="text-xl text-brand-inkMuted font-medium leading-relaxed mb-8">
                                 اكتشفي أين تذهب طاقتك الحقيقية من خلال اختبار قصير يحلل توزيع مجهودك الأسبوعي.
                             </p>
-                            <button className="bg-white text-brand-orange px-10 py-4 rounded-full font-black text-xl hover:scale-105 transition-transform shadow-lg">
+                            <button className="btn-primary px-10 py-4 text-xl">
                                 ابدئي الاختبار الآن
                             </button>
                         </div>
-                        <div className="w-full max-w-xs aspect-square border-4 border-white/20 rounded-full flex items-center justify-center relative">
+                        <div className="w-full max-w-xs aspect-square border-4 border-white/40 rounded-full flex items-center justify-center relative">
                             <div className="absolute inset-0 animate-spin-slow">
-                                <div className="w-4 h-4 rounded-full bg-white absolute top-0 left-1/2 -translate-x-1/2 shadow-glow"></div>
+                                <div className="w-4 h-4 rounded-full bg-white absolute top-0 left-1/2 -translate-x-1/2"></div>
                             </div>
                             <span className="text-6xl font-black">7/24</span>
                         </div>
