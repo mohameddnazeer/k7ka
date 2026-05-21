@@ -8,11 +8,7 @@ const socialMediaTopics = [
         id: 1,
         title: "التريندات القاتلة",
         category: "التحديات الرقمية",
-        svg: (color = "currentColor") => (
-            <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full opacity-20">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-            </svg>
-        ),
+        bgImage: "/imgs/carousel/Eradicating-female-illiteracy.jpeg",
         content: "كيف يتحول العالم الافتراضي والبحث عن الشهرة إلى فخ يهدد حياة المراهقات.. تحليل عميق لظاهرة التريندات القاتلة.",
         sections: [
             {
@@ -49,14 +45,8 @@ const socialMediaTopics = [
     {
         id: 2,
         title: "إدمان الشوبينج الأونلاين",
-        category: "الثقافة الاستهلاكية",
-        svg: (color = "currentColor") => (
-            <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-16 h-16">
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-            </svg>
-        ),
+        category: "التحديات الرقمية",
+        bgImage: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
         content: "بين ضغطة زر واحدة وهوس الشراء.. كيف تحول التسوق الإلكتروني من وسيلة لتلبية الاحتياجات إلى اعتماد نفسي يؤثر على حياة البنات المالية والنفسية؟",
         sections: [
             {
@@ -95,15 +85,9 @@ const socialMediaTopics = [
 const streetTopics = [
     {
         id: 3,
-        title: "التحرش اللفظي",
+        title: "التحرش اللفظي وجرح الوجدان الخفي",
         category: "أمان الشارع",
-        svg: (color = "currentColor") => (
-            <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-16 h-16 opacity-30">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                <line x1="12" y1="9" x2="12" y2="13" />
-                <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-        ),
+        bgImage: "/imgs/carousel/suffering-of-women-on-public-transportation.jpeg",
         content: "تحقيق ميداني حول ظاهرة التحرش اللفظي في المساحات العامة والخاصة.. كيف يؤثر ذلك على شعور الفتيات بالأمان؟",
         sections: [
             { heading: "ما هو التحرش اللفظي؟", body: "التحرش اللفظي يكون من خلال كل ما يصدر من كلمات أو عبارات جارحة تؤدي إلى أذى أو إهانة أو مضايقة نفسية جسيمة لأي شخص. وهو شكل من أشكال العنف والتمييز في العلاقات أو في المدرسة أو في العمل أو في الأماكن الاجتماعية العامة." },
@@ -126,45 +110,38 @@ const streetTopics = [
     },
     {
         id: 4,
-        title: "التصرف في الشارع من غير مضايقة",
-        category: "أخلاقيات",
-        svg: (color = "currentColor") => (
-            <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-16 h-16">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-            </svg>
-        ),
-        content: "قواعد الذوق العام وكيفية التعامل برقي لبناء مجتمع خالي من المضايقات اللفظية.",
-        details: "دليل عملي للسلوك المتحضر في الفضاءات العامة لضمان راحة الجميع."
+        title: "التصرف في الشارع دون مضايقة",
+        category: "أمان الشارع",
+        bgImage: "/imgs/carousel/First-year-of-motherhood.jpeg",
+        content: "قواعد الذوق العام وكيفية التعامل برقي لبناء مجتمع خالٍ من المضايقات اللفظية وبناء مساحات عبور آمنة.",
+        sections: []
     }
 ]
 
 const homeTopics = [
     {
         id: 5,
-        title: "الأسواق بين الصدق والأمانة وكذب التجار",
-        category: "ثقافة السوق",
-        svg: (color = "currentColor") => (
-            <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-16 h-16">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            </svg>
-        ),
-        content: "جولة داخل الأسواق: كيف تتعرف المراهقة على آليات البيع والشراء وتتجنب فخاخ التجارة؟",
-        details: "نصائح عملية في التعامل المالي ومعرفة جودة المنتجات."
+        title: "الأسواق بين أمانة التجار وفخاخ البيع",
+        category: "ثقافة البيت والأسواق",
+        bgImage: "/imgs/carousel/house-cleaning-routine.jpeg",
+        content: "جولة واقعية داخل الأسواق: كيف تتعرف الفتاة على آليات البيع والشراء وتتجنب الخداع التجاري بذكاء؟",
+        sections: []
     },
     {
         id: 6,
-        title: "الديكور",
-        category: "ثقافة البيت",
-        svg: () => <div className="w-16 h-16 bg-brand-orange/20 rounded-md" />,
-        content: "لمسات فنية بسيطة تحول غرفتك إلى عالمك الخاص الذي يعبر عن شخصيتك."
+        title: "فنون الديكور المنزلي كمرآة للذات",
+        category: "ثقافة البيت والأسواق",
+        bgImage: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
+        content: "لمسات هندسية وفنية بسيطة وغير مكلفة تحول غرفتك الخاصة إلى مساحة دافئة تعبر عن هويتك الحقيقية.",
+        sections: []
     },
     {
         id: 7,
-        title: "الموبيليا",
-        category: "ثقافة البيت",
-        svg: () => <div className="w-16 h-16 bg-brand-brown/20 rounded-md" />,
-        content: "كيف تختارين قطع الأثاث التي تجمع بين الجمال والوظيفة وتعيش معك طويلاً؟"
+        title: "ثقافة الموبيليا واختيار الأثاث المستدام",
+        category: "ثقافة البيت والأسواق",
+        bgImage: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
+        content: "كيف تختارين قطع الأثاث العملية والمريحة التي تجمع بين المظهر الجمالي والصلابة لتعيش معك طويلاً؟",
+        sections: []
     }
 ]
 
@@ -173,140 +150,215 @@ export default function BaraAlkahkaPage() {
     const [selectedTopic, setSelectedTopic] = useState(null)
 
     useEffect(() => {
-        if (selectedTopic) {
-            document.body.style.overflow = "hidden"
-        } else {
-            document.body.style.overflow = "unset"
-        }
-        return () => {
-            document.body.style.overflow = "unset"
-        }
+        document.body.style.overflow = selectedTopic ? "hidden" : "unset"
+        return () => { document.body.style.overflow = "unset" }
     }, [selectedTopic])
 
+    // Unified filtering condition mapped accurately to data structure properties
+    const filteredTopics = [...socialMediaTopics, ...streetTopics, ...homeTopics].filter(topic => {
+        if (activeSection === "all") return true
+        if (activeSection === "digital") return topic.category === "التحديات الرقمية"
+        if (activeSection === "street") return topic.category === "أمان الشارع"
+        if (activeSection === "home") return topic.category === "ثقافة البيت والأسواق"
+        return true
+    })
+
     return (
-        <div className="relative min-h-screen bg-brand-offwhite font-arabic" dir="rtl">
-            <style jsx>{`
-                .custom-scrollbar::-webkit-scrollbar {
-                    width: 6px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-track {
-                    background: transparent;
-                }
-                .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: rgba(181, 114, 232, 0.18);
-                    border-radius: 10px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: #B572E8;
-                }
-            `}</style>
-            
+        <div className="relative min-h-screen bg-slate-50 font-arabic overflow-x-hidden selection:bg-brand-secondary/20" dir="rtl">
             <BackgroundSVG />
             <NavBar />
             
-            <main className="relative z-10 mx-auto  px-4 pb-24 pt-12 sm:px-6 lg:px-8">
-                {/* Hero Section */}
-                <div className="relative mb-20 overflow-hidden rounded-[1rem] md:rounded-[1rem] bg-soft-flow p-8 text-brand-ink sm:p-20 text-right">
-                    <div className="relative z-10 max-w-3xl">
-                        <span className="mb-4 inline-block rounded-md bg-brand-surface px-4 py-1 text-sm font-bold tracking-widest uppercase text-brand-ink">
-                            بره الكحكة - 7 تحقيقات
+            <main className="relative z-10 mx-auto px-4 pb-20 pt-10 sm:px-6 lg:px-8 max-w-7xl">
+                
+                {/* Hero Editorial Header Banner */}
+                <div className="relative mb-12 overflow-hidden rounded-2xl bg-white border border-slate-200/60 p-8 sm:p-14 text-right shadow-sm">
+                    <div className="absolute top-0 left-0 w-80 h-80 bg-brand-secondary/5 rounded-full blur-[90px] -translate-x-14 -translate-y-14 pointer-events-none"></div>
+                    <div className="relative z-10 max-w-2xl space-y-4">
+                        <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-3 py-1 text-xs font-bold text-white shadow-xs">
+                            بره الكحكة • ٠٧ ملفات تحريرية
                         </span>
-                        <h1 className="mb-6 text-4xl font-black md:text-7xl text-brand-ink">بره الكحكة</h1>
-                        <p className="text-lg md:text-xl text-brand-inkMuted">جولة في عالم السوشيال ميديا وأخلاقيات الشارع.</p>
+                        <h1 className="text-4xl font-black md:text-5xl text-brand-ink tracking-tight">بره الكحكة</h1>
+                        <p className="text-sm sm:text-base leading-relaxed text-slate-600 font-medium">
+                            جولة واقعية وتحليلات ميدانية معمقة ترصد تداخلات العالم الافتراضي ومتاهات السوشيال ميديا وأخلاقيات الفضاء العام للشارع والبيت.
+                        </p>
                     </div>
                 </div>
 
-                {/* Filter Navigation */}
-                <div className="mb-16 flex flex-wrap items-center justify-center gap-4">
+                {/* Filter Navigation Category Tabs */}
+                <div className="mb-10 flex flex-wrap items-center justify-center gap-2">
                     {[
-                        { id: "all", label: "الكل" },
-                        { id: "digital", label: "رقمي" },
-                        { id: "street", label: "الشارع" },
-                        { id: "home", label: "البيت" }
+                        { id: "all", label: "جميع التحقيقات" },
+                        { id: "digital", label: "التحديات الرقمية" },
+                        { id: "street", label: "أمان الشارع" },
+                        { id: "home", label: "البيت والأسواق" }
                     ].map((btn) => (
-                        <button key={btn.id} onClick={() => setActiveSection(btn.id)}
-                            className={`rounded-full px-6 py-2 text-lg font-black transition-all ${activeSection === btn.id ? "bg-brand-secondary text-white scale-105" : "bg-brand-surface text-brand-ink hover:bg-brand-surface/70"}`}>
+                        <button 
+                            key={btn.id} 
+                            onClick={() => setActiveSection(btn.id)}
+                            className={`rounded-xl px-5 py-2.5 text-xs font-black transition-all duration-300 outline-none border ${
+                                activeSection === btn.id 
+                                    ? "bg-brand-ink text-white border-brand-ink shadow-md shadow-brand-ink/10 scale-[1.02]" 
+                                    : "bg-white text-slate-600 border-slate-200/80 hover:bg-slate-50 hover:text-brand-ink"
+                            }`}
+                        >
                             {btn.label}
                         </button>
                     ))}
                 </div>
 
-                {/* Grid */}
-                <div className="grid gap-8 md:grid-cols-12 mb-12">
-                    {[...socialMediaTopics, ...streetTopics, ...homeTopics]
-                        .filter(t => activeSection === "all" || (activeSection === "digital" && t.id <= 2) || (activeSection === "street" && t.id === 3) || (activeSection === "home" && t.id > 3))
-                        .map((topic, idx) => (
-                            <div key={topic.id} 
-                                className={`p-8 rounded-[1rem] transition-all cursor-pointer border border-brand-surface/70 hover:border-brand-secondary/60 bg-brand-surface text-brand-ink ${idx === 0 ? "md:col-span-8" : "md:col-span-4"}`}
-                                onClick={() => setSelectedTopic(topic)}>
-                                <h3 className="text-2xl font-black mb-4">{topic.title}</h3>
-                                <p className="text-brand-inkMuted/80">{topic.content}</p>
+                {/* Dynamic Asymmetric Card Grid Component */}
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {filteredTopics.map((topic, index) => {
+                        // Create an alternating featured card width layout for an editorial magazine feel
+                        const isFeatured = index === 0 || (index === 3 && filteredTopics.length > 3)
+                        
+                        return (
+                            <div 
+                                key={topic.id} 
+                                onClick={() => setSelectedTopic(topic)}
+                                className={`group relative rounded-2xl overflow-hidden border border-slate-200/70 bg-white transition-all duration-300 hover:shadow-md hover:border-slate-300/90 cursor-pointer flex flex-col justify-between min-h-[240px] p-6 ${
+                                    isFeatured ? "sm:col-span-2" : "sm:col-span-1"
+                                }`}
+                            >
+                                {topic.bgImage && (
+                                    <>
+                                        <div className="absolute inset-0 z-0">
+                                            <img 
+                                                src={topic.bgImage} 
+                                                alt={topic.title} 
+                                                className="w-full h-full object-cover grayscale opacity-15 transition-all duration-500 group-hover:scale-105 group-hover:opacity-20 group-hover:grayscale-0"
+                                            />
+                                        </div>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/90 to-white/40 z-0" />
+                                    </>
+                                )}
+
+                                <div className="relative z-10 space-y-4">
+                                    <span className="inline-block text-[10px] font-bold text-brand-secondary bg-brand-secondary/5 border border-brand-secondary/10 rounded-md px-2 py-0.5">
+                                        {topic.category}
+                                    </span>
+                                    <h3 className="text-xl font-black text-brand-ink leading-snug group-hover:text-brand-secondary transition-colors duration-200">
+                                        {topic.title}
+                                    </h3>
+                                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium line-clamp-3">
+                                        {topic.content}
+                                    </p>
+                                </div>
+
+                                <div className="relative z-10 pt-4 flex items-center justify-end border-t border-slate-100 mt-4">
+                                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-ink group-hover:text-brand-secondary transition-colors">
+                                        <span>{topic.sections?.length > 0 ? "اقرئي التحقيق الكامل" : "استكشفي الملف"}</span>
+                                        <svg viewBox="0 0 24 24" className="h-3 w-3 fill-none stroke-current transition-transform duration-200 group-hover:-translate-x-1" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                                    </span>
+                                </div>
                             </div>
-                        ))}
+                        )
+                    })}
                 </div>
             </main>
 
-            {/* Modal Overlay - Fixed Visibility & Interaction */}
+            {/* Immersive Reader Modal View Layout */}
             {selectedTopic && (
-                 <div className="fixed inset-0 z-[9999] flex justify-center items-start md:items-center bg-brand-ink/30 p-0 md:p-6 backdrop-blur-xl overflow-y-auto"
-                     onClick={() => setSelectedTopic(null)}>
-                    
-                    {/* Modal Content - Fixed Scrolling */}
-                    <div className="relative w-full max-w-6xl flex flex-col md:flex-row bg-brand-surface md:rounded-[1rem] overflow-hidden min-h-screen md:min-h-0 md:max-h-[85vh] border border-brand-surface/70"
-                         onClick={(e) => e.stopPropagation()}>
+                <div 
+                    className="fixed inset-0 z-[9999] flex justify-center items-stretch md:items-center bg-brand-ink/40 p-0 md:p-6 backdrop-blur-sm overflow-y-auto animate-fade-in"
+                    onClick={() => setSelectedTopic(null)}
+                >
+                    <div 
+                        className="relative w-full max-w-5xl flex flex-col md:flex-row bg-white md:rounded-2xl overflow-hidden min-h-screen md:min-h-0 md:max-h-[88vh] shadow-2xl border border-slate-200/50 animate-slide-up"
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         
-                        {/* Sticky Header for Mobile */}
-                        <div className="flex items-center justify-between p-6 border-b border-brand-surface/70 bg-brand-surface/90 backdrop-blur-md sticky top-0 z-30 md:hidden">
-                            <h2 className="text-xl font-black text-brand-ink leading-tight line-clamp-1">{selectedTopic.title}</h2>
-                            <button onClick={() => setSelectedTopic(null)} className="p-2 rounded-full bg-brand-secondary text-white">
-                                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
+                        {/* Mobile Top App-bar Header Layer */}
+                        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-white sticky top-0 z-30 md:hidden shadow-xs">
+                            <span className="text-[11px] font-bold text-brand-secondary bg-brand-secondary/5 rounded px-2 py-0.5">{selectedTopic.category}</span>
+                            <button onClick={() => setSelectedTopic(null)} className="p-2 rounded-xl bg-slate-100 text-slate-700 active:scale-95 transition-transform" aria-label="إغلاق">
+                                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                             </button>
                         </div>
 
-                        {/* Sidebar (Desktop Only) */}
-                        <div className="hidden md:flex md:w-1/3 bg-soft-sheen p-12 flex-col justify-center text-brand-ink relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-white/50 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
-                            <span className="text-brand-ink font-black text-sm uppercase mb-4 block underline decoration-4 underline-offset-8">تحقيق خاص</span>
-                            <h2 className="text-5xl font-black leading-tight mb-6 relative z-10">{selectedTopic.title}</h2>
-                            <div className="w-16 h-1 bg-brand-accent/70 mb-6 relative z-10"></div>
-                            <p className="text-brand-inkSubtle italic leading-relaxed relative z-10">"تحليل مجتمعي معمق لظواهر العصر الحديث."</p>
+                        {/* Static Identity Branding Sidebar Frame */}
+                        <div className="relative hidden md:flex md:w-1/3 bg-slate-950 p-10 flex-col justify-between text-white overflow-hidden">
+                            {selectedTopic.bgImage ? (
+                                <div className="absolute inset-0 z-0 opacity-20">
+                                    <img src={selectedTopic.bgImage} alt="" className="w-full h-full object-cover" />
+                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950" />
+                                </div>
+                            ) : (
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-secondary/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
+                            )}
+                            
+                            <div className="relative z-10 space-y-2">
+                                <span className="text-brand-secondary font-black text-xs uppercase tracking-widest block">بره الكحكة</span>
+                                <div className="h-1 w-8 bg-brand-secondary rounded"></div>
+                            </div>
+
+                            <div className="relative z-10 space-y-3 my-auto">
+                                <span className="text-[10px] font-bold text-slate-400 bg-white/10 px-2 py-0.5 rounded border border-white/5 inline-block">{selectedTopic.category}</span>
+                                <h2 className="text-3xl font-black leading-tight tracking-tight text-white">{selectedTopic.title}</h2>
+                            </div>
+
+                            <p className="relative z-10 text-[11px] text-slate-400 font-medium italic">
+                                * مادة تحريرية موثقة من الهيئة الاستشارية لمنصة كحكة.
+                            </p>
                         </div>
 
-                        {/* Content Area */}
-                        <div className="flex-1 flex flex-col min-w-0">
-                            {/* Desktop Close Button */}
-                            <button onClick={() => setSelectedTopic(null)} className="absolute left-8 top-8 z-50 rounded-full bg-brand-secondary text-white p-4 transition-all hidden md:block">
-                                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
+                        {/* Content Scroll Feed Frame Wrapper */}
+                        <div className="flex-1 flex flex-col min-w-0 bg-white">
+                            
+                            {/* Desktop Absolute Top Floating Exit Button */}
+                            <button 
+                                onClick={() => setSelectedTopic(null)} 
+                                className="absolute left-6 top-6 z-50 rounded-xl bg-slate-900 text-white p-2.5 transition-all hover:bg-brand-secondary shadow-md outline-none hidden md:block group"
+                                title="إغلاق نافذة القراءة"
+                            >
+                                <svg className="h-4 w-4 transition-transform duration-200 group-hover:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                             </button>
 
-                            {/* Scrollable Body */}
-                            <div className="md:overflow-y-auto p-6 md:p-16 text-right custom-scrollbar bg-brand-surface">
-                                <span className="badge-soft mb-8 uppercase tracking-widest">{selectedTopic.category}</span>
-                                
-                                <div className="space-y-10 max-w-4xl">
-                                    <p className="text-xl md:text-2xl font-black text-brand-ink leading-relaxed border-r-4 border-brand-accent/60 pr-6 italic mb-12">
-                                        {selectedTopic.content}
-                                    </p>
+                            {/* Scroll Area Container View */}
+                            <div className="overflow-y-auto flex-1 p-6 md:p-12 text-right bg-white [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-brand-secondary/20 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-brand-secondary/40">
+                                <div className="max-w-3xl space-y-8">
+                                    
+                                    {/* Abstract Blockquote Frame */}
+                                    <div className="border-r-4 border-brand-secondary bg-slate-50/70 p-5 rounded-l-xl">
+                                        <p className="text-base sm:text-lg font-bold text-slate-800 leading-relaxed italic">
+                                            "{selectedTopic.content}"
+                                        </p>
+                                    </div>
 
-                                    {selectedTopic.sections?.map((section, idx) => (
-                                        <div key={idx} className="border-b border-brand-surface/70 pb-10 last:border-0 group">
-                                            <h3 className="text-lg md:text-xl font-black text-brand-ink mb-4 flex items-center gap-4 transition-colors group-hover:text-brand-secondary">
-                                                <span className="text-brand-accent/40 text-3xl font-serif">0{idx + 1}</span>
-                                                {section.heading}
-                                            </h3>
-                                            <p className="text-base md:text-lg text-brand-inkMuted/80 leading-loose font-medium">{section.body}</p>
-                                        </div>
-                                    ))}
+                                    {/* Inner Nested Article Loops Grid */}
+                                    <div className="space-y-8 pt-2">
+                                        {selectedTopic.sections?.length > 0 ? (
+                                            selectedTopic.sections.map((section, idx) => (
+                                                <div key={idx} className="border-b border-slate-100 pb-8 last:border-0 last:pb-0 group">
+                                                    <h3 className="text-base sm:text-lg font-black text-brand-ink mb-3 flex items-center gap-3 transition-colors duration-200 group-hover:text-brand-secondary">
+                                                        <span className="text-brand-secondary/30 text-2xl font-mono tracking-tight">0{idx + 1}</span>
+                                                        {section.heading}
+                                                    </h3>
+                                                    <p className="text-xs sm:text-sm text-slate-600 leading-loose font-medium">
+                                                        {section.body}
+                                                    </p>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <div className="text-center py-10 border border-dashed border-slate-200 rounded-xl bg-slate-50/40">
+                                                <p className="text-xs font-bold text-slate-400">الملف التفصيلي تحت التوثيق والتحرير حالياً.</p>
+                                            </div>
+                                        )}
+                                    </div>
 
+                                    {/* Custom Conclusion Container Footing */}
                                     {selectedTopic.conclusion && (
-                                        <div className="mt-12 bg-soft-sheen p-8 md:p-12 rounded-[1rem] text-brand-ink relative overflow-hidden">
-                                            <div className="absolute top-0 left-0 w-24 h-24 bg-white/60 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                                            <h4 className="text-xl font-black mb-4 text-brand-ink tracking-widest uppercase">الخلاصة</h4>
-                                            <p className="text-base md:text-lg font-bold text-brand-inkMuted leading-relaxed italic">{selectedTopic.conclusion}</p>
+                                        <div className="mt-10 bg-slate-900 text-slate-100 p-6 sm:p-8 rounded-xl relative overflow-hidden shadow-inner">
+                                            <div className="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+                                            <h4 className="text-sm font-black mb-2 text-brand-secondary tracking-widest uppercase">خلاصة التحقيق</h4>
+                                            <p className="text-xs sm:text-sm font-medium text-slate-300 leading-relaxed">
+                                                {selectedTopic.conclusion}
+                                            </p>
                                         </div>
                                     )}
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
