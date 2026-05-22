@@ -42,7 +42,7 @@ const heroSlides = [
         title: 'معايير الجمال والهوس العصري',
         subtitle: 'تفكيك شامل وجريء لكافة الضغوط البصرية المفروضة مجتمعياً على ملامح المرأة وهويتها الطبيعية.',
         image: '/imgs/carousel/Women-obsession-with-beauty.jpeg',
-        to: '/',
+        to: '/hous-eltagmeel',
         badge: 'تفكيك الصور النمطية'
     }
 ]

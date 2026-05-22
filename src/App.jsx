@@ -9,6 +9,7 @@ import GowaAlkahka from './pages/gowa-alkahka.jsx'
 import HikayatSettat from './pages/hikayat-settat.jsx'
 import KalamQanun from './pages/kalam-qanun.jsx'
 import OmEltiflDhawiAlEaahaq from './pages/om-eltifl-dhawi-al-eaahaq.jsx'
+import HousEltagmeel from './pages/hous-eltagmeel.jsx'
 import SanaOlaOmoma from './pages/sana-ola-omoma.jsx'
 import SawtohaMasmoua from './pages/sawtoha-masmoua.jsx'
 import './App.css'
@@ -27,6 +28,7 @@ function App() {
         <Route path="/hikayat-settat" element={<HikayatSettat />} />
         <Route path="/kalam-qanun" element={<KalamQanun />} />
         <Route path="/om-eltifl-dhawi-al-eaahaq" element={<OmEltiflDhawiAlEaahaq />} />
+        <Route path="/hous-eltagmeel" element={<HousEltagmeel />} />
         <Route path="/sana-ola-omoma" element={<SanaOlaOmoma />} />
         <Route path="/sawtoha-masmoua" element={<SawtohaMasmoua />} />
       </Routes>
