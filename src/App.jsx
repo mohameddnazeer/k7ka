@@ -4,6 +4,7 @@ import AlaAlhamesh from './pages/ala-alhamesh.jsx'
 import Alaaqa from './pages/alaaqa.jsx'
 import BaraAlkahka from './pages/bara-alkahka.jsx'
 import BaynAlbaytWalshoghl from './pages/bayn-albayt-walshoghl.jsx'
+import BaynAlZahmWalkarama from './pages/bayn-alzahm-walkarama.jsx'
 import GowaAlkahka from './pages/gowa-alkahka.jsx'
 import HikayatSettat from './pages/hikayat-settat.jsx'
 import KalamQanun from './pages/kalam-qanun.jsx'
@@ -20,6 +21,7 @@ function App() {
         <Route path="/alaaqa" element={<Alaaqa />} />
         <Route path="/bara-alkahka" element={<BaraAlkahka />} />
         <Route path="/bayn-albayt-walshoghl" element={<BaynAlbaytWalshoghl />} />
+        <Route path="/bayn-alzahm-walkarama" element={<BaynAlZahmWalkarama />} />
         <Route path="/gowa-alkahka" element={<GowaAlkahka />} />
         <Route path="/hikayat-settat" element={<HikayatSettat />} />
         <Route path="/kalam-qanun" element={<KalamQanun />} />

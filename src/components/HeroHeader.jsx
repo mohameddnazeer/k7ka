@@ -28,7 +28,7 @@ const heroSlides = [
         title: 'صراعات الرحلة اليومية للمواصلات',
         subtitle: 'المعاناة الصامتة للمرأة في الفضاءات العامة والمواصلات بحثاً عن مساحة آمنة ومريحة للوصول.',
         image: '/imgs/carousel/suffering-of-women-on-public-transportation.jpeg',
-        to: '/',
+        to: '/bayn-alzahm-walkarama',
         badge: 'الفضاء العام والآمن'
     },
     {

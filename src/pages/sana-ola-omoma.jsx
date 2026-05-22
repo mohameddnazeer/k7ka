@@ -53,6 +53,12 @@ const stats = [
 ]
 
 export default function SanaOlaOmomaPage() {
+  const scrollToSection = (index) => {
+    const element = document.getElementById(`section-${index}`)
+    if (!element) return
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-50 text-slate-800" dir="rtl">
       <BackgroundSVG />
@@ -115,14 +121,15 @@ export default function SanaOlaOmomaPage() {
               </div>
               <div className="space-y-2">
                 {sections.map((section, index) => (
-                  <a
+                  <button
                     key={section.title}
-                    href={`#section-${index}`}
+                    type="button"
+                    onClick={() => scrollToSection(index)}
                     className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
                   >
                     <span className="block text-[11px] uppercase tracking-[0.2em] opacity-60">{String(index + 1).padStart(2, '0')}</span>
                     <span className="block mt-1 leading-6">{section.title}</span>
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
