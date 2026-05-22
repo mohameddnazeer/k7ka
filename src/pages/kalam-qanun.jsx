@@ -2,6 +2,7 @@
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import Modal from '../components/Modal'
 
 // ==========================================
 // DATA LAYER (يمكن نقلها لملف منفصل لاحقاً lawData.js)
@@ -560,42 +561,27 @@ export default function KalamQanunPage() {
     </div>
 </section>
 
-                {/* Premium Article Modal Section */}
+                {/* Premium Article Modal (using shared Modal) */}
                 {selectedArticle && (
-                    <div 
-                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 transition-all"
-                        role="dialog"
-                        aria-modal="true"
+                    <Modal
+                        onClose={() => setSelectedArticle(null)}
+                        onProgress={(p) => setReadProgress(p)}
+                        className="modal-scroll bg-brand-surface w-full max-w-4xl max-h-[85vh] overflow-y-auto rounded-[2.5rem] shadow-2xl border border-slate-100"
+                        ariaLabel={selectedArticle.title}
                     >
-                        <div 
-                            className="absolute inset-0 bg-brand-ink/60 backdrop-blur-md transition-opacity duration-300"
+                        {/* Close button */}
+                        <button 
                             onClick={() => setSelectedArticle(null)}
-                        ></div>
-                        
-                        <div 
-                            onScroll={handleModalScroll}
-                            className="relative w-full max-w-4xl max-h-[85vh] overflow-y-auto rounded-[2.5rem] bg-brand-surface shadow-2xl border border-slate-100 scrollbar-thin animate-[fadeIn_0.2s_ease-out]"
+                            className="absolute top-6 left-6 z-40 rounded-full bg-white/90 backdrop-blur-md p-2.5 text-brand-ink shadow-md transition-all hover:bg-brand-accent hover:text-white focus:outline-none"
+                            aria-label="إغلاق النافذة"
                         >
-                            {/* خط مؤشر القراءة المتغير في أعلى المودال */}
-                            <div className="sticky top-0 right-0 left-0 h-1.5 bg-slate-100 z-30">
-                                <div 
-                                    className="h-full bg-brand-accent transition-all duration-75"
-                                    style={{ width: `${readProgress}%` }}
-                                ></div>
-                            </div>
+                            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
 
-                            {/* زر الإغلاق الثابت مع السكرول */}
-                            <button 
-                                onClick={() => setSelectedArticle(null)}
-                                className="absolute top-6 left-6 z-40 rounded-full bg-white/90 backdrop-blur-md p-2.5 text-brand-ink shadow-md transition-all hover:bg-brand-accent hover:text-white focus:outline-none"
-                                aria-label="إغلاق النافذة"
-                            >
-                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-
-                            {/* صورة البانر العلوي للمقال داخل المودال لزيادة الجاذبية البصرية */}
+                        {/* Conditional banner image */}
+                        {selectedArticle.image && (
                             <div className="w-full h-56 sm:h-72 relative">
                                 <img 
                                     src={selectedArticle.image} 
@@ -604,28 +590,28 @@ export default function KalamQanunPage() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-brand-surface via-brand-surface/20 to-transparent"></div>
                             </div>
+                        )}
 
-                            <div className="p-6 sm:p-12 -mt-16 relative z-10">
-                                <span className="badge-soft mb-4 inline-block bg-brand-accent/10 text-brand-accent px-3 py-1 rounded-full text-xs font-bold">
-                                    {selectedArticle.category}
-                                </span>
-                                <h2 className="text-2xl font-black text-brand-ink sm:text-4xl mb-8 leading-tight max-w-[90%]">
-                                    {selectedArticle.title}
-                                </h2>
-                                
-                                <div className="space-y-8 mt-6">
-                                    {selectedArticle.fullContent?.map((section, idx) => (
-                                        <div key={idx} className="border-r-4 border-brand-accent/40 pr-6 transition-all hover:border-brand-accent">
-                                            <h3 className="text-xl font-black text-brand-secondary mb-3">{section.heading}</h3>
-                                            <p className="text-base sm:text-lg text-brand-inkMuted leading-relaxed font-medium whitespace-pre-line">
-                                                {section.text}
-                                            </p>
-                                        </div>
-                                    ))}
-                                </div>
+                        <div className="p-6 sm:p-12 -mt-16 relative z-10">
+                            <span className="badge-soft mb-4 inline-block bg-brand-accent/10 text-brand-accent px-3 py-1 rounded-full text-xs font-bold">
+                                {selectedArticle.category}
+                            </span>
+                            <h2 className="text-2xl font-black text-brand-ink sm:text-4xl mb-8 leading-tight max-w-[90%]">
+                                {selectedArticle.title}
+                            </h2>
+                            
+                            <div className="space-y-8 mt-6">
+                                {selectedArticle.fullContent?.map((section, idx) => (
+                                    <div key={idx} className="border-r-4 border-brand-accent/40 pr-6 transition-all hover:border-brand-accent">
+                                        <h3 className="text-xl font-black text-brand-secondary mb-3">{section.heading}</h3>
+                                        <p className="text-base sm:text-lg text-brand-inkMuted leading-relaxed font-medium whitespace-pre-line">
+                                            {section.text}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                    </div>
+                    </Modal>
                 )}
             </main>
             <Footer />

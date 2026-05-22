@@ -1,11 +1,30 @@
-﻿import { useState } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import Modal from '../components/Modal'
 
 export default function SawtohaMasmouaPage() {
     // تحديد التحقيق النشط حالياً في الصفحة
     const [activeInvestigation, setActiveInvestigation] = useState(1);
+    const [query, setQuery] = useState('');
+    const [showTOC, setShowTOC] = useState(false);
+    const tocRef = useRef(null);
+
+    useEffect(() => {
+        const onKey = (e) => { if (e.key === 'Escape') setShowTOC(false); };
+        if (showTOC) {
+            document.body.style.overflow = 'hidden';
+            document.addEventListener('keydown', onKey);
+            setTimeout(() => tocRef.current?.focus(), 60);
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', onKey);
+        };
+    }, [showTOC]);
 
     const investigationsData = {
         1: {
@@ -92,6 +111,18 @@ export default function SawtohaMasmouaPage() {
 
     const currentInvestigation = investigationsData[activeInvestigation];
 
+    const investigationsList = Object.entries(investigationsData).filter(([, inv]) => {
+        const q = query.trim().toLowerCase();
+        if (!q) return true;
+        return (inv.title + ' ' + inv.intro + ' ' + (inv.summary || '')).toLowerCase().includes(q);
+    });
+
+    const scrollToSection = (idx) => {
+        const el = document.getElementById(`section-${idx}`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setShowTOC(false);
+    };
+
     return (
         <div className="relative min-h-screen bg-slate-50 text-slate-900 overflow-hidden" dir="rtl">
             <BackgroundSVG />
@@ -110,29 +141,53 @@ export default function SawtohaMasmouaPage() {
                 </p>
             </header>
 
-            {/* شريط التنقل العلوي الأفقي (الكبسولات التفاعلية المتجاوبة) */}
-            <nav className="sticky top-0 z-40 bg-[#faf9f6]/80 backdrop-blur-md border-y border-slate-200/60 py-4 mb-12 shadow-2xs">
-                <div className="max-w-5xl mx-auto px-4">
-                    <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1 sm:pb-0 justify-start sm:justify-center mask-image">
-                        {Object.entries(investigationsData).map(([id, inv]) => {
-                            const isSelected = activeInvestigation === Number(id);
-                            return (
-                                <button
-                                    key={id}
-                                    onClick={() => setActiveInvestigation(Number(id))}
-                                    className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 transform active:scale-95 ${
-                                        isSelected 
-                                        ? 'bg-brand-ink text-white shadow-md shadow-brand-ink/20' 
-                                        : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-slate-200/50'
-                                    }`}
-                                >
-                                    {inv.tag}
-                                </button>
-                            );
-                        })}
+            {/* بحث سريع وأشرطة التحقيقات */}
+            <div className="sticky top-0 z-40 bg-[#faf9f6]/80 backdrop-blur-md border-y border-slate-200/60 py-4 mb-8">
+                <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center gap-3">
+                    <div className="flex-1">
+                        <label className="relative block">
+                            <input
+                                aria-label="بحث التحقيقات"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                className="w-full pr-10 pl-4 py-3 rounded-2xl border border-slate-200 bg-white placeholder-slate-400 text-right"
+                                placeholder="ابحث في العناوين أو الملخص..."
+                            />
+                            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔎</div>
+                        </label>
+                    </div>
+
+                    <div className="flex gap-3 items-center">
+                        <button
+                            onClick={() => setShowTOC(prev => !prev)}
+                            className="px-4 py-2 rounded-full bg-white text-slate-700 border border-slate-200 shadow-sm text-sm"
+                        >فهرس الملف</button>
                     </div>
                 </div>
-            </nav>
+
+                <nav className="mt-3">
+                    <div className="max-w-5xl mx-auto px-4">
+                        <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1 sm:pb-0 justify-start sm:justify-center">
+                            {investigationsList.map(([id, inv]) => {
+                                const isSelected = activeInvestigation === Number(id);
+                                return (
+                                    <button
+                                        key={id}
+                                        onClick={() => setActiveInvestigation(Number(id))}
+                                        className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 transform active:scale-95 ${
+                                            isSelected 
+                                            ? 'bg-brand-ink text-white shadow-md shadow-brand-ink/20' 
+                                            : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-slate-200/50'
+                                        }`}
+                                    >
+                                        {inv.tag}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </nav>
+            </div>
 
             {/* منطقة المحتوى المخصصة للقراءة الغامرة */}
             <main className="relative z-10 max-w-4xl mx-auto px-4 pb-32">
@@ -160,6 +215,7 @@ export default function SawtohaMasmouaPage() {
                     <div className="space-y-8">
                         {currentInvestigation.content.map((section, index) => (
                             <section 
+                                id={`section-${index}`}
                                 key={index} 
                                 className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-100/80 shadow-xs hover:shadow-md transition-shadow duration-300 group"
                             >
@@ -169,9 +225,15 @@ export default function SawtohaMasmouaPage() {
                                         {String(index + 1).padStart(2, '0')}
                                     </span>
                                     <div className="space-y-4 flex-1">
-                                        <h3 className="text-2xl font-bold text-brand-ink group-hover:text-brand-accent transition-colors duration-300">
-                                            {section.heading}
-                                        </h3>
+                                        <div className="flex items-start justify-between">
+                                            <h3 className="text-2xl font-bold text-brand-ink group-hover:text-brand-accent transition-colors duration-300">
+                                                {section.heading}
+                                            </h3>
+                                            <div className="flex items-center gap-2">
+                                                <button onClick={() => navigator.clipboard?.writeText(section.heading)} className="text-xs text-slate-400 hover:text-slate-700">نسخ العنوان</button>
+                                                <button onClick={() => scrollToSection(index)} className="text-xs text-slate-400 hover:text-slate-700">اذهب للمحور</button>
+                                            </div>
+                                        </div>
                                         <p className="whitespace-pre-line text-slate-600 text-lg leading-relaxed text-justify">
                                             {section.text}
                                         </p>
@@ -210,6 +272,21 @@ export default function SawtohaMasmouaPage() {
                 </section>
             </main>
             
+            {/* Table of Contents Modal (portal) */}
+            {showTOC && (
+                <Modal onClose={() => setShowTOC(false)} className="modal-scroll bg-white w-full max-w-md rounded-lg shadow-2xl overflow-y-auto">
+                    <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-slate-100 px-6 py-4 flex items-center justify-between">
+                        <h4 className="text-right font-bold">فهرس الملف</h4>
+                        <button onClick={() => setShowTOC(false)} className="w-9 h-9 rounded-full bg-slate-50 flex items-center justify-center">✕</button>
+                    </div>
+                    <div className="p-6 space-y-4">
+                        {currentInvestigation.content.map((s, i) => (
+                            <button key={i} onClick={() => scrollToSection(i)} className="w-full text-right p-3 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700">{String(i+1).padStart(2,'0')}. {s.heading}</button>
+                        ))}
+                    </div>
+                </Modal>
+            )}
+
             <Footer />
         </div>
     )

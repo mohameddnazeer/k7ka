@@ -16,7 +16,7 @@ export default function NavBar() {
 
     return (
         <nav 
-            className="sticky top-0 z-50 w-full border-b border-slate-200/60 bg-white/90 backdrop-blur-md shadow-sm" 
+            className="sticky top-0 z-40 w-full border-b border-slate-200/60 bg-white/90 backdrop-blur-md shadow-sm" 
             dir="rtl"
             aria-label="التنقل الرئيسي"
         >
