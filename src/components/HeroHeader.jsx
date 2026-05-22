@@ -35,7 +35,7 @@ const heroSlides = [
         title: 'بطلات خارقات خلف الأبواب المغلقة',
         subtitle: 'أمهات ذوي الهمم.. عطاء استثنائي مستمر ومقدس يصنع المعجزات اليومية دون أي صخب إعلامي.',
         image: '/imgs/carousel/The-mother-of-the-disabled-a-superhero-no-one-sees.jpeg',
-        to: '/',
+        to: '/om-eltifl-dhawi-al-eaahaq',
         badge: 'أمهات استثنائيات'
     },
     {
