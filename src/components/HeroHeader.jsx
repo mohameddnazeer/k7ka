@@ -21,7 +21,7 @@ const heroSlides = [
         title: 'دوامة الأعمال المنزلية الرتيبة',
         subtitle: 'المجهود الخفي غير المرئي لإبقاء تفاصيل الحياة متزنة ومنظمة ومستمرة كل يوم بسلام.',
         image: '/imgs/carousel/house-cleaning-routine.jpeg',
-        to: '/',
+        to: '/roteen-tanzeef-almanzel',
         badge: 'المجهود المنزلي الخفي'
     },
     {
