@@ -162,7 +162,7 @@ export default function AlaaqaPage() {
                             </p>
                         </section>
 
-                        <section className="rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm">
+                        <section id="contact" className="rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm">
                             <div className="mb-5 flex items-center justify-between gap-4">
                                 <div>
                                     <div className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">اتصل بنا</div>

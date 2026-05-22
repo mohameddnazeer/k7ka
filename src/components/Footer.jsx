@@ -34,8 +34,8 @@ export default function Footer() {
               {[
                 { name: "الرئيسية", to: "/" },
                 { name: "التحقيقات", to: "/sawtoha-masmoua" },
-                { name: "فريق العمل", to: "/team" },
-                { name: "تواصل معنا", to: "/contact" },
+                { name: "عن الموقع", to: "/alaaqa" },
+                { name: "تواصل معنا", to: "/alaaqa#contact" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
@@ -137,7 +137,7 @@ export default function Footer() {
     },
     { 
       name: "Instagram", 
-      url: "#", 
+      url: "/ala-alhamesh", 
       icon: (
         <svg className="h-4 w-4 stroke-current fill-none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -148,7 +148,7 @@ export default function Footer() {
     },
     { 
       name: "X", 
-      url: "#", 
+      url: "/hikayat-settat", 
       icon: (
         <svg className="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -157,7 +157,7 @@ export default function Footer() {
     },
     { 
       name: "YouTube", 
-      url: "#", 
+      url: "/gowa-alkahka", 
       icon: (
         <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
           <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.108C19.53 3.5 12 3.5 12 3.5s-7.53 0-9.388.555A3.003 3.003 0 0 0 .502 6.163C0 8.023 0 12 0 12s0 3.977.502 5.837a3.003 3.003 0 0 0 2.11 2.108C4.47 20.5 12 20.5 12 20.5s7.53 0 9.388-.555a3.003 3.003 0 0 0 2.11-2.108C24 15.977 24 12 24 12s0-3.977-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
