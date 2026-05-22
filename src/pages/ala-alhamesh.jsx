@@ -1,40 +1,335 @@
+import { useMemo, useState } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 
 export default function AlaAlhameshPage() {
+    // تحديد التقرير النشط حالياً للعرض (يبدأ بالتقرير الأول)
+    const [activeReport, setActiveReport] = useState(1);
+    const [query, setQuery] = useState('');
+
+    // قاعدة بيانات التقارير السبعة كاملة المحتوى والتأليف الصحفي المعمق
+    const reportsData = {
+        1: {
+            title: "إنجاب البنات: موروث ثقافي في مواجهة الحقيقة البيولوجية والدينية",
+            tag: "الموروث والنوع",
+            icon: "🤰",
+            intro: "في عدد من المجتمعات، لا يزال إنجاب البنات يثير تساؤلات وضغوطًا تتجاوز حدود الأسرة لتصل إلى نظرة مجتمعية كاملة. وبين همسات اللوم ونظرات الشفقة أحيانًا، تجد بعض الأسر نفسها في مواجهة حكم غير معلن: “الولد سند.. والبنت عبء”. هذا التحقيق يرصد أبعاد الظاهرة، ويفكك جذورها التاريخية والدينية، ويطرح سؤالًا جوهريًا: هل رفض إنجاب البنات قائم على أساس حقيقي، أم أنه مجرد إرث ثقافي يحتاج إلى مراجعة؟",
+            sections: [
+                { subtitle: "جذور تاريخية لا تزال حاضرة", text: "تشير الدراسات الاجتماعية إلى أن تفضيل الذكور ليس ظاهرة حديثة، بل يمتد إلى عصور قديمة ارتبطت فيها قيمة الفرد بقدرته على العمل والحماية. في تلك الفترات، اعتُبر الذكر مصدر قوة، بينما نُظر إلى الأنثى كعبء اقتصادي. ورغم تغير السياقات الاقتصادية والاجتماعية، لا تزال بعض هذه التصورات تجد طريقها إلى الحاضر، متخفية في عادات وتقاليد يصعب التخلص منها." },
+                { subtitle: "الدين يحسم الجدل", text: "على خلاف ما يعتقد البعض، لا يدعم الدين أي تمييز بين الذكور والإناث. بل على العكس، يرفع من مكانة البنات ويحث على الإحسان إليهن. ويؤكد علماء الدين أن رفض إنجاب البنات أو الحزن لوجودهن يتنافى مع جوهر القيم الدينية، التي ترى في الأبناء — ذكورًا وإناثًا — نعمة تستوجب الشكر لا التمييز." },
+                { subtitle: "ضغوط المجتمع… أحكام غير مكتوبة", text: "في جولات ميدانية وآراء رُصدت، تقول بعض الأمهات إنهن يتعرضن لتعليقات مستمرة بسبب إنجاب البنات فقط، تتراوح بين “متى يأتي الولد؟” إلى اقتراحات بالزواج الثاني. هذه الضغوط، وإن بدت عابرة، تحمل تأثيرًا عميقًا على استقرار الأسرة، وتضع المرأة في دائرة لوم لا علاقة لها به." },
+                { subtitle: "ثقافة “الولد سند” وتآكلها التدريجي", text: "يرى مختصون أن فكرة تفضيل الذكور ترتبط بثقافة متجذرة تعتبر الرجل المسؤول الأول عن إعالة الأسرة وحمل اسمها. في المقابل، تُختزل أدوار المرأة في أطر تقليدية، ما يعزز الاعتقاد بأن وجود الذكر ضرورة اجتماعية. لكن هذه الفكرة تتآكل تدريجيًا مع تغير أدوار النساء في سوق العمل والمجتمع." },
+                { subtitle: "كلفة نفسية صامتة تعاني منها الأمهات", text: "لا تقف آثار هذه النظرة عند حدود الكلام، بل تمتد إلى الصحة النفسية. تشير شهادات إلى أن بعض النساء يعانين من القلق والشعور بالذنب بعد إنجاب البنات، رغم أن تحديد نوع الجنين أمر بيولوجي خارج عن إرادتهن. هذا الضغط قد ينعكس سلبًا على العلاقة الزوجية وعلى تربية الأطفال." },
+                { subtitle: "الإعلام والتعليم… أدوات التغيير الحقيقية", text: "يلعب الإعلام دورًا متزايدًا في كسر الصورة النمطية، من خلال إبراز نماذج نسائية ناجحة في مختلف المجالات. كما يسهم التعليم في إعادة تشكيل الوعي، عبر ترسيخ قيم المساواة واحترام الإنسان بغض النظر عن جنسه. ويرى خبراء أن التغيير الحقيقي يبدأ من المدرسة والأسرة معًا." },
+                { subtitle: "نماذج حية تكسر القاعدة وتصنع الفارق", text: "في مقابل هذه الصورة، تظهر قصص نجاح لنساء استطعن تحقيق إنجازات لافتة، ليصبحن مصدر فخر لعائلاتهن. هذه النماذج لا تمثل استثناءً بقدر ما تعكس واقعًا جديدًا، تتراجع فيه الفوارق القائمة على النوع، لصالح الكفاءة والقدرة." }
+            ],
+            conclusion: "يبقى السؤال: هل المشكلة في إنجاب البنات، أم في نظرتنا إليهن؟ ما يكشفه هذا التحقيق أن الرفض ليس دينيًا ولا منطقيًا، بل هو انعكاس لموروث اجتماعي قابل للتغيير. وبين الماضي والحاضر، تقف المجتمعات أمام اختبار حقيقي: إما الاستمرار في إعادة إنتاج نفس الأفكار، أو تبني رؤية أكثر عدلًا وإنصافًا، تعيد الاعتبار لقيمة الإنسان بعيدًا عن أي تمييز.",
+            sources: ["تقارير ديموغرافية واجتماعية حول موروثات النوع الاجتماعي في الشرق الأوسط.", "فتاوى وندوات مجمع البحوث الإسلامية بشأن تكريم المرأة والإناث."]
+        },
+        2: {
+            title: "أمهات بلا أمومة: غياب العاطفة القسري والاحتراق الداخلي",
+            tag: "الاضطراب الصامت",
+            icon: "🥀",
+            intro: "يفترض المجتمع كليشيهًا ثابتًا: كل امرأة تلد هي بالضرورة ممتلئة بغريزة أمومة جياشة فورية. هذا التقرير يكسر الصمت حول 'اكتئاب ما بعد الولادة الحاد' والصدمات النفسية التي تجعل بعض النساء أمهات بيولوجيات لكنهن يعشن حالة اغتراب وجداني كامل وجفاف عاطفي قسري تجاه أطفالهن، تحت وطأة الإحساس بالذنب والرعب من النبذ الاجتماعي.",
+            sections: [
+                { subtitle: "وهم الغريزة الفورية والواقع البيولوجي الصادم", text: "يؤكد الأطباء النفسيون أن الأمومة رحلة تُبنى بالتدريج وليست زراً سحرياً يُضغط عقب الولادة. التغيرات الهرمونية الحادة ونقص النوم وجرح العمليات يجعل الأم في مواجهة وهن جسدي يمنعها من إبداء مشاعر الفرح، مما يصدم توقعات الأسرة." },
+                { subtitle: "الجلد المجتمعي الصامت وشعور الذنب القاتل", text: "عندما تلمح الأم لعدم قدرتها على التفاعل مع رضيعها، تواجه باتهامات بالقسوة أو ضعف الإيمان. هذا النقد يدفعها للاختباء والكتمان، لتتحول الأمومة من مساحة حب إلى زنزانة من الواجبات الثقيلة الخالية من الروح." },
+                { subtitle: "رأي الطب النفسي (د. منال عمر)", text: "صرحت د. منال عمر أن غياب مشاعر الأمومة المؤقت أو الطويل هو عرض مرضي صريح لـ 'ذهان واكتئاب ما بعد الولادة'، ويحتاج إلى علاج دوائي وجلسات دعم مكثفة دون إلقاء اللوم الأخلاقي على الأم التي تعد ضحية لا جانية." }
+            ],
+            conclusion: "الاعتراف بمعاناة الأمهات النفسية هو الخطوة الأولى لحمايتهن وحماية أطفالهن. الأمومة تحتاج إلى رعاية حقيقية للأم أولاً لتستطيع تقديمها لطفلها.",
+            sources: ["جمعية الطب النفسي المصرية - تقارير حول الصحة النفسية للمرأة وصدمات الرعاية.", "شهادات ميدانية مسجلة لأمهات عانين من اضطرابات الاغتراب الوالدي الحاد."]
+        },
+        3: {
+            title: "أم المعاق: المعركة اليومية في مواجهة مجتمع غير مهيأ",
+            tag: "صمود وتحدي",
+            icon: "♿",
+            intro: "خلف الأبواب المغلقة، تخوض آلاف الأمهات اللواتي رُزقن بأطفال من ذوي الاحتياجات الخاصة معارك ضارية لا تنتهي. لا تقتصر الأزمة على العبء الجسدي والمادي للرعاية والتأهيل، بل تمتد إلى مواجهة نظرات الشفقة والرفض أو غياب البنية التحتية المهيأة لدمج أبنائهن.",
+            sections: [
+                { subtitle: "العزلة الاجتماعية والانسحاب من الحياة", text: "تجد أم الطفل المعاق نفسها مجبرة على التخلي عن وظيفتها وحياتها الاجتماعية لتتحول إلى مرافق دائم على مدار الساعة. تضيق مساحتها الشخصية وتصبح طموحاتها مؤجلة لأجل غير مسمى في ظل غياب مراكز رعاية حكومية مجانية وموثوقة." },
+                { subtitle: "التنمر ونظرة المجتمع القاصرة", text: "تواجه هؤلاء النساء في الشوارع والمدارس عبء التعليقات الجارحة أو نظرات الشفقة التي تكسر كبرياء الطفل والأم. المجتمع يرى الإعاقة أحياناً كعقوبة أو مأساة مطلقة، متناسين حق الطفل الدستوري والإنساني في الدمج التام." },
+                { subtitle: "غياب الدعم النفسي للأم كشريك أساسي", text: "يركز الجميع على تأهيل الطفل، بينما تترك الأم لتواجه التوتر الشديد، والاحتراق النفسي، والقلق الدائم حول مستقبل الابن بعد رحيلها. تحتاج هذه الفئة إلى برامج دعم نفسي حكومية ومجتمعية إلزامية." }
+            ],
+            conclusion: "أم المعاق ليست بطلة خارقة بالضرورة؛ هي إنسانة تتحمل فوق طاقتها، ودعمها ليس منة من أحد، بل هو واجب تشريعي وإنساني متكامل.",
+            sources: ["المجلس القومي لشؤون الإعاقة - دراسات مسحية حول أسر ذوي الهمم.", "جلسات استماع وتقارير حقوقية من الجمعيات الأهلية لتأهيل الأطفال."]
+        },
+        4: {
+            title: "محو أمية المرأة: كسر قيود الجهل لاستعادة الاستقلال والكرامة",
+            tag: "التنمية والوعي",
+            icon: "📚",
+            intro: "الأمية بين النساء ليست مجرد عجز عن القراءة والكتابة، بل هي جدار عازل يمنعهن من معرفة حقوقهن القانونية، والطبية، والاقتصادية. هذا التقرير يوثق قصص نساء تحدين ظروف السن والفقر والعادات والتقاليد، ليفتحن الدفاتر ويبدأن خط أولى الكلمات نحو الحرية.",
+            sections: [
+                { subtitle: "الأمية كأداة لفرض السيطرة والتهميش", text: "في كثير من القرى والبيئات الشعبية، يمارس الجهل قيداً إضافياً على المرأة؛ فلا تستطيع قراءة أوراقها الثبوتية، أو نسب أطفالها، أو روشتة علاجها، مما يجعلها تابعة ومستسلمة بشكل كامل لقرارات المحيطين بها." },
+                { heading: "فصول النور: التحدي خلف المقاعد الخشبية", text: "تروي السيدات في فصول محو الأمية كيف تبدلت حياتهن بعد معرفة الحروف؛ فمنهن من استطاعت إقامة مشروع تجاري صغير دون الخوف من التعرض للاحتيال، ومنهن من استعادت ثقتها بنفسها أمام أطفالها." },
+                { subtitle: "أثر تعليم المرأة على نهضة المجتمع الاقتصادي", text: "تؤكد إحصاءات التنمية أن محو أمية المرأة الواحدة يساهم بصورة مباشرة في خفض معدلات الفقر والمرض لدى الأسرة بأكملها بنسبة تتجاوز 40%، فالمرأة المتعلمة هي صمام أمان صحي وتعليمي لأبنائها." }
+            ],
+            conclusion: "الاستثمار في تعليم النساء وتطهير المجتمع من الأمية الهجائية والمعرفية هو حجر الأساس لأي تمكّين حقيقي للمرأة على أرض الواقع.",
+            sources: ["الهيئة العامة لمحو الأمية وتعليم الكبار - إحصاءات تمكين المرأة ريفياً.", "تقارير منظمة اليونسكو حول تعليم الفتيات والنساء في العالم العربي 2025/2026."]
+        },
+        5: {
+            title: "استغلال فقر المرأة: تجارة الحاجة وسقوط الضمانات الإنسانية",
+            tag: "الاستغلال الاقتصادي",
+            icon: "💸",
+            intro: "عندما تتقاطع وطأة الحاجة مع غياب المعيل، تصبح المرأة الفقيرة الهدف الأسهل لشبكات الاستغلال الاقتصادي والاجتماعي. يتناول هذا التقرير ظاهرة إجبار النساء على توقيع إيصالات أمانة على بياض (الغارمات)، أو العمل في ظروف قاسية وغير عادلة دون غطاء تأميني أو حقوق قانونية.",
+            sections: [
+                { subtitle: "مأساة الغارمات ودمار الأسر", text: "من أجل شراء جهاز ابنة أو سداد ثمن علاج، تقع النساء في فخ القروض الاستهلاكية الصغيرة بفوائد فاحشة، وتجبر على توقيع أوراق تقودهن مباشرة إلى السجون، ليتحول الفقر من أزمة مادية إلى قضية جنائية تقضي على مستقبل الأسرة." },
+                { subtitle: "العمالة غير المنتظمة وهدر الحقوق الجسدية", text: "تعمل ملايين النساء في قطاعات الزراعة، الخدمة المنزلية، والمصانع غير الرسمية لساعات طوال وبأجور زهيدة جداً لا تفي بالحد الأدنى للمعيشة، مع تعرضهن الدائم للمخاطر الصحية والإهانات اللفظية دون رادع." },
+                { subtitle: "رأي القانون والمؤسسات التشريعية", text: "صرح خبراء حقوقيون بالمركز المصري لحقوق المرأة أن مواجهة استغلال فقر النساء تتطلب تعديلات قانونية صارمة تجرم توقيع الإيصالات على بياض في المعاملات المدنية، وتوفر شبكة أمان اجتماعي تكافلية حقيقية مستدامة." }
+            ],
+            conclusion: "حماية المرأة من الاستغلال يبدأ من سد منافذ العوز عبر مشروعات صغيرة مستدامة حقيقية، وليس عبر الاكتفاء بالحلول الإحسانية المؤقتة.",
+            sources: ["سجلات مصلحة السجون والمؤسسات الحقوقية المعنية بقضايا الغارمات.", "تقارير منظمة العمل الدولية حول شروط عمل النساء في القطاعات غير الرسمية."]
+        },
+        6: {
+            title: "عنف الرجل ضد المرأة: الأثر النفسي والجسدي والآليات التشريعية المفقودة",
+            tag: "الحماية المفقودة",
+            icon: "🚨",
+            intro: "يظل العنف الأسري والجسدي ضد المرأة جرحاً غائراً في جسد المجتمع، يختبئ غالباً وراء جدران الخوف والتقاليد التي تدعو المرأة لـ 'الصبر والتحمل لحماية بيتها'. يكشف هذا التحقيق الاستقصائي الأبعاد المدمرة للعنف اللفظي والجسدي وغياب النصوص القانونية الرادعة الحامية.",
+            sections: [
+                { subtitle: "دورة العنف والتدمير النفسي الممنهج", text: "يبدأ العنف غالباً بالإهانة اللفظية والتقليل، ثم يتطور إلى اعتداء جسدي مبرح يترك ندوباً لا تختفي. تعيش المرأة المعنّفة حالة رعب دائم وترقب مستمر (اضطراب ما بعد الصدمة)، مما يفقدها القدرة على رعاية أبنائها أو ممارسة حياتها." },
+                { subtitle: "المبررات الثقافية المغلوطة وتواطؤ المحيطين", text: "تواجه المرأة المعنّفة عند الشكوى بعبارات تبريرية مثل 'الرجل عندما يغضب يجب استيعابه'، مما يشرعن السلوك العدواني للرجل ويجعل المرأة تشعر بالعزلة المطلقة وأنه لا مفر من مصيرها الأسود إلا بتحمل الأذى." },
+                { subtitle: "المطالبات التشريعية بقانون موحد لمناهضة العنف", text: "تطالب الحركات النسائية والحقوقية في مصر والدول العربية بضرورة إقرار قانون موحد وصارم يجرم العنف الأسري بكل أشكاله، وينشئ دور رعاية مجهزة وآمنة تستقبل النساء المعنفات وأطفالهن وتوفر لهن الدعم القانوني والنفسي الكامل." }
+            ],
+            conclusion: "العنف ضد المرأة ليس شأناً عائلياً خاصاً، بل هو جريمة تهدد السلم المجتمعي بأكمله، والسكوت عنه ينتج أجيالاً مشوهة نفسياً وسلوكياً.",
+            sources: ["إحصاءات المجلس القومي للمرأة حول معدلات العنف الأسري.", "دفاتر واستمارات الجمعيات الأهلية ومراكز الاستضافة القانونية للنساء."]
+        },
+        7: {
+            title: "المرأة المعيلة: القيادة الفردية في مهب الأزمات الاقتصادية",
+            tag: "سند الدار",
+            icon: "💪",
+            intro: "طبقاً للإحصاءات الرسمية، تعيل النساء ما يقارب ثلث الأسر المصرية والعربية. المرأة المعيلة هي الأرملة، المطلقة، أو زوجة المريض والعاجز؛ وهي تقف وحيدة تماماً كحائط صد أخير لحماية أطفالها من التشرد والجوع، حاملة فوق كاهلها أعباء الأب والأم معاً.",
+            sections: [
+                { subtitle: "الصراع اليومي بين لقمة العيش وتربية الأبناء", text: "تستيقظ المرأة المعيلة في الفجر لتكسب قوت يومها من بيع البضائع البسيطة أو العمل في مهن شاقة. تقضي يومها في توازن حرج ومؤلم بين كسب المال لتدبير الإيجار ومصاريف المدارس، وبين غيابها الاضطراري عن المنزل لمراقبة سلوك أطفالها." },
+                { subtitle: "التمييز الفج في الأجور ومحدودية الفرص", text: "رغم الكفاءة والجهد المضاعف، تعاني المرأة المعيلة من تمييز واضح في الأجور في القطاعات الحرة مقارنة بالرجال، كما تصطدم بغياب القروض الميسرة التي تمكنها من تكبير تجارتها أو مشروعها الصغير دون شروط معقدة." },
+                { subtitle: "أهمية الدعم المؤسسي المستدام والتأمين الصحي", text: "تفتقر الغالبية العظمى من النساء المعيلات لغطاء تأميني وصحي يحميهن في حال المرض؛ فمرض المرأة المعيلة يعني توقف دخل الأسرة كاملاً. من هنا تنبع المطالبات بضم هذه الفئة إلى مظلات تأمينية شاملة ومعاشات كريمة تضمن صون كرامتهن." }
+            ],
+            conclusion: "المرأة المعيلة هي العمود الفقري الحقيقي للاقتصاد غير الرسمي، ودعمها وتسهيل مسارها المهني هو استثمار مباشر في حماية أطفال المجتمع وصناعة مستقبلهم.",
+            sources: ["الجهاز المركزي للتعبئة العامة والإحصاء - النشرة السنوية للمرأة المعيلة.", "بحوث ميدانية لوزارة التضامن الاجتماعي حول برامج الدعم النقدي المشروط."]
+        }
+    };
+
+    const currentReport = reportsData[activeReport];
+    const reportTags = useMemo(() => ['الكل', ...new Set(Object.values(reportsData).map((report) => report.tag))], [])
+    const filteredReports = Object.entries(reportsData).filter(([, report]) => {
+        const q = query.trim().toLowerCase()
+        if (!q) return true
+        return (report.title + ' ' + report.intro + ' ' + report.conclusion + ' ' + report.tag).toLowerCase().includes(q)
+    })
+
+    const sectionCount = currentReport.sections.length
+    const reportPosition = Object.keys(reportsData).indexOf(String(activeReport)) + 1
+
     return (
-        <div className="relative min-h-screen overflow-hidden bg-brand-offwhite" dir="rtl">
+        <div className="relative min-h-screen bg-slate-50 text-slate-800 overflow-hidden" dir="rtl">
             <BackgroundSVG />
             <NavBar />
-            <main className="relative z-10 mx-auto w-full max-w-5xl px-4 pb-16 sm:px-8">
-                <article className="glass-card p-6 sm:p-12">
-                    <div className="mb-8 flex justify-center">
-                        <span className="badge-soft">التقارير</span>
+            
+            <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
+                <section className="relative mb-10 overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.26),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.16),transparent_28%)]"></div>
+                    <div className="relative p-8 sm:p-12">
+                        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+                            <div className="max-w-3xl text-right">
+                                <span className="inline-flex rounded-full bg-brand-accent/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">
+                                    ملفات على الهامش
+                                </span>
+                                <h1 className="mt-5 text-4xl font-black tracking-tight text-brand-ink sm:text-5xl">
+                                    قصص نساء غير مرئيات
+                                </h1>
+                                <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+                                    ملفات صحفية استقصائية تعالج قضايا ومآسي حقيقية تعيشها النساء على الهامش بمهنية عالية، وتسلط الضوء على التحديات الاجتماعية والاقتصادية العميقة التي تواجههن.
+                                </p>
+                                <div className="mt-6 flex flex-wrap gap-3">
+                                    <span className="rounded-full bg-brand-ink px-4 py-2 text-xs font-bold text-white shadow-sm">
+                                        {Object.keys(reportsData).length} تحقيقات موثقة
+                                    </span>
+                                    <span className="rounded-full bg-white px-4 py-2 text-xs font-bold text-brand-inkMuted shadow-sm border border-slate-200">
+                                        {sectionCount} محاور داخل التقرير
+                                    </span>
+                                    <span className="rounded-full bg-brand-secondary/10 px-4 py-2 text-xs font-bold text-brand-secondary shadow-sm">
+                                        الآن: التقرير {reportPosition}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div className="grid gap-3 sm:grid-cols-3 lg:w-[420px]">
+                                <div className="rounded-2xl border border-slate-100 bg-white/85 p-4 shadow-sm backdrop-blur-sm">
+                                    <div className="text-xl font-black text-brand-ink">7</div>
+                                    <div className="mt-1 text-xs font-bold text-brand-secondary">قضايا استقصائية حرجة</div>
+                                </div>
+                                <div className="rounded-2xl border border-slate-100 bg-white/85 p-4 shadow-sm backdrop-blur-sm">
+                                    <div className="text-xl font-black text-brand-ink">شهادات</div>
+                                    <div className="mt-1 text-xs font-bold text-brand-secondary">واقعية من قلب التهميش</div>
+                                </div>
+                                <div className="rounded-2xl border border-slate-100 bg-white/85 p-4 shadow-sm backdrop-blur-sm">
+                                    <div className="text-xl font-black text-brand-ink">توثيق</div>
+                                    <div className="mt-1 text-xs font-bold text-brand-secondary">بآراء الخبراء والمصادر</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+                            <label className="relative block">
+                                <input
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    placeholder="ابحثي في العناوين أو الخلاصة..."
+                                    className="w-full rounded-2xl border border-slate-200 bg-white py-3 pr-12 pl-4 text-right text-sm text-slate-700 outline-none transition focus:border-brand-accent focus:ring-4 focus:ring-brand-accent/10"
+                                />
+                            </label>
+
+                            <div className="flex flex-wrap items-center justify-start gap-2 lg:justify-end">
+                                {reportTags.map((tag) => (
+                                    <span
+                                        key={tag}
+                                        className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-brand-inkMuted shadow-sm"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <h1 className="mb-8 text-center text-4xl font-black text-brand-ink sm:text-6xl tracking-tight">التقارير الصحفية</h1>
-                    <div className="prose prose-purple max-w-none">
-                        <p className="text-xl leading-relaxed text-brand-inkMuted text-center font-medium">
-                            خمسة عشر تقريراً صحفياً يعالج قضايا المرأة بمهنية عالية، ويركز على التحديات الاجتماعية والاقتصادية التي تواجهها في حياتها اليومية.
-                        </p>
-                    </div>
+                </section>
+
+                {/* الهيكل التفاعلي المتطور لعرض الدوسيهات الصحفية (Sidebar + Main Dossier Layer) */}
+                <div className="flex flex-col lg:flex-row gap-8 items-start">
                     
-                    <div className="mt-12 grid gap-6 md:grid-cols-3">
-                        <div className="rounded-2xl border border-brand-surface/70 bg-brand-surface p-6">
-                            <div className="text-3xl font-black text-brand-ink mb-2">١٥</div>
-                            <div className="text-sm font-bold text-brand-secondary">تقريراً معمقاً</div>
+                    {/* القائمة الجانبية: عناوين التقارير السبعة للتنقل السريع */}
+                    <nav className="w-full lg:w-1/3 bg-white/95 border border-slate-100 rounded-[2rem] p-6 shadow-sm space-y-2 sticky top-6 backdrop-blur-sm">
+                        <div className="mb-4 flex items-center justify-between gap-4 px-3">
+                            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.25em]">فهرس التقارير</h3>
+                            <span className="rounded-full bg-brand-ink/5 px-3 py-1 text-xs font-bold text-brand-ink">{filteredReports.length} نتائج</span>
                         </div>
-                        <div className="rounded-2xl border border-brand-surface/70 bg-brand-surface p-6">
-                            <div className="text-3xl font-black text-brand-ink mb-2">تنوع</div>
-                            <div className="text-sm font-bold text-brand-secondary">في القضايا المطروحة</div>
+                        {filteredReports.length === 0 && (
+                            <div className="mx-3 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-5 text-center">
+                                <p className="text-sm font-bold text-brand-ink">لا توجد تقارير تطابق البحث</p>
+                                <p className="mt-1 text-xs leading-6 text-slate-500">جرّبي كلمات أبسط أو امسحي البحث للعودة إلى الفهرس الكامل.</p>
+                            </div>
+                        )}
+                        {filteredReports.map(([id, rep]) => {
+                            const isSelected = activeReport === Number(id);
+                            return (
+                                <button
+                                    key={id}
+                                    onClick={() => setActiveReport(Number(id))}
+                                    className={`w-full text-right p-4 rounded-xl flex items-center gap-4 transition-all duration-200 ${
+                                        isSelected 
+                                        ? 'bg-brand-ink text-white font-bold shadow-md shadow-brand-ink/10 scale-[1.01] ring-2 ring-brand-accent/20' 
+                                        : 'bg-slate-50 hover:bg-slate-100 text-slate-700 font-medium border border-transparent hover:border-slate-200'
+                                    }`}
+                                >
+                                    <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm ${isSelected ? 'bg-white/10 text-brand-accent' : 'bg-white text-slate-400'}`}>
+                                        {id}
+                                    </span>
+                                    <span className="text-sm flex-1 truncate">
+                                        <span className="block text-[11px] uppercase tracking-[0.2em] opacity-70">{rep.tag}</span>
+                                        <span className="block mt-0.5">{rep.title.split(":")[0]}</span>
+                                    </span>
+                                    <span className="text-lg">{rep.icon}</span>
+                                </button>
+                            );
+                        })}
+                    </nav>
+
+                    {/* مساحة العرض الرئيسية: تفاصيل الدوسيه الصحفي النشط */}
+                    <article className="w-full lg:w-2/3 bg-white border border-slate-100 rounded-[2.5rem] p-8 sm:p-12 shadow-sm space-y-10 min-h-[600px] animate-fadeIn relative overflow-hidden">
+                        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-ink opacity-80"></div>
+                        
+                        {/* رأس التقرير الحالي */}
+                        <header className="space-y-4 border-b border-slate-100 pb-6">
+                            <div className="flex flex-wrap items-center gap-3">
+                                <span className="bg-brand-secondary/10 text-brand-secondary text-xs font-bold px-3 py-1 rounded-full">
+                                    {currentReport.tag}
+                                </span>
+                                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-500">
+                                    محور {activeReport} من {Object.keys(reportsData).length}
+                                </span>
+                                <span className="rounded-full bg-brand-accent/10 px-3 py-1 text-xs font-bold text-brand-accent">
+                                    {sectionCount} محاور
+                                </span>
+                            </div>
+                            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                                <h2 className="text-3xl font-black text-brand-ink leading-tight max-w-3xl">
+                                    {currentReport.title}
+                                </h2>
+                                <div className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right min-w-[180px]">
+                                    <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">زمن القراءة التقريبي</div>
+                                    <div className="mt-1 text-lg font-black text-brand-ink">5-7 دقائق</div>
+                                </div>
+                            </div>
+                            <div className="w-24 h-1 bg-brand-secondary rounded-full"></div>
+                        </header>
+
+                        {/* قسم المقدمة التمهيدية العميقة */}
+                        <div className="bg-slate-50 p-6 sm:p-8 rounded-2xl border-r-4 border-brand-accent shadow-2xs">
+                            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-bold text-brand-secondary shadow-sm">
+                                <span>✦</span>
+                                مقدمة تحريرية مركزة
+                            </div>
+                            <p className="text-base sm:text-lg font-medium text-slate-700 leading-relaxed text-justify whitespace-pre-line">
+                                {currentReport.intro}
+                            </p>
                         </div>
-                        <div className="rounded-2xl border border-brand-surface/70 bg-brand-surface p-6">
-                            <div className="text-3xl font-black text-brand-ink mb-2">مهنية</div>
-                            <div className="text-sm font-bold text-brand-secondary">صحفية عالية</div>
+
+                        {/* المحاور والتحليلات الداخلية المكتوبة */}
+                        <div className="rounded-3xl border border-slate-100 bg-slate-50/80 p-4 sm:p-6">
+                            <div className="mb-4 flex items-center justify-between">
+                                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">فهرس سريع للمحاور</h4>
+                                <span className="text-xs font-bold text-brand-secondary">اقرئي بالترتيب</span>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {currentReport.sections.map((sec, idx) => (
+                                    <a
+                                        key={idx}
+                                        href={`#report-section-${idx}`}
+                                        className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-brand-inkMuted shadow-sm transition hover:bg-brand-accent hover:text-white"
+                                    >
+                                        {String(idx + 1).padStart(2, '0')}. {sec.subtitle || sec.heading}
+                                    </a>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </article>
+
+                        <div className="space-y-8">
+                            {currentReport.sections.map((sec, idx) => (
+                                <div key={idx} id={`report-section-${idx}`} className="space-y-3 border-b border-slate-50 pb-6 last:border-0 scroll-mt-24">
+                                    <h4 className="text-lg font-bold text-brand-ink flex items-center gap-2.5">
+                                        <span className="w-2 h-2 rounded-full bg-brand-secondary"></span>
+                                        {sec.subtitle || sec.heading}
+                                    </h4>
+                                    <p className="text-slate-600 leading-relaxed text-justify text-base whitespace-pre-line">
+                                        {sec.text}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* خلاصة واستنتاج المحرر الاستقصائي */}
+                        <div className="bg-brand-ink text-white p-8 rounded-2xl space-y-3 shadow-sm relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-2 h-full bg-brand-accent"></div>
+                            <h5 className="text-brand-accent font-bold text-xs uppercase tracking-wider">الخلاصة التقريرية لـ كحكة</h5>
+                            <p className="text-slate-200 leading-relaxed text-justify text-base font-medium">
+                                {currentReport.conclusion}
+                            </p>
+                        </div>
+
+                        {/* المصادر والمراجع الميدانية للتقرير الحالي */}
+                        {currentReport.sources && (
+                            <div className="pt-6 border-t border-slate-100">
+                                <h6 className="text-xs font-bold text-slate-400 mb-3">المصادر والتوثيقات الميدانية:</h6>
+                                <ul className="list-disc list-inside text-xs text-slate-400 space-y-1">
+                                    {currentReport.sources.map((src, sIdx) => (
+                                        <li key={sIdx}>{src}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                        
+                    </article>
+
+                </div>
             </main>
+            
             <Footer />
         </div>
     )
