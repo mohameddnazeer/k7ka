@@ -7,42 +7,42 @@ const heroSlides = [
         title: 'كحكة.. شغل وبيت وحياة',
         subtitle: 'كحكة هي تلك اللحظة التي تلم فيها المرأة شتات يومها لتبدأ رحلتها.. نحن هنا لتوثيق هذه الرحلة، بكل ما فيها من تحديات العمل، دفء البيت، وتفاصيل الحياة التي لا يراها الجميع.',
         image: '/imgs/carousel/Eradicating-female-illiteracy.jpeg',
-        to: '/sawtoha-masmoua',
+        to: '/',
         badge: 'مواجهة الأمية لتمكين المرأة'
     },
     {
         title: 'عام الأمومة الأول والتحولات',
         subtitle: 'بين دفء الصغير الملتصق بالقلب وضغوط المهام اليومية المعقدة خلف الجدران المغلقة.',
         image: '/imgs/carousel/First-year-of-motherhood.jpeg',
-        to: '/hikayat-settat',
+        to: '/sana-ola-omoma',
         badge: 'قصص وحكايات حية'
     },
     {
         title: 'دوامة الأعمال المنزلية الرتيبة',
         subtitle: 'المجهود الخفي غير المرئي لإبقاء تفاصيل الحياة متزنة ومنظمة ومستمرة كل يوم بسلام.',
         image: '/imgs/carousel/house-cleaning-routine.jpeg',
-        to: '/gowa-alkahka',
+        to: '/',
         badge: 'المجهود المنزلي الخفي'
     },
     {
         title: 'صراعات الرحلة اليومية للمواصلات',
         subtitle: 'المعاناة الصامتة للمرأة في الفضاءات العامة والمواصلات بحثاً عن مساحة آمنة ومريحة للوصول.',
         image: '/imgs/carousel/suffering-of-women-on-public-transportation.jpeg',
-        to: '/ala-alhamesh',
+        to: '/',
         badge: 'الفضاء العام والآمن'
     },
     {
         title: 'بطلات خارقات خلف الأبواب المغلقة',
         subtitle: 'أمهات ذوي الهمم.. عطاء استثنائي مستمر ومقدس يصنع المعجزات اليومية دون أي صخب إعلامي.',
         image: '/imgs/carousel/The-mother-of-the-disabled-a-superhero-no-one-sees.jpeg',
-        to: '/kalam-qanun',
+        to: '/',
         badge: 'أمهات استثنائيات'
     },
     {
         title: 'معايير الجمال والهوس العصري',
         subtitle: 'تفكيك شامل وجريء لكافة الضغوط البصرية المفروضة مجتمعياً على ملامح المرأة وهويتها الطبيعية.',
         image: '/imgs/carousel/Women-obsession-with-beauty.jpeg',
-        to: '/bara-alkahka',
+        to: '/',
         badge: 'تفكيك الصور النمطية'
     }
 ]
