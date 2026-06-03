@@ -1,402 +1,2328 @@
-import { Link } from 'react-router-dom'
-import { useState, Fragment } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import BackgroundSVG from '../components/BackgroundSVG'
-import HeroHeader from '../components/HeroHeader'
+import { Link, useLocation } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 
-const topicCards = [
-    {
-        title: 'التحقيقات',
-        to: '/sawtoha-masmoua',
-        text: 'إجراء تحقيقات ميدانية توسيع شبكة المصادر والاعتماد على الشهادات الحية وتجارب النساء الواقعية.',
-        image: '/imgs/3.png',
-        span: 'md:col-span-2'
-    },
-    {
-        title: 'بودكاست',
-        to: '/gowa-alkahka',
-        text: 'مساحة صوتية لاستقبال قضايا الجمهور وإشراك المتابعات في اقتراح الموضوعات.',
-        image: '/imgs/5.png',
-        span: 'md:col-span-1'
-    },
-    {
-        title: 'التقارير',
-        to: '/ala-alhamesh',
-        text: 'خمسة عشر تقريراً صحفياً يعالج قضايا المرأة بمهنية عالية.',
-        image: '/imgs/1.png',
-        span: 'md:col-span-1'
-    },
-    {
-        title: 'الحوارات',
-        to: '/hikayat-settat',
-        text: 'خمسة حوارات معمقة تعبر عن صوت المرأة بعيداً عن التنميط.',
-        image: '/imgs/2.png',
-        span: 'md:col-span-1'
-    },
-    {
-        title: 'كلام قانون',
-        to: '/kalam-qanun',
-        text: 'دعم تمكين المرأة إعلامياً وقانونياً وتعزيز الوعي بحقوقها.',
-        image: '/imgs/6.png',
-        span: 'md:col-span-1'
-    },
-    {
-        title: 'الخطة المستقبلية',
-        to: '/bara-alkahka',
-        text: 'تطوير خطة النشر وفتح قنوات تواصل مباشرة وبروتوكول تعاون مع مؤسسة قضايا المرأة المصرية.',
-        image: '/imgs/4.png',
-        span: 'md:col-span-2' // Fixed alignment span to compress layout footprint
-    },
-]
 
-const carouselCards = [
+const articles = [
     {
-        title: 'دليل البداية السريعة',
-        text: 'ابدئي من المسار الذي يناسبك: قانوني، نفسي، أو اجتماعي في خطوات واضحة.',
-        to: '/kalam-qanun',
+        id: 1,
+        title: "الولاية التعليمية للأم وحماية الأبناء بعد الانفصال: معركة الحقوق المفقودة",
+        subtitle: "القانون المصري يمنح الحاضن الولاية التعليمية بقوة القانون لمنع استخدام التعليم كورقة ضغط بين الطرفين.",
+        category: "كلام قانون",
+        author: "أماني الرفاعي",
+        date: "٢ يونيو ٢٠٢٦",
+        time: "١٠:١٥ ص",
+        views: 12450,
+        likes: 520,
+        image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg",
+        to: "/kalam-qanun",
+        content: [
+            { heading: "ما هي الولاية التعليمية؟", text: "هي السلطة القانونية التي تمنح صاحبها الحق في التقديم للأطفال في المدارس، أو نقل ملفاتهم، أو اختيار نوع التعليم المناسب لهم. الهدف الأساسي منها هو حماية مصلحة الطفل الفضلى ومنع استخدام التعليم كوسيلة للضغط بين الطرفين." },
+            { heading: "لمن يثبت هذا الحق؟", text: "وفقا للكتاب الدوري رقم 1 لسنة 2008، الولاية التعليمية تثبت للحاضن (الأم غالبا) طوال فترة الحضانة، ولا تحتاج الأم لرفع دعوى قضائية بمجرد تقديم وثيقة الطلاق للمدرسة أو الإدارة التعليمية." },
+            { heading: "موقف القضاء في النزاعات المستعجلة", text: "في حالة وجود نزاع قضائي أو انفصال دون طلاق رسمي، يمكن للأم استصدار أمر وقتي من قاضي الأمور المستعجلة بمحكمة الأسرة للحصول على الولاية التعليمية بشكل عاجل لضمان استمرار تعليم الأبناء." }
+        ],
+        comments: [
+            { user: "منار سعيد", text: "قرار عادل جداً يرفع العبء عن كاهل الأمهات المطلقات." },
+            { user: "إبراهيم حسن", text: "التعليم يجب أن يظل بمنأى عن أي صراعات زوجية." }
+        ]
     },
     {
-        title: 'أكثر الملفات قراءة',
-        text: 'مجموعة مختارة من التحقيقات التي لاقت تفاعلًا واسعًا من القراء.',
-        to: '/sawtoha-masmoua',
+        id: 2,
+        title: "المرأة المعيلة: القيادة الفردية في مهب الأزمات الاقتصادية وتآكل الدخل",
+        subtitle: "تعيل النساء ما يقارب ثلث الأسر المصرية والعربية وتواجه أعباءً مضاعفة بين العمل الشاق والرعاية.",
+        category: "على الهامش",
+        author: "ياسين الغرباوي",
+        date: "٢ يونيو ٢٠٢٦",
+        time: "٠٩:٣٠ ص",
+        views: 9820,
+        likes: 410,
+        image: "/imgs/1.png",
+        to: "/ala-alhamesh",
+        content: [
+            { heading: "الصراع اليومي بين لقمة العيش وتربية الأبناء", text: "تستيقظ المرأة المعيلة في الفجر لتكسب قوت يومها من بيع البضائع البسيطة أو العمل في مهن شاقة. تقضي يومها في توازن حرج ومؤلم بين كسب المال لتدبير الإيجار ومصاريف المدارس، وبين غيابها الاضطراري عن المنزل لمراقبة سلوك أطفالها." },
+            { heading: "التمييز الفج في الأجور ومحدودية الفرص", text: "رغم الكفاءة والجهد المضاعف، تعاني المرأة المعيلة من تمييز واضح في الأجور في القطاعات الحرة مقارنة بالرجال، كما تصطدم بغياب القروض الميسرة التي تمكنها من تكبير تجارتها أو مشروعها الصغير دون شروط معقدة." },
+            { heading: "أهمية الدعم المؤسسي المستدام والتأمين الصحي", text: "تفتقر الغالبية العظمى من النساء المعيلات لغطاء تأميني وصحي يحميهن في حال المرض؛ فمرض المرأة المعيلة يعني توقف دخل الأسرة كاملاً. من هنا تنبع المطالبات بضم هذه الفئة إلى مظلات تأمينية شاملة ومعاشات كريمة تضمن صون كرامتهن." }
+        ],
+        comments: [
+            { user: "سامية خليل", text: "أحيي كل امرأة معيلة تكافح بمفردها لبناء مستقبل أبنائها." }
+        ]
     },
     {
-        title: 'قصص من الواقع',
-        text: 'حكايات من نساء يواجهن نفس الأسئلة يوميًا بين البيت والعمل.',
-        to: '/hikayat-settat',
+        id: 3,
+        title: "النسوية على السوشيال ميديا: بين تمكين النساء وصناعة الوهم الرقمي والتريند",
+        subtitle: "تفكيك نقدي لخطاب النسوية الرقمية والتأثير النفسي والاجتماعي المترتب على صراعات الخوارزميات.",
+        category: "صوتها مسموع",
+        author: "د. رانيا الشافعي",
+        date: "١ يونيو ٢٠٢٦",
+        time: "٠٦:٤٥ م",
+        views: 15600,
+        likes: 830,
+        image: "/imgs/3.png",
+        to: "/sawtoha-masmoua",
+        content: [
+            { heading: "من النخبة إلى الترند: كيف تغيّرت ملامح النسوية؟", text: "في السابق، ارتبطت النسوية بخطابات فكرية معقدة، وأسماء أكاديمية، ونقاشات تدور في نطاق ضيق نسبيًا. لكن مع صعود السوشيال ميديا، انتقلت هذه القضايا إلى المجال العام، حيث باتت تُطرح في فيديوهات قصيرة ومنشورات مختصرة تصل إلى ملايين المتابعين خلال ساعات. ما حدث هو تبسيط واسع للمفاهيم، وهو أمر إيجابي من حيث الانتشار، لكنه خطير من حيث فقدان العمق." },
+            { heading: "تمكين حقيقي أم أداء رقمي؟", text: "رصد التحقيق عشرات الحسابات التي تقدم محتوى نسويًا، وتبيّن أن جزءًا منها يلعب دورًا مهمًا في رفع الوعي، من خلال مناقشة قضايا مثل الاستقلال الاقتصادي، والحقوق القانونية، والعنف ضد المرأة. لكن في المقابل، يرى خبراء الإعلام أن هناك نمطًا آخر من المحتوى يعتمد على الاستفزاز كوسيلة للانتشار وجذب التفاعل." },
+            { heading: "من يصنع الصوت؟ خوارزميات تتحكم في الوعي", text: "التحقيق يكشف أن ما يظهر على السوشيال ميديا ليس بالضرورة انعكاسًا حقيقيًا للواقع، بل نتيجة لاختيارات خوارزمية تعتمد على التفاعل. خبراء الإعلام الرقمي يؤكدون أن المحتوى الأكثر إثارة للجدل هو الأكثر انتشارًا، وهو ما يعني أن الأصوات المعتدلة قد لا تحظى بنفس الظهور." }
+        ],
+        comments: [
+            { user: "فريدة كمال", text: "تحليل ممتاز! السوشيال ميديا شوهت الكثير من المفاهيم الجادة لصالح التفاعل والتريند." }
+        ]
     },
     {
-        title: 'مساحة للتأمل',
-        text: 'مقالات تساعدك على فهم الضغوط الداخلية بدون لوم أو أحكام قاسية.',
-        to: '/gowa-alkahka',
+        id: 4,
+        title: "إنجاب البنات: موروث ثقافي في مواجهة الحقيقة البيولوجية والدينية للنوع",
+        subtitle: "تفاصيل التحقيق الاجتماعي حول تفضيل الذكور وتأثير ذلك على استقرار الأسر والصحة النفسية للأمهات.",
+        category: "على الهامش",
+        author: "ميادة مصطفى",
+        date: "١ يونيو ٢٠٢٦",
+        time: "٠٢:١٥ م",
+        views: 8430,
+        likes: 310,
+        image: "/imgs/7.png",
+        to: "/ala-alhamesh",
+        content: [
+            { heading: "جذور تاريخية لا تزال حاضرة", text: "تشير الدراسات الاجتماعية إلى أن تفضيل الذكور ليس ظاهرة حديثة، بل يمتد إلى عصور قديمة ارتبطت فيها قيمة الفرد بقدرته على العمل والحماية. في تلك الفترات، اعتُبر الذكر مصدر قوة، بينما نُظر إلى الأنثى كعبء اقتصادي." },
+            { heading: "الدين يحسم الجدل", text: "على خلاف ما يعتقد البعض، لا يدعم الدين أي تمييز بين الذكور والإناث. بل على العكس، يرفع من مكانة البنات ويحث على الإحسان إليهن. ويؤكد علماء الدين أن رفض إنجاب البنات يتنافى مع جوهر القيم الإنسانية والدينية." }
+        ],
+        comments: []
     },
     {
-        title: 'حضور في المجتمع',
-        text: 'قراءات عن تأثير الظهور العام والعمل المجتمعي على هوية المرأة.',
-        to: '/bara-alkahka',
+        id: 5,
+        title: "أم المعاق: المعركة اليومية الصامتة في مواجهة مجتمع وبنية تحتية غير مهيأة",
+        subtitle: "شهادات حية لأمهات أطفال ذوي الاحتياجات الخاصة وتحديات الدمج وغياب الدعم المؤسسي والنفسي.",
+        category: "على الهامش",
+        author: "حسناء الشريف",
+        date: "٣١ مايو ٢٠٢٦",
+        time: "١١:٠٠ ص",
+        views: 7910,
+        likes: 290,
+        image: "/imgs/carousel/The-mother-of-the-disabled-a-superhero-no-one-sees.jpeg",
+        to: "/om-eltifl-dhawi-al-eaahaq",
+        content: [
+            { heading: "العزلة الاجتماعية والانسحاب من الحياة", text: "تجد أم الطفل المعاق نفسها مجبرة على التخلي عن وظيفتها وحياتها الاجتماعية لتتحول إلى مرافق دائم على مدار الساعة. تضيق مساحتها الشخصية وتصبح طموحاتها مؤجلة لأجل غير مسمى في ظل غياب مراكز رعاية حكومية مجانية وموثوقة." },
+            { heading: "غياب الدعم النفسي للأم كشريك أساسي", text: "يركز الجميع على تأهيل الطفل، بينما تترك الأم لتواجه التوتر الشديد، والاحتراق النفسي، والقلق الدائم حول مستقبل الابن بعد رحيلها. تحتاج هذه الفئة إلى برامج دعم نفسي حكومية ومجتمعية إلزامية." }
+        ],
+        comments: []
     },
-]
+    {
+        id: 6,
+        title: "صراعات الرحلة اليومية للمواصلات: بين الزحام والكرامة اليومية للمرأة",
+        subtitle: "المعاناة الصامتة للمرأة في المواصلات العامة وبحثها عن مساحات آمنة للتنقل والعمل.",
+        category: "قضايا المجتمع",
+        author: "ريهام فؤاد",
+        date: "٣٠ مايو ٢٠٢٦",
+        time: "٠٨:١٥ ص",
+        views: 11200,
+        likes: 670,
+        image: "/imgs/carousel/suffering-of-women-on-public-transportation.jpeg",
+        to: "/bayn-alzahm-walkarama",
+        content: [
+            { heading: "المعاناة اليومية في الفضاء العام", text: "تمثل الرحلة اليومية بالمواصلات العامة عبئاً حقيقياً على صحة المرأة الجسدية والنفسية، حيث تواجه الزحام الخانق وغياب الخصوصية والاعتداءات اللفظية والجسدية في بعض الأحيان." },
+            { heading: "مطالب بمساحات مخصصة وآمنة", text: "تطالب الحركات الاجتماعية بتوفير خيارات مواصلات عامة مخصصة للنساء وتوسيع نطاق عربات السيدات في المترو ووسائل النقل الأخرى لضمان أمانهن وحريتهن في الحركة." }
+        ],
+        comments: []
+    },
+    {
+        id: 7,
+        title: "معايير الجمال والهوس العصري: تفكيك الضغوط المفروضة على ملامح وهوية المرأة",
+        subtitle: "كيف تسهم الصور النمطية وعمليات التجميل المتكررة في هز ثقة الفتيات بأنفسهن؟",
+        category: "صحة وجمال",
+        author: "شيرين عبد العزيز",
+        date: "٢٩ مايو ٢٠٢٦",
+        time: "٠٤:٣٠ م",
+        views: 14200,
+        likes: 810,
+        image: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
+        to: "/hous-eltagmeel",
+        content: [
+            { heading: "تفكيك الصور النمطية البصرية", text: "يعاني الجيل الجديد من الفتيات من ضغط بصري غير مسبوق تفرضه الفلاتر ومنصات السوشيال ميديا وعيادات التجميل، مما يعزز فكرة وجود ملامح مثالية موحدة ويؤدي إلى اضطراب صورة الجسد." },
+            { heading: "نحو قبول الذات الطبيعية", text: "يدعو خبراء علم النفس والاجتماع إلى دعم المبادرات التوعوية التي تبرز الجمال الطبيعي المتنوع وتدرب الفتيات على كشف وتجاوز الخدع البصرية والتجارية للتسويق الجمالي." }
+        ],
+        comments: []
+    },
+    {
+        id: 8,
+        title: "عام الأمومة الأول: بين دفء الصغير وضغوط المهام والتحولات النفسية الحادة",
+        subtitle: "صراعات وتجارب الأمهات الجدد خلف الأبواب المغلقة في التوفيق بين الرعاية ومساحتهن الشخصية.",
+        category: "المرأة والأسرة",
+        author: "د. هدى منصور",
+        date: "٢٨ مايو ٢٠٢٦",
+        time: "٠٢:٠٠ م",
+        views: 6540,
+        likes: 210,
+        image: "/imgs/carousel/First-year-of-motherhood.jpeg",
+        to: "/sana-ola-omoma",
+        content: [
+            { heading: "صدمة التحول والهوية الجديدة", text: "بين دفء الرضيع والمسؤوليات الضخمة المفاجئة، تعيش الأم الجديدة اضطرابات نفسية حادة وجروح جسدية وتغييراً كاملاً في جدول نومها وحياتها الاجتماعية، وهو ما يتطلب تفهماً ومساندة حقيقية من الزوج والأسرة." }
+        ],
+        comments: []
+    },
+    {
+        id: 9,
+        title: "دوامة الأعمال المنزلية الرتيبة: المجهود الخفي غير المرئي لإبقاء التوازن",
+        subtitle: "تفكيك عبء الرعاية المنزلية الذي يقع بالكامل على عاتق الزوجة دون تقدير مادي أو معنوي.",
+        category: "المرأة والأسرة",
+        author: "فاطمة البدري",
+        date: "٢٧ مايو ٢٠٢٦",
+        time: "٠٩:٠٠ ص",
+        views: 5200,
+        likes: 180,
+        image: "/imgs/carousel/house-cleaning-routine.jpeg",
+        to: "/roteen-tanzeef-almanzel",
+        content: [
+            { heading: "العمل غير المرئي في المنزل", text: "الطبخ، التنظيف، الغسيل، ومتابعة دراسة الأطفال؛ أعمال يومية متكررة تستهلك طاقة المرأة وتأخذ وقتاً هائلاً، لكن يُنظر إليها كمسلمات وواجبات افتراضية خالية من القيمة المهنية والمالية." }
+        ],
+        comments: []
+    },
+    {
+        id: 10,
+        title: "الطلاق للضرر أم الخلع؟ دليل المرأة لاتخاذ القرار الصحيح وحفظ حقوقها المالية",
+        subtitle: "شرح الفروق القانونية والإجرائية والمادية والزمنية لمسارات فك الرابطة الزوجية.",
+        category: "كلام قانون",
+        author: "أ. خالد الدسوقي",
+        date: "٢٦ مايو ٢٠٢٦",
+        time: "١٢:٣٠ م",
+        views: 11050,
+        likes: 490,
+        image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg",
+        to: "/kalam-qanun",
+        content: [
+            { heading: "الخلع: السرعة مقابل التنازل المالي", text: "يتميز الخلع بسرعة الفصل القضائي، حيث تقرر الزوجة التنازل عن كامل حقوقها الشرعية والمالية (مؤخر الصداق، نفقة المتعة والعدة) لتسترد حريتها سريعاً." },
+            { heading: "الطلاق للضرر: حقوق كاملة ولكن بزمن أطول", text: "يطلب إثبات أسباب واضحة (التعدي، الهجر، سوء المعاشرة) بشهادة الشهود أو المستندات، وميزته هي احتفاظ الزوجة بكامل مستحقاتها المالية لكنه قد يطول في المحاكم." }
+        ],
+        comments: []
+    },
+    {
+        id: 11,
+        title: "الجرائم الإلكترونية والتزييف العميق: التهديد التقني الجديد لسمعة وحياة المرأة",
+        subtitle: "آليات الحماية القانونية والرقمية ومسؤوليات الإبلاغ عند التعرض للابتزاز بالصور المفبركة.",
+        category: "كلام قانون",
+        author: "مهندس تامر كمال",
+        date: "٢٥ مايو ٢٠٢٦",
+        time: "١٠:٠٠ ص",
+        views: 13900,
+        likes: 720,
+        image: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
+        to: "/kalam-qanun",
+        content: [
+            { heading: "تحدي الابتزاز بالذكاء الاصطناعي", text: "تجد الكثير من النساء أنفسهن ضحايا لتركيب الصور ومقاطع الفيديو بدقة شديدة بهدف التشهير أو الابتزاز. القانون يعاقب على هذه الجريمة بعقوبات سجن مشددة." },
+            { heading: "خطوات الحماية الفورية", text: "ينصح بالاحتفاظ بالأدلة الرقمية (لقطات الشاشة) والتوجه فوراً لمباحث الإنترنت لتقديم بلاغ رسمي، وتفادي الاستسلام لطلبات المبتز أو التكتم على المشكلة." }
+        ],
+        comments: []
+    },
+    {
+        id: 12,
+        title: "قصص نجاح من فصول النور: سيدات يهزمن الأمية ويفتحن مشاريع مستقلة بالقرى",
+        subtitle: "تقارير ميدانية حول تحدي الجهل وكيف يسهم تعليم الفتيات والسيدات في حمايتهن من الفقر.",
+        category: "قصص ملهمة",
+        author: "حنان أبو المجد",
+        date: "٢٤ مايو ٢٠٢٦",
+        time: "٠٣:٠٠ م",
+        views: 7120,
+        likes: 380,
+        image: "/imgs/2.png",
+        to: "/mahw-el-omya",
+        content: [
+            { heading: "التعليم كبوابة للاستقلال والكرامة", text: "تروي السيدات في فصول محو الأمية كيف تبدلت حياتهن وقدرتهن على إدارة المعاملات المالية البسيطة دون استغلال أو احتيال، وكيف أثر ذلك على مستوى رعاية أسرهن." }
+        ],
+        comments: []
+    },
+    {
+        id: 13,
+        title: "صراع الأدوار والمسؤوليات: دليل الأم العاملة للتوازن الصعب",
+        subtitle: "تحقيق يبحث في التوفيق بين التطلعات المهنية والالتزام العائلي دون احتراق نفسي.",
+        category: "بين البيت والشغل",
+        author: "نهى الجيار",
+        date: "٢٣ مايو ٢٠٢٦",
+        time: "١١:١٥ ص",
+        views: 8900,
+        likes: 340,
+        image: "/imgs/carousel/house-cleaning-routine.jpeg",
+        to: "/bayn-albayt-walshoghl",
+        content: [
+            { heading: "العبء المزدوج للأم العاملة", text: "بين ضغط ساعات العمل في المكتب وواجبات الرعاية والمتابعة للأطفال في المنزل، تجد الأم العاملة نفسها في سباق مستمر يستنزف طاقتها الجسدية والعصبية." }
+        ],
+        comments: []
+    },
+    {
+        id: 14,
+        title: "البنت القوية: لقب اجتماعي داعم أم قيد يفرض التحمل الصامت؟",
+        subtitle: "تفكيك مفهوم القوة في عيون الفتيات وكيف يتحول التوقع بالتحمل إلى احتراق عاطفي.",
+        category: "جوه الكحكة",
+        author: "أمل السعدني",
+        date: "٢٢ مايو ٢٠٢٦",
+        time: "٠٤:٠٠ م",
+        views: 12100,
+        likes: 540,
+        image: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
+        to: "/gowa-alkahka",
+        content: [
+            { heading: "قناع القوة وكبت الضعف الإنساني", text: "تشعر الكثير من الفتيات بالخوف من إظهار التعب أو طلب الدعم حتى لا يفقدن لقب البنت القوية، مما يعزز العزلة النفسية والكتمان." }
+        ],
+        comments: []
+    },
+    {
+        id: 15,
+        title: "الخوف من الزواج والارتباط: إعادة تفكيك وتشكيل مفهوم الاستقرار",
+        subtitle: "دراسة اجتماعية حول عزوف وتوجس الجيل الجديد من الالتزام وبناء أسر في ظل التحولات المعاصرة.",
+        category: "جوه الكحكة",
+        author: "كريم عبد الهادي",
+        date: "٢١ مايو ٢٠٢٦",
+        time: "١٠:١٥ ص",
+        views: 14300,
+        likes: 710,
+        image: "/imgs/3.png",
+        to: "/gowa-alkahka",
+        content: [
+            { heading: "تغير الأولويات والحذر النفسي", text: "لم يعد تأخر الارتباط ناتجًا عن الرفض التام، بل عن الحذر الشديد والرغبة في تحقيق الاستقلال المالي والوعي الكامل قبل الإقدام على خطوة الشراكة." }
+        ],
+        comments: []
+    },
+    {
+        id: 16,
+        title: "التريندات القاتلة وتحديات الفضاء الرقمي: فخ الشهرة السريعة",
+        subtitle: "كيف تسحب خوارزميات السوشيال ميديا المراهقات إلى مسارات خطرة تهدد سلامتهن؟",
+        category: "بره الكحكة",
+        author: "سلوى البنا",
+        date: "٢٠ مايو ٢٠٢٦",
+        time: "٠٩:٠٠ ص",
+        views: 18500,
+        likes: 920,
+        image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg",
+        to: "/bara-alkahka",
+        content: [
+            { heading: "خوارزميات تصنع الخطر لجذب التفاعل", text: "تستهدف المنصات حاجة المراهقين للانتماء والقبول، فتعرض التحديات العنيفة والخطيرة كقصص نجاح لانتشار التريند." }
+        ],
+        comments: []
+    },
+    {
+        id: 17,
+        title: "التحرش اللفظي في المساحات العامة والخاصة: كسر جدار الصمت",
+        subtitle: "تحقيق ميداني يرصد جروح الوجدان الخفية والمطالبات بقوانين حازمة لأمن الشارع للبنات.",
+        category: "بره الكحكة",
+        author: "مروة دياب",
+        date: "١٩ مايو ٢٠٢٦",
+        time: "١٢:٠٠ م",
+        views: 15300,
+        likes: 800,
+        image: "/imgs/carousel/suffering-of-women-on-public-transportation.jpeg",
+        to: "/bara-alkahka",
+        content: [
+            { heading: "الآثار النفسية الممتدة ومقاومة التبرير", text: "يؤدي التحرش اللفظي المتكرر لتراجع الثقة والشعور بالخوف المستمر في الفضاء العام، مما يفرض مواجهته اجتماعياً وتشريعياً دون أي تبرير للمعتدي." }
+        ],
+        comments: []
+    },
+    {
+        id: 18,
+        title: "حكايات ستات: مذكرات أم مغتربة بين شوق الأوطان ورعاية الصغار",
+        subtitle: "سرديات وقصص واقعية تروي اليوميات المليئة بالتحديات والدروس والمسؤوليات للأمهات.",
+        category: "حكايات ستات",
+        author: "سلمى النجار",
+        date: "١٨ مايو ٢٠٢٦",
+        time: "٠٢:٣٠ م",
+        views: 6200,
+        likes: 190,
+        image: "/imgs/carousel/First-year-of-motherhood.jpeg",
+        to: "/hikayat-settat",
+        content: [
+            { heading: "الغربة وصدمة التربية الفردية", text: "تروي الحكايات مشاعر العزلة والبعد عن المساندة العائلية التقليدية للأم في بلاد الغربة، وكيف تصنع مجتمعها البديل لحماية أطفالها." }
+        ],
+        comments: []
+    }
+];
 
-const faqItems = [
+const opinionPieces = [
     {
-        question: 'ما الهدف الأساسي من منصة كحكه؟',
-        answer: 'المنصة تركز على تقديم محتوى اجتماعي وإنساني يساعد في فهم أدوار المرأة داخل البيت وخارجه، مع أسلوب واضح وقريب من الواقع.',
+        author: "د. فريدة الشوباشي",
+        title: "صوت المرأة ليس عورة بل ثورة التغيير وبناء الأوطان",
+        excerpt: "إن محاولة تحجيم صوت المرأة وإعادتها لقوالب التبعية والتهميش تعيق تقدم المجتمع بأكمله. نهضة الأمم تقاس بوعي ومشاركة نسائها.",
+        avatar: "👩‍💼"
     },
     {
-        question: 'كيف أختار القسم المناسب لي؟',
-        answer: 'يمكنك البدء من عناوين الأقسام أو من مسارات المحتوى المقترحة. كل صفحة لها وصف مختصر يساعدك على الوصول السريع لما تحتاجينه.',
+        author: "أ. نهاد أبو القمصان",
+        title: "إصلاح قوانين الأحوال الشخصية ضرورة أسرية ومجتمعية",
+        excerpt: "القوانين الحالية تحتاج إلى تعديلات جذرية تضمن كرامة المرأة وحقوق الأطفال المالية والتربوية بعد الطلاق.",
+        avatar: "👩‍💼"
+    }
+];
+
+const podcastEpisodes = [
+    {
+        id: 1,
+        title: "الحلقة الأولى: خلف الأبواب المغلقة - صمت الأم الجديدة",
+        desc: "نستضيف في هذه الحلقة أخصائية نفسية لتفكيك التوقعات المثالية للمجتمع وتأثيرها على الأمهات في السنة الأولى.",
+        duration: "١٢:٣٠",
+        audioUrl: "https://www.google.com/speech-api/v2/synthesize?enc=mpeg&client=chromium&key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw&text=%D8%B9%D9%86%D9%88%D8%A7%D9%86%20%D8%A7%D9%84%D8%AD%D9%84%D9%82%D8%A9%3A%20%D8%AE%D9%84%D9%81%20%D8%A7%D9%84%D8%A3%D8%A8%D9%88%D8%A7%D8%A8%20%D8%A7%D9%84%D9%85%D8%BA%D9%84%D9%82%D8%A9%20-%20%D8%B5%D9%85%D8%AA%20%D8%A7%D9%84%D8%A3%D9%85%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9%0A%D8%A7%D9%84%D9%85%D8%AF%D8%A9%20%D8%A7%D9%84%D9%85%D8%AA%D9%88%D9%82%D8%B9%D8%A9%3A%208%20-%2012%20%D8%AF%D9%82%D9%8A%D9%82%D8%A9%0A%D8%A7%D9%84%D8%A3%D8%B3%D9%84%D9%88%D8%A8%3A%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A%D8%8C%20%D8%A7%D8%B3%D8%AA%D9%82%D8%B5%D8%A7%D8%A6%D9%8A%D8%8C%20%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%0A%D8%A7%D9%84%D9%84%D8%BA%D8%A9%3A%20%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9%20%D9%81%D8%B5%D8%AD%D9%89%20%D9%85%D8%B9%D8%A7%D8%B5%D8%B1%D8%A9%D8%8C%20%D9%82%D8%B1%D9%8A%D8%A8%D8%A9%20%D9%84%D9%84%D9%82%D9%84%D8%A8%D8%8C%20%D9%88%D8%A5%D9%8A%D9%82%D8%A7%D8%B9%20%D8%B3%D8%B1%D8%AF%D9%8A%20%D9%87%D8%A7%D8%AF%D8%A6%20%D9%88%D9%85%D8%AA%D8%A3%D9%86%D9%8D.%0A%0A%5B%D9%85%D8%A4%D8%AB%D8%B1%D8%A7%D8%AA%20%D8%B5%D9%88%D8%AA%D9%8A%D8%A9%20(SFX)%5D%0A(%D8%B5%D9%88%D8%AA%20%D8%AF%D9%82%D8%A7%D8%AA%20%D8%B3%D8%A7%D8%B9%D8%A9%20%D8%AD%D8%A7%D8%A6%D8%B7%20%D9%81%D9%8A%20%D9%85%D9%86%D8%AA%D8%B5%D9%81%20%D8%A7%D9%84%D9%84%D9%8A%D9%84..%20%D8%AA%D9%83%D8%AA%D9%83%D8%A9%20%D9%85%D9%86%D8%AA%D8%B8%D9%85%D8%A9%20%D9%88%D9%88%D8%A7%D8%B6%D8%AD%D8%A9.%20%D9%8A%D8%AA%D8%AF%D8%A7%D8%AE%D9%84%20%D9%85%D8%B9%D9%87%D8%A7%20%D8%B5%D9%88%D8%AA%20%D8%A8%D9%83%D8%A7%D8%A1%20%D8%B7%D9%81%D9%84%20%D8%B1%D8%B6%D9%8A%D8%B9%20%D8%AE%D8%A7%D9%81%D8%AA%20%D9%8A%D8%A3%D8%AA%D9%8A%20%D9%85%D9%86%20%D8%BA%D8%B1%D9%81%D8%A9%20%D9%85%D8%AC%D8%A7%D9%88%D8%B1%D8%A9.%20%D8%B5%D9%88%D8%AA%20%D8%AA%D9%86%D9%87%D9%8A%D8%AF%D8%A9%20%D8%B9%D9%85%D9%8A%D9%82%D8%A9%20%D9%84%D8%A7%D9%85%D8%B1%D8%A3%D8%A9%D8%8C%20%D8%AB%D9%85%20%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D9%85%D8%AA%D8%AB%D8%A7%D9%82%D9%84%D8%A9%20%D8%B9%D9%84%D9%89%20%D8%A3%D8%B1%D8%B6%D9%8A%D8%A9%20%D8%AE%D8%B4%D8%A8%D9%8A%D8%A9..%20%D9%8A%D8%B5%D9%85%D8%AA%20%D8%A8%D9%83%D8%A7%D8%A1%20%D8%A7%D9%84%D8%B7%D9%81%D9%84%20%D9%88%D9%8A%D8%A8%D9%82%D9%89%20%D8%B5%D9%88%D8%AA%20%D8%A7%D9%84%D8%B3%D8%A7%D8%B9%D8%A9%D8%8C%20%D8%AB%D9%85%20%D9%8A%D8%AA%D9%84%D8%A7%D8%B4%D9%89%20%D8%AA%D8%AF%D8%B1%D9%8A%D8%AC%D9%8A%D8%A7%D9%8B)%0A%0A%5B%D8%A7%D9%84%D9%85%D9%82%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B7%D9%81%D8%A9%20-%20Hook%5D%0A%D8%A7%D9%84%D8%B1%D8%A7%D9%88%D9%8A%20(%D8%A8%D8%B5%D9%88%D8%AA%20%D9%87%D8%A7%D8%AF%D8%A6%D8%8C%20%D9%82%D8%B1%D9%8A%D8%A8%20%D9%85%D9%86%20%D8%A7%D9%84%D9%85%D9%8A%D9%83%D8%B1%D9%88%D9%81%D9%88%D9%86%D8%8C%20%D9%8A%D8%AD%D9%85%D9%84%20%D8%AA%D8%B9%D8%A7%D8%B7%D9%81%D8%A7%D9%8B%20%D8%B9%D9%85%D9%8A%D9%82%D8%A7%D9%8B)%3A%0A&lang=ar-EG&speed=0.5&pitch=0.5"
     },
     {
-        question: 'هل المحتوى قانوني موثوق؟',
-        answer: 'قسم كلام قانون يقدم تبسيطًا للمفاهيم والحقوق بلغة سهلة، مع الحرص على الوضوح والدقة في الطرح.',
+        id: 2,
+        title: "الحلقة الثانية: العمل المنزلي المجهول - من يقدر المجهود؟",
+        desc: "نقاش مفتوح حول القيمة المعنوية والاجتماعية لإدارة شؤون المنزل وعبء الرعاية اليومي.",
+        duration: "١٨:٤٥",
+        audioUrl: "https://www.google.com/speech-api/v2/synthesize?enc=mpeg&client=chromium&key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw&text=%D8%B9%D9%86%D9%88%D8%A7%D9%86%20%D8%A7%D9%84%D8%AD%D9%84%D9%82%D8%A9%3A%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%20%D8%A7%D9%84%D9%85%D9%86%D8%B2%D9%84%D9%8A%20%D8%A7%D9%84%D9%85%D8%AC%D9%87%D9%88%D9%84%20-%20%D9%85%D9%86%20%D9%8A%D9%82%D8%AF%D8%B1%20%D8%A7%D9%84%D9%85%D8%AC%D9%87%D9%88%D8%AF%D8%9F%0A%D8%A7%D9%84%D9%85%D8%AF%D8%A9%20%D8%A7%D9%84%D9%85%D8%AA%D9%88%D9%82%D8%B9%D8%A9%3A%208%20-%2012%20%D8%AF%D9%82%D9%8A%D9%82%D8%A9%0A%D8%A7%D9%84%D8%A3%D8%B3%D9%84%D9%88%D8%A8%3A%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A%D8%8C%20%D8%A7%D8%B3%D8%AA%D9%82%D8%B5%D8%A7%D8%A6%D9%8A%D8%8C%20%D8%A5%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%0A%0A%5B%D9%85%D8%A4%D8%AB%D8%B1%D8%A7%D8%AA%20%D8%B5%D9%88%D8%AA%D9%8A%D8%A9%20-%20SFX%5D%0A(%D8%B5%D9%88%D8%AA%20%D9%85%D9%86%D8%A8%D9%87%20%D9%87%D8%A7%D8%AA%D9%81%20%D9%8A%D8%B1%D9%86%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3%D8%A9%20%D8%B5%D8%A8%D8%A7%D8%AD%D8%A7%D9%8B..%20%D9%8A%D9%8F%D8%BA%D9%84%D9%82%20%D8%A8%D8%B3%D8%B1%D8%B9%D8%A9.%20%D9%8A%D9%84%D9%8A%D9%87%20%D8%B5%D9%88%D8%AA%20%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%B3%D8%B1%D9%8A%D8%B9%D8%A9%D8%8C%20%D8%A7%D8%AD%D8%AA%D9%83%D8%A7%D9%83%20%D8%A3%D9%88%D8%A7%D9%86%D9%8A%20%D8%A7%D9%84%D9%85%D8%B7%D8%A8%D8%AE%D8%8C%20%D8%B5%D9%88%D8%AA%20%D8%BA%D9%84%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D9%8A%D8%A7%D9%87%D8%8C%20%D8%AA%D8%AF%D8%A7%D8%AE%D9%84%20%D8%A3%D8%B5%D9%88%D8%A7%D8%AA%20%D8%AE%D8%A7%D9%81%D8%AA%D8%A9%20%D9%84%D9%86%D8%B4%D8%B1%D8%A9%20%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1%20%D9%85%D9%86%20%D8%A7%D9%84%D8%AA%D9%84%D9%81%D8%A7%D8%B2%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%BA%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D9%88%D8%B1%D8%A9%20%D9%85%D8%B9%20%D8%B5%D9%88%D8%AA%20%D8%B7%D9%81%D9%84%20%D9%8A%D8%B3%D8%A3%D9%84%20%D8%B9%D9%86%20%D9%82%D9%85%D9%8A%D8%B5%D9%87%20%D8%A7%D9%84%D9%85%D8%AF%D8%B1%D8%B3%D9%8A.%20%D9%8A%D8%AA%D8%B5%D8%A7%D8%B9%D8%AF%20%D8%A7%D9%84%D8%A5%D9%8A%D9%82%D8%A7%D8%B9%20%D9%84%D9%8A%D8%B5%D8%A8%D8%AD%20%D9%85%D8%B2%D9%8A%D8%AC%D8%A7%D9%8B%20%D9%85%D9%86%20%D8%B6%D8%AC%D9%8A%D8%AC%20%D8%A7%D9%84%D8%AD%D9%8A%D8%A7%D8%A9%20%D8%A7%D9%84%D9%8A%D9%88%D9%85%D9%8A%D8%A9%D8%8C%20%D8%AB%D9%85%20%D9%8A%D8%AA%D9%88%D9%82%D9%81%20%D9%81%D8%AC%D8%A3%D8%A9)%0A%0A%5B%D8%A7%D9%84%D9%85%D9%82%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D9%82%D8%B5%D8%A9%20%D8%A7%D9%84%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD%D9%8A%D8%A9%20-%20Opening%20Story%5D%0A%D8%A7%D9%84%D8%B1%D8%A7%D9%88%D9%8A%20(%D8%A8%D8%B5%D9%88%D8%AA%20%D9%87%D8%A7%D8%AF%D8%A6%D8%8C%20%D8%A7%D8%B3%D8%AA%D9%82%D8%B5%D8%A7%D8%A6%D9%8A%20%D9%88%D8%AA%D8%A3%D9%85%D9%84%D9%8A)%3A%0A&lang=ar-EG&speed=0.5&pitch=0.5"
+
     },
     {
-        question: 'هل يمكن قراءة المحتوى من الهاتف بسهولة؟',
-        answer: 'نعم، الصفحة مصممة بشكل متجاوب بالكامل لتعمل بسلاسة على الموبايل والتابلت وأجهزة الكمبيوتر.',
-    },
-    {
-        question: 'ما الفرق بين جوه الكحكة وبره الكحكة؟',
-        answer: 'جوه الكحكة يركز على المشاعر والصراعات الداخلية، بينما بره الكحكة يهتم بالحضور في المجتمع والعمل العام وتأثيره على الهوية.',
-    },
-]
+        id: 3,
+        title: "الحلقة الثالثة: أمان التنقل والكرامة اليومية بالمواصلات",
+        desc: "مداخلات وشهادات حية من فتيات يروين تفاصيل رحلاتهن اليومية ومقترحاتهن لتعزيز الأمان.",
+        duration: "٢٢:١٠",
+        audioUrl: "https://www.google.com/speech-api/v2/synthesize?enc=mpeg&client=chromium&key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw&text=%D8%B9%D9%86%D9%88%D8%A7%D9%86%20%D8%A7%D9%84%D8%AD%D9%84%D9%82%D8%A9%3A%20%D8%A3%D9%85%D8%A7%D9%86%20%D8%A7%D9%84%D8%AA%D9%86%D9%82%D9%84%20%D9%88%D8%A7%D9%84%D9%83%D8%B1%D8%A7%D9%85%D8%A9%20%D8%A7%D9%84%D9%8A%D9%88%D9%85%D9%8A%D8%A9%20%D8%A8%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B5%D9%84%D8%A7%D8%AA%0A%D8%A7%D9%84%D8%A3%D8%B3%D9%84%D9%88%D8%A8%3A%20%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A%D8%8C%20%D8%A7%D8%B3%D8%AA%D9%82%D8%B5%D8%A7%D8%A6%D9%8A%D8%8C%20%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%D8%8C%20%D8%AA%D9%85%D9%83%D9%8A%D9%86%D9%8A%0A%D8%A7%D9%84%D9%84%D8%BA%D8%A9%3A%20%D9%81%D8%B5%D8%AD%D9%89%20%D9%85%D8%B9%D8%A7%D8%B5%D8%B1%D8%A9%D8%8C%20%D8%AC%D8%A7%D8%AF%D8%A9%D8%8C%20%D8%AA%D9%84%D8%A7%D9%85%D8%B3%20%D8%A7%D9%84%D9%88%D8%A7%D9%82%D8%B9%20%D9%88%D8%AA%D8%AF%D8%B9%D9%88%20%D9%84%D9%84%D8%AA%D8%BA%D9%8A%D9%8A%D8%B1.%0A%0A%5B%D8%A7%D9%84%D9%85%D8%B4%D9%87%D8%AF%20%D8%A7%D9%84%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD%D9%8A%20%D8%A7%D9%84%D8%AF%D8%B1%D8%A7%D9%85%D9%8A%20-%20Dramatic%20Opening%20Scene%5D%0A(%D9%85%D8%A4%D8%AB%D8%B1%D8%A7%D8%AA%20%D8%B5%D9%88%D8%AA%D9%8A%D8%A9%3A%20%D8%B6%D8%AC%D9%8A%D8%AC%20%D8%B4%D8%A7%D8%B1%D8%B9%20%D9%85%D8%B2%D8%AF%D8%AD%D9%85%20%D9%81%D9%8A%20%D9%88%D9%82%D8%AA%20%D8%A7%D9%84%D8%B0%D8%B1%D9%88%D8%A9%D8%8C%20%D8%A3%D8%A8%D9%88%D8%A7%D9%82%20%D8%B3%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA%20%D9%85%D8%AA%D8%AF%D8%A7%D8%AE%D9%84%D8%A9%D8%8C%20%D8%B5%D9%88%D8%AA%20%D9%85%D8%AD%D8%B1%D9%83%20%D8%AD%D8%A7%D9%81%D9%84%D8%A9%20%D9%8A%D9%82%D8%AA%D8%B1%D8%A8%20%D9%88%D8%AA%D8%AA%D9%88%D9%82%D9%81%20%D8%A8%D8%B5%D8%B1%D9%8A%D8%B1%20%D9%85%D9%83%D8%A7%D8%A8%D8%AD%20%D8%AD%D8%A7%D8%AF.%20%D9%8A%D8%B9%D9%84%D9%88%20%D8%B5%D9%88%D8%AA%20%D8%AE%D9%81%D9%82%D8%A7%D9%86%20%D9%82%D9%84%D8%A8%20%D9%85%D9%86%D8%AA%D8%B8%D9%85%20%D9%88%D8%B3%D8%B1%D9%8A%D8%B9%D8%8C%20%D9%8A%D8%AA%D9%84%D8%A7%D8%B4%D9%89%20%D8%A7%D9%84%D8%B6%D8%AC%D9%8A%D8%AC%20%D8%AA%D8%AF%D8%B1%D9%8A%D8%AC%D9%8A%D8%A7%D9%8B%20%D9%84%D9%8A%D8%A8%D9%82%D9%89%20%D8%AE%D9%81%D9%82%D8%A7%D9%86%20%D8%A7%D9%84%D9%82%D9%84%D8%A8%20%D9%85%D8%B9%20%D9%85%D9%88%D8%B3%D9%8A%D9%82%D9%89%20%D9%88%D8%AA%D8%B1%D9%8A%D8%A9%20%D9%85%D8%AA%D9%88%D8%AA%D8%B1%D8%A9)%0A%0A%D8%A7%D9%84%D8%B1%D8%A7%D9%88%D9%8A%20(%D8%A8%D8%B5%D9%88%D8%AA%20%D8%AC%D8%A7%D8%AF%D8%8C%20%D9%87%D8%A7%D8%AF%D8%A6%D8%8C%20%D9%88%D8%B9%D9%85%D9%8A%D9%82)%3A%0A&lang=ar-EG&speed=0.5&pitch=0.5"
+
+    }
+];
+
+// تصنيفات وتقسيم المقالات لتسهيل عرضها في الأقسام المخصصة
+const leadArticle = articles[0];
+const latestArticles = articles.slice(1, 5);
+const investigativeArticles = articles.filter(art => art.category === 'على الهامش' || art.category === 'صوتها مسموع');
+const familyArticles = articles.filter(art => art.category === 'المرأة والأسرة' || art.category === 'بين البيت والشغل');
+const societyArticles = articles.filter(art => art.category === 'قضايا المجتمع' || art.category === 'صحة وجمال' || art.category === 'بره الكحكة');
+const legalArticles = articles.filter(art => art.category === 'كلام قانون');
+const successArticles = articles.filter(art => art.category === 'قصص ملهمة' || art.category === 'حكايات ستات');
+const gowaArticles = articles.filter(art => art.category === 'جوه الكحكة');
+const featuredStories = [articles[0], articles[2], articles[5], articles[9], articles[12], articles[15], articles[17]].filter(Boolean);
+const breakingTickerItems = [...articles.slice(0, 8), ...articles.slice(0, 4)];
+const flashStories = [...articles, ...articles.slice(0, 12)].slice(0, 26);
+const continuousFeedItems = [...articles, ...articles.slice(0, 12)];
+const latestComments = articles
+    .flatMap(article => (article.comments || []).map(comment => ({ ...comment, article })))
+    .slice(0, 8);
+const mostReadStories = [...articles]
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 6);
+const mostViewedStories = [...articles]
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 6);
+const mostCommentedStories = [...articles]
+    .sort((a, b) => (b.comments?.length || 0) - (a.comments?.length || 0))
+    .slice(0, 6);
+const editorPickStories = [articles[0], articles[2], articles[10], articles[11], articles[15], articles[17]].filter(Boolean);
+const trendingTopics = Object.entries(
+    articles.reduce((accumulator, article) => {
+        accumulator[article.category] = (accumulator[article.category] || 0) + 1;
+        return accumulator;
+    }, {})
+)
+    .sort((first, second) => second[1] - first[1])
+    .slice(0, 6);
+
+const getShareCount = (article) => Math.max(18, Math.round(article.views * 0.03) + Math.round((article.likes || 0) * 0.75));
+
+const renderStatsLine = (article, className = '') => (
+    <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-bold text-gray-500 ${className}`}>
+        <span>👁 {article.views.toLocaleString()}</span>
+        <span>💬 {(article.comments || []).length}</span>
+        <span>❤️ {(article.likes || 0).toLocaleString()}</span>
+        <span>📤 {getShareCount(article).toLocaleString()}</span>
+    </div>
+);
 
 export default function Home() {
-    const [openFaqIndex, setOpenFaqIndex] = useState(0)
-    const [emblaRef, emblaApi] = useEmblaCarousel({
-        direction: 'rtl',
-        align: 'start',
-        containScroll: 'trimSnaps',
-    })
+    const location = useLocation();
+    const [selectedArticle, setSelectedArticle] = useState(null);
+    const audioRef = useRef(null);
+    const [heroIndex, setHeroIndex] = useState(0);
+    const [heroPaused, setHeroPaused] = useState(false);
+    const [featuredArticle, setFeaturedArticle] = useState(leadArticle);
+    const [likedState, setLikedState] = useState(false);
+    const [likeCount, setLikeCount] = useState(0);
+    const [activeComments, setActiveComments] = useState([]);
+    const [newCommentName, setNewCommentName] = useState('');
+    const [newCommentText, setNewCommentText] = useState('');
 
-    const scrollCarousel = (direction) => {
-        if (!emblaApi) return
-        if (direction === 'next') {
-            emblaApi.scrollNext()
-            return
+    // حالات البث الصوتي واستطلاعات الرأي
+    const [playingEpisode, setPlayingEpisode] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [pollVoted, setPollVoted] = useState(false);
+    const [pollResults, setPollResults] = useState({ yes: 74, no: 26 });
+
+    // حالات الاستشارات والدعم التفاعلي
+    const [consultType, setConsultType] = useState('legal');
+    const [consultText, setConsultText] = useState('');
+    const [consultSubmitted, setConsultSubmitted] = useState(false);
+
+    const handleConsultSubmit = (e) => {
+        e.preventDefault();
+        if (!consultText.trim()) return;
+        setConsultSubmitted(true);
+        setConsultText('');
+        setTimeout(() => setConsultSubmitted(false), 5000);
+    };
+
+    const handleVote = (choice) => {
+        setPollVoted(true);
+        if (choice === 'yes') {
+            setPollResults(prev => ({ ...prev, yes: prev.yes + 1 }));
+        } else {
+            setPollResults(prev => ({ ...prev, no: prev.no + 1 }));
         }
-        emblaApi.scrollPrev()
-    }
+    };
+
+    useEffect(() => {
+        if (selectedArticle || heroPaused || featuredStories.length === 0) return;
+
+        const timer = window.setInterval(() => {
+            setHeroIndex(prev => (prev + 1) % featuredStories.length);
+        }, 4500);
+
+        return () => window.clearInterval(timer);
+    }, [heroPaused, selectedArticle]);
+
+    useEffect(() => {
+        if (selectedArticle) {
+            setLikedState(false);
+            setLikeCount(selectedArticle.likes || 0);
+            setActiveComments(selectedArticle.comments || []);
+        }
+    }, [selectedArticle]);
+
+    useEffect(() => {
+        if (selectedArticle) return;
+
+        const nextFeatured = featuredStories[heroIndex] || leadArticle;
+        setFeaturedArticle(nextFeatured);
+    }, [heroIndex, selectedArticle]);
+
+    useEffect(() => {
+        if (location.state?.scrollTo !== 'podcast-section') return;
+
+        const element = document.getElementById('podcast-section');
+        if (!element) return;
+
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, [location.state]);
+
+    useEffect(() => {
+        const audioElement = audioRef.current;
+        if (!audioElement) return;
+
+        const audioUrl = playingEpisode?.audioUrl;
+        if (!audioUrl) {
+            audioElement.pause();
+            audioElement.removeAttribute('src');
+            audioElement.load();
+            return;
+        }
+
+        if (audioElement.src !== audioUrl) {
+            audioElement.src = audioUrl;
+            audioElement.load();
+        }
+
+        if (isPlaying) {
+            audioElement.play().catch(() => setIsPlaying(false));
+        } else {
+            audioElement.pause();
+        }
+    }, [playingEpisode, isPlaying]);
+
+    const playEpisode = (episode) => {
+        setPlayingEpisode(episode);
+        setIsPlaying(true);
+    };
+
+    const openArticleDetails = (art) => {
+        setSelectedArticle(art);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleNewsTickerClick = (art) => {
+        const nextIndex = featuredStories.findIndex(item => item.id === art.id);
+        if (nextIndex >= 0) {
+            setHeroIndex(nextIndex);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const openHeroStory = (art) => {
+        setSelectedArticle(art);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const goToHeroSlide = (direction) => {
+        setHeroIndex(prev => {
+            if (direction === 'next') {
+                return (prev + 1) % featuredStories.length;
+            }
+
+            return (prev - 1 + featuredStories.length) % featuredStories.length;
+        });
+    };
+
+    const toggleLike = () => {
+        if (likedState) {
+            setLikeCount(prev => prev - 1);
+            setLikedState(false);
+        } else {
+            setLikeCount(prev => prev + 1);
+            setLikedState(true);
+        }
+    };
+
+    const handleShare = () => {
+        navigator.clipboard?.writeText(window.location.href);
+        alert('تم نسخ رابط المقال للمشاركة!');
+    };
+
+    const handleAddComment = (e) => {
+        e.preventDefault();
+        if (!newCommentText.trim()) return;
+        const newComment = {
+            user: newCommentName.trim() || 'قارئة مجهولة',
+            text: newCommentText.trim()
+        };
+        setActiveComments(prev => [...prev, newComment]);
+        setNewCommentText('');
+        setNewCommentName('');
+    };
 
     return (
-        <div className="relative min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-brand-secondary/20 selection:text-brand-ink" dir="rtl">
-            <BackgroundSVG />
+        <div className="relative min-h-screen bg-[#faf9f6] text-slate-900 font-sans selection:bg-[#A91D22]/10 selection:text-[#A91D22]" dir="rtl">
             <NavBar />
             
-            {/* Reduced dynamic space gaps from space-y-36 to space-y-24 */}
-            <main className="relative z-10 mx-auto w-full px-4 pb-20 sm:px-6 lg:px-12 space-y-24 pt-4 max-w-7xl">
-                
-                {/* Unified Hero Header Container */}
-                <div className="space-y-12">
-                    <HeroHeader />
-                    <section className="relative px-4 max-w-4xl mx-auto text-center space-y-6">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 backdrop-blur-md shadow-sm">
-                            <span className="flex h-1.5 w-1.5 rounded-full bg-brand-secondary animate-pulse"></span>
-                            <span className="text-[11px] font-bold text-slate-600 tracking-wide">أهلاً بكِ في مساحتكِ الخاصة</span>
+          
+
+            {/* الجسم الأساسي للموقع - شبكة الصحيفة */}
+            {!selectedArticle ? (
+                <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 space-y-12 animate-fadeIn">
+                    
+                    {/* 1. شبكة الهيرو الرئيسية (3 أعمدة - Lead / Latest / Sidebar) */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        
+                        {/* العمود الأيمن: الخبر الرئيسي المميز (50% عرض) */}
+                        <section className="lg:col-span-6 space-y-4">
+                            <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
+                                <span className="w-3.5 h-3.5 bg-[#A91D22] block"></span>
+                                <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">الخبر الرئيسي</h2>
+                            </div>
+
+                            <article 
+                                onClick={() => openHeroStory(featuredArticle)}
+                                onMouseEnter={() => setHeroPaused(true)}
+                                onMouseLeave={() => setHeroPaused(false)}
+                                className="bg-white border border-gray-200 p-3 shadow-xs cursor-pointer group hover:border-[#A91D22] hover:shadow-md transition-all duration-300 ease-out animate-fadeIn overflow-hidden"
+                            >
+                                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 news-zoom-container rounded-xl">
+                                    <img 
+                                        src={featuredArticle.image} 
+                                        alt={featuredArticle.title}
+                                        className="w-full h-full object-cover news-zoom-img"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                    <div className="absolute top-3 right-3 bg-[#A91D22] text-white text-[10px] font-black px-2.5 py-1 rounded shadow-sm uppercase">
+                                        {featuredArticle.category}
+                                    </div>
+
+                                    <div className="absolute left-3 top-3 flex flex-col gap-2">
+                                        <button
+                                            type="button"
+                                            onClick={(event) => {
+                                                event.stopPropagation();
+                                                goToHeroSlide('prev');
+                                            }}
+                                            className="h-8 w-8 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
+                                            aria-label="الخبر السابق"
+                                        >
+                                            ←
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={(event) => {
+                                                event.stopPropagation();
+                                                goToHeroSlide('next');
+                                            }}
+                                            className="h-8 w-8 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
+                                            aria-label="الخبر التالي"
+                                        >
+                                            →
+                                        </button>
+                                    </div>
+
+                                    <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-white space-y-3">
+                                        <div className="flex items-center justify-between gap-3 text-[10px] font-black uppercase tracking-wider text-white/80">
+                                            <span>{featuredArticle.time}</span>
+                                            <span>{featuredStories[heroIndex]?.category || featuredArticle.category}</span>
+                                        </div>
+                                        <div className="space-y-2 max-w-3xl">
+                                            <h3 className="text-2xl sm:text-4xl font-black leading-tight font-serif">
+                                                {featuredArticle.title}
+                                            </h3>
+                                            <p className="text-sm sm:text-base text-white/85 leading-relaxed font-medium max-w-2xl">
+                                                {featuredArticle.subtitle}
+                                            </p>
+                                            {renderStatsLine(featuredArticle, 'text-white/85')}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-3 flex items-center justify-between gap-3">
+                                    <div className="flex items-center gap-1.5">
+                                        {featuredStories.map((story, index) => (
+                                            <button
+                                                key={story.id}
+                                                type="button"
+                                                onClick={(event) => {
+                                                    event.stopPropagation();
+                                                    setHeroIndex(index);
+                                                }}
+                                                className={`h-2.5 rounded-full transition-all ${index === heroIndex ? 'w-6 bg-[#A91D22]' : 'w-2.5 bg-gray-300 hover:bg-gray-400'}`}
+                                                aria-label={`الخبر ${index + 1}`}
+                                            />
+                                        ))}
+                                    </div>
+                                    <span className="inline-flex items-center gap-1.5 text-xs font-black text-[#A91D22] border-b-2 border-transparent group-hover:border-[#A91D22] transition duration-200">
+                                        اقرأ التقرير الكامل
+                                        <span>←</span>
+                                    </span>
+                                </div>
+                            </article>
+                        </section>
+
+                        {/* العمود الأوسط: شريط العناوين الأحدث (25% عرض) */}
+                        <section className="lg:col-span-3 space-y-4">
+                            <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
+                                <span className="w-3.5 h-3.5 bg-gray-600 block"></span>
+                                <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">شريط الأخبار</h2>
+                            </div>
+
+                            <div className="divide-y divide-gray-200 bg-white border border-gray-200 px-4 shadow-2xs">
+                                {latestArticles.map((art, idx) => (
+                                    <article 
+                                        key={art.id}
+                                        onClick={() => handleNewsTickerClick(art)}
+                                        className="py-3.5 px-2 -mx-2 rounded-xl cursor-pointer group flex items-start gap-3 transition-all duration-300 hover:bg-slate-50 hover:translate-x-[-4px] animate-fadeInUp opacity-0"
+                                        style={{ animationDelay: `${idx * 80}ms`, animationFillMode: 'forwards' }}
+                                    >
+                                        <div className="w-16 h-16 shrink-0 bg-slate-50 overflow-hidden border border-gray-100 news-zoom-container">
+                                            <img 
+                                                src={art.image} 
+                                                alt={art.title} 
+                                                className="w-full h-full object-cover news-zoom-img"
+                                            />
+                                        </div>
+                                        <div className="flex-1 space-y-1">
+                                            <div className="flex justify-between items-center gap-1.5">
+                                                <span className="text-[10px] font-bold text-[#A91D22] uppercase">{art.category}</span>
+                                                <span className="text-[9px] font-medium text-gray-400">{art.time}</span>
+                                            </div>
+                                            <h4 className="text-xs font-bold text-gray-800 leading-tight line-clamp-2 group-hover:text-[#A91D22] transition duration-150">
+                                                {art.title}
+                                            </h4>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* العمود الأيسر: منبر الرأي والتحليلات والخدمات التفاعلية (25% عرض) */}
+                        <aside className="lg:col-span-3 space-y-6">
+                            
+                            {/* رأي كتاب الجريدة */}
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
+                                    <span className="w-3.5 h-3.5 bg-[#1F2937] block"></span>
+                                    <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">أقلام حرة (رأي)</h2>
+                                </div>
+                                <div className="space-y-3">
+                                    {opinionPieces.map((op, idx) => (
+                                        <article 
+                                            key={idx} 
+                                            className="bg-white border border-gray-200 p-4 shadow-3xs space-y-2 hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out animate-fadeInUp opacity-0"
+                                            style={{ animationDelay: `${idx * 120}ms`, animationFillMode: 'forwards' }}
+                                        >
+                                            <div className="flex items-center gap-2.5">
+                                                <span className="text-xl bg-slate-100 p-1.5 rounded-full border border-gray-200 h-9 w-9 flex items-center justify-center">{op.avatar}</span>
+                                                <div>
+                                                    <h4 className="text-xs font-black text-[#1F2937]">{op.author}</h4>
+                                                    <span className="text-[9px] font-bold text-gray-400">كاتب ومحلل سياسي</span>
+                                                </div>
+                                            </div>
+                                            <h5 className="text-xs font-bold text-gray-800 leading-snug hover:text-[#A91D22] cursor-pointer">
+                                                "{op.title}"
+                                            </h5>
+                                            <p className="text-[10px] text-gray-500 font-medium leading-relaxed line-clamp-2">
+                                                {op.excerpt}
+                                            </p>
+                                        </article>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* استطلاع الرأي التفاعلي */}
+                            <div className="bg-white border border-gray-200 p-4 shadow-3xs space-y-3">
+                                <div className="border-b border-gray-100 pb-2">
+                                    <span className="bg-red-50 text-[#A91D22] text-[9px] font-black px-2 py-0.5 rounded">استطلاع الأسبوع</span>
+                                    <h3 className="text-xs font-bold text-gray-800 mt-2 leading-relaxed">
+                                        هل تؤيدين فرض عقود إلزامية لحماية الفتيات اللاتي يعملن في قطاع التسويق وإدارة صفحات السوشيال ميديا لضمان حقوقهن؟
+                                    </h3>
+                                </div>
+                                
+                                {!pollVoted ? (
+                                    <div className="grid grid-cols-2 gap-2">
+                                        <button 
+                                            onClick={() => handleVote('yes')}
+                                            className="bg-slate-50 border border-gray-200 text-xs font-bold py-2 px-3 rounded hover:bg-slate-100 hover:border-gray-300 transition"
+                                        >
+                                            👍 نعم، وبشدة
+                                        </button>
+                                        <button 
+                                            onClick={() => handleVote('no')}
+                                            className="bg-slate-50 border border-gray-200 text-xs font-bold py-2 px-3 rounded hover:bg-slate-100 hover:border-gray-300 transition"
+                                        >
+                                            👎 لا أرى ضرورة
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className="space-y-3">
+                                        <div className="space-y-1">
+                                            <div className="flex justify-between text-xs font-bold">
+                                                <span>نعم، وبشدة</span>
+                                                <span>{pollResults.yes}%</span>
+                                            </div>
+                                            <div className="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
+                                                <div className="bg-[#A91D22] h-full transition-all duration-1000 ease-out" style={{ width: `${pollResults.yes}%` }}></div>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <div className="flex justify-between text-xs font-bold">
+                                                <span>لا أرى ضرورة</span>
+                                                <span>{pollResults.no}%</span>
+                                            </div>
+                                            <div className="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
+                                                <div className="bg-gray-400 h-full transition-all duration-1000 ease-out" style={{ width: `${pollResults.no}%` }}></div>
+                                            </div>
+                                        </div>
+                                        <p className="text-[10px] text-gray-400 text-center font-bold">شكراً لمشاركتكِ بالرأي! تم تسجيل تصويتكِ.</p>
+                                    </div>
+                                )}
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                    
+
+                    {/* آخر الأخبار ولوحة النشرات السريعة */}
+                    <section className="grid gap-6 lg:grid-cols-12 items-start">
+                        <div className="lg:col-span-8 space-y-4">
+                            <div className="flex items-center justify-between border-b border-gray-300 pb-2">
+                                <div className="flex items-center gap-2">
+                                    <span className="w-3.5 h-3.5 bg-[#A91D22] block"></span>
+                                    <h2 className="text-lg font-black text-[#1F2937] font-serif">آخر الأخبار</h2>
+                                </div>
+                                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Wire Desk</span>
+                            </div>
+
+                            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3 bg-white border border-gray-200 rounded-2xl p-3 shadow-3xs">
+                                {flashStories.map((art, index) => (
+                                    <button
+                                        key={art.id + index}
+                                        type="button"
+                                        onClick={() => openArticleDetails(art)}
+                                        className="text-right border-b border-gray-100 pb-2 last:border-b-0 last:pb-0 hover:bg-slate-50 rounded-lg p-2 transition"
+                                    >
+                                        <div className="flex items-center justify-between text-[9px] font-black text-gray-400 mb-1">
+                                            <span>{art.time}</span>
+                                            <span className="text-[#A91D22]">{art.category}</span>
+                                        </div>
+                                        <h3 className="text-xs sm:text-sm font-bold text-gray-800 leading-snug line-clamp-2 hover:text-[#A91D22] transition font-serif">
+                                            {art.title}
+                                        </h3>
+                                        {renderStatsLine(art, 'mt-1')}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
-                        <div className="mx-auto max-w-3xl space-y-4 text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
-                            <p>
-                                كحكة مساحة تحريرية فريدة تجمع التحقيقات الميدانية والقصص الإنسانية والمعرفة العملية في قالب بصري حديث يساعدك على استكشاف المحتوى بسلاسة ووضوح.
+
+                        <aside className="lg:col-span-4 space-y-4 lg:sticky lg:top-4">
+                            <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-3xs space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                                    <h3 className="text-sm font-black text-[#1F2937]">Most Read Today</h3>
+                                    <span className="text-[9px] font-black text-[#A91D22]">Top Stories</span>
+                                </div>
+                                <div className="space-y-2 divide-y divide-gray-100">
+                                    {mostReadStories.map((art, index) => (
+                                        <button key={art.id} type="button" onClick={() => openArticleDetails(art)} className="w-full text-right pt-2 first:pt-0">
+                                            <div className="flex gap-2 items-start">
+                                                <span className="text-lg font-black text-gray-300 shrink-0">{index + 1}</span>
+                                                <div className="flex-1 space-y-1">
+                                                    <h4 className="text-[11px] font-bold text-gray-800 leading-snug line-clamp-2 hover:text-[#A91D22] transition font-serif">{art.title}</h4>
+                                                    {renderStatsLine(art)}
+                                                </div>
+                                            </div>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-3xs space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                                    <h3 className="text-sm font-black text-[#1F2937]">Most Viewed This Week</h3>
+                                    <span className="text-[9px] font-black text-gray-400">Pulse</span>
+                                </div>
+                                <div className="space-y-2 divide-y divide-gray-100">
+                                    {mostViewedStories.map((art, index) => (
+                                        <button key={art.id} type="button" onClick={() => openArticleDetails(art)} className="w-full text-right pt-2 first:pt-0">
+                                            <div className="flex gap-2 items-start">
+                                                <span className="text-lg font-black text-gray-300 shrink-0">{index + 1}</span>
+                                                <div className="flex-1 space-y-1">
+                                                    <h4 className="text-[11px] font-bold text-gray-800 leading-snug line-clamp-2 hover:text-[#A91D22] transition font-serif">{art.title}</h4>
+                                                    {renderStatsLine(art)}
+                                                </div>
+                                            </div>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-3xs space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                                    <h3 className="text-sm font-black text-[#1F2937]">Most Commented</h3>
+                                    <span className="text-[9px] font-black text-gray-400">Live</span>
+                                </div>
+                                <div className="space-y-2 divide-y divide-gray-100">
+                                    {mostCommentedStories.map((art) => (
+                                        <button key={art.id} type="button" onClick={() => openArticleDetails(art)} className="w-full text-right pt-2 first:pt-0">
+                                            <h4 className="text-[11px] font-bold text-gray-800 leading-snug line-clamp-2 hover:text-[#A91D22] transition font-serif">{art.title}</h4>
+                                            {renderStatsLine(art, 'mt-1')}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-3xs space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                                    <h3 className="text-sm font-black text-[#1F2937]">Latest Comments</h3>
+                                    <span className="text-[9px] font-black text-gray-400">Reader voice</span>
+                                </div>
+                                <div className="space-y-2">
+                                    {latestComments.map((entry, index) => (
+                                        <button key={`${entry.article.id}-${index}`} type="button" onClick={() => openArticleDetails(entry.article)} className="w-full text-right bg-slate-50 rounded-xl border border-slate-100 p-2.5 hover:border-[#A91D22] transition">
+                                            <div className="flex items-center justify-between text-[9px] font-black text-gray-400 mb-1">
+                                                <span>{entry.user}</span>
+                                                <span>{entry.article.time}</span>
+                                            </div>
+                                            <p className="text-[11px] leading-snug text-gray-700 line-clamp-2">
+                                                {entry.text}
+                                            </p>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-3xs space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                                    <h3 className="text-sm font-black text-[#1F2937]">Trending Topics</h3>
+                                    <span className="text-[9px] font-black text-gray-400">Hot</span>
+                                </div>
+                                <div className="flex flex-wrap gap-2">
+                                    {trendingTopics.map((topic, index) => (
+                                        <span key={index} className="text-[10px] font-bold bg-slate-50 border border-slate-200 px-2 py-1 rounded-full text-slate-700">
+                                            {Array.isArray(topic) ? topic[0] : topic}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-3xs space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                                    <h3 className="text-sm font-black text-[#1F2937]">Editor Picks</h3>
+                                    <span className="text-[9px] font-black text-gray-400">Pick list</span>
+                                </div>
+                                <div className="space-y-2 divide-y divide-gray-100">
+                                    {editorPickStories.map((art) => (
+                                        <button key={art.id} type="button" onClick={() => openArticleDetails(art)} className="w-full text-right pt-2 first:pt-0">
+                                            <h4 className="text-[11px] font-bold text-gray-800 leading-snug line-clamp-2 hover:text-[#A91D22] transition font-serif">{art.title}</h4>
+                                            {renderStatsLine(art, 'mt-1')}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </aside>
+                    </section>
+
+                    {/* تدفق الأخبار المستمر */}
+                    {/* <section className="space-y-4">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-slate-800 block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black text-[#1F2937] font-serif">التغذية الإخبارية المستمرة</h2>
+                            </div>
+                            <span className="text-xs font-black text-gray-400">Infinite Feed</span>
+                        </div>
+
+                        <div className="bg-white border border-gray-200 rounded-2xl divide-y divide-gray-100 shadow-3xs">
+                            {continuousFeedItems.map((art, index) => (
+                                <button
+                                    key={`${art.id}-${index}`}
+                                    type="button"
+                                    onClick={() => openArticleDetails(art)}
+                                    className="w-full text-right p-3 sm:p-4 hover:bg-slate-50 transition flex items-center gap-3 sm:gap-4"
+                                >
+                                    <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 border border-gray-100">
+                                        <img src={art.image} alt={art.title} className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="flex-1 space-y-1">
+                                        <div className="flex items-center justify-between gap-3 text-[9px] font-black text-gray-400">
+                                            <span>{art.date}</span>
+                                            <span className="text-[#A91D22]">{art.category}</span>
+                                        </div>
+                                        <h3 className="text-sm sm:text-base font-black text-gray-800 leading-snug line-clamp-2 font-serif hover:text-[#A91D22] transition">
+                                            {art.title}
+                                        </h3>
+                                        {renderStatsLine(art)}
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    </section> */}
+
+                    {/* قسم الأرقام والإحصائيات التفاعلي - أرقام خلف الجدران */}
+                    <section className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs space-y-6">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4">
+                            <div className="space-y-1">
+                                <span className="bg-slate-100 text-slate-800 text-[10px] font-black px-2 py-0.5 rounded border border-slate-200">المرصد التحريري بالأرقام</span>
+                                <h2 className="text-lg font-black text-gray-800 font-serif">حقائق وأرقام: واقع المرأة في المجتمع والعمل والقانون</h2>
+                            </div>
+                            <p className="text-xs text-gray-500 max-w-md leading-relaxed">
+                                إحصائيات مستخلصة من تحقيقاتنا الميدانية وسجلات الدوائر الرسمية لتسليط الضوء على حجم التحديات والمنجزات المحققة.
                             </p>
                         </div>
-                        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                            <Link to="/alaaqa" className="rounded-xl bg-brand-ink text-white px-6 py-3 text-sm font-bold shadow-lg shadow-brand-ink/10 transition-all duration-300 hover:bg-brand-secondary hover:shadow-brand-secondary/20 hover:-translate-y-0.5 outline-none">
-                                ابدئي من الملف الرئيسي
-                            </Link>
-                            <Link to="/hikayat-settat" className="rounded-xl bg-white border border-slate-200 text-slate-700 px-6 py-3 text-sm font-bold transition-all duration-300 hover:bg-slate-50 hover:border-slate-300 hover:-translate-y-0.5 outline-none">
-                                اكتشفي الحكايات
-                            </Link>
-                        </div>
-                    </section>
-                </div>
-
-                {/* 2. سيكشن أهداف المشروع */}
-                <section className="grid items-center gap-8 lg:grid-cols-12">
-                    <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
-                        <div className="space-y-1">
-                            <span className="text-[11px] font-black tracking-widest text-brand-secondary uppercase bg-brand-secondary/10 px-2.5 py-0.5 rounded">رؤيتنا ورسالتنا</span>
-                            <h2 className="text-2xl font-black text-brand-ink sm:text-4xl tracking-tight">أهداف نسعى لتحقيقها معاً</h2>
-                        </div>
                         
-                        <div className="grid gap-3.5 sm:grid-cols-2">
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                             {[
-                                { title: 'المعالجة المهنية', text: 'نشر الوعى الكامل بقضايا المرأة المعاصرة عبر أطروحات صحفية تتسم بالمصداقية والعمق.' },
-                                { title: 'التحقيقات الحية', text: 'تقديم محتوى توعوى وتحليلى رصين يعتمد كلياً على النزول للميدان والتقاط القصص المنسية.' },
-                                { title: 'التمكين الشامل', text: 'دعم حضور المرأة وإبراز فاعليتها إعلامياً وقانونياً وتعزيز الوعي بحقوقها اليومية.' },
-                                { title: 'كسر القوالب', text: 'خلق منصة صحفية حرة ومستقلة تعبر عن صوت المرأة الواقعي بعيداً عن أشكال التنميط التقليدي.' }
-                            ].map((target, idx) => (
-                                <div key={idx} className="group rounded-xl bg-white border border-slate-100 p-5 shadow-sm transition-all duration-300 hover:border-brand-secondary/30 hover:shadow-md">
-                                    <div className="mb-2 flex h-7 w-7 items-center justify-center rounded-lg bg-slate-50 text-brand-secondary text-xs font-black group-hover:bg-brand-secondary group-hover:text-white transition-colors duration-300">
-                                        {idx + 1} ٠ 
+                                { title: "المرأة المعيلة والقيادة الأسرية", val: 33, desc: "نسبة الأسر العربية التي تعيلها وتدير شؤونها النساء بمفردهن في غياب معيل آخر.", color: "bg-[#A91D22]", unit: "%" },
+                                { title: "التحرر التام من الأمية ريفياً", val: 87, desc: "نسبة النجاح والتمكين للقرويات في فصول محو الأمية وبدء مشروعات تجارية صغيرة.", color: "bg-emerald-600", unit: "%" },
+                                { title: "حسم الولاية التعليمية الفوري", val: 95, desc: "نسبة نجاح الأمهات الحاضنات في تثبيت الملف التعليمي لأطفالهن بموجب الكتاب الدوري.", color: "bg-blue-600", unit: "%" },
+                                { title: "عبء صراع الأدوار والمسؤوليات", val: 76, desc: "نسبة الأمهات العاملات اللواتي يعانين من ضغوط التوفيق والاحتراق النفسي الصامت.", color: "bg-amber-600", unit: "%" }
+                            ].map((stat, idx) => (
+                                <div key={idx} className="space-y-3 bg-[#faf9f6] p-4 rounded-xl border border-gray-100 hover:border-gray-300 transition duration-300">
+                                    <div className="flex justify-between items-baseline">
+                                        <span className="text-xs font-black text-gray-700">{stat.title}</span>
+                                        <span className="text-2xl font-black text-gray-800 flex items-baseline">
+                                            {stat.val}
+                                            <span className="text-xs text-gray-500 mr-0.5">{stat.unit}</span>
+                                        </span>
                                     </div>
-                                    <h3 className="text-base font-bold text-brand-ink mb-0.5">{target.title}</h3>
-                                    <p className="text-xs leading-relaxed text-slate-500 font-medium">{target.text}</p>
+                                    <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                                        <div className={`${stat.color} h-full rounded-full transition-all duration-1000 ease-out`} style={{ width: `${stat.val}%` }}></div>
+                                    </div>
+                                    <p className="text-[10px] text-gray-500 font-medium leading-relaxed">
+                                        {stat.desc}
+                                    </p>
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </section>
 
-                    <div className="lg:col-span-5 relative order-1 lg:order-2 flex justify-center">
-                        <div className="absolute -inset-4 bg-gradient-to-tr from-brand-secondary/5 to-brand-accent/5 rounded-full blur-2xl -z-10"></div>
-                        <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-white to-slate-50 p-6 border border-slate-200/60 shadow-md w-[80%] aspect-square flex items-center justify-center group">
-                            <img 
-                                src="/imgs/7.png" 
-                                alt="كحكة Logo" 
-                                className="w-full h-full object-contain filter drop-shadow-md transition-transform duration-500 group-hover:scale-105"
-                            />
-                        </div>
-                    </div>
-                </section>
-
-                {/* 3. سيكشن الفيديو */}
-                <section className="relative overflow-hidden rounded-2xl bg-brand-ink text-white shadow-xl p-6 sm:p-10 lg:p-12">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(var(--brand-secondary-rgb),0.1),transparent_50%)]"></div>
-                    <div className="grid items-center gap-8 lg:grid-cols-12 relative z-10">
-                        <div className="lg:col-span-5 space-y-4">
-                            <span className="inline-block text-[11px] font-black tracking-widest text-brand-accent uppercase bg-white/10 px-2.5 py-0.5 rounded">الإنتاج البصري والسمعي</span>
-                            <h2 className="text-2xl font-black tracking-tight sm:text-4xl leading-tight">قوة المحتوى المرئي في نقل الواقع</h2>
-                            <p className="text-sm sm:text-base text-slate-300 font-medium leading-relaxed">
-                                نؤمن تماماً بأن الصورة والصوت هما أقصر الطرق لملامسة وجدان المتلقي. نأخذكِ خلف كواليس الأرقام والبيانات الجافة، لنحولها معاً إلى قصص إنسانية وثائقية تنبض بالحياة.
-                            </p>
-                            <div className="flex flex-wrap gap-2.5 pt-2">
-                                <Link to="/sawtoha-masmoua" className="rounded-lg bg-brand-secondary text-white font-bold px-5 py-2.5 text-xs shadow-md transition hover:bg-brand-secondary/90 outline-none">
-                                    متابعة ملف التحقيقات
-                                </Link>
-                                <Link to="/gowa-alkahka" className="rounded-lg border border-white/20 bg-white/5 font-bold px-5 py-2.5 text-xs transition hover:bg-white/10 outline-none">
-                                    استمعي للبودكاست
-                                </Link>
+                    {/* 2. قسم التحقيقات والتقارير الاستقصائية (Investigations & Reports) */}
+                    <section className="space-y-6">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">تحقيقات وتقارير استقصائية</h2>
                             </div>
+                            <span className="text-xs font-black text-gray-500 bg-white border border-gray-200 px-3 py-1 rounded">الملف الاستقصائي لـ كحكة</span>
                         </div>
 
-                        <div className="lg:col-span-7">
-                            <div className="overflow-hidden rounded-xl border border-white/10 bg-black/40 shadow-xl">
-                                <video 
-                                    controls 
-                                    className="w-full aspect-video object-cover"
-                                    poster="/imgs/newlogo.png"
+                        <div className="grid gap-6 md:grid-cols-3">
+                            {investigativeArticles.map((art, idx) => (
+                                <article 
+                                    key={art.id}
+                                    onClick={() => openArticleDetails(art)}
+                                    className="bg-white border border-gray-200 p-4 shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.015] hover:shadow-md transition-all duration-300 ease-out animate-fadeInUp opacity-0"
+                                    style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                                 >
-                                    <source src="/videos/video.mp4" type="video/mp4" />
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* 4. سيكشن الجمهور المستهدف */}
-                <section className="space-y-6">
-                    <div className="max-w-xl mx-auto text-center">
-                        <span className="text-[11px] font-black tracking-widest text-slate-400 uppercase">لمن نكتب؟</span>
-                        <h2 className="text-2xl font-black text-brand-ink tracking-tight">الجمهور المستهدف وشراكة الوعي</h2>
-                    </div>
-                    
-                    <div className="grid gap-0 rounded-2xl overflow-hidden border border-slate-200/80 bg-white shadow-sm md:grid-cols-2 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-slate-100">
-                        <div className="p-6 sm:p-8 space-y-3 hover:bg-slate-50/40 transition-colors duration-300">
-                            <div className="inline-flex items-center justify-center rounded-lg bg-brand-secondary/10 text-brand-secondary px-2.5 py-0.5 text-xs font-bold">الحاضرة دائماً</div>
-                            <h3 className="text-xl font-black text-brand-ink">الجمهور المستهدف الأساسي</h3>
-                            <p className="text-sm leading-relaxed text-slate-600 font-medium">
-                                النساء والسيدات الشغوفات من سن ١٨ إلى ٤٥ عاماً، اللواتي يبحثن عن مساحات آمنة وحرة ومستقلة تعبر عن تفاصيل واقعهن اليومي المعاش.
-                            </p>
-                        </div>
-                        <div className="p-6 sm:p-8 space-y-3 hover:bg-slate-50/40 transition-colors duration-300">
-                            <div className="inline-flex items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent px-2.5 py-0.5 text-xs font-bold">شركاء التغيير</div>
-                            <h3 className="text-xl font-black text-brand-ink">الجمهور المستهدف الثانوي</h3>
-                            <p className="text-sm leading-relaxed text-slate-600 font-medium">
-                                الباحثون والمهتمون بقضايا الجندر، صناع القرار والرأي العام، الإعلاميون والحقوقيون الساعون دوماً لتطوير بيئات مجتمعية أكثر شمولاً وعدالة.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* 5. سيكشن الأقسام الرئيسية */}
-                <section className="space-y-8">
-                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200 pb-4">
-                        <div className="space-y-1">
-                            <span className="text-[11px] font-black tracking-widest text-brand-secondary uppercase">أبواب تحريرية</span>
-                            <h2 className="text-2xl font-black text-brand-ink tracking-tight sm:text-3xl">استكشفي الأقسام الرئيسية</h2>
-                        </div>
-                        <p className="text-sm text-slate-500 font-medium max-w-sm">
-                            كل نافذة تحريرية صُممت بعناية لتأخذكِ في رحلة استكشافية غنية بمحتوى صحفي متخصص.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-                        {topicCards.map((card) => (
-                            <Link
-                                key={card.title}
-                                to={card.to}
-                                className={`group flex flex-col justify-between overflow-hidden rounded-xl bg-white border border-slate-200/60 shadow-sm transition-all duration-300 hover:shadow-md ${card.span}`}
-                            >
-                                <div className="space-y-3">
-                                    <div className="relative aspect-[21/9] md:aspect-video w-full overflow-hidden bg-slate-50">
+                                    <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 mb-3.5 news-zoom-container">
                                         <img 
-                                            src={card.image || '/imgs/newlogo.png'} 
-                                            alt={card.title}
-                                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-102"
-                                            loading="lazy"
+                                            src={art.image} 
+                                            alt={art.title} 
+                                            className="w-full h-full object-cover news-zoom-img"
                                         />
+                                        <span className="absolute top-3 right-3 bg-[#1F2937] text-white text-[9px] font-black px-2 py-0.5 rounded shadow-sm">
+                                            تحقيق ميداني
+                                        </span>
                                     </div>
-                                    <div className="px-5 pt-1">
-                                        <h3 className="text-lg font-black text-brand-ink group-hover:text-brand-secondary transition-colors duration-200">{card.title}</h3>
-                                        <p className="mt-1 text-xs leading-relaxed text-slate-500 font-medium line-clamp-2">{card.text}</p>
+                                    <div className="space-y-2">
+                                        <div className="text-[10px] font-bold text-[#A91D22] flex items-center gap-1.5">
+                                            <span>{art.category}</span>
+                                            <span>•</span>
+                                            <span>{art.date}</span>
+                                        </div>
+                                        <h3 className="text-base font-black text-[#1F2937] leading-snug line-clamp-2 group-hover:text-[#A91D22] transition font-serif">
+                                            {art.title}
+                                        </h3>
+                                        <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
+                                            {art.subtitle}
+                                        </p>
                                     </div>
-                                </div>
-                                
-                                <div className="px-5 pb-5 pt-3">
-                                    <div className="inline-flex items-center gap-1 text-xs font-black text-brand-secondary group-hover:gap-2 transition-all duration-300">
-                                        <span>تصفحي الملف التحريري</span>
-                                        <svg viewBox="0 0 24 24" className="h-3 w-3 transition-transform duration-300 group-hover:-translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="3">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </section>
-
-                {/* 6. سيكشن مسارات سريعة */}
-                <section className="space-y-6">
-                    <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                        <div className="flex items-center gap-2">
-                            <div className="h-1.5 w-1.5 rounded-full bg-brand-accent"></div>
-                            <h2 className="text-xl font-black text-brand-ink sm:text-2xl tracking-tight">مسارات قراءة سريعة</h2>
-                        </div>
-                        <div className="flex gap-1">
-                            <button
-                                type="button"
-                                onClick={() => scrollCarousel('prev')}
-                                className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-600 transition hover:bg-brand-ink hover:text-white focus:outline-none"
-                                aria-label="السابق"
-                            >
-                                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="3">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => scrollCarousel('next')}
-                                className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-600 transition hover:bg-brand-ink hover:text-white focus:outline-none"
-                                aria-label="التالي"
-                            >
-                                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="3">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="relative overflow-hidden" ref={emblaRef}>
-                        <div className="flex gap-4">
-                            {carouselCards.map((card) => (
-                                <article
-                                    key={card.title}
-                                    className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_28%] rounded-xl bg-white border border-slate-200/60 p-5 shadow-sm flex flex-col justify-between group transition-all duration-300 hover:border-slate-300"
-                                >
-                                    <div className="space-y-1.5">
-                                        <h3 className="text-base font-black text-brand-ink group-hover:text-brand-secondary transition-colors duration-200">{card.title}</h3>
-                                        <p className="text-xs leading-relaxed text-slate-500 font-medium">{card.text}</p>
-                                    </div>
-                                    <Link
-                                        to={card.to}
-                                        className="mt-4 inline-flex items-center justify-center rounded-lg bg-slate-50 border border-slate-100 px-3 py-2 text-xs font-black text-brand-ink transition hover:bg-brand-secondary hover:text-white focus:outline-none"
-                                    >
-                                        افتحي المسار المختصر
-                                    </Link>
                                 </article>
                             ))}
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                {/* 7. سيكشن سؤال وجواب */}
-                <section className=" mx-auto space-y-6">
-                    <div className="text-center">
-                        <span className="text-[11px] font-black tracking-widest text-brand-secondary uppercase">الأسئلة الشائعة</span>
-                        <h2 className="text-2xl font-black text-brand-ink tracking-tight">دليل إجابات كحكة الفوري</h2>
-                    </div>
-
-                    <div className="rounded-xl border border-slate-200/80 bg-white shadow-sm overflow-hidden divide-y divide-slate-100">
-                        {faqItems.map((item, index) => {
-                            const isOpen = openFaqIndex === index;
-                            return (
-                                <Fragment key={item.question}>
-                                    <article className="transition-colors duration-200">
-                                        <button
-                                            type="button"
-                                            onClick={() => setOpenFaqIndex(isOpen ? -1 : index)}
-                                            className="flex w-full items-center justify-between gap-4 px-5 py-4 text-right font-black text-brand-ink text-sm sm:text-base focus:outline-none hover:bg-slate-50/50"
-                                            aria-expanded={isOpen}
-                                        >
-                                            <span className={isOpen ? "text-brand-secondary transition-colors" : ""}>{item.question}</span>
-                                            <span
-                                                className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border text-[8px] font-black transition-all duration-200 ${
-                                                    isOpen 
-                                                        ? 'bg-brand-ink border-transparent text-white rotate-180' 
-                                                        : 'bg-slate-50 border-slate-200 text-slate-500'
-                                                }`}
-                                            >
-                                                {isOpen ? '▲' : '▼'}
-                                            </span>
-                                        </button>
-                                        
-                                        <div 
-                                            className={`transition-all duration-200 ease-in-out overflow-hidden ${
-                                                isOpen ? 'max-h-[300px]' : 'max-h-0'
-                                            }`}
-                                        >
-                                            <div className="px-5 pb-4 pt-0.5 text-slate-600 font-medium text-xs sm:text-sm leading-relaxed bg-slate-50/40">
-                                                {item.answer}
+                    {/* ملف خاص: صوتها مسموع - السقف الزجاجي والتمكين الفعلي */}
+                    <section className="space-y-6">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">ملف صوتها مسموع: القيادة والتأثير الرقمي</h2>
+                            </div>
+                            <Link to="/sawtoha-masmoua" className="text-xs font-black text-[#A91D22] hover:underline">عرض ملف صوتها مسموع بالكامل ←</Link>
+                        </div>
+                        
+                        <div className="grid gap-6 lg:grid-cols-12 items-stretch">
+                            {/* اقتباس تحريري مميز (4 أعمدة) */}
+                            <div className="lg:col-span-4 bg-red-50/50 border border-[#A91D22]/15 p-6 rounded-2xl flex flex-col justify-between text-right shadow-3xs">
+                                <div className="space-y-4">
+                                    <span className="text-3xl text-[#A91D22]">“</span>
+                                    <p className="text-sm font-bold text-[#A91D22] leading-relaxed font-serif italic">
+                                        "إن إيصال أصوات الفتيات والنساء ليس مجرد ترف أو تفاعل رقمي لجذب الإعجابات؛ بل هو أداة تمكين حقيقية تعيد تشكيل الوعي العام وتصنع قيادة نسوية واعية قادرة على مواجهة تحديات الحاضر."
+                                    </p>
+                                </div>
+                                <div className="pt-4 border-t border-red-100/50 flex items-center gap-2.5">
+                                    <div className="w-8 h-8 rounded-full bg-[#A91D22]/10 border border-[#A91D22]/20 flex items-center justify-center font-bold text-[#A91D22] text-xs">✍️</div>
+                                    <div>
+                                        <h4 className="text-xs font-black text-slate-800">أسرة تحرير كحكة</h4>
+                                        <span className="text-[9px] font-bold text-gray-400">رؤية المنصة التمكينية</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {/* المقالات التابعة للقسم (8 أعمدة) */}
+                            <div className="lg:col-span-8 grid gap-6 sm:grid-cols-2">
+                                {articles.filter(art => art.category === 'صوتها مسموع').slice(0, 2).map((art, idx) => (
+                                    <article 
+                                        key={art.id}
+                                        onClick={() => openArticleDetails(art)}
+                                        className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                        style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
+                                    >
+                                        <div className="space-y-3">
+                                            <div className="flex justify-between items-center text-[10px] font-bold text-gray-400">
+                                                <span className="bg-red-50 text-[#A91D22] px-2 py-0.5 rounded border border-red-100">{art.category}</span>
+                                                <span>👁️ {art.views.toLocaleString()}</span>
                                             </div>
+                                            <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                        <div className="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
+                                            <span>التحقيق الاستقصائي بالكامل</span>
+                                            <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
                                         </div>
                                     </article>
-                                </Fragment>
-                            )
-                        })}
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* ملف خاص: على الهامش - الغارمات، المعيلات وصمود الأمهات */}
+                    <section className="space-y-6">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-slate-800 block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">ملف على الهامش: تحديات صامتة وأسر تديرها نساء</h2>
+                            </div>
+                            <Link to="/ala-alhamesh" className="text-xs font-black text-[#A91D22] hover:underline">زيارة ملف على الهامش بالكامل ←</Link>
+                        </div>
+                        
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            {articles.filter(art => art.category === 'على الهامش' || art.to === '/ala-alhamesh').slice(0, 3).map((art, idx) => (
+                                <article 
+                                    key={art.id}
+                                    onClick={() => openArticleDetails(art)}
+                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
+                                >
+                                    <div className="space-y-4">
+                                        <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 border border-gray-100 news-zoom-container">
+                                            <img 
+                                                src={art.image} 
+                                                alt={art.title} 
+                                                className="w-full h-full object-cover news-zoom-img"
+                                            />
+                                        </div>
+                                        <div className="space-y-2 text-right">
+                                            <div className="flex justify-between items-center text-[10px] font-bold text-gray-400">
+                                                <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200">{art.category}</span>
+                                                <span>🗓️ {art.date}</span>
+                                            </div>
+                                            <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="mt-5 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
+                                        <span>تفاصيل المذكرة والميداني</span>
+                                        <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* 3. قسم المرأة والأسرة وشؤون المجتمع (مكثف ومزدوج) */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        
+                        {/* قسم شؤون المرأة والأسرة (8 أعمدة) */}
+                        <section className="lg:col-span-8 space-y-6">
+                            <div className="flex items-center gap-2 border-b border-gray-300 pb-3">
+                                <span className="w-3.5 h-3.5 bg-slate-800 block"></span>
+                                <h2 className="text-xl font-black text-[#1F2937] font-serif">المرأة والأسرة</h2>
+                            </div>
+
+                            <div className="grid gap-5 sm:grid-cols-2">
+                                {familyArticles.concat(societyArticles).slice(0, 4).map((art, idx) => (
+                                    <article 
+                                        key={art.id}
+                                        onClick={() => openArticleDetails(art)}
+                                        className="bg-white border border-gray-100 p-4 shadow-3xs cursor-pointer flex gap-4 group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out animate-fadeInUp opacity-0"
+                                        style={{ animationDelay: `${idx * 100}ms`, animationFillMode: 'forwards' }}
+                                    >
+                                        <div className="w-24 h-24 shrink-0 bg-slate-100 overflow-hidden border border-gray-200 news-zoom-container">
+                                            <img 
+                                                src={art.image} 
+                                                alt={art.title} 
+                                                className="w-full h-full object-cover news-zoom-img"
+                                            />
+                                        </div>
+                                        <div className="flex-1 flex flex-col justify-between">
+                                            <div className="space-y-1">
+                                                <span className="text-[9px] font-bold text-[#A91D22]">{art.category}</span>
+                                                <h3 className="text-xs sm:text-sm font-black text-gray-800 leading-snug line-clamp-2 group-hover:text-[#A91D22] transition font-serif">
+                                                    {art.title}
+                                                </h3>
+                                            </div>
+                                            <span className="text-[10px] text-gray-400 font-bold block pt-1 border-t border-gray-50">{art.author}</span>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* القائمة الجانبية: الأكثر قراءة وتفاعلاً (4 أعمدة) */}
+                        <aside className="lg:col-span-4 space-y-6">
+                            <div className="flex items-center gap-2 border-b border-gray-300 pb-3">
+                                <span className="w-3.5 h-3.5 bg-[#A91D22] block"></span>
+                                <h2 className="text-lg font-black text-[#1F2937] font-serif">الأكثر قراءة</h2>
+                            </div>
+
+                            <div className="bg-white border border-gray-200 px-5 py-4 shadow-3xs divide-y divide-gray-100">
+                                {articles.slice(0, 5).map((art, index) => (
+                                    <div 
+                                        key={art.id}
+                                        onClick={() => openArticleDetails(art)}
+                                        className="py-3 px-2 -mx-2 rounded-xl cursor-pointer group flex items-start gap-4 transition-all duration-300 hover:bg-slate-50 hover:translate-x-[-4px] animate-fadeInUp opacity-0"
+                                        style={{ animationDelay: `${index * 80}ms`, animationFillMode: 'forwards' }}
+                                    >
+                                        <span className="text-2xl font-black text-gray-300 group-hover:text-[#A91D22] transition shrink-0 min-w-[28px] text-center">
+                                            {index + 1}
+                                        </span>
+                                        <div className="flex-1 space-y-1">
+                                            <h4 className="text-xs font-bold text-gray-800 leading-snug line-clamp-2 group-hover:text-[#A91D22] transition font-serif">
+                                                {art.title}
+                                            </h4>
+                                            <div className="flex items-center justify-between text-[9px] text-gray-400 font-semibold">
+                                                <span>{art.category}</span>
+                                                <span>👁️ {art.views.toLocaleString()}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </aside>
+
                     </div>
-                </section>
-            </main>
-            
+
+                    {/* أقسام شؤون العمل والتنقل: بين البيت والشغل & بين الزحام والكرامة */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                        
+                        {/* قسم بين البيت والشغل */}
+                        <section className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs flex flex-col justify-between space-y-4">
+                            <div className="space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-3.5 h-3.5 bg-indigo-600 block rounded-full"></span>
+                                        <h2 className="text-lg font-black text-gray-800 font-serif">بين البيت والشغل: صراع الأدوار</h2>
+                                    </div>
+                                    <Link to="/bayn-albayt-walshoghl" className="text-xs font-black text-indigo-600 hover:underline">الملف الكامل ←</Link>
+                                </div>
+                                <p className="text-xs text-gray-500 leading-relaxed">
+                                    دليل عملي وتحقيقات ميدانية تبحث في تحديات التوفيق وصراع الأدوار للأم العاملة وكيفية النجاة من الاحتراق العصبي والجسدي.
+                                </p>
+                                
+                                <div className="space-y-3 pt-2">
+                                    {articles.filter(art => art.to === '/bayn-albayt-walshoghl').slice(0, 1).map(art => (
+                                        <div 
+                                            key={art.id} 
+                                            onClick={() => openArticleDetails(art)}
+                                            className="group cursor-pointer bg-slate-50 p-4 rounded-xl border border-gray-100 hover:border-indigo-600 hover:bg-white hover:shadow-xs transition duration-300"
+                                        >
+                                            <span className="text-[9px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100 inline-block mb-2">تحقيق الأمومة العاملة</span>
+                                            <h3 className="text-sm font-black text-gray-800 group-hover:text-indigo-600 transition leading-snug font-serif">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            
+                            <div className="bg-indigo-50/30 border border-indigo-100/50 p-3.5 rounded-xl space-y-2 mt-4">
+                                <h4 className="text-xs font-black text-indigo-950">💡 نصائح سريعة للأم العاملة:</h4>
+                                <ul className="text-[10px] text-indigo-900 space-y-1 font-medium list-disc list-inside pr-1">
+                                    <li>ضعي حدوداً واضحة بين ساعات العمل والمكتب ومساحة العائلة بالمنزل.</li>
+                                    <li>شاركي المسؤوليات المنزلية مع الشريك دون حرج أو شعور بالذنب الافتراضي.</li>
+                                    <li>خصصي 15 دقيقة يومياً للتنفس والاسترخاء التام وتفريغ شحنات التوتر.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        {/* قسم بين الزحام والكرامة */}
+                        <section className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs flex flex-col justify-between space-y-4">
+                            <div className="space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-3.5 h-3.5 bg-amber-600 block rounded-full"></span>
+                                        <h2 className="text-lg font-black text-gray-800 font-serif">بين الزحام والكرامة: أمان الشارع</h2>
+                                    </div>
+                                    <Link to="/bayn-alzahm-walkarama" className="text-xs font-black text-amber-600 hover:underline">الملف الكامل ←</Link>
+                                </div>
+                                <p className="text-xs text-gray-500 leading-relaxed">
+                                    رصد لمعاناة وتفاصيل الرحلة اليومية للمرأة في المواصلات العامة وبحثها الدائم عن مساحات تنقل آمنة تصون كرامتها وحريتها.
+                                </p>
+                                
+                                <div className="space-y-3 pt-2">
+                                    {articles.filter(art => art.to === '/bayn-alzahm-walkarama').slice(0, 1).map(art => (
+                                        <div 
+                                            key={art.id} 
+                                            onClick={() => openArticleDetails(art)}
+                                            className="group cursor-pointer bg-slate-50 p-4 rounded-xl border border-gray-100 hover:border-amber-600 hover:bg-white hover:shadow-xs transition duration-300"
+                                        >
+                                            <span className="text-[9px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-100 inline-block mb-2">يوميات المواصلات</span>
+                                            <h3 className="text-sm font-black text-gray-800 group-hover:text-amber-600 transition leading-snug font-serif">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            
+                            <div className="bg-amber-50/30 border border-amber-100/50 p-3.5 rounded-xl space-y-2 mt-4">
+                                <h4 className="text-xs font-black text-amber-950">🚌 من أجل تنقل أكثر أماناً:</h4>
+                                <ul className="text-[10px] text-amber-900 space-y-1 font-medium list-disc list-inside pr-1">
+                                    <li>توسيع عربات السيدات بالمترو وتشديد الرقابة الأمنية بداخلها.</li>
+                                    <li>تفعيل تطبيقات النقل الجماعي النسائي وتسهيل ترخيصها حكومياً.</li>
+                                    <li>الإبلاغ الفوري عبر الخطوط الساخنة عند التعرض لأي مضايقة في الطريق.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    {/* 4. كلام قانون - Legal Desk (قسم بطاقات الأسئلة والأجوبة السريعة) */}
+                    <section className="space-y-6">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-slate-800 block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">كلام قانون</h2>
+                            </div>
+                            <span className="text-xs font-bold text-[#A91D22] bg-red-50 border border-red-200 px-3 py-1 rounded">حقوقكِ في خطوات مبسطة</span>
+                        </div>
+
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            {legalArticles.slice(0, 3).map((art, idx) => (
+                                <article 
+                                    key={art.id}
+                                    onClick={() => openArticleDetails(art)}
+                                    className="bg-white border border-gray-200 rounded-xl p-5 shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    style={{ animationDelay: `${idx * 120}ms`, animationFillMode: 'forwards' }}
+                                >
+                                    <div className="space-y-3">
+                                        <div className="flex justify-between items-center text-[10px] font-bold text-gray-400">
+                                            <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded">{art.category}</span>
+                                            <span>🗓️ {art.date}</span>
+                                        </div>
+                                        <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                            {art.title}
+                                        </h3>
+                                        <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
+                                            {art.subtitle}
+                                        </p>
+                                    </div>
+                                    <div className="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
+                                        <span>مراجعة قانونية معتمدة ⚖️</span>
+                                        <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* قسم الاستشارات والمساندة التفاعلي - منبر العون القانوني والنفسي */}
+                    <section className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-3xs space-y-6">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4">
+                            <div className="space-y-1">
+                                <span className="bg-[#A91D22]/10 text-[#A91D22] text-[10px] font-black px-2.5 py-0.5 rounded border border-[#A91D22]/15">مكتب خدمات كحكة التفاعلي</span>
+                                <h2 className="text-xl font-black text-gray-800 font-serif">بوابة طلب الدعم والاستشارة الحرة</h2>
+                            </div>
+                            <p className="text-xs text-gray-500 max-w-md leading-relaxed">
+                                نتيح لكِ التواصل المباشر والسري مع شبكة من المحامين والأخصائيين النفسيين المتطوعين لتقديم العون والإرشاد بدون أي كلفة.
+                            </p>
+                        </div>
+
+                        <div className="grid gap-8 lg:grid-cols-12 items-stretch">
+                            {/* لوحة الاختيارات والمدخلات (8 أعمدة) */}
+                            <div className="lg:col-span-8 bg-[#faf9f6] p-5 rounded-2xl border border-gray-100 flex flex-col justify-between">
+                                {!consultSubmitted ? (
+                                    <form onSubmit={handleConsultSubmit} className="space-y-4">
+                                        <div className="flex gap-3">
+                                            <button 
+                                                type="button"
+                                                onClick={() => setConsultType('legal')}
+                                                className={`flex-1 py-2.5 px-4 text-xs font-black rounded-lg border transition duration-300 ${
+                                                    consultType === 'legal' 
+                                                    ? 'bg-[#1F2937] border-[#1F2937] text-white' 
+                                                    : 'bg-white border-gray-200 text-slate-700 hover:bg-slate-50'
+                                                }`}
+                                            >
+                                                ⚖️ استشارة قانونية (قضايا الولاية، النفقات، الابتزاز)
+                                            </button>
+                                            <button 
+                                                type="button"
+                                                onClick={() => setConsultType('psychological')}
+                                                className={`flex-1 py-2.5 px-4 text-xs font-black rounded-lg border transition duration-300 ${
+                                                    consultType === 'psychological' 
+                                                    ? 'bg-[#A91D22] border-[#A91D22] text-white' 
+                                                    : 'bg-white border-gray-200 text-slate-700 hover:bg-slate-50'
+                                                }`}
+                                            >
+                                                🧠 مساندة نفسية (ضغوط الأمومة، صراعات الذات)
+                                            </button>
+                                        </div>
+
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-black text-slate-750 block">اكتبي مشكلتكِ أو استفساركِ بالتفصيل وبسرية تامة:</label>
+                                            <textarea 
+                                                required
+                                                rows={4}
+                                                value={consultText}
+                                                onChange={(e) => setConsultText(e.target.value)}
+                                                placeholder={consultType === 'legal' ? "اكتبي سؤالكِ القانوني بخصوص الإجراءات، الأوراق المطلوبة، أو الولاية التعليمية..." : "شاركينا تفاصيل الضغط النفسي، صراعات الهوية، أو مشاعر الذنب التي تواجهينها..."}
+                                                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-xs outline-none focus:border-[#A91D22] bg-white transition font-medium"
+                                            ></textarea>
+                                        </div>
+
+                                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pt-2">
+                                            <span className="text-[10px] text-gray-400 font-bold">⚠️ يتم تشفير كافة البيانات ولا يتم نشرها على الموقع إطلاقاً.</span>
+                                            <button 
+                                                type="submit"
+                                                className="bg-[#A91D22] hover:bg-red-700 text-white text-xs font-black px-6 py-2.5 rounded-lg shadow-sm transition self-end"
+                                            >
+                                                إرسال الطلب الآمن ←
+                                            </button>
+                                        </div>
+                                    </form>
+                                ) : (
+                                    <div className="py-12 text-center space-y-4 animate-scaleUp">
+                                        <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center text-3xl mx-auto shadow-inner">
+                                            ✅
+                                        </div>
+                                        <div className="space-y-2">
+                                            <h3 className="text-base font-black text-slate-800">تم إرسال طلب استشارتكِ بنجاح!</h3>
+                                            <p className="text-xs text-gray-500 max-w-sm mx-auto leading-relaxed">
+                                                سيقوم الفريق الاستشاري التابع للموقع بمراجعة الحالة والرد عليكِ بإجابة مفصلة عبر البريد الإلكتروني في غضون 24 ساعة.
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* لوحة المعلومات والأرقام السريعة (4 أعمدة) */}
+                            <div className="lg:col-span-4 bg-slate-900 text-white p-5 rounded-2xl flex flex-col justify-between relative overflow-hidden shadow-md">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(169,29,34,0.1),transparent_70%)]"></div>
+                                <div className="relative z-10 space-y-4 text-right">
+                                    <h3 className="text-sm font-black text-[#A91D22] tracking-wider uppercase">أرقام وخطوط النجدة الساخنة</h3>
+                                    <p className="text-[11px] text-slate-300 leading-relaxed">
+                                        إذا كنتِ تمرين بأزمة طارئة أو تشعرين بالخطر، يمكنكِ الاتصال مباشرة بالجهات المختصة:
+                                    </p>
+                                    
+                                    <div className="space-y-3 pt-2">
+                                        {[
+                                            { name: "المجلس القومي للمرأة (مصر)", phone: "15115", desc: "لتلقي شكاوى العنف والتمييز واستشارات الأحوال الشخصية." },
+                                            { name: "نجدة الطفل والدعم الأسرى", phone: "16000", desc: "للإبلاغ عن الانتهاكات وحماية حقوق الأطفال التعليمية." },
+                                            { name: "الاستشارات النفسية والإرشادية", phone: "0800-8880700", desc: "خط ساخن للأمان النفسي ومقاومة الاضطرابات الحادة." }
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="border-b border-white/5 pb-2.5 last:border-b-0 last:pb-0">
+                                                <div className="flex justify-between items-baseline text-xs font-black">
+                                                    <span className="text-slate-200">{item.name}</span>
+                                                    <span className="text-[#A91D22] font-black tracking-wider font-mono">{item.phone}</span>
+                                                </div>
+                                                <p className="text-[9px] text-slate-400 mt-1">{item.desc}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="text-[9px] text-slate-500 font-medium text-center pt-4 border-t border-white/5 relative z-10 mt-4">
+                                    المشروع بالتعاون مع نقابة المحامين وجمعيات الأطباء النفسيين.
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* 5. قسم البودكاست والوسائط المتعددة (جوه الكحكة - Dark Section) */}
+                    <section id="podcast-section" className="bg-[#111111] text-white rounded-2xl p-6 sm:p-10 relative overflow-hidden shadow-xl scroll-mt-24">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(169,29,34,0.15),transparent_60%)]"></div>
+                        
+                        <div className="relative z-10 space-y-8">
+                            {/* ترويسة القسم */}
+                            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-4">
+                                <div className="space-y-1">
+                                    <span className="text-[#A91D22] font-black text-xs uppercase tracking-widest bg-red-500/10 px-2.5 py-0.5 rounded">البث المسموع والمرئي</span>
+                                    <h2 className="text-2xl sm:text-3xl font-black font-serif">بودكاست جوه الكحكة</h2>
+                                </div>
+                                <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
+                                    مساحتنا الصوتية الحرة لاستقبال تفاصيل الصراعات الداخلية والمشاعر، نسلط من خلالها الضوء على هموم خفية.
+                                </p>
+                            </div>
+
+                            {/* هيكل البث الصوتي التفاعلي */}
+                            <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+                                {/* المشغل (4 أعمدة) */}
+                                <div className="lg:col-span-4 bg-white/5 border border-white/10 rounded-xl p-5 flex flex-col justify-between items-center text-center shadow-md">
+                                    <div className="space-y-4 w-full">
+                                        <div className={`w-20 h-20 bg-[#A91D22]/10 rounded-full border border-[#A91D22]/20 flex items-center justify-center text-3xl mx-auto shadow-inner transition-all duration-500 ${isPlaying ? 'animate-pulse scale-105 bg-[#A91D22]/20 border-[#A91D22]/30' : ''}`}>
+                                            📻
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <h3 className="text-sm font-black text-white leading-tight flex items-center justify-center gap-2">
+                                                {playingEpisode ? playingEpisode.title : "راديو كحكة الإخباري"}
+                                                {isPlaying && (
+                                                    <div className="flex items-end gap-0.5 h-4 mb-0.5">
+                                                        <span className="w-0.5 bg-[#A91D22] rounded-full animate-wave" style={{ animationDelay: '0.1s' }}></span>
+                                                        <span className="w-0.5 bg-[#A91D22] rounded-full animate-wave" style={{ animationDelay: '0.3s' }}></span>
+                                                        <span className="w-0.5 bg-[#A91D22] rounded-full animate-wave" style={{ animationDelay: '0.5s' }}></span>
+                                                    </div>
+                                                )}
+                                            </h3>
+                                            <p className="text-[10px] text-slate-400 font-bold">
+                                                {playingEpisode ? `مدة الحلقة: ${playingEpisode.duration}` : "اختر الحلقة المناسبة للتشغيل بالجانب"}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* واجهة تشغيل صوتية تمثيلية */}
+                                    <div className="w-full space-y-4 pt-4 border-t border-white/5 mt-4">
+                                        {/* شريط التقدم */}
+                                        <div className="space-y-1">
+                                            <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+                                                <div className={`bg-[#A91D22] h-full ${isPlaying ? 'w-[40%] transition-all duration-1000' : 'w-0'}`}></div>
+                                            </div>
+                                            <div className="flex justify-between text-[8px] text-slate-400 font-bold">
+                                                <span>{isPlaying ? '٠٨:٢٥' : '٠٠:٠٠'}</span>
+                                                <span>{playingEpisode ? playingEpisode.duration : '٠٠:٠٠'}</span>
+                                            </div>
+                                        </div>
+                                        
+                                        {/* أزرار التحكم */}
+                                        <div className="flex justify-center items-center gap-4">
+                                            <button className="text-slate-400 hover:text-white transition text-xs">⏮️</button>
+                                            <button 
+                                                onClick={() => {
+                                                    if (!playingEpisode) {
+                                                        playEpisode(podcastEpisodes[0])
+                                                        return;
+                                                    }
+
+                                                    setIsPlaying(prev => !prev)
+                                                }}
+                                                className={`w-12 h-12 rounded-full bg-[#A91D22] text-white font-bold flex items-center justify-center hover:bg-red-700 shadow-md transition-all duration-300 ${isPlaying ? 'animate-pulseGlow' : ''}`}
+                                            >
+                                                {isPlaying ? '⏸️' : '▶️'}
+                                            </button>
+                                            <button className="text-slate-400 hover:text-white transition text-xs">⏭️</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* قائمة الحلقات (8 أعمدة) */}
+                                <div className="lg:col-span-8 space-y-3 flex flex-col justify-center">
+                                    {podcastEpisodes.map((ep, idx) => {
+                                        const isCurrent = playingEpisode?.id === ep.id
+                                        return (
+                                            <div 
+                                                key={ep.id}
+                                                onClick={() => playEpisode(ep)}
+                                                className={`p-4 rounded-xl cursor-pointer border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 animate-fadeInRight opacity-0 transition-all duration-300 ${
+                                                    isCurrent 
+                                                    ? 'bg-[#A91D22]/10 border-[#A91D22]/40 text-white scale-[1.01]' 
+                                                    : 'bg-white/5 border-white/5 text-slate-300 hover:bg-white/10 hover:text-white hover:scale-[1.005]'
+                                                }`}
+                                                style={{ animationDelay: `${idx * 120}ms`, animationFillMode: 'forwards' }}
+                                            >
+                                                <div className="space-y-1">
+                                                    <h4 className="text-xs font-black flex items-center gap-2">
+                                                        <span className={`w-1.5 h-1.5 rounded-full ${isCurrent ? 'bg-[#A91D22]' : 'bg-slate-400'}`}></span>
+                                                        {ep.title}
+                                                    </h4>
+                                                    <p className="text-[10px] text-slate-400 font-medium leading-relaxed">
+                                                        {ep.desc}
+                                                    </p>
+                                                </div>
+                                                <span className="text-[10px] font-bold text-slate-400 bg-white/5 px-3 py-1 rounded shrink-0">{ep.duration}</span>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+
+                                <audio
+                                    ref={audioRef}
+                                    preload="none"
+                                    onEnded={() => setIsPlaying(false)}
+                                    onError={() => setIsPlaying(false)}
+                                />
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* قسم جوه الكحكة - المشاعر والضغوط النفسية */}
+                    <section className="space-y-6">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">منتدى جوه الكحكة (المشاعر والصراعات النفسية)</h2>
+                            </div>
+                            <Link to="/gowa-alkahka" className="text-xs font-black text-[#A91D22] hover:underline">عرض جميع موضوعات القسم ←</Link>
+                        </div>
+
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            {gowaArticles.slice(0, 3).map((art, idx) => (
+                                <article 
+                                    key={art.id}
+                                    onClick={() => openArticleDetails(art)}
+                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    style={{ animationDelay: `${idx * 120}ms`, animationFillMode: 'forwards' }}
+                                >
+                                    <div className="space-y-3 text-right">
+                                        <div className="flex justify-between items-center text-[10px] font-bold text-gray-400">
+                                            <span className="bg-purple-50 text-purple-700 px-2 py-0.5 rounded">{art.category}</span>
+                                            <span>👁️ {art.views.toLocaleString()}</span>
+                                        </div>
+                                        <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                            {art.title}
+                                        </h3>
+                                        <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
+                                            {art.subtitle}
+                                        </p>
+                                    </div>
+                                    <div className="mt-5 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
+                                        <span>تفريغ ودعم نفسي 🧠</span>
+                                        <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* أقسام المرأة والمنزل: سنة أولى أمومة & روتين تنظيف المنزل */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                        
+                        {/* قسم سنة أولى أمومة */}
+                        <section className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs flex flex-col justify-between space-y-4">
+                            <div className="space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-3.5 h-3.5 bg-rose-600 block rounded-full"></span>
+                                        <h2 className="text-lg font-black text-gray-800 font-serif">سنة أولى أمومة: دليل الأمهات الجدد</h2>
+                                    </div>
+                                    <Link to="/sana-ola-omoma" className="text-xs font-black text-rose-600 hover:underline">الملف الكامل ←</Link>
+                                </div>
+                                <p className="text-xs text-gray-500 leading-relaxed">
+                                    مساحة متكاملة لمساندة الأمهات الجدد في تحولاتهن العاطفية والجسدية والتعامل مع احتياجات الصغير في عامه الأول.
+                                </p>
+                                
+                                <div className="space-y-3 pt-2">
+                                    {articles.filter(art => art.to === '/sana-ola-omoma').slice(0, 1).map(art => (
+                                        <div 
+                                            key={art.id} 
+                                            onClick={() => openArticleDetails(art)}
+                                            className="group cursor-pointer bg-slate-50 p-4 rounded-xl border border-gray-100 hover:border-rose-600 hover:bg-white hover:shadow-xs transition duration-300"
+                                        >
+                                            <span className="text-[9px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-100 inline-block mb-2">دليل الأمومة الأولى</span>
+                                            <h3 className="text-sm font-black text-gray-800 group-hover:text-rose-600 transition leading-snug font-serif">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            
+                            <div className="bg-rose-50/30 border border-rose-100/50 p-3.5 rounded-xl space-y-2 mt-4">
+                                <h4 className="text-xs font-black text-rose-950">👶 إضاءة للأم الجديدة:</h4>
+                                <ul className="text-[10px] text-rose-900 space-y-1 font-medium list-disc list-inside pr-1">
+                                    <li>اكتئاب ما بعد الولادة حقيقة بيولوجية ونفسية وليس تقصيراً منكِ؛ اطلبي الدعم دون خجل.</li>
+                                    <li>نوم الرضيع المتقطع أمر طبيعي جداً؛ نسقي فترات نومكِ مع نومه لتعويض التعب.</li>
+                                    <li>قبول المساعدة من المقربين يوفر لكِ وقتاً ثميناً لاستجماع طاقتكِ.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        {/* قسم روتين تنظيف المنزل */}
+                        <section className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs flex flex-col justify-between space-y-4">
+                            <div className="space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-3.5 h-3.5 bg-teal-600 block rounded-full"></span>
+                                        <h2 className="text-lg font-black text-gray-800 font-serif">شؤون المنزل والعبء العقلي غير المرئي</h2>
+                                    </div>
+                                    <Link to="/roteen-tanzeef-almanzel" className="text-xs font-black text-teal-600 hover:underline">الملف الكامل ←</Link>
+                                </div>
+                                <p className="text-xs text-gray-500 leading-relaxed">
+                                    تفكيك لعبء الرعاية المنزلية اليومي المتكرر وتأثيره على الصحة النفسية للزوجة، مع نصائح لتوزيع عادل للمسؤوليات.
+                                </p>
+                                
+                                <div className="space-y-3 pt-2">
+                                    {articles.filter(art => art.to === '/roteen-tanzeef-almanzel').slice(0, 1).map(art => (
+                                        <div 
+                                            key={art.id} 
+                                            onClick={() => openArticleDetails(art)}
+                                            className="group cursor-pointer bg-slate-50 p-4 rounded-xl border border-gray-100 hover:border-teal-600 hover:bg-white hover:shadow-xs transition duration-300"
+                                        >
+                                            <span className="text-[9px] font-bold text-teal-600 bg-teal-50 px-2 py-0.5 rounded border border-teal-100 inline-block mb-2">عبء الرعاية المنزلية</span>
+                                            <h3 className="text-sm font-black text-gray-800 group-hover:text-teal-600 transition leading-snug font-serif">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            
+                            <div className="bg-teal-50/30 border border-teal-100/50 p-3.5 rounded-xl space-y-2 mt-4">
+                                <h4 className="text-xs font-black text-teal-950">🧹 تنظيف البيت والصحة النفسية:</h4>
+                                <ul className="text-[10px] text-teal-900 space-y-1 font-medium list-disc list-inside pr-1">
+                                    <li>ترتيب المكان المحيط يقلل مستويات الكورتيزول (هرمون التوتر) في الدماغ.</li>
+                                    <li>تجنبي فخ الكمال المنزلي؛ فبيتكِ مساحة للمعيشة والراحة وليس معرضاً للصور.</li>
+                                    <li>ضعي جدولاً تشاركياً واضحاً لتوزيع المهام مع الأبناء والزوج لتقاسم التعب.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    {/* 6. الصحافة المصورة والقصص الملهمة (Photo Journalism & Stories) */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        
+                        {/* قصص ملهمة (6 أعمدة) */}
+                        <section className="lg:col-span-6 space-y-4">
+                            <div className="flex items-center gap-2 border-b border-gray-300 pb-3">
+                                <span className="w-3.5 h-3.5 bg-slate-800 block"></span>
+                                <h2 className="text-xl font-black text-[#1F2937] font-serif">قصص ملهمة</h2>
+                            </div>
+                            
+                            <div className="space-y-4">
+                                {successArticles.concat(articles.slice(11, 12)).slice(0, 2).map((art, idx) => (
+                                    <article 
+                                        key={art.id}
+                                        onClick={() => openArticleDetails(art)}
+                                        className="bg-white border border-gray-200 p-4 shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex gap-4 animate-fadeInUp opacity-0"
+                                        style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
+                                    >
+                                        <div className="w-24 h-24 shrink-0 bg-slate-50 overflow-hidden border border-gray-200 news-zoom-container">
+                                            <img 
+                                                src={art.image} 
+                                                alt={art.title} 
+                                                className="w-full h-full object-cover news-zoom-img"
+                                            />
+                                        </div>
+                                        <div className="flex-1 flex flex-col justify-between">
+                                            <div className="space-y-1">
+                                                <span className="text-[9px] font-bold text-[#A91D22]">{art.category}</span>
+                                                <h3 className="text-sm font-black text-gray-800 leading-snug line-clamp-2 group-hover:text-[#A91D22] transition font-serif">
+                                                    {art.title}
+                                                </h3>
+                                            </div>
+                                            <span className="text-[10px] text-gray-400 font-bold">{art.author}</span>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* صحافة مصورة (6 أعمدة) */}
+                        <section className="lg:col-span-6 space-y-4">
+                            <div className="flex items-center gap-2 border-b border-gray-300 pb-3">
+                                <span className="w-3.5 h-3.5 bg-[#A91D22] block"></span>
+                                <h2 className="text-xl font-black text-[#1F2937] font-serif">صحافة مصورة</h2>
+                            </div>
+
+                            <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-900 border border-gray-200">
+                                <img 
+                                    src="/imgs/2.png" 
+                                    alt="صحافة مصورة كحكة" 
+                                    className="w-full h-full object-cover opacity-80"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                                <div className="absolute bottom-5 left-5 right-5 text-white text-right space-y-1.5">
+                                    <span className="bg-[#A91D22] text-[9px] font-black px-2 py-0.5 rounded shadow-sm">عدسة كحكة الميدانية</span>
+                                    <h3 className="text-sm font-black leading-snug">لقطة حية توثق جلسات الدعم النفسي والاستماعي للمرأة في الأحياء الشعبية.</h3>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    {/* أقسام الجمال الطبيعي ومحو الأمية: هوس التجميل & محو الأمية */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                        
+                        {/* قسم هوس التجميل ومرايا الذات */}
+                        <section className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs flex flex-col justify-between space-y-4">
+                            <div className="space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-3.5 h-3.5 bg-violet-600 block rounded-full"></span>
+                                        <h2 className="text-lg font-black text-gray-800 font-serif">هوس التجميل ومرايا الذات</h2>
+                                    </div>
+                                    <Link to="/hous-eltagmeel" className="text-xs font-black text-violet-600 hover:underline">الملف الكامل ←</Link>
+                                </div>
+                                <p className="text-xs text-gray-500 leading-relaxed">
+                                    تحليل نقدي لمعايير الجمال المفروضة عبر الفلاتر الرقمية وعيادات التجميل، ودعوة للعودة إلى التصالح مع الذات والملامح الطبيعية.
+                                </p>
+                                
+                                <div className="space-y-3 pt-2">
+                                    {articles.filter(art => art.to === '/hous-eltagmeel').slice(0, 1).map(art => (
+                                        <div 
+                                            key={art.id} 
+                                            onClick={() => openArticleDetails(art)}
+                                            className="group cursor-pointer bg-slate-50 p-4 rounded-xl border border-gray-100 hover:border-violet-600 hover:bg-white hover:shadow-xs transition duration-300"
+                                        >
+                                            <span className="text-[9px] font-bold text-violet-600 bg-violet-50 px-2 py-0.5 rounded border border-violet-100 inline-block mb-2">مرايا التجميل والفلترة</span>
+                                            <h3 className="text-sm font-black text-gray-800 group-hover:text-violet-600 transition leading-snug font-serif">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            
+                            <div className="bg-violet-50/30 border border-violet-100/50 p-3.5 rounded-xl space-y-2 mt-4">
+                                <h4 className="text-xs font-black text-violet-950">💄 التصالح وقبول ملامحكِ الطبيعية:</h4>
+                                <ul className="text-[10px] text-violet-900 space-y-1 font-medium list-disc list-inside pr-1">
+                                    <li>الفلاتر تصنع صوراً نمطية غير واقعية؛ ملامحكِ الطبيعية هي هويتكِ الفريدة.</li>
+                                    <li>تقدير الذات ينبع من الداخل والتجربة العقلية والروحية، وليس من مدى تطابقكِ مع مقاييس التريند.</li>
+                                    <li>امنحي بشرتكِ ونفسكِ فترات راحة من مساحيق التجميل وقارني مظهركِ الطبيعي بحب.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        {/* قسم فصول النور ومحو الأمية */}
+                        <section className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs flex flex-col justify-between space-y-4">
+                            <div className="space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-3.5 h-3.5 bg-emerald-600 block rounded-full"></span>
+                                        <h2 className="text-lg font-black text-gray-800 font-serif">فصول النور ومحو الأمية القروية</h2>
+                                    </div>
+                                    <Link to="/mahw-el-omya" className="text-xs font-black text-emerald-600 hover:underline">الملف الكامل ←</Link>
+                                </div>
+                                <p className="text-xs text-gray-500 leading-relaxed">
+                                    رحلات كفاح ملهمة لفتيات وسيدات في الريف المصري تغلبن على الجهل والأمية لفتح مشروعات مستقلة وحماية أسرهم من الفقر.
+                                </p>
+                                
+                                <div className="space-y-3 pt-2">
+                                    {articles.filter(art => art.to === '/mahw-el-omya').slice(0, 1).map(art => (
+                                        <div 
+                                            key={art.id} 
+                                            onClick={() => openArticleDetails(art)}
+                                            className="group cursor-pointer bg-slate-50 p-4 rounded-xl border border-gray-100 hover:border-emerald-600 hover:bg-white hover:shadow-xs transition duration-300"
+                                        >
+                                            <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100 inline-block mb-2">رحلات فصول النور</span>
+                                            <h3 className="text-sm font-black text-gray-800 group-hover:text-emerald-600 transition leading-snug font-serif">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            
+                            <div className="bg-emerald-50/30 border border-emerald-100/50 p-3.5 rounded-xl space-y-2 mt-4">
+                                <h4 className="text-xs font-black text-emerald-950">📚 أثر التعليم على التمكين:</h4>
+                                <ul className="text-[10px] text-emerald-900 space-y-1 font-medium list-disc list-inside pr-1">
+                                    <li>تعليم السيدة يمكنها من قراءة عقودها ومعاملاتها المالية وحمايتها من النصب.</li>
+                                    <li>التحرر من الأمية يفتح آفاقاً جديدة للمشاريع الحرفية وتنمية الدخل الذاتي.</li>
+                                    <li>الأم المتعلمة تملك وعياً أكبر لمتابعة وتوجيه دراسة وصحة أطفالها.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    {/* قسم أصوات القارئات ورسائل التضامن المجتمعي */}
+                    <section className="space-y-6">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">أصوات القارئات ورسائل التضامن</h2>
+                            </div>
+                            <span className="text-xs font-bold text-gray-400 font-serif">صندوق بريد كحكة المفتوح 📬</span>
+                        </div>
+                        
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                            {[
+                                { user: "هبة من القاهرة (28 سنة)", text: "إلى كل أم جديدة تصارع التعب والذنب في الليل: أنتِ لستِ وحدكِ، صمتكِ قوة وسندركِ معاً طريق النجاة.", bg: "bg-red-50/75 border-red-150 text-red-950" },
+                                { user: "فاطمة من المنيا (42 سنة)", text: "فصول النور لم تعلمني القراءة فقط، بل منحتني صوتاً حراً لكي لا يستغل أحد ضعفي أو جهلي بعد اليوم.", bg: "bg-emerald-50/75 border-emerald-150 text-emerald-950" },
+                                { user: "رنا من الإسكندرية (22 سنة)", text: "الشارع والشارع الرقمي يجب أن يظلا مساحات آمنة لنا. كسر صمتنا في مواجهة الابتزاز هو أول خطوة لاسترداد الأمان.", bg: "bg-blue-50/75 border-blue-150 text-blue-950" },
+                                { user: "منار من مغتربة (35 سنة)", text: "شوق الأوطان صعب لكن تربية صغارنا في الغربة علمتنا الاعتماد على النفس وصناعة مجتمعنا الصغير الحاضن.", bg: "bg-amber-50/75 border-amber-150 text-amber-950" }
+                            ].map((letter, idx) => (
+                                <div key={idx} className={`${letter.bg} border p-5 rounded-2xl shadow-3xs flex flex-col justify-between space-y-4 hover:scale-[1.01] transition duration-300`}>
+                                    <p className="text-xs font-semibold leading-relaxed">
+                                        \"{letter.text}\"
+                                    </p>
+                                    <div className="flex justify-between items-center text-[10px] font-black border-t border-black/5 pt-2">
+                                        <span>👤 {letter.user}</span>
+                                        <span className="opacity-60">رسالة تضامن</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* قسم بره الكحكة - تحديات الفضاء الرقمي والشارع */}
+                    <section className="space-y-6">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-slate-800 block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">ملف بره الكحكة (الفضاء الرقمي والشارع)</h2>
+                            </div>
+                            <Link to="/bara-alkahka" className="text-xs font-black text-[#A91D22] hover:underline">تصفح ملفات الشارع والإنترنت ←</Link>
+                        </div>
+
+                        <div className="grid gap-6 sm:grid-cols-2">
+                            {articles.filter(art => art.category === 'بره الكحكة' || art.to === '/bara-alkahka').slice(0, 2).map((art, idx) => (
+                                <article 
+                                    key={art.id}
+                                    onClick={() => openArticleDetails(art)}
+                                    className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col sm:flex-row gap-6 animate-fadeInUp opacity-0"
+                                    style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
+                                >
+                                    <div className="sm:w-1/3 aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 border border-gray-100 news-zoom-container shrink-0">
+                                        <img 
+                                            src={art.image} 
+                                            alt={art.title} 
+                                            className="w-full h-full object-cover news-zoom-img"
+                                        />
+                                    </div>
+                                    <div className="flex-1 flex flex-col justify-between space-y-3 text-right">
+                                        <div className="space-y-1.5">
+                                            <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100/50 inline-block">{art.category}</span>
+                                            <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-2">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                        <div className="flex justify-between items-center text-xs font-bold text-gray-400">
+                                            <span>✍️ {art.author}</span>
+                                            <span className="text-[#A91D22] group-hover:translate-x-[-4px] transition-transform">اقرئي التحقيق الكامل ←</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* دليل الأبواب التحريرية الكامل للمنصة */}
+                    {/* دليل أبواب كحكة التفاعلي الشامل */}
+                    <section className="space-y-6">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3 animate-fadeIn">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">دليل أبواب منصة كحكة التحريرية الكامل</h2>
+                            </div>
+                            <span className="text-xs font-bold text-gray-400 font-serif">١٤ باباً استقصائياً وتوعوياً بالكامل</span>
+                        </div>
+
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                            {[
+                                {
+                                    title: "صوتها مسموع",
+                                    path: "/sawtoha-masmoua",
+                                    icon: "📢",
+                                    tag: "تحقيق استقصائي",
+                                    desc: "تحقيقات ميدانية معمقة بخصوص التمكين الرقمي، بيئات العمل التنفيذية وسقف القيادة الزجاجي.",
+                                    topics: ["النسوية الافتراضية", "العمل القيادي للمرأة", "البيئة المكتبية الذكورية"]
+                                },
+                                {
+                                    title: "على الهامش",
+                                    path: "/ala-alhamesh",
+                                    icon: "🤰",
+                                    tag: "ملفات مجتمعية",
+                                    desc: "تحقيقات استقصائية حية بخصوص أسر الغارمات، ضغوط تفضيل الذكور، وكلفة إنجاب البنات النفسية.",
+                                    topics: ["موروثات النوع", "أمهات بلا أمومة", "استغلال فقر المرأة"]
+                                },
+                                {
+                                    title: "بره الكحكة",
+                                    path: "/bara-alkahka",
+                                    icon: "🌐",
+                                    tag: "تحديات معاصرة",
+                                    desc: "جولة واقعية في فخاخ العالم الرقمي والتريندات القاتلة، إدمان الشوبينج، والتحرش اللفظي بالشارع.",
+                                    topics: ["هوس السوشيال ميديا", "أمان الشارع للبنات", "إدمان الشراء أونلاين"]
+                                },
+                                {
+                                    title: "جوه الكحكة",
+                                    path: "/gowa-alkahka",
+                                    icon: "🧠",
+                                    tag: "الصراعات النفسية",
+                                    desc: "الضغوط النفسية الداخلية للفتاة، الخوف من الزواج، والبحث عن شريك الحياة المناسب والنضج العاطفي.",
+                                    topics: ["البنت القوية", "الخوف من الارتباط", "الراجل الصح"]
+                                },
+                                {
+                                    title: "بين البيت والشغل",
+                                    path: "/bayn-albayt-walshoghl",
+                                    icon: "💼",
+                                    tag: "شؤون العمل والبيت",
+                                    desc: "التوفيق الصعب وصراع الأدوار بين طموح العمل في المكتب والواجب الأسري والمنزلي والاحتراق النفسي.",
+                                    topics: ["الأم العاملة والذنب", "تنسيق الأولويات", "رعاية الأطفال"]
+                                },
+                                {
+                                    title: "بين الزحام والكرامة",
+                                    path: "/bayn-alzahm-walkarama",
+                                    icon: "🚌",
+                                    tag: "أمان الشارع",
+                                    desc: "المعاناة اليومية الصامتة للمرأة في المواصلات العامة وبحثها عن الخصوصية والأمان الفعلي أثناء العبور.",
+                                    topics: ["مساحات مخصصة", "كرامة التنقل", "ضغوط الزحام"]
+                                },
+                                {
+                                    title: "حكايات ستات",
+                                    path: "/hikayat-settat",
+                                    icon: "📖",
+                                    tag: "سرديات وقصص",
+                                    desc: "سلسلة مذكرات وقصص واقعية تروي تجارب الأمهات والفتيات اليومية الحية بكل تفاصيلها ودروسها.",
+                                    topics: ["مذكرات أم مغتربة", "قصص الكفاح الصامت", "تجارب واقعية"]
+                                },
+                                {
+                                    title: "روتين تنظيف المنزل",
+                                    path: "/roteen-tanzeef-almanzel",
+                                    icon: "🧹",
+                                    tag: "شؤون المنزل",
+                                    desc: "العبء العقلي غير المرئي لإدارة روتين تنظيف البيت وكيف يتأرجح بين الراحة النفسية والتوتر المرضي.",
+                                    topics: ["مجهود خفي غير مرئي", "عدالة توزيع الأدوار", "فخ الكمال المنزلي"]
+                                },
+                                {
+                                    title: "سنة أولى أمومة",
+                                    path: "/sana-ola-omoma",
+                                    icon: "🍼",
+                                    tag: "دليل الرعاية",
+                                    desc: "دليل عملي ونفسي يستعرض تحولات الأمومة الأولى وصدمات تغيير الهوية والاضطرابات العاطفية المترتبة.",
+                                    topics: ["اكتئاب ما بعد الولادة", "احتياجات الرضيع الأولى", "دعم الشريك"]
+                                },
+                                {
+                                    title: "أم الطفل ذوي الاحتياجات الخاصة",
+                                    path: "/om-eltifl-dhawi-al-eaahaq",
+                                    icon: "♿",
+                                    tag: "صمود ودعم",
+                                    desc: "صمود أسر أطفال ذوي الهمم وتحديات الدمج المدرسي وغياب الدعم المؤسسي والنفسي والاجتماعي لها.",
+                                    topics: ["دمج ذوي الهمم", "مرارة التنمر والشفقة", "عزلة الأم المعيلة"]
+                                },
+                                {
+                                    title: "كلام قانون",
+                                    path: "/kalam-qanun",
+                                    icon: "⚖️",
+                                    tag: "توعية تشريعية",
+                                    desc: "شرح قانوني وإجرائي مبسط لقضايا الولاية التعليمية، الطلاق للضرر، الخلع، وحماية الخصوصية الرقمية.",
+                                    topics: ["الولاية التعليمية", "مسارات فك الرابطة", "مكافحة الابتزاز"]
+                                },
+                                {
+                                    title: "هوس التجميل",
+                                    path: "/hous-eltagmeel",
+                                    icon: "💄",
+                                    tag: "صحة وجمال",
+                                    desc: "تفكيك نقدي لمعايير الجمال العصرية المستوحاة من الفلاتر وعيادات التجميل، ودوافع التصالح وقبول الذات.",
+                                    topics: ["سلطة الصور النمطية", "وراء المرآة والجمال", "التصالح مع الملامح"]
+                                },
+                                {
+                                    title: "محو الأمية",
+                                    path: "/mahw-el-omya",
+                                    icon: "📚",
+                                    tag: "قصص نجاح",
+                                    desc: "رحلات كفاح لسيدات قرويات تحدين الجهل لفتح فصول النور وبدء مشروعات مستقلة لضمان عيش كريم.",
+                                    topics: ["تحدي الجهل ريفياً", "تأسيس مشاريع مستقلة", "أثر تعليم النساء"]
+                                },
+                                {
+                                    title: "علاقة (عن الموقع)",
+                                    path: "/alaaqa",
+                                    icon: "🔗",
+                                    tag: "عن كحكة",
+                                    desc: "التعريف برسالة الموقع، ومنهجه التحريري في عرض قضايا المرأة والأسرة بلغة هادئة وصور محترمة.",
+                                    topics: ["رسالة المنصة للجمهور", "منهج الحياد والتوازن", "قنوات التواصل الفوري"]
+                                }
+                            ].map((item, idx) => (
+                                <Link 
+                                    key={item.path}
+                                    to={item.path}
+                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    style={{ animationDelay: `${idx * 50}ms`, animationFillMode: 'forwards' }}
+                                >
+                                    <div className="space-y-3.5 text-right">
+                                        <div className="flex justify-between items-center text-[10px] font-black">
+                                            <span className="bg-red-50 text-[#A91D22] px-2 py-0.5 rounded border border-red-100">{item.tag}</span>
+                                            <span className="text-xl">{item.icon}</span>
+                                        </div>
+                                        <h3 className="text-base font-black text-slate-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
+                                            {item.desc}
+                                        </p>
+                                    </div>
+                                    <div className="mt-5 pt-3 border-t border-gray-100 space-y-2">
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {item.topics.map((t, i) => (
+                                                <span key={i} className="text-[9px] font-bold text-gray-400 bg-slate-50 px-1.5 py-0.5 rounded">
+                                                    {t}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <div className="flex justify-end items-center text-xs font-black text-[#A91D22] pt-1">
+                                            <span className="group-hover:translate-x-[-4px] transition-transform">دخول الباب ←</span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* مانيفستو منصة كحكة التحريري والرسالة التأسيسية */}
+                    <section className="bg-slate-900 text-white rounded-2xl p-6 sm:p-10 relative overflow-hidden shadow-xl border border-white/5">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(169,29,34,0.1),transparent_60%)]"></div>
+                        <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center justify-between text-right">
+                            <div className="space-y-4 max-w-2xl">
+                                <span className="text-xs font-black text-[#A91D22] bg-red-500/10 px-2.5 py-0.5 rounded border border-red-500/20">رسالتنا التحريرية</span>
+                                <h2 className="text-xl sm:text-2xl font-black font-serif">منصة كحكة التحريرية: إعلام يصون الكرامة ويروي الواقع</h2>
+                                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                    تأسست منصة كحكة التحريرية كمنبر صحفي استقصائي وتوعوي يعنى بقضايا المرأة والأسرة في المجتمع العربي. نحن نؤمن بأن الإعلام الهادف هو مرآة المجتمع وعامل التغيير الأساسي، ونسعى جاهدين لنقل المعاناة والنجاحات بلغة هادئة وصور محترمة تصون الكرامة الإنسانية. منصتنا مستقلة تحريرياً، وتعتمد في مصادرها على التحقيقات الميدانية والشهادات الحية للمواطنات والفتيات في شتى بقاع الأوطان.
+                                </p>
+                            </div>
+                            
+                            <div className="bg-white/5 border border-white/10 p-5 rounded-2xl text-center min-w-[200px] space-y-3 shrink-0">
+                                <span className="text-3xl block">✍️</span>
+                                <div className="space-y-1">
+                                    <h4 className="text-xs font-black text-white">أسرة تحرير كحكة</h4>
+                                    <p className="text-[10px] text-slate-400 font-bold">منذ التأسيس - يونيو ٢٠٢٦</p>
+                                </div>
+                                <div className="border-t border-white/5 pt-2.5 flex justify-center gap-3">
+                                    <Link to="/alaaqa" className="text-[10px] font-black text-[#A91D22] hover:underline">عن المنصة</Link>
+                                    <span className="text-slate-600">•</span>
+                                    <span className="text-[10px] font-black text-slate-350">ميثاق الشرف</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </main>
+            ) : (
+                <main className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-10 pb-20 space-y-8 animate-fadeIn">
+                    
+                    {/* زر الرجوع */}
+                    <div className="flex justify-between items-center border-b border-gray-200 pb-4">
+                        <button 
+                            onClick={() => setSelectedArticle(null)}
+                            className="flex items-center gap-2 text-xs sm:text-sm font-black text-[#A91D22] border border-[#A91D22] bg-white px-4 py-2 rounded-lg hover:bg-red-50 hover:translate-x-[4px] active:scale-95 transition-all duration-300"
+                        >
+                            ← العودة إلى الرئيسية
+                        </button>
+                        <span className="text-xs font-bold text-gray-500">قسم {selectedArticle.category}</span>
+                    </div>
+
+                    {/* صورة الغلاف */}
+                    <div className="w-full h-64 sm:h-96 relative overflow-hidden bg-slate-100 rounded-xl border border-gray-200 shadow-sm group">
+                        <img 
+                            src={selectedArticle.image} 
+                            alt={selectedArticle.title} 
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"></div>
+                    </div>
+
+                    {/* المحتوى التفصيلي */}
+                    <div className="space-y-6">
+                        
+                        <div className="space-y-3 border-b border-gray-200 pb-5">
+                            <span className="inline-block bg-red-50 text-[#A91D22] border border-red-200 text-xs font-black px-3 py-1 rounded">
+                                {selectedArticle.category}
+                            </span>
+                            <h1 className="text-2xl sm:text-4xl font-black text-[#1F2937] leading-tight font-serif">
+                                {selectedArticle.title}
+                            </h1>
+                            <p className="text-sm sm:text-base text-gray-500 font-bold leading-relaxed">
+                                {selectedArticle.subtitle}
+                            </p>
+                            
+                            <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400 font-bold pt-2">
+                                <span>✍️ كاتب المقال: {selectedArticle.author}</span>
+                                <span>🗓️ تاريخ النشر: {selectedArticle.date}</span>
+                                <span>⏰ توقيت النشر: {selectedArticle.time}</span>
+                                <span>⏱️ وقت القراءة: ٤-٦ دقائق</span>
+                                <span className="text-[#A91D22]">👁️ {selectedArticle.views.toLocaleString()} قراءة</span>
+                            </div>
+                        </div>
+
+                        {/* متن الخبر الموزع على فقرات أو محاور */}
+                        <div className="space-y-6 text-[#1F2937] text-base sm:text-lg leading-relaxed text-justify font-medium whitespace-pre-line">
+                            {selectedArticle.content ? (
+                                selectedArticle.content.map((sec, idx) => (
+                                    <div 
+                                        key={idx} 
+                                        className="space-y-2 border-r-4 border-[#A91D22]/40 pr-4 animate-fadeInUp opacity-0"
+                                        style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
+                                    >
+                                        <h3 className="text-lg font-black text-[#1F2937]">{sec.heading}</h3>
+                                        <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{sec.text}</p>
+                                    </div>
+                                ))
+                            ) : (
+                                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">المحتوى الإخباري الكامل متوفر في الصفحة الخاصة بالتبويب.</p>
+                            )}
+                        </div>
+
+                        {/* لوحة التفاعل (التفاعلات الإخبارية) */}
+                        <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-t border-b border-gray-100">
+                            <div className="flex items-center gap-2">
+                                <button 
+                                    onClick={toggleLike}
+                                    className={`flex items-center gap-1.5 px-4 py-2 rounded-full border text-xs font-black active:scale-95 transition-all duration-150 ${
+                                        likedState 
+                                        ? 'bg-red-50 border-[#A91D22] text-[#A91D22]' 
+                                        : 'bg-white border-gray-200 text-slate-700 hover:bg-slate-50'
+                                    }`}
+                                >
+                                    ❤️ {likedState ? 'مُعجب' : 'إعجاب'} ({likeCount})
+                                </button>
+                                <button 
+                                    onClick={handleShare}
+                                    className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-gray-200 bg-white text-xs font-black text-slate-700 hover:bg-slate-50 transition"
+                                >
+                                    🔗 مشاركة الرابط
+                                </button>
+                            </div>
+                            
+                            <Link 
+                                to={selectedArticle.to} 
+                                className="bg-[#1F2937] hover:bg-[#A91D22] text-white text-xs font-black px-5 py-2.5 rounded-lg shadow-sm transition"
+                            >
+                                عرض الملف الكامل للقسم 
+                            </Link>
+                        </div>
+
+                        {/* التعليقات والمناقشات */}
+                        <div className="space-y-4 pt-2">
+                            <h3 className="text-sm font-black text-[#1F2937]">التعليقات والمناقشات ({activeComments.length})</h3>
+                            
+                            {/* قائمة التعليقات السابقة */}
+                            <div className="space-y-3">
+                                {activeComments.length > 0 ? (
+                                    activeComments.map((com, index) => (
+                                        <div key={index} className="bg-slate-50 border border-slate-100 p-3 rounded-lg text-right">
+                                            <div className="flex justify-between items-center text-[10px] font-black text-gray-500 mb-1">
+                                                <span>👤 {com.user}</span>
+                                                <span>منذ ساعات</span>
+                                            </div>
+                                            <p className="text-xs text-gray-700 leading-relaxed font-medium">
+                                                {com.text}
+                                            </p>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p className="text-xs text-gray-400 font-bold text-center">لا توجد تعليقات بعد. كوني أول من يشارك برأيه!</p>
+                                )}
+                            </div>
+
+                            {/* نموذج إضافة تعليق */}
+                            <form onSubmit={handleAddComment} className="space-y-3 pt-3 border-t border-gray-50">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <input 
+                                        type="text" 
+                                        placeholder="الاسم (اختياري)" 
+                                        value={newCommentName}
+                                        onChange={(e) => setNewCommentName(e.target.value)}
+                                        className="border border-gray-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-[#A91D22] font-medium"
+                                    />
+                                </div>
+                                <div className="flex gap-2">
+                                    <textarea 
+                                        placeholder="أضيفي تعليقكِ هنا..."
+                                        value={newCommentText}
+                                        onChange={(e) => setNewCommentText(e.target.value)}
+                                        required
+                                        rows={2}
+                                        className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-xs outline-none focus:border-[#A91D22] font-medium"
+                                    ></textarea>
+                                    <button 
+                                        type="submit" 
+                                        className="bg-[#A91D22] hover:bg-red-700 text-white text-xs font-bold px-4 rounded-lg shadow-sm transition shrink-0"
+                                    >
+                                        نشر التعليق
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        {/* أخبار ذات صلة وموصى بها */}
+                        <div className="pt-6 border-t border-gray-100 space-y-4">
+                            <h3 className="text-xs font-black text-gray-800">تقارير موصى بها لكِ</h3>
+                            <div className="grid gap-4 sm:grid-cols-3">
+                                {articles.filter(a => a.id !== selectedArticle.id).slice(0, 3).map((art) => (
+                                    <div 
+                                        key={art.id} 
+                                        onClick={() => openArticleDetails(art)}
+                                        className="cursor-pointer group space-y-2 text-right bg-slate-50/50 p-2 border border-slate-100 rounded-xl hover:border-[#A91D22] hover:scale-[1.02] hover:shadow-md transition-all duration-300 ease-out"
+                                    >
+                                        <div className="aspect-video w-full overflow-hidden bg-slate-100 rounded-lg">
+                                            <img 
+                                                src={art.image} 
+                                                alt={art.title} 
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                        </div>
+                                        <span className="text-[8px] font-bold text-[#A91D22]">{art.category}</span>
+                                        <h4 className="text-xs font-bold text-gray-800 line-clamp-2 leading-tight group-hover:text-[#A91D22] transition-colors duration-200 font-serif">
+                                            {art.title}
+                                        </h4>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                </main>
+            )}
             <Footer />
         </div>
     )

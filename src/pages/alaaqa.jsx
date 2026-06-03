@@ -1,7 +1,9 @@
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
 import { Link } from 'react-router-dom'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 const siteSections = [
     {
@@ -50,6 +52,7 @@ export default function AlaaqaPage() {
             <BackgroundSVG />
             <NavBar />
             <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
+                <TrendingTags tags={["منصة_كحكة", "دليل_الموقع", "رسالة_المجتمع", "القراءة_المتوازنة", "التوجيه_الأسري", "تواصل_معنا"]} />
                 <section className="relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.22),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.14),transparent_28%)]" />
                     <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
@@ -98,7 +101,7 @@ export default function AlaaqaPage() {
                 </section>
 
                 <section className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-                    <aside className="lg:sticky lg:top-6">
+                    <aside className="lg:sticky lg:top-6 space-y-6">
                         <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm">
                             <div className="mb-4 flex items-center justify-between">
                                 <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">فهرس الصفحة</h3>
@@ -134,6 +137,18 @@ export default function AlaaqaPage() {
                                 ))}
                             </div>
                         </div>
+
+                        <InteractivePoll 
+                            question="ما هو القسم الذي تودين رؤية المزيد من التغطيات والتحقيقات الصحفية فيه مستقبلاً؟" 
+                            pollKey="alaaqa-about"
+                            options={["قضايا المرأة والقانون", "شؤون البيت والتربية"]}
+                        />
+
+                        <DailyCaricature 
+                            caption="المشهد العام" 
+                            desc="رسم يعكس تضافر أقسام الموقع المختلفة في بناء مرآة للمجتمع اليومي."
+                            emoji="📰🌐💬"
+                        />
                     </aside>
 
                     <article className="space-y-6">
@@ -154,6 +169,23 @@ export default function AlaaqaPage() {
                             </section>
                         ))}
 
+                        <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
+                          <VideoMediaGallery 
+                            title="تعريف بـ منصة كحكة"
+                            clips={[
+                              { title: "فيديو تعريفي: جولة سريعة داخل أقسام المنصة وأبرز القضايا التي نناقشها", dur: "٣:٥٠" },
+                              { title: "رسالة رئيس التحرير: كواليس العمل والبحث التحريري خلف التحقيقات الاستقصائية", dur: "٢:٤٥" }
+                            ]}
+                          />
+
+                          <ExpertAdviceDesk 
+                            qaList={[
+                              { q: "ما هي الأهداف التوعوية الأساسية التي تسعى المنصة إلى تحقيقها في المجتمع؟", a: "نهدف إلى تقديم مرآة صادقة لقضايا البيت والعمل والقانون والأمومة، وتزويد القارئات بإرشادات موثوقة تساعدهن على اتخاذ قرارات متوازنة وتجاوز الضغوط اليومية." },
+                              { q: "كيف يمكنني المساهمة بقصتي الشخصية أو موضوع تحقيقي للنشر على كحكة؟", a: "نرحب بمشاركات الكاتبات والقصص الإنسانية الواقعية؛ يمكنكِ مراسلتنا بالمسودة أو ملخص الفكرة التحريرية عبر البريد الإلكتروني المخصص للتواصل وسيقوم فريق التحرير بمراجعتها." }
+                            ]}
+                          />
+                        </div>
+
                         <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg">
                             <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">إعلان الموقع</div>
                             <h2 className="mt-3 text-2xl font-black sm:text-3xl">هذا الموقع مساحة معرفة لا موضوع واحد</h2>
@@ -161,6 +193,8 @@ export default function AlaaqaPage() {
                                 نحن نعرض موضوعات متعددة ضمن إطار واحد: محتوى عربي واضح، صفحات منسقة، وروابط تساعد القارئ على التنقل بين الأقسام بسهولة.
                             </p>
                         </section>
+
+                        <InteractionsPanel articleId="alaaqa" />
 
                         <section id="contact" className="rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm">
                             <div className="mb-5 flex items-center justify-between gap-4">

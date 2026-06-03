@@ -1,6 +1,8 @@
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 const sections = [
   {
@@ -60,11 +62,13 @@ export default function RoTeenTanzeefAlManzelPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-slate-800" dir="rtl">
+    <div className="relative min-h-screen overflow-hidden bg-[#faf9f6] text-[#1F2937]" dir="rtl">
       <BackgroundSVG />
       <NavBar />
 
       <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
+        <TrendingTags tags={["روتين_المنزل", "العبء_الذهني", "المشاركة_الزوجية", "تنظيم_البيت", "الكمال_المنزلي", "راحة_الأم"]} />
+
         <section className="relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.22),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.14),transparent_28%)]" />
           <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
@@ -76,7 +80,7 @@ export default function RoTeenTanzeefAlManzelPage() {
                 روتين تنظيف المنزل: بين عبء الأم واستقرار الأسرة
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-                لا يبدو روتين تنظيف البيت مجرد مهام يومية متكررة، بل يتحول إلى انعكاس مباشر لدور الأم داخل الأسرة، وما تتحمله من مسؤوليات نفسية وجسدية واجتماعية.
+                لا يبدو روتين تنظيف البيت مجرد مهام يومية متكررة، بل يتحول إلى انعكاس مباشر لدور الأم داخل الأسرة، وما تتحمله من مسؤوليات نفسية جسدية واجتماعية.
               </p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -113,7 +117,7 @@ export default function RoTeenTanzeefAlManzelPage() {
         </section>
 
         <section className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <aside className="lg:sticky lg:top-6">
+          <aside className="lg:sticky lg:top-6 space-y-6">
             <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm">
               <div className="mb-4 flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">فهرس سريع</h3>
@@ -125,7 +129,8 @@ export default function RoTeenTanzeefAlManzelPage() {
                     key={section.title}
                     type="button"
                     onClick={() => scrollToSection(index)}
-                    className="block w-full rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
+                    className="block w-full rounded-2xl border border-slate-100 bg-[#faf9f6] px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white animate-fadeInUp opacity-0"
+                    style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <span className="block text-[11px] uppercase tracking-[0.2em] opacity-60">{String(index + 1).padStart(2, '0')}</span>
                     <span className="block mt-1 leading-6">{section.title}</span>
@@ -133,6 +138,18 @@ export default function RoTeenTanzeefAlManzelPage() {
                 ))}
               </div>
             </div>
+
+            <InteractivePoll 
+              question="هل توافقين على أن مشاركة الزوج والأبناء في الأعمال المنزلية يجب أن تُطرح كواجب اجتماعي وثقافي وليس كمساعدة اختيارية للأم؟" 
+              pollKey="roteen-tanzeef-almanzel"
+              options={["نعم، واجب تشاركي أصيل", "لا، نفضل المساعدة الودية الطوعية"]}
+            />
+
+            <DailyCaricature 
+              caption="المجهود الخفي!" 
+              desc="بين تلال الصحون ومسح الأرضيات، يختفي جهد الأم اليومي خلف عبارة 'يعطيكِ العافية' دون مشاركة فعلية."
+              emoji="🧹🧼🧺"
+            />
           </aside>
 
           <article className="space-y-6">
@@ -143,23 +160,47 @@ export default function RoTeenTanzeefAlManzelPage() {
             </div>
 
             {sections.map((section, index) => (
-              <section key={section.title} id={`section-${index}`} className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm">
+              <section 
+                key={section.title} 
+                id={`section-${index}`} 
+                className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
+                style={{ animationDelay: `${(index + 1) * 100}ms` }}
+              >
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-3 py-1.5 text-xs font-bold text-brand-accent">
                   <span>✦</span>
                   {String(index + 1).padStart(2, '0')}
                 </div>
-                <h2 className="text-2xl font-black text-brand-ink sm:text-3xl">{section.title}</h2>
+                <h2 className="text-2xl font-black text-brand-ink sm:text-3xl font-serif">{section.title}</h2>
                 <p className="mt-4 text-base leading-8 text-slate-700 sm:text-lg">{section.text}</p>
               </section>
             ))}
 
-            <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg">
+            <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
+              <VideoMediaGallery 
+                title="البيت وإدارته الصحية"
+                clips={[
+                  { title: "فيديو توعوي: كيف تتغلب الأم على العبء الذهني الناتج عن التخطيط للمهام المنزلية؟", dur: "٦:٠٥" },
+                  { title: "تحقيق مصور: قصص لعائلات مصرية نجحت في تطبيق مبدأ تقسيم المهام بعدالة", dur: "٣:٥٥" }
+                ]}
+              />
+
+              <ExpertAdviceDesk 
+                qaList={[
+                  { q: "أشعر بالذنب والتقصير الشديد إذا تركت البيت غير منظم ليوم واحد، كيف أتحكم في هذا الشعور؟", a: "تذكري دائماً أن نظافة البيت غايتها توفير الراحة لأهله وليس التضحية بصحتكِ النفسية من أجل صورة مثالية. تدربي على غض الطرف عن الفوضى الطفيفة وجدولة المهام بمرونة." },
+                  { q: "ما هي الطريقة الفعّالة لتدريب الأطفال الصغار على تنظيم غرفهم ومساعدة الأم؟", a: "ابدئي بتحويل التنظيم إلى لعبة مسلية بدلاً من الأوامر الجافة. خصصي صناديق ملونة ومصنفة للألعاب، وامنحيهم مكافآت بسيطة أو تشجيعاً لفظياً معنوياً عند إتمام ترتيب غرفهم." }
+                ]}
+              />
+            </div>
+
+            <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg animate-fadeInUp opacity-0" style={{ animationDelay: `${(sections.length + 1) * 100}ms` }}>
               <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">الخلاصة</div>
-              <h2 className="mt-3 text-2xl font-black sm:text-3xl">المنزل ليس مسؤولية شخص واحد</h2>
+              <h2 className="mt-3 text-2xl font-black sm:text-3xl font-serif">المنزل ليس مسؤولية شخص واحد</h2>
               <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
                 المنزل ليس مسؤولية شخص واحد، بل منظومة حياة مشتركة، وأن استقرار الأسرة يبدأ من عدالة الأدوار لا من حجم المجهود الفردي.
               </p>
             </section>
+
+            <InteractionsPanel articleId="roteen-tanzeef-almanzel" />
           </article>
         </section>
       </main>

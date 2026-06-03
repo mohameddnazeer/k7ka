@@ -1,7 +1,9 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 const articles = [
     {
@@ -238,13 +240,13 @@ export default function GowaAlkahkaPage() {
     }
 
     return (
-        <div className="relative min-h-screen overflow-x-hidden bg-slate-50 font-arabic" dir="rtl">
+        <div className="relative min-h-screen overflow-x-hidden bg-[#faf9f6] font-arabic" dir="rtl">
             <BackgroundSVG />
             <NavBar />
             
             <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
                 {/* Header Section */}
-                <div className="mb-16 text-center animate-fadeIn">
+                <div className="mb-12 text-center animate-fadeIn">
                     <span className="inline-block bg-brand-secondary/10 text-brand-secondary rounded-full px-4 py-1.5 text-sm font-bold mb-4">
                         جوه الكحكة
                     </span>
@@ -256,133 +258,145 @@ export default function GowaAlkahkaPage() {
                     </p>
                 </div>
 
-                {/* Articles Grid */}
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    {articles.map((article) => (
-                        <article 
-                            key={article.id}
-                            className="group flex flex-col overflow-hidden rounded-3xl border border-brand-surface/70 bg-brand-surface shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md"
-                        >
-                            <div className="relative aspect-[16/10] overflow-hidden bg-brand-surface-muted">
-                                <img 
-                                    src={article.image} 
-                                    alt={article.title}
-                                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    loading="lazy"
-                                />
-                                <div className="absolute top-4 right-4">
-                                    <span className="rounded-full bg-brand-surface/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-brand-ink border border-brand-surface/70 shadow-sm">
-                                        {article.category}
-                                    </span>
-                                </div>
+                <TrendingTags tags={["جوه_الكحكة", "الضغوط_النفسية", "البنت_القوية", "الخوف_من_الزواج", "شريك_الحياة", "الاستقلال_النفسي"]} />
+
+                {/* Two-Column Sidebar Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-16">
+                    
+                    {/* Right column: Content & Grid */}
+                    <div className="lg:col-span-2 space-y-16">
+                        {/* Articles Grid */}
+                        <div className="grid gap-6 sm:grid-cols-2">
+                            {articles.map((article, idx) => (
+                                <article 
+                                    key={article.id}
+                                    className="group flex flex-col overflow-hidden rounded-3xl border border-brand-surface/70 bg-brand-surface shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md animate-fadeInUp opacity-0"
+                                    style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
+                                >
+                                    <div className="relative aspect-[16/10] overflow-hidden bg-brand-surface-muted">
+                                        <img 
+                                            src={article.image} 
+                                            alt={article.title}
+                                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            loading="lazy"
+                                        />
+                                        <div className="absolute top-4 right-4">
+                                            <span className="rounded-full bg-brand-surface/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-brand-ink border border-brand-surface/70 shadow-sm">
+                                                {article.category}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="flex flex-1 flex-col p-6 text-right">
+                                        <h2 className="mb-4 text-xl font-black text-brand-ink leading-snug transition-colors group-hover:text-brand-secondary">
+                                            {article.title}
+                                        </h2>
+                                        <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-brand-inkMuted/80 font-medium whitespace-pre-wrap">
+                                            {article.content}
+                                        </p>
+                                        <div className="mt-auto pt-4 border-t border-brand-offwhite/40">
+                                            <button 
+                                                onClick={() => setSelectedArticle(article)}
+                                                className="inline-flex items-center gap-2 text-sm font-bold text-brand-accent transition-colors hover:text-brand-secondary"
+                                            >
+                                                إقرئي المزيد
+                                                <svg className="h-4 w-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+
+                        {/* Sociological Glossary */}
+                        <section className="pt-8">
+                            <div className="mb-8 text-right">
+                                <h2 className="text-2xl font-black text-brand-ink mb-2">قاموس المفاهيم</h2>
+                                <div className="h-1 w-16 bg-brand-accent rounded-full"></div>
                             </div>
-                            
-                            <div className="flex flex-1 flex-col p-6 text-right">
-                                <h2 className="mb-4 text-xl font-black text-brand-ink leading-snug transition-colors group-hover:text-brand-secondary">
-                                    {article.title}
-                                </h2>
-                                <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-brand-inkMuted/80 font-medium whitespace-pre-wrap">
-                                    {article.content}
+                            <div className="grid gap-6 sm:grid-cols-3">
+                                {[
+                                    { title: "متلازمة السوبر وومان", desc: "الضغط النفسي الناتج عن محاولة الكمال في كل الأدوار (العمل، البيت، المظهر) في وقت واحد." },
+                                    { title: "العبء العاطفي", desc: "المجهود غير المرئي الذي تبذله المرأة لإدارة مشاعر من حولها والحفاظ على توازن البيت." },
+                                    { title: "فخ الاستقلال", desc: "عندما يتحول الاعتماد على الذات من قوة إلى عزلة تمنع الفتاة من طلب الدعم عند الحاجة." }
+                                ].map((item, i) => (
+                                    <div key={i} className="p-6 rounded-2xl bg-brand-surface border border-brand-surface/60 shadow-sm text-right hover:border-brand-accent/30 transition-colors">
+                                        <h3 className="text-base font-black mb-2 text-brand-secondary">{item.title}</h3>
+                                        <p className="text-brand-inkMuted/90 font-medium text-xs leading-relaxed">{item.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* Additional Content: Perspectives & Experts */}
+                        <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+                            <div className="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-surface/70 relative overflow-hidden group shadow-sm text-right">
+                                <h3 className="text-lg font-black text-brand-ink mb-3 relative z-10">منظور اجتماعي للأجيال</h3>
+                                <p className="text-sm text-brand-inkMuted/90 leading-relaxed font-medium mb-4 relative z-10">
+                                    كيف تساهم التغيرات الاقتصادية المتسارعة في تشكيل مخاوف الجيل الجديد من الالتزام؟ نقاش مع خبراء علم الاجتماع حول تحول العلاقات من مربع "الواجب المفروض" إلى "الشراكة الواعية والاختيارية".
                                 </p>
-                                <div className="mt-auto pt-4 border-t border-brand-offwhite/40">
-                                    <button 
-                                        onClick={() => setSelectedArticle(article)}
-                                        className="inline-flex items-center gap-2 text-sm font-bold text-brand-accent transition-colors hover:text-brand-secondary"
-                                    >
-                                        إقرئي المزيد
-                                        <svg className="h-4 w-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                                        </svg>
-                                    </button>
+                                <div className="flex flex-wrap gap-2 relative z-10">
+                                    {["أثر الاستقلال المادي", "صراع الأجيال", "مفهوم السكن النفسي"].map((tag, i) => (
+                                        <span key={i} className="inline-flex items-center gap-1.5 text-[10px] font-bold text-brand-accent bg-brand-accent/5 px-2.5 py-0.5 rounded-full">
+                                            <span className="w-1 h-1 rounded-full bg-brand-accent"></span>
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
-                        </article>
-                    ))}
+
+                            <div className="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-surface/70 relative overflow-hidden group shadow-sm text-right">
+                                <h3 className="text-lg font-black text-brand-ink mb-3 relative z-10">استشارات ودعم نفسي</h3>
+                                <p className="text-sm text-brand-inkMuted/90 leading-relaxed font-medium mb-4 relative z-10">
+                                    مساحتنا تقدم لكِ قراءات مستمرة بالتعاون مع أخصائيين نفسيين لتفكيك العقد الاجتماعية وضغوطات الحياة اليومية وتوفير أدوات مرنة لحماية سلامك الداخلي.
+                                </p>
+                                <div className="flex flex-wrap gap-2 relative z-10">
+                                    {["جلسات استماع", "تفريغ انفعالي", "وعي بالذات"].map((tag, i) => (
+                                        <span key={i} className="inline-flex items-center gap-1.5 text-[10px] font-bold text-brand-secondary bg-brand-secondary/5 px-2.5 py-0.5 rounded-full">
+                                            <span className="w-1 h-1 rounded-full bg-brand-secondary"></span>
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    {/* Left column: Sidebar Widgets */}
+                    <div className="w-full space-y-6 lg:sticky lg:top-6">
+                        <InteractivePoll 
+                            question="هل تشعرين أن لقب “البنت القوية” أصبح حملاً إضافياً يمنعكِ من إظهار التعب أو طلب المساعدة من المحيطين بكِ؟" 
+                            pollKey="gowa-alkahka"
+                            options={["نعم، أوافق تماماً", "لا، أراه حافزاً إيجابياً"]}
+                        />
+
+                        <DailyCaricature 
+                            caption="قناع السوبر وومان" 
+                            desc="عندما تحاول المرأة الابتسام وحمل أثقال الجبال بمفردها."
+                            emoji="🦸‍♀️🎒"
+                        />
+                    </div>
                 </div>
 
-                {/* Interactive Poll Section */}
-                <section className="mt-24 rounded-3xl bg-soft-sheen p-8 sm:p-16 text-brand-ink relative overflow-hidden shadow-sm border border-brand-surface/40">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/40 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
-                    <div className="relative z-10 max-w-3xl mx-auto text-center">
-                        <h2 className="text-2xl sm:text-3xl font-black mb-4">سؤال للنقاش: هل تشعرين بضغط "البنت القوية"؟</h2>
-                        <p className="text-base sm:text-lg text-brand-inkMuted mb-10 font-medium">نحن نهتم برأيك. هل تشعرين أن المجتمع يفرض عليك القوة كخيار وحيد؟</p>
-                        
-                        {!pollVoted ? (
-                            <div className="grid gap-4 sm:grid-cols-2 max-w-xl mx-auto">
-                                <button 
-                                    onClick={handleVote}
-                                    className="p-5 rounded-2xl bg-brand-surface border border-brand-surface/70 hover:bg-brand-secondary/10 hover:border-brand-secondary/40 transition-all duration-200 font-bold text-lg text-brand-ink shadow-sm"
-                                >
-                                    نعم، بشكل دائم
-                                </button>
-                                <button 
-                                    onClick={handleVote}
-                                    className="p-5 rounded-2xl bg-brand-surface border border-brand-surface/70 hover:bg-brand-secondary/10 hover:border-brand-secondary/40 transition-all duration-200 font-bold text-lg text-brand-ink shadow-sm"
-                                >
-                                    أحياناً، بحكم الظروف
-                                </button>
-                            </div>
-                        ) : (
-                            <div className="bg-brand-surface rounded-2xl p-8 border border-brand-surface/70 max-w-xl mx-auto shadow-inner transition-all duration-300 animate-fadeIn">
-                                <h4 className="text-xl font-bold text-brand-secondary mb-2">شكراً لمشاركتكِ!</h4>
-                                <p className="font-medium text-brand-inkMuted text-base">82% من النساء شاركنكِ نفس الشعور. لستِ وحدكِ.</p>
-                            </div>
-                        )}
-                    </div>
-                </section>
+                {/* Bottom Media Gallery & Expert Advice Column */}
+                <div className="mt-12 space-y-8">
+                    <VideoMediaGallery 
+                        title="تقارير وحلقات جوه الكحكة"
+                        clips={[
+                            { title: "جلسة نقاشية: فتيات يتحدثن بصراحة عن مخاوفهن من الالتزام وشروط شريك الحياة", dur: "٦:١٠" },
+                            { title: "رأي الطب النفسي: متلازمة الاحتراق الداخلي وكيفية حماية سلامكِ النفسي", dur: "٤:٥٠" }
+                        ]}
+                    />
 
-                {/* Sociological Glossary */}
-                <section className="mt-24">
-                    <div className="mb-12 text-right">
-                        <h2 className="text-3xl font-black text-brand-ink mb-3">قاموس المفاهيم</h2>
-                        <div className="h-1.5 w-20 bg-brand-accent rounded-full"></div>
-                    </div>
-                    <div className="grid gap-6 md:grid-cols-3">
-                        {[
-                            { title: "متلازمة السوبر وومان", desc: "الضغط النفسي الناتج عن محاولة الكمال في كل الأدوار (العمل، البيت، المظهر) في وقت واحد." },
-                            { title: "العبء العاطفي", desc: "المجهود غير المرئي الذي تبذله المرأة لإدارة مشاعر من حولها والحفاظ على توازن البيت." },
-                            { title: "فخ الاستقلال", desc: "عندما يتحول الاعتماد على الذات من قوة إلى عزلة تمنع الفتاة من طلب الدعم عند الحاجة." }
-                        ].map((item, i) => (
-                            <div key={i} className="p-8 rounded-2xl bg-brand-surface border border-brand-surface/60 shadow-sm text-right hover:border-brand-accent/30 transition-colors">
-                                <h3 className="text-lg font-black mb-3 text-brand-secondary">{item.title}</h3>
-                                <p className="text-brand-inkMuted/90 font-medium text-sm leading-relaxed">{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
-                {/* Additional Content: Perspectives & Experts */}
-                <section className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div className="bg-brand-surface rounded-2xl p-8 sm:p-10 border border-brand-surface/70 relative overflow-hidden group shadow-sm text-right">
-                        <h3 className="text-xl font-black text-brand-ink mb-4 relative z-10">منظور اجتماعي للأجيال</h3>
-                        <p className="text-base text-brand-inkMuted/90 leading-relaxed font-medium mb-6 relative z-10">
-                            كيف تساهم التغيرات الاقتصادية المتسارعة في تشكيل مخاوف الجيل الجديد من الالتزام؟ نقاش مع خبراء علم الاجتماع حول تحول العلاقات من مربع "الواجب المفروض" إلى "الشراكة الواعية والاختيارية".
-                        </p>
-                        <div className="flex flex-wrap gap-3 relative z-10">
-                            {["أثر الاستقلال المادي", "صراع الأجيال", "مفهوم السكن النفسي"].map((tag, i) => (
-                                <span key={i} className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-accent bg-brand-accent/5 px-3 py-1 rounded-full">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="bg-brand-surface rounded-2xl p-8 sm:p-10 border border-brand-surface/70 relative overflow-hidden group shadow-sm text-right">
-                        <h3 className="text-xl font-black text-brand-ink mb-4 relative z-10">استشارات ودعم نفسي</h3>
-                        <p className="text-base text-brand-inkMuted/90 leading-relaxed font-medium mb-6 relative z-10">
-                            مساحتنا تقدم لكِ قراءات مستمرة بالتعاون مع أخصائيين نفسيين لتفكيك العقد الاجتماعية وضغوطات الحياة اليومية وتوفير أدوات مرنة لحماية سلامك الداخلي.
-                        </p>
-                        <div className="flex flex-wrap gap-3 relative z-10">
-                            {["جلسات استماع", "تفريغ انفعالي", "وعي بالذات"].map((tag, i) => (
-                                <span key={i} className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-secondary bg-brand-secondary/5 px-3 py-1 rounded-full">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary"></span>
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </section>
+                    <ExpertAdviceDesk 
+                        qaList={[
+                            { q: "كيف أتخلص من جلد الذات المستمر وشعور التقصير عند تعبي من المسؤوليات المتراكمة؟", a: "تذكري دائماً أن الضعف والتعب صفات بشرية طبيعية وليست فشلاً، وضعي حدوداً واضحة لأعبائك اليومية، واطلبي الدعم صراحة من المحيطين بكِ، فالأمومة والرعاية مسؤوليات تشاركية." },
+                            { q: "ما هي المعايير النفسية الأهم التي يجب التركيز عليها عند اختيار شريك الحياة؟", a: "الأمان النفسي والقدرة على التفاهم وحل الخلافات بنضج واحترام متبادل تتفوق على أي شروط مادية، لأن الشراكة الحقيقية تدعم الصحة النفسية وتواجه الأزمات معاً." }
+                        ]}
+                    />
+                </div>
             </main>
 
             {/* Modal Reader Overlay */}
@@ -417,7 +431,7 @@ export default function GowaAlkahkaPage() {
                         </div>
 
                         {/* Main Modal Content Scroll Area */}
-                        <div className="flex-1 overflow-y-auto p-6 md:p-12 text-right">
+                        <div className="flex-1 overflow-y-auto p-6 md:p-12 text-right bg-white [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-brand-secondary/20 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-brand-secondary/40">
                             {/* Close button for desktop */}
                             <button 
                                 onClick={() => setSelectedArticle(null)}
@@ -428,10 +442,14 @@ export default function GowaAlkahkaPage() {
                                 </svg>
                             </button>
 
-                            <div className="space-y-8 max-w-3xl">
+                            <div className="max-w-3xl space-y-8">
                                 {selectedArticle.fullContent ? (
                                     selectedArticle.fullContent.map((paragraph, index) => (
-                                        <div key={index} className="space-y-3">
+                                        <div 
+                                            key={`${selectedArticle.id}-${index}`} 
+                                            className="space-y-3 animate-fadeInUp opacity-0"
+                                            style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+                                        >
                                             <h3 className="text-xl font-black text-brand-ink leading-tight">
                                                 {paragraph.heading}
                                             </h3>
@@ -445,6 +463,8 @@ export default function GowaAlkahkaPage() {
                                         {selectedArticle.content}
                                     </p>
                                 )}
+
+                                <InteractionsPanel articleId={`gowa-alkahka-${selectedArticle.id}`} />
                             </div>
                         </div>
                     </div>

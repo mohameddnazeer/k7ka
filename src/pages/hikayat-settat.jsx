@@ -1,32 +1,14 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
-import Modal from '../components/Modal'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 export default function HikayatSettatPage() {
     // حالة التحكم في فتح وإغلاق تفاصل الموضوع المختار
     const [selectedTopic, setSelectedTopic] = useState(null);
-    const drawerCloseRef = useRef(null);
 
-    // close on Escape and lock body scroll when drawer open
-    useEffect(() => {
-        const onKey = (e) => {
-            if (e.key === 'Escape') setSelectedTopic(null);
-        };
-        if (selectedTopic) {
-            document.body.style.overflow = 'hidden';
-            document.addEventListener('keydown', onKey);
-            // focus close button after next tick
-            setTimeout(() => drawerCloseRef.current?.focus(), 50);
-        } else {
-            document.body.style.overflow = '';
-        }
-        return () => {
-            document.body.style.overflow = '';
-            document.removeEventListener('keydown', onKey);
-        };
-    }, [selectedTopic]);
 
     // الـ 6 موضوعات كاملة المحتوى والتأليف
     const topicsData = {
@@ -157,132 +139,210 @@ export default function HikayatSettatPage() {
     });
 
     return (
-        <div className="relative min-h-screen bg-slate-50 text-slate-800 overflow-hidden" dir="rtl">
+        <div className="relative min-h-screen bg-[#faf9f6] text-[#1F2937] overflow-hidden" dir="rtl">
             <BackgroundSVG />
             <NavBar />
 
             <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-16 sm:px-8">
-                <header className="mb-10">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                        <div className="text-right">
-                            <span className="bg-brand-secondary/10 text-brand-secondary text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider inline-block">
-                                حكايات ستات
-                            </span>
-                            <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold text-brand-ink">حوارات كحكة</h1>
-                            <p className="mt-2 text-sm text-slate-600 max-w-2xl">ستة حوارات وملفات معمقة تعبر عن صوت المرأة بعيداً عن التنميط، وترسم ملامح القوة والوعي النفسي في تفاصيل الحياة اليومية.</p>
+                <TrendingTags tags={["حكايات_ستات", "علاقات_بلا_تعريف", "سن_الزواج", "الزواج_المبكر", "ديتوكس_رقمي", "الحب_والواقع"]} />
+
+                {!selectedTopic ? (
+                    <>
+                        <header className="mb-10">
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+                                <div className="text-right">
+                                    <span className="bg-brand-secondary/10 text-brand-secondary text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider inline-block">
+                                        حكايات ستات
+                                    </span>
+                                    <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold text-brand-ink">حوارات كحكة</h1>
+                                    <p className="mt-2 text-sm text-slate-600 max-w-2xl">ستة حوارات وملفات معمقة تعبر عن صوت المرأة بعيداً عن التنميط، وترسم ملامح القوة والوعي النفسي في تفاصيل الحياة اليومية.</p>
+                                </div>
+
+                                <div className="flex-1 max-w-xl">
+                                    <label className="relative block">
+                                        <input
+                                            aria-label="بحث"
+                                            value={query}
+                                            onChange={(e) => setQuery(e.target.value)}
+                                            className="w-full pr-12 pl-4 py-3 rounded-2xl border border-slate-200 bg-white placeholder-slate-400 text-right"
+                                            placeholder="ابحث في الحكايات والعناوين..."
+                                        />
+                                        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔎</div>
+                                    </label>
+
+                                    <div className="mt-3 flex gap-3 flex-wrap justify-end">
+                                        <button
+                                            onClick={() => setActiveBadge(null)}
+                                            className={`text-xs px-3 py-1 rounded-full ${!activeBadge ? 'bg-brand-secondary text-white' : 'bg-slate-100 text-slate-600'}`}>
+                                            الكل
+                                        </button>
+                                        {badges.map((b) => (
+                                            <button
+                                                key={b}
+                                                onClick={() => setActiveBadge(prev => prev === b ? null : b)}
+                                                className={`text-xs px-3 py-1 rounded-full ${activeBadge === b ? 'bg-brand-ink text-white' : 'bg-slate-100 text-slate-600'}`}>
+                                                {b}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+
+                        {/* List View Two-Column Layout */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                            {/* List cards (66%) */}
+                            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {filtered.map(([id, topic], idx) => (
+                                    <article
+                                        key={id}
+                                        onClick={() => setSelectedTopic(topic)}
+                                        className="group bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-lg transition-transform transform hover:-translate-y-1 cursor-pointer flex flex-col justify-between animate-fadeInUp opacity-0"
+                                        style={{ animationDelay: `${idx * 120}ms`, animationFillMode: 'forwards' }}
+                                    >
+                                        <div className="flex items-start justify-between">
+                                            <div className="text-3xl">{topic.icon}</div>
+                                            <span className="text-xs font-bold text-slate-500 bg-[#faf9f6] px-3 py-1 rounded-full">{topic.badge}</span>
+                                        </div>
+
+                                        <div className="mt-4">
+                                            <h3 className="text-xl font-extrabold text-brand-ink leading-tight mb-2">{topic.title}</h3>
+                                            <p className="text-sm text-slate-600 line-clamp-4 text-justify">{topic.intro}</p>
+                                        </div>
+
+                                        <div className="mt-6 flex items-center justify-between text-xs text-slate-400">
+                                            <span className="font-medium">اقرأ الملف</span>
+                                            <span className="text-lg font-serif opacity-30">0{id}</span>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+
+                            {/* Sidebar widgets (33%) */}
+                            <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-6">
+                                <InteractivePoll 
+                                    question="هل ترين أن المسلسلات والأفلام الأجنبية ساهمت في رفع سقف توقعات البنات من العلاقات العاطفية بشكل غير واقعي قد يهدد استقرار الزواج؟" 
+                                    pollKey="hikayat-settat"
+                                    options={["نعم، رفعت التوقعات بشكل خيالي", "لا، بل زادت الوعي بالحقوق العاطفية"]}
+                                />
+
+                                <DailyCaricature 
+                                    caption="الوهم الرومانسي ضد الواقع" 
+                                    desc="عندما تبحث الفتاة عن بطل الفيلم السينمائي في شوارع الواقع المزدحمة."
+                                    emoji="🍿💔"
+                                />
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    <div className="pt-4 pb-20 animate-fadeIn max-w-7xl mx-auto space-y-8">
+                        {/* زر الرجوع والتصنيف */}
+                        <div className="flex justify-between items-center border-b border-slate-200 pb-6 mb-8">
+                            <button 
+                                onClick={() => setSelectedTopic(null)}
+                                className="flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-secondary border border-brand-secondary bg-white px-4 py-2 rounded-xl hover:bg-brand-secondary/5 transition"
+                            >
+                                ← العودة لقائمة الحكايات
+                            </button>
+                            <span className="bg-brand-secondary/10 text-brand-secondary text-xs font-bold px-3 py-1 rounded-full">{selectedTopic.badge}</span>
                         </div>
 
-                        <div className="flex-1 max-w-xl">
-                            <label className="relative block">
-                                <input
-                                    aria-label="بحث"
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    className="w-full pr-12 pl-4 py-3 rounded-2xl border border-slate-200 bg-white placeholder-slate-400 text-right"
-                                    placeholder="ابحث في الحكايات والعناوين..."
-                                />
-                                <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔎</div>
-                            </label>
+                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+                            {/* المحتوى الرئيسي (75%) */}
+                            <div className="lg:col-span-3 space-y-8 bg-white p-6 sm:p-10 rounded-3xl border border-slate-100 shadow-sm text-right">
+                                <header className="space-y-4">
+                                    <div className="text-5xl">{selectedTopic.icon}</div>
+                                    <h2 className="text-2xl sm:text-4xl font-black text-brand-ink leading-tight">{selectedTopic.title}</h2>
+                                    <div className="w-16 h-1 bg-brand-secondary rounded-full"></div>
+                                </header>
 
-                            <div className="mt-3 flex gap-3 flex-wrap justify-end">
-                                <button
-                                    onClick={() => setActiveBadge(null)}
-                                    className={`text-xs px-3 py-1 rounded-full ${!activeBadge ? 'bg-brand-secondary text-white' : 'bg-slate-100 text-slate-600'}`}>
-                                    الكل
-                                </button>
-                                {badges.map((b) => (
-                                    <button
-                                        key={b}
-                                        onClick={() => setActiveBadge(prev => prev === b ? null : b)}
-                                        className={`text-xs px-3 py-1 rounded-full ${activeBadge === b ? 'bg-brand-ink text-white' : 'bg-slate-100 text-slate-600'}`}>
-                                        {b}
-                                    </button>
-                                ))}
+                                <div className="bg-[#faf9f6] p-6 rounded-2xl border-r-4 border-brand-accent">
+                                    <p className="text-base sm:text-lg text-slate-700 leading-relaxed text-justify whitespace-pre-line font-medium">{selectedTopic.intro}</p>
+                                </div>
+
+                                <div className="space-y-8">
+                                    {selectedTopic.content.map((item, idx) => (
+                                        <section 
+                                            key={`${selectedTopic.title}-${idx}`} 
+                                            className="space-y-3 border-b border-slate-50 pb-6 last:border-0 animate-fadeInUp opacity-0"
+                                            style={{ animationDelay: `${idx * 100}ms`, animationFillMode: 'forwards' }}
+                                        >
+                                            <h4 className="text-lg sm:text-xl font-bold text-brand-ink">{item.heading}</h4>
+                                            <p className="text-slate-600 text-sm sm:text-base leading-relaxed text-justify whitespace-pre-line">{item.text}</p>
+                                        </section>
+                                    ))}
+                                </div>
+
+                                <div className="bg-brand-ink text-white p-6 rounded-2xl shadow-inner mt-8">
+                                    <h5 className="text-base font-bold text-brand-accent mb-2">خلاصة الملف</h5>
+                                    <p className="text-sm leading-relaxed text-slate-100 font-medium">{selectedTopic.summary}</p>
+                                </div>
+
+                                 {selectedTopic.sources && (
+                                    <div className="pt-6 border-t border-slate-100 mt-8">
+                                        <h6 className="text-xs font-bold text-slate-400 mb-3">المصادر والمراجع:</h6>
+                                        <ul className="list-disc list-inside text-xs text-slate-400 space-y-1">
+                                            {selectedTopic.sources.map((s, i) => <li key={i}>{s}</li>)}
+                                        </ul>
+                                    </div>
+                                )}
+
+                                <div className="mt-12 space-y-8">
+                                    <VideoMediaGallery 
+                                        title="تقارير مصورة: حكايات ستات"
+                                        clips={[
+                                            { title: "ميداني: كيف تبدو علاقات (بلا تعريف) لدى الجيل الجديد ومخاطرها النفسية؟", dur: "٥:١٥" },
+                                            { title: "قصة فتاة كادت تتزوج مبكراً ونجت لتكمل تعليمها وتتفوق", dur: "٤:٣٠" }
+                                        ]}
+                                    />
+
+                                    <ExpertAdviceDesk 
+                                        qaList={[
+                                            { q: "كيف أحمي نفسي عاطفياً من الدخول في علاقة سريعة أو غير واضحة المعالم؟", a: "كوني صريحة وواضحة منذ البداية بشأن توقعاتكِ، وتجنبي التمادي في التعلق إذا كان الطرف الآخر يرفض تحديد طبيعة العلاقة أو الالتزام، فالصمت العاطفي يزيد المعاناة لاحقاً." },
+                                            { q: "أهلي يضغطون علي للزواج بسبب تقدمي في السن، كيف أتعامل معهم بهدوء؟", a: "تحدثي معهم بحوار مبني على الاحترام والواقع، وأوضحي أن جودة العلاقة واختيار شريك متوافق فكرياً ونفسياً أهم بكثير من توقيت الزواج لضمان عدم حدوث طلاق سريع." }
+                                        ]}
+                                    />
+
+                                    <InteractionsPanel articleId={`hikayat-settat-${selectedTopic.title}`} />
+                                </div>
+                            </div>
+
+                            {/* القائمة الجانبية (25%) */}
+                            <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
+                                <div className="bg-brand-surface border border-slate-200/60 rounded-3xl p-6 shadow-xs">
+                                    <h3 className="text-base font-black text-brand-ink mb-4 border-b border-slate-100 pb-3">حكايات أخرى</h3>
+                                    <div className="space-y-4">
+                                        {Object.entries(topicsData).filter(([, t]) => t.title !== selectedTopic.title).map(([id, t]) => (
+                                            <button 
+                                                key={id}
+                                                onClick={() => setSelectedTopic(t)}
+                                                className="w-full text-right group flex flex-col gap-1 transition-all hover:bg-[#faf9f6] p-2.5 rounded-xl"
+                                            >
+                                                <span className="text-[10px] font-bold text-brand-accent">{t.badge}</span>
+                                                <span className="text-xs font-bold text-brand-ink group-hover:text-brand-secondary transition-colors line-clamp-2 leading-snug">{t.title}</span>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <InteractivePoll 
+                                    question="هل ترين أن المسلسلات والأفلام الأجنبية ساهمت في رفع سقف توقعات البنات من العلاقات العاطفية بشكل غير واقعي قد يهدد استقرار الزواج؟" 
+                                    pollKey="hikayat-settat"
+                                    options={["نعم، رفعت التوقعات بشكل خيالي", "لا، بل زادت الوعي بالحقوق العاطفية"]}
+                                />
+
+                                <DailyCaricature 
+                                    caption="الوهم الرومانسي ضد الواقع" 
+                                    desc="عندما تبحث الفتاة عن بطل الفيلم السينمائي في شوارع الواقع المزدحمة."
+                                    emoji="🍿💔"
+                                />
                             </div>
                         </div>
                     </div>
-                </header>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filtered.map(([id, topic]) => (
-                        <article
-                            key={id}
-                            onClick={() => setSelectedTopic(topic)}
-                            className="group bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-lg transition-transform transform hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
-                        >
-                            <div className="flex items-start justify-between">
-                                <div className="text-3xl">{topic.icon}</div>
-                                <span className="text-xs font-bold text-slate-500 bg-slate-50 px-3 py-1 rounded-full">{topic.badge}</span>
-                            </div>
-
-                            <div className="mt-4">
-                                <h3 className="text-xl font-extrabold text-brand-ink leading-tight mb-2">{topic.title}</h3>
-                                <p className="text-sm text-slate-600 line-clamp-4 text-justify">{topic.intro}</p>
-                            </div>
-
-                            <div className="mt-6 flex items-center justify-between text-xs text-slate-400">
-                                <span className="font-medium">اقرأ الملف</span>
-                                <span className="text-lg font-serif opacity-30">0{id}</span>
-                            </div>
-                        </article>
-                    ))}
-                </div>
-
-                {/* Modal — centered reading modal (portal) */}
-                {selectedTopic && (
-                    <Modal onClose={() => setSelectedTopic(null)} className="modal-scroll bg-white w-full max-w-4xl max-h-[85vh] rounded-[2.5rem] shadow-2xl overflow-y-auto">
-                        <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-slate-100 px-6 py-4 flex items-center justify-between">
-                            <div className="text-right">
-                                <span className="bg-brand-secondary/10 text-brand-secondary text-xs font-bold px-3 py-1 rounded-full">{selectedTopic.badge}</span>
-                            </div>
-                            <button
-                                ref={drawerCloseRef}
-                                onClick={() => setSelectedTopic(null)}
-                                className="w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center font-bold text-lg focus:outline-2 focus:outline-offset-2 focus:outline-brand-ink"
-                                title="إغلاق الملف"
-                            >
-                                ✕
-                            </button>
-                        </div>
-
-                        <div className="p-6 sm:p-8 space-y-8">
-                            <header className="text-right">
-                                <h2 className="text-2xl font-black text-brand-ink leading-tight">{selectedTopic.title}</h2>
-                                <div className="mt-2 w-16 h-1 bg-brand-secondary rounded-full"></div>
-                            </header>
-
-                            <div className="bg-[#faf9f6] p-4 rounded-lg border-r-4 border-brand-accent">
-                                <p className="text-base text-slate-700 leading-relaxed text-justify whitespace-pre-line">{selectedTopic.intro}</p>
-                            </div>
-
-                            <div className="space-y-6">
-                                {selectedTopic.content.map((item, idx) => (
-                                    <section key={idx} className="space-y-2">
-                                        <h4 className="text-lg font-bold text-brand-ink">{item.heading}</h4>
-                                        <p className="text-slate-600 text-base text-justify whitespace-pre-line">{item.text}</p>
-                                    </section>
-                                ))}
-                            </div>
-
-                            <div className="bg-brand-ink text-white p-4 rounded-lg">
-                                <h5 className="text-sm font-semibold">خلاصة</h5>
-                                <p className="mt-2 text-sm text-slate-100">{selectedTopic.summary}</p>
-                            </div>
-
-                            {selectedTopic.sources && (
-                                <div className="pt-4 border-t border-slate-100">
-                                    <h6 className="text-xs font-bold text-slate-400 mb-2">المصادر:</h6>
-                                    <ul className="list-disc list-inside text-xs text-slate-400 space-y-1">
-                                        {selectedTopic.sources.map((s, i) => <li key={i}>{s}</li>)}
-                                    </ul>
-                                </div>
-                            )}
-                        </div>
-                    </Modal>
                 )}
             </main>
 
             <Footer />
         </div>
-    )
+    );
 }

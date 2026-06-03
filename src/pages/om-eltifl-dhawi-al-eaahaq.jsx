@@ -1,6 +1,8 @@
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 const sections = [
   {
@@ -48,11 +50,13 @@ export default function OmEltiflDhawiAlEaahaqPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-slate-800" dir="rtl">
+    <div className="relative min-h-screen overflow-hidden bg-[#faf9f6] text-[#1F2937]" dir="rtl">
       <BackgroundSVG />
       <NavBar />
 
       <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
+        <TrendingTags tags={["ذوي_الإعاقة", "أمومة_خاصة", "الدعم_النفسي", "حقوق_المعاقين", "الدمج_المجتمعي", "سند_الأمهات"]} />
+        
         <section className="relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.22),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.14),transparent_28%)]" />
           <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
@@ -101,7 +105,7 @@ export default function OmEltiflDhawiAlEaahaqPage() {
         </section>
 
         <section className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <aside className="lg:sticky lg:top-6">
+          <aside className="lg:sticky lg:top-6 space-y-6">
             <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm">
               <div className="mb-4 flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">فهرس سريع</h3>
@@ -113,7 +117,7 @@ export default function OmEltiflDhawiAlEaahaqPage() {
                     key={section.title}
                     type="button"
                     onClick={() => scrollToSection(index)}
-                    className="block w-full rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
+                    className="block w-full rounded-2xl border border-slate-100 bg-[#faf9f6] px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
                   >
                     <span className="block text-[11px] uppercase tracking-[0.2em] opacity-60">{String(index + 1).padStart(2, '0')}</span>
                     <span className="block mt-1 leading-6">{section.title}</span>
@@ -121,6 +125,18 @@ export default function OmEltiflDhawiAlEaahaqPage() {
                 ))}
               </div>
             </div>
+
+            <InteractivePoll 
+              question="هل توافقين على أهمية توفير عيادات دعم نفسي إلزامية مجانية لأهالي الأطفال ذوي الإعاقة داخل مراكز التأهيل الحكومية؟" 
+              pollKey="om-eltifl-dhawi-al-eaahaq"
+              options={["نعم، ضرورة ملحة للأهالي", "لا، نفضل دعم مالي مباشر"]}
+            />
+
+            <DailyCaricature 
+              caption="الأم البطلة" 
+              desc="تحمل طفلها بقلبها وعقلها وتجتاز به كل حواجز الحياة الصعبة."
+              emoji="👩‍👦🦸‍♀️"
+            />
           </aside>
 
           <article className="space-y-6">
@@ -131,7 +147,12 @@ export default function OmEltiflDhawiAlEaahaqPage() {
             </div>
 
             {sections.map((section, index) => (
-              <section key={section.title} id={`section-${index}`} className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm">
+              <section 
+                key={section.title} 
+                id={`section-${index}`} 
+                className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
+                style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+              >
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-3 py-1.5 text-xs font-bold text-brand-accent">
                   <span>✦</span>
                   {String(index + 1).padStart(2, '0')}
@@ -141,6 +162,23 @@ export default function OmEltiflDhawiAlEaahaqPage() {
               </section>
             ))}
 
+            <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
+              <VideoMediaGallery 
+                title="تأهيل ودعم ذوي الإعاقة"
+                clips={[
+                  { title: "حوار خاص مع مستشارة أسرية حول التعامل النفسي السليم مع صدمة تشخيص إعاقة الطفل", dur: "٦:١٥" },
+                  { title: "تغطية من داخل مركز التنمية الشاملة: أمهات يتبادلن الخبرات والدعم المشترك", dur: "٤:٤٥" }
+                ]}
+              />
+
+              <ExpertAdviceDesk 
+                qaList={[
+                  { q: "كيف أتصرف مع نوبات الغضب المتكررة لطفلي المصاب بالتوحد في الأماكن العامة؟", a: "يُنصح بعدم الانفعال أو معاقبة الطفل. حاولي نقله لمكان هادئ ومشتت للإنتباه، واستخدمي بطاقات بصرية بسيطة للتعبير، مع تجاهل نظرات المحيطين تماماً والتركيز على سلامة طفلكِ النفسية." },
+                  { q: "ما هي الأوراق المطلوبة لاستخراج بطاقة الخدمات المتكاملة للطفل؟", a: "يتطلب تقريراً طبياً معتمداً من أحد مستشفيات وزارة الصحة أو الهيئات التعليمية يوضح نوع ودرجة الإعاقة، مع إجراء الكشف الوظيفي وتثبيته عبر الحجز الإلكتروني بموقع وزارة التضامن الاجتماعي." }
+                ]}
+              />
+            </div>
+
             <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg">
               <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">الخلاصة</div>
               <h2 className="mt-3 text-2xl font-black sm:text-3xl">لا تحتاج إلى لقب… بل إلى دعم حقيقي</h2>
@@ -148,6 +186,8 @@ export default function OmEltiflDhawiAlEaahaqPage() {
                 الإعاقة ليست مأساة بحد ذاتها، لكن غياب الدعم هو ما يصنع المأساة الحقيقية. ما يحتاجه المجتمع هنا ليس التعاطف العابر، بل منظومة تفهم الأم، وتخفف عنها، وتمنح الطفل حقه في الحياة الكريمة.
               </p>
             </section>
+
+            <InteractionsPanel articleId="om-eltifl-dhawi-al-eaahaq" />
           </article>
         </section>
       </main>

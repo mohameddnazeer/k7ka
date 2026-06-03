@@ -1,7 +1,9 @@
-﻿import { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import BackgroundSVG from "../components/BackgroundSVG"
 import NavBar from "../components/NavBar"
 import Footer from "../components/Footer"
+import InteractionsPanel from "../components/InteractionsPanel"
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from "../components/Youm7Widgets"
 
 const socialMediaTopics = [
     {
@@ -164,14 +166,14 @@ export default function BaraAlkahkaPage() {
     })
 
     return (
-        <div className="relative min-h-screen bg-slate-50 font-arabic overflow-x-hidden selection:bg-brand-secondary/20" dir="rtl">
+        <div className="relative min-h-screen bg-[#faf9f6] font-arabic overflow-x-hidden selection:bg-brand-secondary/20" dir="rtl">
             <BackgroundSVG />
             <NavBar />
             
             <main className="relative z-10 mx-auto px-4 pb-20 pt-10 sm:px-6 lg:px-8 max-w-7xl">
                 
                 {/* Hero Editorial Header Banner */}
-                <div className="relative mb-12 overflow-hidden rounded-2xl bg-white border border-slate-200/60 p-8 sm:p-14 text-right shadow-sm">
+                <div className="relative mb-8 overflow-hidden rounded-2xl bg-white border border-slate-200/60 p-8 sm:p-14 text-right shadow-sm">
                     <div className="absolute top-0 left-0 w-80 h-80 bg-brand-secondary/5 rounded-full blur-[90px] -translate-x-14 -translate-y-14 pointer-events-none"></div>
                     <div className="relative z-10 max-w-2xl space-y-4">
                         <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-3 py-1 text-xs font-bold text-white shadow-xs">
@@ -184,76 +186,118 @@ export default function BaraAlkahkaPage() {
                     </div>
                 </div>
 
-                {/* Filter Navigation Category Tabs */}
-                <div className="mb-10 flex flex-wrap items-center justify-center gap-2">
-                    {[
-                        { id: "all", label: "جميع التحقيقات" },
-                        { id: "digital", label: "التحديات الرقمية" },
-                        { id: "street", label: "أمان الشارع" },
-                        { id: "home", label: "البيت والأسواق" }
-                    ].map((btn) => (
-                        <button 
-                            key={btn.id} 
-                            onClick={() => setActiveSection(btn.id)}
-                            className={`rounded-xl px-5 py-2.5 text-xs font-black transition-all duration-300 outline-none border ${
-                                activeSection === btn.id 
-                                    ? "bg-brand-ink text-white border-brand-ink shadow-md shadow-brand-ink/10 scale-[1.02]" 
-                                    : "bg-white text-slate-600 border-slate-200/80 hover:bg-slate-50 hover:text-brand-ink"
-                            }`}
-                        >
-                            {btn.label}
-                        </button>
-                    ))}
+                <TrendingTags tags={["بره_الكحكة", "التريندات_القاتلة", "التحرش_اللفظي", "أمان_الشارع", "إدمان_الشراء", "حقوق_المرأة"]} />
+
+                {/* Two-Column Layout (Content Grid + Sidebar) */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-12">
+                    
+                    {/* Main Content Area: Filter & Topic Cards */}
+                    <div className="lg:col-span-2 space-y-6">
+                        {/* Filter Navigation Category Tabs */}
+                        <div className="flex flex-wrap items-center justify-start gap-2">
+                            {[
+                                { id: "all", label: "جميع التحقيقات" },
+                                { id: "digital", label: "التحديات الرقمية" },
+                                { id: "street", label: "أمان الشارع" },
+                                { id: "home", label: "البيت والأسواق" }
+                            ].map((btn) => (
+                                <button 
+                                    key={btn.id} 
+                                    onClick={() => setActiveSection(btn.id)}
+                                    className={`rounded-xl px-5 py-2.5 text-xs font-black transition-all duration-300 outline-none border ${
+                                        activeSection === btn.id 
+                                            ? "bg-brand-ink text-white border-brand-ink shadow-md shadow-brand-ink/10 scale-[1.02]" 
+                                            : "bg-white text-slate-600 border-slate-200/80 hover:bg-[#faf9f6] hover:text-brand-ink"
+                                    }`}
+                                >
+                                    {btn.label}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="grid gap-6 sm:grid-cols-2">
+                            {filteredTopics.map((topic, index) => {
+                                // Create an alternating featured card width layout for an editorial magazine feel
+                                const isFeatured = index === 0 && filteredTopics.length > 1
+                                
+                                return (
+                                    <div 
+                                        key={topic.id} 
+                                        onClick={() => setSelectedTopic(topic)}
+                                        className={`group relative rounded-2xl overflow-hidden border border-slate-200/70 bg-white transition-all duration-300 hover:shadow-md hover:border-slate-300/90 cursor-pointer flex flex-col justify-between min-h-[240px] p-6 animate-fadeInUp opacity-0 ${
+                                            isFeatured ? "sm:col-span-2" : "sm:col-span-1"
+                                        }`}
+                                        style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+                                    >
+                                        {topic.bgImage && (
+                                            <>
+                                                <div className="absolute inset-0 z-0">
+                                                    <img 
+                                                        src={topic.bgImage} 
+                                                        alt={topic.title} 
+                                                        className="w-full h-full object-cover grayscale opacity-15 transition-all duration-500 group-hover:scale-105 group-hover:opacity-20 group-hover:grayscale-0"
+                                                    />
+                                                </div>
+                                                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/90 to-white/40 z-0" />
+                                            </>
+                                        )}
+
+                                        <div className="relative z-10 space-y-4">
+                                            <span className="inline-block text-[10px] font-bold text-brand-secondary bg-brand-secondary/5 border border-brand-secondary/10 rounded-md px-2 py-0.5">
+                                                {topic.category}
+                                            </span>
+                                            <h3 className="text-xl font-black text-brand-ink leading-snug group-hover:text-brand-secondary transition-colors duration-200">
+                                                {topic.title}
+                                            </h3>
+                                            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium line-clamp-3">
+                                                {topic.content}
+                                            </p>
+                                        </div>
+
+                                        <div className="relative z-10 pt-4 flex items-center justify-end border-t border-slate-100 mt-4">
+                                            <span className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-ink group-hover:text-brand-secondary transition-colors">
+                                                <span>{topic.sections?.length > 0 ? "اقرئي التحقيق الكامل" : "استكشفي الملف"}</span>
+                                                <svg viewBox="0 0 24 24" className="h-3 w-3 fill-none stroke-current transition-transform duration-200 group-hover:-translate-x-1" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+
+                    {/* Sidebar Youm7 widgets */}
+                    <div className="w-full space-y-6 lg:sticky lg:top-6">
+                        <InteractivePoll 
+                            question="هل تؤيدين فرض قيود صارمة ورقابة أبوية إلزامية على تطبيقات الفيديوهات القصيرة لحماية المراهقات من التريندات الخطيرة؟" 
+                            pollKey="bara-alkahka"
+                            options={["نعم، أؤيد وبشدة", "لا، التوعية الذاتية أفضل"]}
+                        />
+
+                        <DailyCaricature 
+                            caption="مخاطر الشاشات والأطفال" 
+                            desc="عندما تبتلع الشاشات الصغيرة براءة الطفولة والواقع."
+                            emoji="🧟‍♀️📱"
+                        />
+                    </div>
                 </div>
 
-                {/* Dynamic Asymmetric Card Grid Component */}
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {filteredTopics.map((topic, index) => {
-                        // Create an alternating featured card width layout for an editorial magazine feel
-                        const isFeatured = index === 0 || (index === 3 && filteredTopics.length > 3)
-                        
-                        return (
-                            <div 
-                                key={topic.id} 
-                                onClick={() => setSelectedTopic(topic)}
-                                className={`group relative rounded-2xl overflow-hidden border border-slate-200/70 bg-white transition-all duration-300 hover:shadow-md hover:border-slate-300/90 cursor-pointer flex flex-col justify-between min-h-[240px] p-6 ${
-                                    isFeatured ? "sm:col-span-2" : "sm:col-span-1"
-                                }`}
-                            >
-                                {topic.bgImage && (
-                                    <>
-                                        <div className="absolute inset-0 z-0">
-                                            <img 
-                                                src={topic.bgImage} 
-                                                alt={topic.title} 
-                                                className="w-full h-full object-cover grayscale opacity-15 transition-all duration-500 group-hover:scale-105 group-hover:opacity-20 group-hover:grayscale-0"
-                                            />
-                                        </div>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/90 to-white/40 z-0" />
-                                    </>
-                                )}
+                {/* Bottom Media Gallery & Expert Advice Column */}
+                <div className="mt-12 space-y-8">
+                    <VideoMediaGallery 
+                        title="تقارير ميدانية: بره الكحكة"
+                        clips={[
+                            { title: "مخاطر التريندات: لقاءات مع أخصائيين نفسيين حول هوس الانتشار", dur: "٤:٢٠" },
+                            { title: "أمان الشارع: مبادرة فتيات مصر لإنهاء التحرش اللفظي", dur: "٣:٥٠" }
+                        ]}
+                    />
 
-                                <div className="relative z-10 space-y-4">
-                                    <span className="inline-block text-[10px] font-bold text-brand-secondary bg-brand-secondary/5 border border-brand-secondary/10 rounded-md px-2 py-0.5">
-                                        {topic.category}
-                                    </span>
-                                    <h3 className="text-xl font-black text-brand-ink leading-snug group-hover:text-brand-secondary transition-colors duration-200">
-                                        {topic.title}
-                                    </h3>
-                                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium line-clamp-3">
-                                        {topic.content}
-                                    </p>
-                                </div>
-
-                                <div className="relative z-10 pt-4 flex items-center justify-end border-t border-slate-100 mt-4">
-                                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-ink group-hover:text-brand-secondary transition-colors">
-                                        <span>{topic.sections?.length > 0 ? "اقرئي التحقيق الكامل" : "استكشفي الملف"}</span>
-                                        <svg viewBox="0 0 24 24" className="h-3 w-3 fill-none stroke-current transition-transform duration-200 group-hover:-translate-x-1" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
-                                    </span>
-                                </div>
-                            </div>
-                        )
-                    })}
+                    <ExpertAdviceDesk 
+                        qaList={[
+                            { q: "كيف أتصرف قانونياً إذا تعرضت للتحرش اللفظي أو الملاحقة في الشارع؟", a: "عليكِ التوجه لأقرب قسم شرطة وتحرير محضر بالواقعة مع تقديم أي شهود أو تسجيلات كاميرات مراقبة قريبة، حيث يعاقب القانون المصري على التحرش اللفظي بعقوبات رادعة تشمل الحبس والغرامة." },
+                            { q: "ابنتي المراهقة تقضى ساعات طوال على تطبيقات التسوق الإلكتروني، كيف أنصحها؟", a: "قومي بمناقشة مفهوم الادخار وتخصيص ميزانية شهرية محددة لها، وتجنبي النقد المباشر؛ بل ساعديها على ملء أوقات فراغها بأنشطة حية ورياضية تقلل من الهروب النفسي نحو الشاشات." }
+                        ]}
+                    />
                 </div>
             </main>
 
@@ -319,8 +363,8 @@ export default function BaraAlkahkaPage() {
                                 <div className="max-w-3xl space-y-8">
                                     
                                     {/* Abstract Blockquote Frame */}
-                                    <div className="border-r-4 border-brand-secondary bg-slate-50/70 p-5 rounded-l-xl">
-                                        <p className="text-base sm:text-lg font-bold text-slate-800 leading-relaxed italic">
+                                    <div className="border-r-4 border-brand-secondary bg-[#faf9f6]/70 p-5 rounded-l-xl">
+                                        <p className="text-base sm:text-lg font-bold text-[#1F2937] leading-relaxed italic">
                                             "{selectedTopic.content}"
                                         </p>
                                     </div>
@@ -340,7 +384,7 @@ export default function BaraAlkahkaPage() {
                                                 </div>
                                             ))
                                         ) : (
-                                            <div className="text-center py-10 border border-dashed border-slate-200 rounded-xl bg-slate-50/40">
+                                            <div className="text-center py-10 border border-dashed border-slate-200 rounded-xl bg-[#faf9f6]/40">
                                                 <p className="text-xs font-bold text-slate-400">الملف التفصيلي تحت التوثيق والتحرير حالياً.</p>
                                             </div>
                                         )}
@@ -356,6 +400,8 @@ export default function BaraAlkahkaPage() {
                                             </p>
                                         </div>
                                     )}
+
+                                    <InteractionsPanel key={selectedTopic.id} articleId={`bara-alkahka-modal-${selectedTopic.id}`} />
                                 </div>
                             </div>
 

@@ -2,6 +2,8 @@ import { useState } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 export default function SawtohaMasmouaPage() {
     // تحديد التحقيق النشط حالياً في الصفحة
@@ -150,18 +152,18 @@ export default function SawtohaMasmouaPage() {
     const currentInvestigation = investigationsData[activeInvestigation ];
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-slate-50" dir="rtl">
+        <div className="relative min-h-screen overflow-hidden bg-[#faf9f6]" dir="rtl">
             <BackgroundSVG />
             <NavBar />
             
             <main className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-24 pt-12 sm:px-8">
                 {/* الرأس الرئيسي للصفحة */}
-                <header className="mb-16 text-center">
+                <header className="mb-16 text-center animate-fadeIn">
                     <div className="mb-4 inline-block">
                         <span className="badge-soft px-4 py-1.5 text-sm font-semibold tracking-wide">الملفات الاستقصائية</span>
                     </div>
                     <h1 className="mb-6 text-4xl font-black text-brand-ink sm:text-6xl tracking-tight">صوتها مسموع</h1>
-                    <p className="mx-auto max-w-2xl text-xl leading-relaxed text-brand-inkMuted font-medium">
+                    <p className="mx-auto max-w-2xl text-xl leading-relaxed text-brand-inkMuted font-medium font-serif">
                         تحقيقات ميدانية معمقة، تعتمد على الشهادات الحية وتجارب النساء الواقعية لإيصال أصواتهن بصدق، وشفافية، وعمق مهني.
                     </p>
                 </header>
@@ -170,14 +172,17 @@ export default function SawtohaMasmouaPage() {
                     
                     {/* القسم الأيمن: عرض التحقيق النشط والمختار */}
                     <div className="lg:col-span-2">
-                        <article className="glass-card p-6 sm:p-12 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm transition-all duration-300">
+                        <article key={activeInvestigation} className="glass-card p-6 sm:p-12 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm transition-all duration-300 animate-fadeInUp relative overflow-hidden">
+                            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-ink opacity-80"></div>
                             
+                            <TrendingTags tags={["صوتها_مسموع", "نسوية_رقمية", "تمكين_المرأة", "سقوف_زجاجية", "العمل_التنفيذي", "بيئة_عمل_عادلة"]} />
+
                             {/* رأس التحقيق */}
                             <header className="border-b border-slate-100 pb-8 mb-8">
                                 <div className="text-brand-accent font-bold text-sm uppercase tracking-wider mb-2">
                                     {currentInvestigation.tag}
                                 </div>
-                                <h2 className="text-3xl sm:text-4xl font-black text-brand-ink leading-tight mb-4">
+                                <h2 className="text-3xl sm:text-4xl font-black text-brand-ink leading-tight mb-4 font-serif">
                                     {currentInvestigation.title}
                                 </h2>
                             </header>
@@ -197,12 +202,31 @@ export default function SawtohaMasmouaPage() {
                                 ))}
 
                                 {/* خلاصة التحقيق */}
-                                <div className="border-t border-slate-100 pt-6 mt-8">
-                                    <h4 className="text-xl font-bold text-brand-ink mb-3">خلاصة الملف</h4>
-                                    <p className="bg-slate-50 p-4 rounded-xl text-brand-ink font-medium leading-relaxed">
+                                <div className="border-t border-slate-100 pt-6 mt-8 pb-6">
+                                    <h4 className="text-xl font-bold text-brand-ink mb-3 font-serif">خلاصة الملف</h4>
+                                    <p className="bg-[#faf9f6] p-4 rounded-xl text-brand-ink font-medium leading-relaxed">
                                         {currentInvestigation.summary}
                                     </p>
                                 </div>
+                            </div>
+
+                            <div className="mt-8 space-y-8">
+                                <VideoMediaGallery 
+                                    title="ملفات صوتها مسموع المرئية"
+                                    clips={[
+                                        { title: "مائدة مستديرة: رائدات أعمال يشاركن تجارب تخطي العقبات القيادية", dur: "٥:٤٠" },
+                                        { title: "عقبات صامتة: كيف تبدو بيئة العمل في القطاعات الهندسية التقليدية؟", dur: "٤:١٥" }
+                                    ]}
+                                />
+
+                                <ExpertAdviceDesk 
+                                    qaList={[
+                                        { q: "كيف أتعامل مع التفرقة غير المعلنة في الترقيات داخل المؤسسات التي يغلب عليها الذكور؟", a: "ثقفي نفسكِ بالوصف الوظيفي ومعايير التقييم الرسمية، وقومي بتوثيق إنجازاتكِ بانتظام وتقارير الأداء الفترية، وعند مناقشة الترقية اعتمدي على لغة الأرقام والمساهمات الفعلية للمؤسسة بدلاً من الوعود الشفهية." },
+                                        { q: "هل يحق لي كعاملة في القطاع الخاص المطالبة ببيئة عمل مهيأة وتوفير مرافق لائقة؟", a: "نعم، قانون العمل ينص صراحةً على التزام المنشآت بتوفير بيئة عمل صحية وآمنة وتجهيزات مناسبة وملائمة للنوع الاجتماعي، وأي مخالفة يمكن الإبلاغ عنها عبر مكاتب التفتيش بوزارة العمل." }
+                                    ]}
+                                />
+
+                                <InteractionsPanel key={activeInvestigation} articleId={`sawtoha-masmoua-${activeInvestigation}`} />
                             </div>
                         </article>
                     </div>
@@ -247,14 +271,28 @@ export default function SawtohaMasmouaPage() {
                             </div>
                         </div>
 
-                        {/* صندوق تفاعلي إضافي للتواصل والمشاركة الميدانية */}
-                        <div className="bg-brand-surface border border-slate-100 rounded-3xl p-6 text-center shadow-xs">
-                            <span className="text-2xl mb-2 block">⚖️</span>
-                            <h4 className="font-bold text-brand-ink mb-1">هل تودين مشاركة تجربتكِ؟</h4>
-                            <p className="text-xs text-brand-inkMuted mb-4">نحن في فريق التوعية المانونية والبحث الميداني نستمع لشهادات النساء بخصوصية وأمان مطلق.</p>
-                            <button className="w-full bg-brand-ink text-white text-sm font-bold py-2.5 px-4 rounded-xl hover:bg-brand-ink/90 transition-colors">
-                                تواصلِ مع فريق التوعية
-                            </button>
+                        {/* صناديق تفاعلية إضافية للرأي والكاريكاتير والتواصل */}
+                        <div className="space-y-6">
+                            <InteractivePoll 
+                                question="هل ترين أن السوشيال ميديا ساهمت فعلياً في تمكين المرأة قانونياً واجتماعياً أم أنها مجرد وهم وتريند رقمي؟" 
+                                pollKey="sawtoha-masmoua"
+                                options={["ساهمت بالتمكين ورفع الوعي", "مجرد وهم وتريند مؤقت"]}
+                            />
+
+                            <DailyCaricature 
+                                caption="النسوية الرقمية وفقاعات التريند" 
+                                desc="بين تضخيم الفقاعة الزرقاء والتأثير الحقيقي على أرض الواقع."
+                                emoji="📱⚖️"
+                            />
+
+                            <div className="bg-brand-surface border border-slate-100 rounded-3xl p-6 text-center shadow-xs">
+                                <span className="text-2xl mb-2 block">⚖️</span>
+                                <h4 className="font-bold text-brand-ink mb-1">هل تودين مشاركة تجربتكِ؟</h4>
+                                <p className="text-xs text-brand-inkMuted mb-4">نحن في فريق التوعية القانونية والبحث الميداني نستمع لشهادات النساء بخصوصية وأمان مطلق.</p>
+                                <button className="w-full bg-brand-ink text-white text-sm font-bold py-2.5 px-4 rounded-xl hover:bg-brand-ink/90 transition-colors">
+                                    تواصلِ مع فريق التوعية
+                                </button>
+                            </div>
                         </div>
                     </div>
 

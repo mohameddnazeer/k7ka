@@ -1,6 +1,8 @@
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 const sections = [
   {
@@ -60,11 +62,12 @@ export default function MahwElOmyaPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-slate-800" dir="rtl">
+    <div className="relative min-h-screen overflow-hidden bg-[#faf9f6] text-[#1F2937]" dir="rtl">
       <BackgroundSVG />
       <NavBar />
 
       <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
+        <TrendingTags tags={["محو_الأمية", "تعليم_المرأة", "تعليم_الكبار", "الوعي_والتنمية", "تمكين_النساء", "الفرص_التعليمية"]} />
         <section className="relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.22),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.14),transparent_28%)]" />
           <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
@@ -125,7 +128,7 @@ export default function MahwElOmyaPage() {
                     key={section.title}
                     type="button"
                     onClick={() => scrollToSection(index)}
-                    className="block w-full rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
+                    className="block w-full rounded-2xl border border-slate-100 bg-[#faf9f6] px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
                   >
                     <span className="block text-[11px] uppercase tracking-[0.2em] opacity-60">{String(index + 1).padStart(2, '0')}</span>
                     <span className="block mt-1 leading-6">{section.title}</span>
@@ -133,6 +136,18 @@ export default function MahwElOmyaPage() {
                 ))}
               </div>
             </div>
+
+            <InteractivePoll 
+              question="هل تؤيدين ربط صرف الدعم النقدي الحكومي للأسر (مثل تكافل وكرامة) بالتزام الأمهات والفتيات بحضور فصول محو الأمية والتعليم؟" 
+              pollKey="mahw-el-omya"
+              options={["نعم، أؤيد لربط الدعم بالتنمية", "لا، أفضّل توفير حوافز إيجابية طوعية"]}
+            />
+
+            <DailyCaricature 
+              caption="النور يكسر الظلام" 
+              desc="عندما تخط المرأة بأصابعها أولى كلمات النور لتبدد ظلمات الجهل الطويلة."
+              emoji="📚💡"
+            />
           </aside>
 
           <article className="space-y-6">
@@ -143,7 +158,12 @@ export default function MahwElOmyaPage() {
             </div>
 
             {sections.map((section, index) => (
-              <section key={section.title} id={`section-${index}`} className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm">
+              <section 
+                key={section.title} 
+                id={`section-${index}`} 
+                className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
+                style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+              >
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-3 py-1.5 text-xs font-bold text-brand-accent">
                   <span>✦</span>
                   {String(index + 1).padStart(2, '0')}
@@ -153,6 +173,25 @@ export default function MahwElOmyaPage() {
               </section>
             ))}
 
+            <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
+              <VideoMediaGallery 
+                title="تقارير محو الأمية"
+                clips={[
+                  { title: "قصة ملهمة: أم لثلاثة أطفال تتعلم القراءة وتساعدهم في المذاكرة لأول مرة", dur: "٤:٥٠" },
+                  { title: "ميداني: جولة في فصول النور بمحافظات الصعيد وإقبال السيدات الكثيف", dur: "٣:١٥" }
+                ]}
+              />
+
+              <ExpertAdviceDesk 
+                qaList={[
+                  { q: "كيف أستطيع التسجيل مجاناً في فصول محو الأمية التابعة للدولة؟", a: "يمكن التوجه لأقرب فرع للهيئة العامة لتعليم الكبار في منطقتكِ وتقديم صورة بطاقة الرقم القومي، حيث توفر الهيئة فصولاً مسائية مجانية بالكامل وبمواعيد مرنة تناسب ظروف السيدات المنزلية." },
+                  { q: "أريد التطوع لتعليم السيدات القراءة والكتابة في قريتي، ما هي الإجراءات؟", a: "ترحب الهيئة العامة لتعليم الكبار والعديد من الجمعيات الأهلية بالمتطوعين، حيث يتم تقديم دورة تدريبية مبسطة لكِ على مناهج تعليم الكبار، وتوفير الكتب والمستلزمات الدراسية مجاناً لتوزيعها على الدارسات." }
+                ]}
+              />
+
+              <InteractionsPanel articleId="mahw-el-omya" />
+            </div>
+
             <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg">
               <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">الخلاصة</div>
               <h2 className="mt-3 text-2xl font-black sm:text-3xl">استثمار في أسرة أكثر استقرارًا</h2>
@@ -160,6 +199,8 @@ export default function MahwElOmyaPage() {
                 في النهاية، يظل محو أمية المرأة أكثر من مجرد مشروع تعليمي… إنه استثمار في أسرة أكثر استقرارًا، ومجتمع أكثر وعيًا، ومستقبل أكثر عدالة.
               </p>
             </section>
+
+            <InteractionsPanel articleId="mahw-el-omya" />
           </article>
         </section>
       </main>

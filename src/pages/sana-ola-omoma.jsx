@@ -1,6 +1,8 @@
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 const sections = [
   {
@@ -60,11 +62,13 @@ export default function SanaOlaOmomaPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-slate-800" dir="rtl">
+    <div className="relative min-h-screen overflow-hidden bg-[#faf9f6] text-[#1F2937]" dir="rtl">
       <BackgroundSVG />
       <NavBar />
 
       <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
+        <TrendingTags tags={["سنة_أولى_أمومة", "الأمومة_الواقعية", "اكتئاب_بعد_الولادة", "رعاية_الرضيع", "الصحة_النفسية_للأمهات", "شراكة_الزوجين"]} />
+
         <section className="relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.22),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.14),transparent_28%)]" />
           <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
@@ -113,7 +117,7 @@ export default function SanaOlaOmomaPage() {
         </section>
 
         <section className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <aside className="lg:sticky lg:top-6">
+          <aside className="lg:sticky lg:top-6 space-y-6">
             <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm">
               <div className="mb-4 flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">فهرس سريع</h3>
@@ -125,7 +129,7 @@ export default function SanaOlaOmomaPage() {
                     key={section.title}
                     type="button"
                     onClick={() => scrollToSection(index)}
-                    className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
+                    className="block w-full rounded-2xl border border-slate-100 bg-[#faf9f6] px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
                   >
                     <span className="block text-[11px] uppercase tracking-[0.2em] opacity-60">{String(index + 1).padStart(2, '0')}</span>
                     <span className="block mt-1 leading-6">{section.title}</span>
@@ -133,6 +137,18 @@ export default function SanaOlaOmomaPage() {
                 ))}
               </div>
             </div>
+
+            <InteractivePoll 
+              question="هل عانيتِ أو تخشين من التعرض لأعراض 'اكتئاب ما بعد الولادة' دون العثور على توعية أو رعاية نفسية كافية؟" 
+              pollKey="sana-ola-omoma"
+              options={["نعم، عانيت أو أخشى ذلك جداً", "لا، أشعر بالدعم الكافي حولي"]}
+            />
+
+            <DailyCaricature 
+              caption="الأمومة المثالية!" 
+              desc="بين واقع كحكة والرضيع الذي لا ينام، وصورة السوشيال ميديا الحالمة."
+              emoji="👶🤱😵‍💫"
+            />
           </aside>
 
           <article className="space-y-6">
@@ -141,12 +157,17 @@ export default function SanaOlaOmomaPage() {
                 تُعدّ السنة الأولى بعد الولادة واحدة من أكثر المراحل حساسية في حياة المرأة، إذ تنتقل فيها من نمط حياة معتاد إلى مسؤوليات جديدة بالكامل، تتداخل فيها مشاعر الفرح والخوف، والاحتواء والارتباك. ورغم أن المجتمع يقدّم الأمومة غالبًا في صورة مثالية، فإن الواقع يكشف عن تجربة أكثر تعقيدًا، مليئة بالتغيرات الجسدية والنفسية والاجتماعية.
               </p>
               <p className="mt-4 text-base leading-8 text-slate-700 sm:text-lg">
-                في هذه المرحلة، لا تواجه الأم فقط مسؤولية رعاية طفل جديد، بل تدخل أيضًا في مواجهة مباشرة مع تغيّرات داخلية عميقة، تجعلها في حالة بحث مستمر عن التوازن بين ذاتها واحتياجات طفلها.
+                في هذه المرحلة, لا تواجه الأم فقط مسؤولية رعاية طفل جديد، بل تدخل أيضًا في مواجهة مباشرة مع تغيّرات داخلية عميقة، تجعلها في حالة بحث مستمر عن التوازن بين ذاتها واحتياجات طفلها.
               </p>
             </div>
 
             {sections.map((section, index) => (
-              <section key={section.title} id={`section-${index}`} className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm">
+              <section 
+                key={section.title} 
+                id={`section-${index}`} 
+                className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
+                style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+              >
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-3 py-1.5 text-xs font-bold text-brand-accent">
                   <span>✦</span>
                   {String(index + 1).padStart(2, '0')}
@@ -155,6 +176,23 @@ export default function SanaOlaOmomaPage() {
                 <p className="mt-4 text-base leading-8 text-slate-700 sm:text-lg">{section.text}</p>
               </section>
             ))}
+
+            <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
+              <VideoMediaGallery 
+                title="توجيهات السنة الأولى"
+                clips={[
+                  { title: "فيديو إرشادي: طرق مبتكرة لتنظيم نوم الرضيع ومساعدة الأم الجديدة على الراحة", dur: "٥:٣٠" },
+                  { title: "ميداني: لقاءات مع أمهات يشاركن تجاربهن الصادقة في التغلب على قلق الشهور الأولى", dur: "٤:١٠" }
+                ]}
+              />
+
+              <ExpertAdviceDesk 
+                qaList={[
+                  { q: "كيف أفرق بين حزن الولادة العابر (Baby Blues) واكتئاب ما بعد الولادة الحقيقي؟", a: "الحزن العابر يستمر من عدة أيام إلى أسبوعين بعد الولادة ويزول تدريجياً، أما اكتئاب ما بعد الولادة فيستمر لعدة أشهر وتصاحبه رغبة شديدة في العزلة، بكاء مستمر، وتراجع القدرة على رعاية الرضيع، ويتطلب استشارة طبيب متخصص فوراً." },
+                  { q: "ما هي أبسط الطرق التي يمكن للأب تقديمها كشراكة حقيقية في رعاية الرضيع؟", a: "المشاركة لا تقتصر على المهام الكبيرة؛ إسناد مناوبة إطعام الرضيع أو تهدئته ليلاً للأب يتيح للأم ساعات نوم متصلة، بالإضافة إلى إدارته للمسؤوليات المنزلية اليومية لتخفيف العبء الجسدي عنها." }
+                ]}
+              />
+            </div>
 
             <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg">
               <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">الخلاصة</div>
@@ -166,6 +204,8 @@ export default function SanaOlaOmomaPage() {
                 في النهاية، تبقى الأمومة تجربة فردية فريدة، تختلف من امرأة لأخرى، لكن ما يجمعها جميعًا هو الحاجة إلى الدعم، والتفهم، والاعتراف بأن “السنة الأولى” ليست اختبارًا للكمال… بل بداية لحياة جديدة تمامًا.
               </p>
             </section>
+
+            <InteractionsPanel articleId="sana-ola-omoma" />
           </article>
         </section>
       </main>

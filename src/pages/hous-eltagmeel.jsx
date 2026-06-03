@@ -1,6 +1,8 @@
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 const sections = [
   {
@@ -56,11 +58,13 @@ export default function HousEltagmeelPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-slate-800" dir="rtl">
+    <div className="relative min-h-screen overflow-hidden bg-[#faf9f6] text-[#1F2937]" dir="rtl">
       <BackgroundSVG />
       <NavBar />
 
       <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
+        <TrendingTags tags={["هوس_التجميل", "عمليات_التجميل", "فلاتر_رقمية", "صناعة_الجمال", "الثقة_بالنفس", "التصالح_مع_الذات"]} />
+
         <section className="relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.22),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.14),transparent_28%)]" />
           <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
@@ -109,7 +113,7 @@ export default function HousEltagmeelPage() {
         </section>
 
         <section className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <aside className="lg:sticky lg:top-6">
+          <aside className="lg:sticky lg:top-6 space-y-6">
             <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm">
               <div className="mb-4 flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">فهرس سريع</h3>
@@ -121,7 +125,8 @@ export default function HousEltagmeelPage() {
                     key={section.title}
                     type="button"
                     onClick={() => scrollToSection(index)}
-                    className="block w-full rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
+                    className="block w-full rounded-2xl border border-slate-100 bg-[#faf9f6] px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white animate-fadeInUp opacity-0"
+                    style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <span className="block text-[11px] uppercase tracking-[0.2em] opacity-60">{String(index + 1).padStart(2, '0')}</span>
                     <span className="block mt-1 leading-6">{section.title}</span>
@@ -129,6 +134,18 @@ export default function HousEltagmeelPage() {
                 ))}
               </div>
             </div>
+
+            <InteractivePoll 
+              question="هل تشعرين أن منصات التواصل الاجتماعي وفلاتر الصور تؤثر سلباً على رضاكِ عن مظهركِ الطبيعي؟" 
+              pollKey="hous-eltagmeel"
+              options={["نعم، تزيد ضغط المقارنة", "لا، أثق بمظهري الطبيعي"]}
+            />
+
+            <DailyCaricature 
+              caption="فلتر التجميل!" 
+              desc="سعي مستمر وراء الفلاتر لتغيير الملامح التي صاغتها الطبيعة."
+              emoji="💅🤳🎭"
+            />
           </aside>
 
           <article className="space-y-6">
@@ -139,23 +156,47 @@ export default function HousEltagmeelPage() {
             </div>
 
             {sections.map((section, index) => (
-              <section key={section.title} id={`section-${index}`} className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm">
+              <section 
+                key={section.title} 
+                id={`section-${index}`} 
+                className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
+                style={{ animationDelay: `${(index + 1) * 100}ms` }}
+              >
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-3 py-1.5 text-xs font-bold text-brand-accent">
                   <span>✦</span>
                   {String(index + 1).padStart(2, '0')}
                 </div>
-                <h2 className="text-2xl font-black text-brand-ink sm:text-3xl">{section.title}</h2>
+                <h2 className="text-2xl font-black text-brand-ink sm:text-3xl font-serif">{section.title}</h2>
                 <p className="mt-4 text-base leading-8 text-slate-700 sm:text-lg">{section.text}</p>
               </section>
             ))}
 
-            <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg">
+            <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
+              <VideoMediaGallery 
+                title="كواليس صناعة الجمال"
+                clips={[
+                  { title: "حوار خاص: أخصائي نفسي يكشف أسباب الإدمان الجراحي لعمليات التجميل وعلاجه", dur: "٧:٢٠" },
+                  { title: "استطلاع ميداني: ما رأي الفتيات في الشارع المصري حول فلاتر السوشيال ميديا وتأثيرها؟", dur: "٤:٥٠" }
+                ]}
+              />
+
+              <ExpertAdviceDesk 
+                qaList={[
+                  { q: "كيف أحمي ابنتي المراهقة من هوس المقارنة مع المؤثرات على إنستغرام وتيك توك؟", a: "عززي ثقتها بنفسها بتركيز المدح على إنجازاتها العقلية والرياضية، وتحدثي معها بصراحة حول كواليس الصور الرقمية واستخدام الإضاءة والفلاتر لتعديل المظهر الحقيقي." },
+                  { q: "متى تعتبر الرغبة في التجميل مؤشراً على اضطراب نفسي كاضطراب تشوه الجسد؟", a: "عندما ينصب تركيز المرأة بالكامل ولساعات طويلة على عيب طفيف أو وهمي في مظهرها، مما يمنعها من عيش حياتها الاجتماعية والمهنية بشكل طبيعي، ويتكرر لجوؤها للعمليات التجميلية دون أي رضا." }
+                ]}
+              />
+            </div>
+
+            <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg animate-fadeInUp opacity-0" style={{ animationDelay: `${(sections.length + 1) * 100}ms` }}>
               <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">الخلاصة</div>
-              <h2 className="mt-3 text-2xl font-black sm:text-3xl">الجمال الحقيقي ليس مطاردة الكمال</h2>
+              <h2 className="mt-3 text-2xl font-black sm:text-3xl font-serif">الجمال الحقيقي ليس مطاردة الكمال</h2>
               <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
                 التجميل قد يكون أحيانًا وسيلة طبيعية للعناية بالنفس أو استعادة الثقة، لكن المشكلة تبدأ عندما يتحول إلى مصدر دائم للقلق وعدم الرضا، أو عندما تصبح قيمة المرأة مرتبطة بشكلها الخارجي فقط. الحل لا يكمن في رفض التجميل بالكامل، بل في بناء وعي صحي يجعل المرأة قادرة على التمييز بين العناية بنفسها وبين الوقوع في دائرة الهوس.
               </p>
             </section>
+
+            <InteractionsPanel articleId="hous-eltagmeel" />
           </article>
         </section>
       </main>

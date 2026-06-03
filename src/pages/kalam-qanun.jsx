@@ -1,8 +1,10 @@
-﻿import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Modal from '../components/Modal'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 // ==========================================
 // DATA LAYER (يمكن نقلها لملف منفصل لاحقاً lawData.js)
@@ -220,43 +222,43 @@ function ArticleCard({ article, searchQuery, onOpen }) {
                 ) : (
                     <div className="flex flex-col items-center justify-center text-slate-400 gap-2">
                         <svg className="w-12 h-12 stroke-current" fill="none" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <span className="text-xs font-bold">كلام قانون</span>
+                        <span className="text-[10px] font-bold">لا تتوفر صورة</span>
                     </div>
                 )}
-                <div className="absolute top-4 right-4 z-10 flex gap-2">
-                    <span className="rounded-full bg-brand-surface/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-brand-ink border border-slate-200 shadow-sm">
-                        {article.category}
-                    </span>
-                </div>
-                <button 
-                    onClick={handleShare}
-                    className="absolute bottom-4 left-4 p-2 rounded-full bg-white/80 backdrop-blur-sm text-slate-600 hover:text-brand-accent hover:bg-white shadow-sm transition-all opacity-0 group-hover:opacity-100"
-                    title="مشاركة المقال"
-                >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 10.742l4.622-2.312m0 7.14l-4.622-2.312M19 4a3 3 0 11-6 0 3 3 0 016 0zM6 16a3 3 0 11-6 0 3 3 0 016 0zm13 4a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                </button>
             </div>
             
-            <div className="flex flex-1 flex-col p-6">
-                <h2 className="mb-4 text-xl font-black text-brand-ink leading-tight transition-colors group-hover:text-brand-accent">
+            <div className="flex flex-1 flex-col p-6 text-right">
+                <span className="badge-soft mb-2 inline-block bg-brand-accent/5 text-brand-accent px-2 py-0.5 rounded text-[10px] font-bold w-fit">
+                    {article.category}
+                </span>
+                
+                <h3 className="mb-3 text-lg font-black text-brand-ink leading-snug group-hover:text-brand-accent transition-colors">
                     <HighlightedText text={article.title} search={searchQuery} />
-                </h2>
-                <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-brand-inkMuted/80 font-medium whitespace-pre-wrap">
+                </h3>
+                
+                <p className="mb-4 line-clamp-3 text-xs leading-relaxed text-brand-inkMuted/80 font-medium">
                     <HighlightedText text={article.content} search={searchQuery} />
                 </p>
-                <div className="mt-auto pt-4 border-t border-brand-offwhite">
+                
+                <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
                     <button 
                         onClick={() => onOpen(article)}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-brand-accent transition-all hover:gap-3 focus:outline-none"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-accent transition-colors hover:text-brand-secondary"
                     >
-                        إقرئي المزيد
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 12H5M12 19l-7-7 7-7" />
+                        <span>اقرأ المزيد</span>
+                        <svg className="h-3 w-3 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                         </svg>
+                    </button>
+                    
+                    <button 
+                        onClick={handleShare}
+                        className="p-1.5 rounded-lg bg-[#faf9f6] text-slate-400 hover:text-brand-secondary transition"
+                        title="مشاركة الرابط"
+                    >
+                        🔗
                     </button>
                 </div>
             </div>
@@ -264,354 +266,392 @@ function ArticleCard({ article, searchQuery, onOpen }) {
     );
 }
 
-// ==========================================
-// MAIN PAGE COMPONENT
-// ==========================================
-export default function KalamQanunPage() {
-    const [selectedArticle, setSelectedArticle] = useState(null)
-    const [searchQuery, setSearchQuery] = useState('')
-    const [selectedCategory, setSelectedCategory] = useState('الكل')
-    const [readProgress, setReadProgress] = useState(0)
-    
-    // حالات التحكم الخاصة بقسم الأسئلة الشائعة المُطور
-    const [faqSearch, setFaqSearch] = useState('')
-    const [activeFaqTab, setActiveFaqTab] = useState('الكل')
-    const [openFaqIdx, setOpenFaqIdx] = useState(null)
+export default function KalamQanun() {
+    const [selectedArticle, setSelectedArticle] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('الكل');
+    const [activeFaqTab, setActiveFaqTab] = useState('الكل');
+    const [openFaqIdx, setOpenFaqIdx] = useState(null);
+    const [faqSearch, setFaqSearch] = useState('');
 
-    // استخراج تصنيفات المقالات والأسئلة تلقائياً
-    const categories = useMemo(() => ['الكل', ...new Set(articles.map(a => a.category))], [])
-    const faqTabs = useMemo(() => ['الكل', ...new Set(faqData.map(f => f.category))], [])
+    const categories = ['الكل', 'قانون الأحوال الشخصية', 'قانون العقوبات والمجتمع', 'قانون العمل', 'الجرائم الإلكترونية'];
+    const faqTabs = ['الكل', 'قانون الأحوال الشخصية', 'الجرائم الإلكترونية', 'قانون العمل'];
 
-    // تصفية المقالات
     const filteredArticles = useMemo(() => {
-        const query = searchQuery.trim().toLowerCase();
         return articles.filter(article => {
-            const matchesCategory = selectedCategory === 'الكل' || article.category === selectedCategory
-            const matchesSearch = !query || 
-                                  article.title.toLowerCase().includes(query) || 
-                                  article.content.toLowerCase().includes(query)
-            return matchesCategory && matchesSearch
-        })
-    }, [searchQuery, selectedCategory])
+            const matchesCategory = selectedCategory === 'الكل' || article.category === selectedCategory;
+            const matchesSearch = article.title.includes(searchQuery) || article.content.includes(searchQuery);
+            return matchesCategory && matchesSearch;
+        });
+    }, [selectedCategory, searchQuery]);
 
-    // تصفية الأسئلة الشائعة بناءً على التبويب والبحث الخاص بها
     const filteredFaqs = useMemo(() => {
-        const query = faqSearch.trim().toLowerCase();
         return faqData.filter(faq => {
             const matchesTab = activeFaqTab === 'الكل' || faq.category === activeFaqTab;
-            const matchesSearch = !query || 
-                                  faq.q.toLowerCase().includes(query) || 
-                                  faq.a.toLowerCase().includes(query);
+            const matchesSearch = faq.q.includes(faqSearch) || faq.a.includes(faqSearch);
             return matchesTab && matchesSearch;
         });
-    }, [faqSearch, activeFaqTab]);
-
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.key === 'Escape') setSelectedArticle(null)
-        }
-
-        if (selectedArticle) {
-            document.body.style.overflow = 'hidden'
-            window.addEventListener('keydown', handleKeyDown)
-        } else {
-            document.body.style.overflow = 'unset'
-            setReadProgress(0)
-        }
-        
-        return () => {
-            document.body.style.overflow = 'unset'
-            window.removeEventListener('keydown', handleKeyDown)
-        }
-    }, [selectedArticle])
-
-    const handleModalScroll = (e) => {
-        const element = e.currentTarget;
-        const totalHeight = element.scrollHeight - element.clientHeight;
-        if (totalHeight > 0) {
-            const progress = (element.scrollTop / totalHeight) * 100;
-            setReadProgress(progress);
-        }
-    };
+    }, [activeFaqTab, faqSearch]);
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-slate-50 text-right" dir="rtl">
+        <div className="relative min-h-screen bg-[#faf9f6] text-[#1F2937] font-arabic overflow-x-hidden" dir="rtl">
             <BackgroundSVG />
             <NavBar />
             
             <main className="relative z-10 mx-auto w-full px-4 pb-24 sm:px-6 lg:px-8 max-w-7xl">
-                
-                {/* Header Section */}
-                <div className="mb-12 text-center pt-10">
-                    <span className="badge-soft mb-4 inline-block bg-brand-accent/10 text-brand-accent px-4 py-1.5 rounded-full text-sm font-bold animate-pulse">
-                        إعلام وتمكين
-                    </span>
-                    <h1 className="text-4xl font-black text-brand-ink sm:text-6xl mb-6 tracking-tight">
-                        كلام قانون
-                    </h1>
-                    <p className="mx-auto max-w-2xl text-lg text-brand-inkMuted/80 font-medium leading-relaxed">
-                        تبسيط المفاهيم القانونية بالتعاون مع خبراء قانونيين ومؤسسة قضايا المرأة المصرية. الوعي هو أول خطوة لحماية حقوقك.
-                    </p>
-                </div>
+                <TrendingTags tags={["كلام_قانون", "الولاية_التعليمية", "الخلع_والطلاق", "العنف_المنزلي", "جرائم_إلكترونية", "تزييف_عميق"]} />
 
-                {/* Collaboration Box */}
-                <div className="mb-12 rounded-[2rem] bg-brand-surface/40 backdrop-blur-sm border border-brand-accent/20 text-brand-ink p-8 text-center relative overflow-hidden shadow-sm">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
-                    <h3 className="text-2xl font-bold mb-3 relative z-10 text-brand-secondary">بروتوكول تعاون</h3>
-                    <p className="text-base sm:text-lg text-brand-inkMuted max-w-3xl mx-auto relative z-10 font-medium leading-relaxed">
-                        مشروع "الكحكة" يتعاون مع <strong className="text-brand-accent">مؤسسة قضايا المرأة المصرية</strong> لتقديم محتوى قانوني دقيق يهدف إلى توعية النساء بحقوقهن القانونية والاجتماعية.
-                    </p>
-                </div>
-
-                {/* Search & Filter Controls */}
-                <div className="mb-12 flex flex-col md:flex-row gap-6 items-center justify-between bg-brand-surface p-6 rounded-3xl border border-brand-surface/70 shadow-sm">
-                    <div className="w-full md:w-1/3 relative">
-                        <input 
-                            type="text"
-                            placeholder="بحث في المقالات القانونية..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-4 pr-11 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent transition-all"
-                        />
-                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </span>
-                    </div>
-                    <div className="w-full md:w-auto flex flex-wrap gap-2 justify-start md:justify-end">
-                        {categories.map((cat) => (
-                            <button
-                                key={cat}
-                                onClick={() => setSelectedCategory(cat)}
-                                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 ${
-                                    selectedCategory === cat 
-                                        ? 'bg-brand-accent text-white shadow-md shadow-brand-accent/20' 
-                                        : 'bg-slate-50 text-brand-inkMuted hover:bg-slate-100 border border-slate-100'
-                                }`}
-                            >
-                                {cat}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Articles Grid */}
-                {filteredArticles.length > 0 ? (
-                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                        {filteredArticles.map((article) => (
-                            <ArticleCard 
-                                key={article.id} 
-                                article={article} 
-                                searchQuery={searchQuery}
-                                onOpen={setSelectedArticle} 
-                            />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-16 bg-brand-surface rounded-3xl border border-dashed border-slate-200">
-                        <p className="text-lg font-bold text-brand-inkMuted">لم نجد أي مقالات تطابق خيارات البحث الحالية.</p>
-                    </div>
-                )}
-
-                {/* ==========================================
-                    UPGRADED FAQ SECTION (القسم المطور والمحدث)
-                   ========================================== */}
-                <section className=" bg-gradient-to-b from-transparent to-slate-100/50 pt-12 pb-8  rounded-[3rem]">
-                    {/* عنوان القسم */}
-                    <div className="mb-10 text-center">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-secondary/10 text-brand-secondary text-xs font-bold mb-3">
-                            <span>💡</span> الأسئلة الأكثر تداولاً
-                        </div>
-                        <h2 className="text-3xl font-black text-brand-ink sm:text-4xl mb-4">
-                            موسوعة الأسئلة القانونية الشائعة
-                        </h2>
-                        <p className="mx-auto max-w-xl text-sm sm:text-base text-brand-inkMuted/80 font-medium leading-relaxed">
-                            إجابات قانونية سريعة ومبسطة لأكثر المواقف الحياتية والقانونية التي تواجه النساء في المجتمع.
-                        </p>
-                        <div className="mx-auto mt-4 h-1 w-20 bg-brand-accent rounded-full"></div>
-                    </div>
-
-                    {/* أدوات البحث والتصفية للأسئلة الشائعة */}
-                    <div className="max-w-4xl mx-auto mb-8 px-4 flex flex-col md:flex-row gap-4 items-center justify-between">
-                        {/* التبويبات الفئوية للأسئلة */}
-                        <div className="flex flex-wrap gap-2 justify-start w-full md:w-auto">
-                            {faqTabs.map((tab) => (
-                                <button
-                                    key={tab}
-                                    onClick={() => {
-                                        setActiveFaqTab(tab);
-                                        setOpenFaqIdx(null); // غلق أي سؤال مفتوح عند تغيير التبويب
-                                    }}
-                                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                                        activeFaqTab === tab
-                                            ? 'bg-brand-secondary text-white shadow-sm'
-                                            : 'bg-white text-brand-inkMuted hover:bg-slate-50 border border-slate-200'
-                                    }`}
-                                >
-                                    {tab}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* حقل البحث الخاص بالأسئلة */}
-                        <div className="relative w-full md:w-72">
-                            <input 
-                                type="text"
-                                placeholder="ابحثي عن سؤال معين..."
-                                value={faqSearch}
-                                onChange={(e) => {
-                                    setFaqSearch(e.target.value);
-                                    setOpenFaqIdx(null);
-                                }}
-                                className="w-full pl-4 pr-9 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 focus:border-brand-secondary transition-all"
-                            />
-                            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
-                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
+                {!selectedArticle ? (
+                    <>
+                        {/* Header Section */}
+                        <div className="mb-12 text-center pt-10">
+                            <span className="badge-soft mb-4 inline-block bg-brand-accent/10 text-brand-accent px-4 py-1.5 rounded-full text-sm font-bold animate-pulse">
+                                إعلام وتمكين
                             </span>
+                            <h1 className="text-4xl font-black text-brand-ink sm:text-6xl mb-6 tracking-tight">
+                                كلام قانون
+                            </h1>
+                            <p className="mx-auto max-w-2xl text-lg text-brand-inkMuted/80 font-medium leading-relaxed">
+                                تبسيط المفاهيم القانونية بالتعاون مع خبراء قانونيين ومؤسسة قضايا المرأة المصرية. الوعي هو أول خطوة لحماية حقوقك.
+                            </p>
                         </div>
-                    </div>
 
-                    {/* قائمة الأسئلة (Accordion) */}
-                    <div className="grid gap-4 max-w-4xl mx-auto px-4">
-                        {filteredFaqs.length > 0 ? (
-                            filteredFaqs.map((faq, idx) => {
-                                const isOpen = openFaqIdx === idx;
-                                return (
-                                    <div 
-                                        key={idx} 
-                                        className={`bg-white rounded-2xl border transition-all duration-200 ${
-                                            isOpen 
-                                                ? 'border-brand-accent/30 shadow-md shadow-brand-accent/5 ring-1 ring-brand-accent/10' 
-                                                : 'border-slate-100 hover:border-slate-200 shadow-sm'
+                        {/* Collaboration Box */}
+                        <div className="mb-12 rounded-[2rem] bg-brand-surface/40 backdrop-blur-sm border border-brand-accent/20 text-brand-ink p-8 text-center relative overflow-hidden shadow-sm">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+                            <h3 className="text-2xl font-bold mb-3 relative z-10 text-brand-secondary">بروتوكول تعاون</h3>
+                            <p className="text-base sm:text-lg text-brand-inkMuted max-w-3xl mx-auto relative z-10 font-medium leading-relaxed">
+                                مشروع "الكحكة" يتعاون مع <strong className="text-brand-accent">مؤسسة قضايا المرأة المصرية</strong> لتقديم محتوى قانوني دقيق يهدف إلى توعية النساء بحقوقهن القانونية والاجتماعية.
+                            </p>
+                        </div>
+
+                        {/* Search & Filter Controls */}
+                        <div className="mb-12 flex flex-col md:flex-row gap-6 items-center justify-between bg-brand-surface p-6 rounded-3xl border border-brand-surface/70 shadow-sm">
+                            <div className="w-full md:w-1/3 relative">
+                                <input 
+                                    type="text"
+                                    placeholder="بحث في المقالات القانونية..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    className="w-full pl-4 pr-11 py-2.5 bg-[#faf9f6] border border-slate-200 rounded-full text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent transition-all"
+                                />
+                                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div className="w-full md:w-auto flex flex-wrap gap-2 justify-start md:justify-end">
+                                {categories.map((cat) => (
+                                    <button
+                                        key={cat}
+                                        onClick={() => setSelectedCategory(cat)}
+                                        className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 ${
+                                            selectedCategory === cat 
+                                                ? 'bg-brand-accent text-white shadow-md shadow-brand-accent/20' 
+                                                : 'bg-[#faf9f6] text-brand-inkMuted hover:bg-slate-100 border border-slate-100'
                                         }`}
                                     >
-                                        <button
-                                            onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
-                                            aria-expanded={isOpen}
-                                            className="w-full flex items-start justify-between p-5 text-right font-black text-base sm:text-lg text-brand-secondary hover:text-brand-accent transition-colors focus:outline-none gap-4"
-                                        >
-                                            <div className="flex gap-3 items-start">
-                                                <span className={`text-xs px-2 py-0.5 mt-1 rounded-md font-bold whitespace-nowrap hidden sm:inline-block ${
-                                                    isOpen ? 'bg-brand-accent/10 text-brand-accent' : 'bg-slate-100 text-slate-500'
-                                                }`}>
-                                                    {faq.category}
-                                                </span>
-                                                <span className="leading-tight">
-                                                    <HighlightedText text={faq.q} search={faqSearch} />
-                                                </span>
-                                            </div>
-                                            <span className={`flex-shrink-0 mt-1 p-1 rounded-full bg-slate-50 text-brand-accent transition-transform duration-300 ${isOpen ? 'rotate-180 bg-brand-accent/10' : ''}`}>
-                                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                                </svg>
-                                            </span>
-                                        </button>
-                                        
-                                        <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] border-t border-slate-50 bg-slate-50/40' : 'grid-rows-[0fr]'}`}>
-                                            <div className="overflow-hidden">
-                                                <div className="p-5 text-sm sm:text-base text-brand-inkMuted/90 font-medium leading-relaxed flex gap-3 items-start">
-                                                    <span className="text-brand-accent font-black text-lg select-none">جـ:</span>
-                                                    <p className="whitespace-pre-line">
-                                                        <HighlightedText text={faq.a} search={faqSearch} />
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            })
-                        ) : (
-                            <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-slate-200">
-                                <p className="text-sm font-bold text-slate-400">لا توجد أسئلة تطابق بحثك حالياً.</p>
-                            </div>
-                        )}
-                    </div>
-                </section>
-
-                {/* Legal Contact Card */}
-               <section className="mt-24 bg-brand-secondary/5 rounded-[3rem] p-10 sm:p-16 text-brand-ink relative overflow-hidden border border-brand-secondary/10">
-    <div className="absolute top-0 left-0 w-64 h-64 bg-brand-accent/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-    <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-            <h2 className="text-4xl font-black mb-6 text-brand-ink">الدعم والاستشارات القانونية</h2>
-            <p className="text-xl text-brand-inkMuted mb-8 font-medium leading-relaxed">
-                توفر مؤسسة قضايا المرأة المصرية خطوطاً ساخنة وخدمات الدعم القانوني المباشر للسيدات. نحن هنا لتقديم المشورة والمساعدة اللازمة لضمان حماية حقوقكن.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-start">
-                <div className="bg-brand-surface backdrop-blur-md px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
-                    <span className="block text-xs uppercase font-bold text-brand-inkSubtle mb-1">الخط الساخن للمؤسسة</span>
-                    <span className="text-2xl font-black text-brand-accent">022511223</span>
-                </div>
-                <div className="bg-brand-surface backdrop-blur-md px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
-                    <span className="block text-xs uppercase font-bold text-brand-inkSubtle mb-1">المقر الرئيسي</span>
-                    <span className="text-xl font-black text-brand-ink">القاهرة - الجيزة</span>
-                </div>
-            </div>
-        </div>
-        <div className="bg-brand-surface/80 backdrop-blur-sm rounded-[2rem] p-8 border border-slate-100 shadow-sm">
-            <h4 className="text-xl font-bold mb-4 text-brand-secondary">"إن الوعي بالحقوق القانونية هو الخطوة الأولى والأساسية لاستعادتها وحمايتها."</h4>
-            <div className="flex items-center gap-4 justify-start">
-                <div className="w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent font-bold">⚖️</div>
-                <span className="font-bold text-brand-ink">فريق التوعية القانونية — مشروع الكحكة</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-                {/* Premium Article Modal (using shared Modal) */}
-                {selectedArticle && (
-                    <Modal
-                        onClose={() => setSelectedArticle(null)}
-                        onProgress={(p) => setReadProgress(p)}
-                        className="modal-scroll bg-brand-surface w-full max-w-4xl max-h-[85vh] overflow-y-auto rounded-[2.5rem] shadow-2xl border border-slate-100"
-                        ariaLabel={selectedArticle.title}
-                    >
-                        {/* Close button */}
-                        <button 
-                            onClick={() => setSelectedArticle(null)}
-                            className="absolute top-6 left-6 z-40 rounded-full bg-white/90 backdrop-blur-md p-2.5 text-brand-ink shadow-md transition-all hover:bg-brand-accent hover:text-white focus:outline-none"
-                            aria-label="إغلاق النافذة"
-                        >
-                            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-
-                        {/* Conditional banner image */}
-                        {selectedArticle.image && (
-                            <div className="w-full h-56 sm:h-72 relative">
-                                <img 
-                                    src={selectedArticle.image} 
-                                    alt={selectedArticle.title} 
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-brand-surface via-brand-surface/20 to-transparent"></div>
-                            </div>
-                        )}
-
-                        <div className="p-6 sm:p-12 -mt-16 relative z-10">
-                            <span className="badge-soft mb-4 inline-block bg-brand-accent/10 text-brand-accent px-3 py-1 rounded-full text-xs font-bold">
-                                {selectedArticle.category}
-                            </span>
-                            <h2 className="text-2xl font-black text-brand-ink sm:text-4xl mb-8 leading-tight max-w-[90%]">
-                                {selectedArticle.title}
-                            </h2>
-                            
-                            <div className="space-y-8 mt-6">
-                                {selectedArticle.fullContent?.map((section, idx) => (
-                                    <div key={idx} className="border-r-4 border-brand-accent/40 pr-6 transition-all hover:border-brand-accent">
-                                        <h3 className="text-xl font-black text-brand-secondary mb-3">{section.heading}</h3>
-                                        <p className="text-base sm:text-lg text-brand-inkMuted leading-relaxed font-medium whitespace-pre-line">
-                                            {section.text}
-                                        </p>
-                                    </div>
+                                        {cat}
+                                    </button>
                                 ))}
                             </div>
                         </div>
-                    </Modal>
+
+                        {/* Articles Grid (with Sidebar) */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-12">
+                            <div className="lg:col-span-2">
+                                {filteredArticles.length > 0 ? (
+                                    <div className="grid gap-6 sm:grid-cols-2">
+                                        {filteredArticles.map((article, idx) => (
+                                            <div 
+                                                key={article.id}
+                                                className="animate-fadeInUp opacity-0"
+                                                style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
+                                            >
+                                                <ArticleCard 
+                                                    article={article} 
+                                                    searchQuery={searchQuery}
+                                                    onOpen={setSelectedArticle} 
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="text-center py-16 bg-brand-surface rounded-3xl border border-dashed border-slate-200">
+                                        <p className="text-lg font-bold text-brand-inkMuted">لم نجد أي مقالات تطابق خيارات البحث الحالية.</p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
+                                <InteractivePoll 
+                                    question="هل تؤيدين فرض عقوبات جنائية مشددة فورية على أصحاب العمل الذين يشغلون الفتيات بدون عقود عمل مكتوبة وموثقة؟" 
+                                    pollKey="kalam-qanun"
+                                    options={["نعم، أؤيد وبشدة", "لا، أرى التوعية كافية"]}
+                                />
+
+                                <DailyCaricature 
+                                    caption="حماية القانون للمرأة" 
+                                    desc="ميزان العدالة يحمي الحقوق من الضياع."
+                                    emoji="⚖️🛡️"
+                                />
+                            </div>
+                        </div>
+
+                        {/* ==========================================
+                            UPGRADED FAQ SECTION (القسم المطور والمحدث)
+                           ========================================== */}
+                        <section className=" bg-gradient-to-b from-transparent to-slate-100/50 pt-12 pb-8  rounded-[3rem]">
+                            {/* عنوان القسم */}
+                            <div className="mb-10 text-center">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-secondary/10 text-brand-secondary text-xs font-bold mb-3">
+                                    <span>💡</span> الأسئلة الأكثر تداولاً
+                                </div>
+                                <h2 className="text-3xl font-black text-brand-ink sm:text-4xl mb-4">
+                                    موسوعة الأسئلة القانونية الشائعة
+                                </h2>
+                                <p className="mx-auto max-w-xl text-sm sm:text-base text-brand-inkMuted/80 font-medium leading-relaxed">
+                                    إجابات قانونية سريعة ومبسطة لأكثر المواقف الحياتية والقانونية التي تواجه النساء في المجتمع.
+                                </p>
+                                <div className="mx-auto mt-4 h-1 w-20 bg-brand-accent rounded-full"></div>
+                            </div>
+
+                            {/* أدوات البحث والتصفية للأسئلة الشائعة */}
+                            <div className="max-w-4xl mx-auto mb-8 px-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+                                {/* التبويبات الفئوية للأسئلة */}
+                                <div className="flex flex-wrap gap-2 justify-start w-full md:w-auto">
+                                    {faqTabs.map((tab) => (
+                                        <button
+                                            key={tab}
+                                            onClick={() => {
+                                                setActiveFaqTab(tab);
+                                                setOpenFaqIdx(null); // غلق أي سؤال مفتوح عند تغيير التبويب
+                                            }}
+                                            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                                                activeFaqTab === tab
+                                                    ? 'bg-brand-secondary text-white shadow-sm'
+                                                    : 'bg-white text-brand-inkMuted hover:bg-[#faf9f6] border border-slate-200'
+                                            }`}
+                                        >
+                                            {tab}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {/* حقل البحث الخاص بالأسئلة */}
+                                <div className="relative w-full md:w-72">
+                                    <input 
+                                        type="text"
+                                        placeholder="ابحثي عن سؤال معين..."
+                                        value={faqSearch}
+                                        onChange={(e) => {
+                                            setFaqSearch(e.target.value);
+                                            setOpenFaqIdx(null);
+                                        }}
+                                        className="w-full pl-4 pr-9 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 focus:border-brand-secondary transition-all"
+                                    />
+                                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+                                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* قائمة الأسئلة (Accordion) */}
+                            <div className="grid gap-4 max-w-4xl mx-auto px-4">
+                                {filteredFaqs.length > 0 ? (
+                                    filteredFaqs.map((faq, idx) => {
+                                        const isOpen = openFaqIdx === idx;
+                                        return (
+                                            <div 
+                                                key={idx} 
+                                                className={`bg-white rounded-2xl border transition-all duration-200 ${
+                                                    isOpen 
+                                                        ? 'border-brand-accent/30 shadow-md shadow-brand-accent/5 ring-1 ring-brand-accent/10' 
+                                                        : 'border-slate-100 hover:border-slate-200 shadow-sm'
+                                                }`}
+                                            >
+                                                <button
+                                                    onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
+                                                    aria-expanded={isOpen}
+                                                    className="w-full flex items-start justify-between p-5 text-right font-black text-base sm:text-lg text-brand-secondary hover:text-brand-accent transition-colors focus:outline-none gap-4"
+                                                >
+                                                    <div className="flex gap-3 items-start">
+                                                        <span className={`text-xs px-2 py-0.5 mt-1 rounded-md font-bold whitespace-nowrap hidden sm:inline-block ${
+                                                            isOpen ? 'bg-brand-accent/10 text-brand-accent' : 'bg-slate-100 text-slate-500'
+                                                        }`}>
+                                                            {faq.category}
+                                                        </span>
+                                                        <span className="leading-tight">
+                                                            <HighlightedText text={faq.q} search={faqSearch} />
+                                                        </span>
+                                                    </div>
+                                                    <span className={`flex-shrink-0 mt-1 p-1 rounded-full bg-[#faf9f6] text-brand-accent transition-transform duration-300 ${isOpen ? 'rotate-180 bg-brand-accent/10' : ''}`}>
+                                                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                                
+                                                <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] border-t border-slate-50 bg-[#faf9f6]/40' : 'grid-rows-[0fr]'}`}>
+                                                    <div className="overflow-hidden">
+                                                        <div className="p-5 text-sm sm:text-base text-brand-inkMuted/90 font-medium leading-relaxed flex gap-3 items-start">
+                                                            <span className="text-brand-accent font-black text-lg select-none">جـ:</span>
+                                                            <p className="whitespace-pre-line">
+                                                                <HighlightedText text={faq.a} search={faqSearch} />
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                ) : (
+                                    <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-slate-200">
+                                        <p className="text-sm font-bold text-slate-400">لا توجد أسئلة تطابق بحثك حالياً.</p>
+                                    </div>
+                                )}
+                            </div>
+                        </section>
+
+                        {/* Legal Contact Card */}
+                        <section className="mt-24 bg-brand-secondary/5 rounded-[3rem] p-10 sm:p-16 text-brand-ink relative overflow-hidden border border-brand-secondary/10">
+                            <div className="absolute top-0 left-0 w-64 h-64 bg-brand-accent/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+                            <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                                <div>
+                                    <h2 className="text-4xl font-black mb-6 text-brand-ink">الدعم والاستشارات القانونية</h2>
+                                    <p className="text-xl text-brand-inkMuted mb-8 font-medium leading-relaxed">
+                                        توفر مؤسسة قضايا المرأة المصرية خطوطاً ساخنة وخدمات الدعم القانوني المباشر للسيدات. نحن هنا لتقديم المشورة والمساعدة اللازمة لضمان حماية حقوقكن.
+                                    </p>
+                                    <div className="flex flex-wrap gap-4 justify-start">
+                                        <div className="bg-brand-surface backdrop-blur-md px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
+                                            <span className="block text-xs uppercase font-bold text-brand-inkSubtle mb-1">الخط الساخن للمؤسسة</span>
+                                            <span className="text-2xl font-black text-brand-accent">022511223</span>
+                                        </div>
+                                        <div className="bg-brand-surface backdrop-blur-md px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
+                                            <span className="block text-xs uppercase font-bold text-brand-inkSubtle mb-1">المقر الرئيسي</span>
+                                            <span className="text-xl font-black text-brand-ink">القاهرة - الجيزة</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-brand-surface/80 backdrop-blur-sm rounded-[2rem] p-8 border border-slate-100 shadow-sm">
+                                    <h4 className="text-xl font-bold mb-4 text-brand-secondary">"إن الوعي بالحقوق القانونية هو الخطوة الأولى والأساسية لاستعادتها وحمايتها."</h4>
+                                    <div className="flex items-center gap-4 justify-start">
+                                        <div className="w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent font-bold">⚖️</div>
+                                        <span className="font-bold text-brand-ink">فريق التوعية القانونية — مشروع الكحكة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </>
+                ) : (
+                    <div className="pt-10 pb-20 animate-fadeIn max-w-7xl mx-auto">
+                        {/* زر الرجوع */}
+                        <div className="flex justify-between items-center border-b border-slate-200 pb-6 mb-8">
+                            <button 
+                                onClick={() => setSelectedArticle(null)}
+                                className="flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-secondary border border-brand-secondary bg-white px-4 py-2 rounded-xl hover:bg-brand-secondary/5 transition"
+                            >
+                                ← العودة لقائمة كلام قانون
+                            </button>
+                            <span className="text-xs font-bold text-slate-500 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-100">مراجعة قانونية معتمدة ⚖️</span>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+                            {/* المحتوى الرئيسي (75%) */}
+                            <div className="lg:col-span-3 space-y-8 bg-white p-6 sm:p-10 rounded-3xl border border-slate-100 shadow-sm">
+                                {/* صورة الغلاف */}
+                                {selectedArticle.image && (
+                                    <div className="w-full h-64 sm:h-96 relative overflow-hidden rounded-2xl border border-slate-200 shadow-xs">
+                                        <img 
+                                            src={selectedArticle.image} 
+                                            alt={selectedArticle.title} 
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                )}
+
+                                <div className="space-y-6">
+                                    <span className="badge-soft inline-block bg-brand-accent/10 text-brand-accent px-3 py-1 rounded-full text-xs font-bold">
+                                        {selectedArticle.category}
+                                    </span>
+                                    <h1 className="text-2xl sm:text-4xl font-black text-brand-ink leading-tight">
+                                        {selectedArticle.title}
+                                    </h1>
+                                    <p className="text-sm sm:text-base text-slate-600 font-bold leading-relaxed border-r-4 border-brand-accent pr-4">
+                                        {selectedArticle.content}
+                                    </p>
+                                    
+                                    <div className="space-y-8 pt-4">
+                                        {selectedArticle.fullContent?.map((section, idx) => (
+                                            <div 
+                                                key={`${selectedArticle.id}-${idx}`} 
+                                                className="border-b border-slate-100 pb-6 last:border-0 animate-fadeInUp opacity-0"
+                                                style={{ animationDelay: `${idx * 100}ms`, animationFillMode: 'forwards' }}
+                                            >
+                                                <h3 className="text-xl font-black text-brand-secondary mb-3">{section.heading}</h3>
+                                                <p className="text-base sm:text-lg text-brand-inkMuted leading-relaxed font-medium whitespace-pre-line text-justify">
+                                                    {section.text}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="mt-12 space-y-8">
+                                    <VideoMediaGallery 
+                                        title="تقارير كلام قانون المصورة"
+                                        clips={[
+                                            { title: "تغطية ميدانية: ندوة مؤسسة قضايا المرأة حول مخاطر التزييف العميق والابتزاز", dur: "٥:٤٠" },
+                                            { title: "شرح قانوني مبسط: كيف تحصلين على الولاية التعليمية وقرار التمكين سريعاً؟", dur: "٤:١٥" }
+                                        ]}
+                                    />
+
+                                    <ExpertAdviceDesk 
+                                        qaList={[
+                                            { q: "كيف أتحقق من جدية عقد العمل قبل التوقيع والبدء في الوظيفة؟", a: "تأكدي من كتابة نسختين من العقد على الأقل، وأن يتضمن اسم الشركة وعنوانها، قيمة الراتب الصافي صراحةً، ومسمى الوظيفة وعدد ساعات العمل، ولا تسلمي أوراقك الأصلية دون استلام إيصال بذلك." },
+                                            { q: "ما هي المدة المتوقعة لصدور قرار الولاية التعليمية للحاضنة من قاضي الأمور المستعجلة؟", a: "الولاية التعليمية للحاضن بقوة القانون، وفي حال النزاعات، يصدر القاضي أمراً وقتياً في غضون أسبوع إلى أسبوعين على الأكثر لحماية مصلحة الطفل ومسيرته التعليمية." }
+                                        ]}
+                                    />
+
+                                    <InteractionsPanel articleId={`kalam-qanun-${selectedArticle.id}`} />
+                                </div>
+                            </div>
+
+                            {/* القائمة الجانبية (25%) */}
+                            <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
+                                <div className="bg-brand-surface border border-slate-200/60 rounded-3xl p-6 shadow-xs">
+                                    <h3 className="text-base font-black text-brand-ink mb-4 border-b border-slate-100 pb-3">مواضيع قانونية ذات صلة</h3>
+                                    <div className="space-y-4">
+                                        {articles.filter(a => a.id !== selectedArticle.id).map(a => (
+                                            <button 
+                                                key={a.id}
+                                                onClick={() => setSelectedArticle(a)}
+                                                className="w-full text-right group flex flex-col gap-1 transition-all hover:bg-[#faf9f6] p-2.5 rounded-xl"
+                                            >
+                                                <span className="text-[10px] font-bold text-brand-accent">{a.category}</span>
+                                                <span className="text-xs font-bold text-brand-ink group-hover:text-brand-secondary transition-colors line-clamp-2 leading-snug">{a.title}</span>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <InteractivePoll 
+                                    question="هل تؤيدين فرض عقوبات جنائية مشددة فورية على أصحاب العمل الذين يشغلون الفتيات بدون عقود عمل مكتوبة وموثقة؟" 
+                                    pollKey="kalam-qanun"
+                                    options={["نعم، أؤيد وبشدة", "لا، أرى التوعية كافية"]}
+                                />
+
+                                <DailyCaricature 
+                                    caption="حماية القانون للمرأة" 
+                                    desc="ميزان العدالة يحمي الحقوق من الضياع."
+                                    emoji="⚖️🛡️"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 )}
             </main>
             <Footer />

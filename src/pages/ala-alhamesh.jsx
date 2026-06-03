@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 export default function AlaAlhameshPage() {
     // تحديد التقرير النشط حالياً للعرض (يبدأ بالتقرير الأول)
@@ -173,6 +175,7 @@ export default function AlaAlhameshPage() {
                                     value={query}
                                     onChange={(e) => setQuery(e.target.value)}
                                     placeholder="ابحثي في العناوين أو الخلاصة..."
+
                                     className="w-full rounded-2xl border border-slate-200 bg-white py-3 pr-12 pl-4 text-right text-sm text-slate-700 outline-none transition focus:border-brand-accent focus:ring-4 focus:ring-brand-accent/10"
                                 />
                             </label>
@@ -229,12 +232,27 @@ export default function AlaAlhameshPage() {
                                 </button>
                             );
                         })}
+
+                        <div className="mt-6 space-y-6">
+                            <InteractivePoll 
+                                question="هل تؤيدين تقديم قروض متناهية الصغر معفاة تماماً من الفوائد والضمانات البنكية المعقدة كحل جذري لظاهرة الغارمات؟" 
+                                pollKey="ala-alhamesh"
+                            />
+
+                            <DailyCaricature 
+                                caption="المرأة المعيلة تتسلق صخور الصعاب اليومية" 
+                                desc="عندما تتحول الظروف الصعبة إلى صخور، تصبح الإرادة هي حبل الصعود الوحيد."
+                                emoji="👵🧗‍♀️"
+                            />
+                        </div>
                     </nav>
 
                     {/* مساحة العرض الرئيسية: تفاصيل الدوسيه الصحفي النشط */}
                     <article className="w-full lg:w-2/3 bg-white border border-slate-100 rounded-[2.5rem] p-8 sm:p-12 shadow-sm space-y-10 min-h-[600px] animate-fadeIn relative overflow-hidden">
                         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-ink opacity-80"></div>
                         
+                        <TrendingTags tags={["على_الهامش", "المرأة_المعيلة", "الغارمات", "أم_المعاق", "صمود_النساء"]} />
+
                         {/* رأس التقرير الحالي */}
                         <header className="space-y-4 border-b border-slate-100 pb-6">
                             <div className="flex flex-wrap items-center gap-3">
@@ -324,7 +342,26 @@ export default function AlaAlhameshPage() {
                                 </ul>
                             </div>
                         )}
-                        
+
+                        <div className="mt-8 space-y-8">
+                            <VideoMediaGallery 
+                                title="ملفات على الهامش الميدانية"
+                                clips={[
+                                    { title: "شهادات حية لأمهات أطفال ذوي الاحتياجات حول صعوبة الدمج", dur: "٣:١٥" },
+                                    { title: "فصل النور: سيدة في عمر الستين تخط أولى كلماتها وتفرح", dur: "٤:٥٠" },
+                                    { title: "المرأة المعيلة ومشاريع الخبز المنزلي في الريف", dur: "٢:٤٠" }
+                                ]}
+                            />
+
+                            <ExpertAdviceDesk 
+                                qaList={[
+                                    { q: "كيف أحمي نفسي من التوقيع على إيصالات أمانة على بياض عند الاستدانة لتجهيز ابنتي؟", a: "يُنصح بعدم التوقيع على أي ورقة خالية من أرقام المبالغ المحددة صراحةً باللغة العربية والأرقام. يُفضل توقيع عقد قرض مدني محدد الأجل وبحضور شهود وتوثيقه، وتجنب الإيصالات العشوائية تماماً." },
+                                    { q: "ما هي أولى خطوات الدمج المدرسي الرسمي لطفل من ذوي الهمم (توحد أو داون)؟", a: "التوجه فوراً للإدارة التعليمية وتقديم ملف طبي معتمد من التأمين الصحي العام، حيث ينص القانون على حق الطفل في الحصول على مقعد دمج وإتاحة مدرس مرافق إذا لزم الأمر، وأي مدرسة ترفض ذلك تقع تحت طائلة المساءلة القانونية." }
+                                ]}
+                            />
+
+                            <InteractionsPanel articleId={`ala-alhamesh-${activeReport}`} />
+                        </div>
                     </article>
 
                 </div>

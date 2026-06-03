@@ -1,6 +1,8 @@
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 const sections = [
   {
@@ -57,6 +59,7 @@ export default function BaynAlZahmWalkaramaPage() {
       <NavBar />
 
       <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
+        <TrendingTags tags={["الزحام_والكرامة", "أمان_المواصلات", "الفضاء_العام", "كفاية_تحرش", "حق_التنقل", "المجلس_القومي_للمرأة"]} />
         <section className="relative overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.22),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.14),transparent_28%)]" />
           <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
@@ -105,7 +108,7 @@ export default function BaynAlZahmWalkaramaPage() {
         </section>
 
         <section className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <aside className="lg:sticky lg:top-6">
+          <aside className="lg:sticky lg:top-6 space-y-6">
             <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm">
               <div className="mb-4 flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">فهرس سريع</h3>
@@ -117,7 +120,7 @@ export default function BaynAlZahmWalkaramaPage() {
                     key={section.title}
                     type="button"
                     onClick={() => scrollToSection(index)}
-                    className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
+                    className="block w-full rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
                   >
                     <span className="block text-[11px] uppercase tracking-[0.2em] opacity-60">{String(index + 1).padStart(2, '0')}</span>
                     <span className="block mt-1 leading-6">{section.title}</span>
@@ -125,6 +128,18 @@ export default function BaynAlZahmWalkaramaPage() {
                 ))}
               </div>
             </div>
+
+            <InteractivePoll 
+              question="هل تؤيدين تخصيص عربات أو وسائل نقل عامة (أتوبيسات) حصرية بالكامل للنساء والفتيات كحل فوري لمواجهة الزحام والمضايقات؟" 
+              pollKey="bayn-alzahm-walkarama"
+              options={["نعم، أؤيد بشدة", "لا، أرى الرقابة والتثقيف كحل أفضل"]}
+            />
+
+            <DailyCaricature 
+              caption="الكرامة داخل المترو" 
+              desc="بين حلم الوصول بسلام وبين واقع التدافع والزحام اليومي."
+              emoji="🚇🚶‍♀️"
+            />
           </aside>
 
           <article className="space-y-6">
@@ -152,6 +167,25 @@ export default function BaynAlZahmWalkaramaPage() {
                 الإجابة ليست في الشارع وحده، بل في الوعي، والقانون، وإعادة تعريف مفهوم الاحترام داخل الفضاء العام. لأن التنقل الحقيقي لا يكتمل إلا عندما يكون آمنًا، لا مجرد متاح.
               </p>
             </section>
+
+            <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs">
+              <VideoMediaGallery 
+                title="الزحام والكرامة"
+                clips={[
+                  { title: "ميداني: شهادات فتيات يشاركن يومياتهن مع المترو والمواصلات العامة في القاهرة", dur: "٤:١٠" },
+                  { title: "تغطية قانونية: عقوبات التحرش في وسائل النقل العام وكيفية الإبلاغ", dur: "٣:٠٥" }
+                ]}
+              />
+
+              <ExpertAdviceDesk 
+                qaList={[
+                  { q: "ماذا أفعل فوراً إذا تعرضت لمضايقة أو انتهاك للخصوصية داخل أتوبيس مزدحم؟", a: "تحدثي فوراً بصوت مسموع وواضح للتنبيه وتجميع المحيطين بكِ، واطلبي من السائق التوجه لأقرب دورية أمنية أو تحرير محضر باسم مرتكب الفعل، وتجنبي التراجع خوفاً من الإحراج فالقانون يحميكِ تماماً." },
+                  { q: "هل هناك مبادرات أهلية توفر مرافقين أو وسائل نقل آمنة وتشاركية للفتيات؟", a: "نعم، ظهرت مؤخراً عدة تطبيقات نقل تشاركي نسائية خاصة، بالإضافة إلى مبادرات مجتمعية لتوفير مسارات وخرائط آمنة ترشد الفتيات لأفضل وسائل النقل وأقلها ازدحاماً." }
+                ]}
+              />
+
+              <InteractionsPanel articleId="bayn-alzahm-walkarama" />
+            </div>
           </article>
         </section>
       </main>

@@ -1,8 +1,10 @@
-﻿import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Modal from '../components/Modal'
+import InteractionsPanel from '../components/InteractionsPanel'
+import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 export default function SawtohaMasmouaPage() {
     // تحديد التحقيق النشط حالياً في الصفحة
@@ -168,7 +170,7 @@ export default function SawtohaMasmouaPage() {
     };
 
     return (
-        <div className="relative min-h-screen bg-slate-50 text-slate-900 overflow-hidden" dir="rtl">
+        <div className="relative min-h-screen bg-[#faf9f6] text-[#1F2937] overflow-hidden" dir="rtl">
             <BackgroundSVG />
             <NavBar />
             
@@ -221,7 +223,7 @@ export default function SawtohaMasmouaPage() {
                                         className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 transform active:scale-95 ${
                                             isSelected 
                                             ? 'bg-brand-ink text-white shadow-md shadow-brand-ink/20' 
-                                            : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-slate-200/50'
+                                            : 'bg-white text-slate-600 hover:text-[#1F2937] hover:bg-slate-100/80 border border-slate-200/50'
                                         }`}
                                     >
                                         {inv.tag}
@@ -234,86 +236,126 @@ export default function SawtohaMasmouaPage() {
             </div>
 
             {/* منطقة المحتوى المخصصة للقراءة الغامرة */}
-            <main className="relative z-10 max-w-4xl mx-auto px-4 pb-32">
-                <article key={activeInvestigation} className="animate-fadeIn space-y-12">
+            <main className="relative z-10 max-w-7xl mx-auto px-4 pb-32">
+                <TrendingTags tags={["البيت_والشغل", "سنة_أولى_أمومة", "تنظيف_المنزل", "دور_الحضانات", "الانفصال", "تربية_الأطفال"]} />
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                     
-                    {/* عنوان التحقيق المفتوح حالياً */}
-                    <header className="text-center sm:text-right border-b border-slate-200 pb-8">
-                        <span className="text-brand-accent font-bold text-sm bg-brand-accent/5 px-3 py-1 rounded-md">
-                            {currentInvestigation.tag}
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl font-black text-brand-ink leading-tight mt-4">
-                            {currentInvestigation.title}
-                        </h2>
-                    </header>
+                    {/* Right Side: Article Body & Bottom Widgets */}
+                    <div className="lg:col-span-2 space-y-12">
+                        <article key={activeInvestigation} className="animate-fadeIn space-y-12 bg-white border border-slate-100 p-8 sm:p-12 rounded-[2.5rem] shadow-sm relative overflow-hidden">
+                            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-ink opacity-80"></div>
+                            
+                            {/* عنوان التحقيق المفتوح حالياً */}
+                            <header className="text-center sm:text-right border-b border-slate-200 pb-8">
+                                <span className="text-brand-accent font-bold text-sm bg-brand-accent/5 px-3 py-1 rounded-md">
+                                    {currentInvestigation.tag}
+                                </span>
+                                <h2 className="text-3xl sm:text-4xl font-black text-brand-ink leading-tight mt-4">
+                                    {currentInvestigation.title}
+                                </h2>
+                            </header>
 
-                    {/* مقدمة التحقيق المتميزة */}
-                    <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-xs relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-2 h-full bg-brand-accent"></div>
-                        <p className="text-xl font-medium text-slate-800 leading-relaxed text-justify">
-                            {currentInvestigation.intro}
-                        </p>
-                    </div>
+                            {/* مقدمة التحقيق المتميزة */}
+                            <div className="bg-[#faf9f6]/40 p-8 sm:p-10 rounded-3xl border-r-4 border-brand-accent shadow-2xs relative overflow-hidden">
+                                <p className="text-xl font-medium text-[#1F2937] leading-relaxed text-justify">
+                                    {currentInvestigation.intro}
+                                </p>
+                            </div>
 
-                    {/* سرد المحاور الداخلية على شكل بطاقات تحريرية متتالية */}
-                    <div className="space-y-8">
-                        {currentInvestigation.content.map((section, index) => (
-                            <section 
-                                id={`section-${index}`}
-                                key={index} 
-                                className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-100/80 shadow-xs hover:shadow-md transition-shadow duration-300 group"
-                            >
-                                <div className="flex items-start gap-4 sm:gap-6">
-                                    {/* الرقم التسلسلي للمحور كعنصر بصري */}
-                                    <span className="text-4xl font-black text-slate-200 group-hover:text-brand-accent/30 transition-colors duration-300 select-none pt-1">
-                                        {String(index + 1).padStart(2, '0')}
-                                    </span>
-                                    <div className="space-y-4 flex-1">
-                                        <div className="flex items-start justify-between">
-                                            <h3 className="text-2xl font-bold text-brand-ink group-hover:text-brand-accent transition-colors duration-300">
-                                                {section.heading}
-                                            </h3>
-                                            <div className="flex items-center gap-2">
-                                                <button onClick={() => navigator.clipboard?.writeText(section.heading)} className="text-xs text-slate-400 hover:text-slate-700">نسخ العنوان</button>
-                                                <button onClick={() => scrollToSection(index)} className="text-xs text-slate-400 hover:text-slate-700">اذهب للمحور</button>
+                            {/* سرد المحاور الداخلية على شكل بطاقات تحريرية متتالية */}
+                            <div className="space-y-8">
+                                {currentInvestigation.content.map((section, index) => (
+                                    <section 
+                                        id={`section-${index}`}
+                                        key={`${activeInvestigation}-${index}`} 
+                                        className="bg-[#faf9f6]/30 p-6 sm:p-10 rounded-3xl border border-slate-100/85 shadow-3xs hover:shadow-xs transition-shadow duration-300 group animate-fadeInUp opacity-0"
+                                        style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+                                    >
+                                        <div className="flex items-start gap-4 sm:gap-6">
+                                            {/* الرقم التسلسلي للمحور كعنصر بصري */}
+                                            <span className="text-4xl font-black text-slate-200 group-hover:text-brand-accent/30 transition-colors duration-300 select-none pt-1">
+                                                {String(index + 1).padStart(2, '0')}
+                                            </span>
+                                            <div className="space-y-4 flex-1">
+                                                <div className="flex items-start justify-between">
+                                                    <h3 className="text-2xl font-bold text-brand-ink group-hover:text-brand-accent transition-colors duration-300">
+                                                        {section.heading}
+                                                    </h3>
+                                                    <div className="flex items-center gap-2">
+                                                        <button onClick={() => navigator.clipboard?.writeText(section.heading)} className="text-xs text-slate-400 hover:text-slate-700">نسخ العنوان</button>
+                                                        <button onClick={() => scrollToSection(index)} className="text-xs text-slate-400 hover:text-slate-700">اذهب للمحور</button>
+                                                    </div>
+                                                </div>
+                                                <p className="whitespace-pre-line text-slate-600 text-lg leading-relaxed text-justify">
+                                                    {section.text}
+                                                </p>
                                             </div>
                                         </div>
-                                        <p className="whitespace-pre-line text-slate-600 text-lg leading-relaxed text-justify">
-                                            {section.text}
-                                        </p>
-                                    </div>
-                                </div>
-                            </section>
-                        ))}
+                                    </section>
+                                ))}
+                            </div>
+
+                            {/* خاتمة وخلاصة الملف الاستقصائي */}
+                            <footer className="bg-brand-ink text-white p-8 sm:p-12 rounded-[2.5rem] shadow-lg relative overflow-hidden">
+                                <div className="absolute -bottom-10 -left-10 text-9xl opacity-5 pointer-events-none font-serif">”</div>
+                                <h4 className="text-xl font-bold text-brand-accent mb-4 tracking-wide">خلاصة الملف الاستقصائي</h4>
+                                <p className="text-lg text-slate-100 leading-relaxed font-medium text-justify">
+                                    {currentInvestigation.summary}
+                                </p>
+                            </footer>
+                        </article>
+
+                        {/* Bottom Media Gallery & Expert Desk */}
+                        <div className="space-y-8">
+                            <VideoMediaGallery 
+                                title="تقارير البيت والشغل"
+                                clips={[
+                                    { title: "أمهات جدد يشاركن تجربتهن الصعبة في (سنة أولى أمومة) وضغوط الرعاية", dur: "٤:٥٠" },
+                                    { title: "لقاءات ميدانية: دور الحضانات وتسهيل نزول المرأة لسوق العمل", dur: "٣:٢٠" }
+                                ]}
+                            />
+
+                            <ExpertAdviceDesk 
+                                qaList={[
+                                    { q: "كيف نتجنب الخلافات التربوية الحادة بين الزوجين أمام الأبناء؟", a: "يجب الاتفاق مسبقاً في جلسات هادئة بعيداً عن الأطفال على القواعد التربوية الأساسية، وتجنب إظهار أي خلاف أو تراجع عن قرارات الطرف الآخر أمام الطفل لضمان الحفاظ على هيبة كلا الوالدين." },
+                                    { q: "كيف تستطيع الأم التوفيق النفسي بين العمل ومراعاة شؤون طفلها الرضيع؟", a: "تحديد وقت نوعي ومكثف للطفل عند العودة من العمل، وبناء شبكة دعم موثوقة (سواء حضانة معتمدة أو رعاية الجدة)، وتجنب جلد الذات، فالتوازن يُبنى بالتدريج وليس دفعة واحدة." }
+                                ]}
+                            />
+
+                            <InteractionsPanel articleId={`bayn-albayt-walshoghl-${activeInvestigation}`} />
+                        </div>
                     </div>
 
-                    {/* خاتمة وخلاصة الملف الاستقصائي */}
-                    <footer className="bg-brand-ink text-white p-8 sm:p-12 rounded-[2.5rem] shadow-lg relative overflow-hidden">
-                        <div className="absolute -bottom-10 -left-10 text-9xl opacity-5 pointer-events-none font-serif">”</div>
-                        <h4 className="text-xl font-bold text-brand-accent mb-4 tracking-wide">خلاصة الملف الاستقصائي</h4>
-                        <p className="text-lg text-slate-100 leading-relaxed font-medium text-justify">
-                            {currentInvestigation.summary}
-                        </p>
-                    </footer>
+                    {/* Left Side: Sidebar Widgets */}
+                    <div className="w-full space-y-6 lg:sticky lg:top-24">
+                        <InteractivePoll 
+                            question="هل تؤيدين تقاسم أعباء تنظيف وتنسيق المنزل بالتساوي بين الزوج والزوجة كشرط أساسي لنجاح العلاقة الزوجية؟" 
+                            pollKey="bayn-albayt-walshoghl"
+                            options={["نعم، التشارك ضروري", "لا، هي مسؤولية الأم بالأساس"]}
+                        />
 
-                </article>
+                        <DailyCaricature 
+                            caption="صراع الأولويات: العمل ضد البيت" 
+                            desc="عندما تحاول الأم الموازنة بين لوحة المفاتيح في العمل ومكنسة المنزل."
+                            emoji="👩‍💻🧹"
+                        />
 
-                {/* خط فاصل أنيق قبل قسم التواصل */}
-                <hr className="my-16 border-slate-200" />
-
-                {/* صندوق تفاعلي سفلي عريض لدعوة القارئات للمشاركة والتمكين */}
-                <section className="bg-white border border-slate-100 rounded-[2.5rem] p-8 sm:p-12 text-center shadow-xs max-w-2xl mx-auto transition-transform duration-300 hover:scale-[1.01]">
-                    <div className="w-16 h-16 bg-[#faf9f6] rounded-full flex items-center justify-center text-3xl mx-auto mb-6 shadow-2xs">
-                        ⚖️
+                        {/* صندوق تفاعلي سفلي عريض لدعوة القارئات للمشاركة والتمكين */}
+                        <section className="bg-white border border-slate-100 rounded-3xl p-6 text-center shadow-xs transition-transform duration-300 hover:scale-[1.01]">
+                            <div className="w-12 h-12 bg-[#faf9f6] rounded-full flex items-center justify-center text-2xl mx-auto mb-4 shadow-2xs">
+                                ⚖️
+                            </div>
+                            <h4 className="text-lg font-bold text-brand-ink mb-1">هل تودين مشاركة تجربتكِ الميدانية؟</h4>
+                            <p className="text-slate-600 max-w-md mx-auto mb-4 text-xs leading-relaxed">
+                                نحن في فريق التوعية القانونية والبحث الميداني نستمع لشهادات النساء بخصوصية وأمان مطلق لبناء مجتمع أكثر عدالة.
+                            </p>
+                            <button className="w-full bg-brand-ink text-white font-bold py-2.5 px-4 rounded-xl hover:bg-brand-accent transition-colors duration-300 shadow-xs text-xs">
+                                تواصلِ مع فريق التوعية الميدانية
+                            </button>
+                        </section>
                     </div>
-                    <h4 className="text-2xl font-bold text-brand-ink mb-2">هل تودين مشاركة تجربتكِ الميدانية؟</h4>
-                    <p className="text-slate-600 max-w-md mx-auto mb-8 text-sm leading-relaxed">
-                        نحن في فريق التوعية القانونية والبحث الميداني نستمع لشهادات النساء بخصوصية وأمان مطلق لبناء مجتمع أكثر عدالة.
-                    </p>
-                    <button className="inline-flex items-center justify-center bg-brand-ink text-white font-bold py-3.5 px-8 rounded-full hover:bg-brand-accent transition-colors duration-300 shadow-md shadow-brand-ink/10 text-sm">
-                        تواصلِ مع فريق التوعية الميدانية
-                    </button>
-                </section>
+                </div>
             </main>
             
             {/* Table of Contents Modal (portal) */}
@@ -321,11 +363,11 @@ export default function SawtohaMasmouaPage() {
                 <Modal onClose={() => setShowTOC(false)} className="modal-scroll bg-white w-full max-w-md rounded-lg shadow-2xl overflow-y-auto">
                     <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-slate-100 px-6 py-4 flex items-center justify-between">
                         <h4 className="text-right font-bold">فهرس الملف</h4>
-                        <button onClick={() => setShowTOC(false)} className="w-9 h-9 rounded-full bg-slate-50 flex items-center justify-center">✕</button>
+                        <button onClick={() => setShowTOC(false)} className="w-9 h-9 rounded-full bg-[#faf9f6] flex items-center justify-center">✕</button>
                     </div>
                     <div className="p-6 space-y-4">
                         {currentInvestigation.content.map((s, i) => (
-                            <button key={i} onClick={() => scrollToSection(i)} className="w-full text-right p-3 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700">{String(i+1).padStart(2,'0')}. {s.heading}</button>
+                            <button key={i} onClick={() => scrollToSection(i)} className="w-full text-right p-3 rounded-lg bg-[#faf9f6] hover:bg-slate-100 text-slate-700">{String(i+1).padStart(2,'0')}. {s.heading}</button>
                         ))}
                     </div>
                 </Modal>
