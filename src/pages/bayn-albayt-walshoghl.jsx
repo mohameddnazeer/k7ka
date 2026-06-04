@@ -173,7 +173,7 @@ export default function SawtohaMasmouaPage() {
         <div className="relative min-h-screen bg-[#faf9f6] text-[#1F2937] overflow-hidden" dir="rtl">
             <BackgroundSVG />
             <NavBar />
-            
+
             {/* رأس الصفحة الرئيسي بتصميم صحفي فاخر */}
             <header className="relative z-10 pt-16 pb-12 text-center px-4 max-w-4xl mx-auto">
                 <span className="text-xs font-bold tracking-widest text-brand-accent uppercase bg-brand-accent/10 px-3 py-1 rounded-full mb-4 inline-block">
@@ -220,11 +220,10 @@ export default function SawtohaMasmouaPage() {
                                     <button
                                         key={id}
                                         onClick={() => setActiveInvestigation(Number(id))}
-                                        className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 transform active:scale-95 ${
-                                            isSelected 
-                                            ? 'bg-brand-ink text-white shadow-md shadow-brand-ink/20' 
+                                        className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 transform active:scale-95 ${isSelected
+                                            ? 'bg-brand-ink text-white shadow-md shadow-brand-ink/20'
                                             : 'bg-white text-slate-600 hover:text-[#1F2937] hover:bg-slate-100/80 border border-slate-200/50'
-                                        }`}
+                                            }`}
                                     >
                                         {inv.tag}
                                     </button>
@@ -240,12 +239,12 @@ export default function SawtohaMasmouaPage() {
                 <TrendingTags tags={["البيت_والشغل", "سنة_أولى_أمومة", "تنظيف_المنزل", "دور_الحضانات", "الانفصال", "تربية_الأطفال"]} />
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                    
+
                     {/* Right Side: Article Body & Bottom Widgets */}
                     <div className="lg:col-span-2 space-y-12">
                         <article key={activeInvestigation} className="animate-fadeIn space-y-12 bg-white border border-slate-100 p-8 sm:p-12 rounded-[2.5rem] shadow-sm relative overflow-hidden">
                             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-ink opacity-80"></div>
-                            
+
                             {/* عنوان التحقيق المفتوح حالياً */}
                             <header className="text-center sm:text-right border-b border-slate-200 pb-8">
                                 <span className="text-brand-accent font-bold text-sm bg-brand-accent/5 px-3 py-1 rounded-md">
@@ -266,9 +265,9 @@ export default function SawtohaMasmouaPage() {
                             {/* سرد المحاور الداخلية على شكل بطاقات تحريرية متتالية */}
                             <div className="space-y-8">
                                 {currentInvestigation.content.map((section, index) => (
-                                    <section 
+                                    <section
                                         id={`section-${index}`}
-                                        key={`${activeInvestigation}-${index}`} 
+                                        key={`${activeInvestigation}-${index}`}
                                         className="bg-[#faf9f6]/30 p-6 sm:p-10 rounded-3xl border border-slate-100/85 shadow-3xs hover:shadow-xs transition-shadow duration-300 group animate-fadeInUp opacity-0"
                                         style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
                                     >
@@ -306,58 +305,28 @@ export default function SawtohaMasmouaPage() {
                             </footer>
                         </article>
 
-                        {/* Bottom Media Gallery & Expert Desk */}
-                        <div className="space-y-8">
-                            <VideoMediaGallery 
-                                title="تقارير البيت والشغل"
-                                clips={[
-                                    { title: "أمهات جدد يشاركن تجربتهن الصعبة في (سنة أولى أمومة) وضغوط الرعاية", dur: "٤:٥٠" },
-                                    { title: "لقاءات ميدانية: دور الحضانات وتسهيل نزول المرأة لسوق العمل", dur: "٣:٢٠" }
-                                ]}
-                            />
 
-                            <ExpertAdviceDesk 
-                                qaList={[
-                                    { q: "كيف نتجنب الخلافات التربوية الحادة بين الزوجين أمام الأبناء؟", a: "يجب الاتفاق مسبقاً في جلسات هادئة بعيداً عن الأطفال على القواعد التربوية الأساسية، وتجنب إظهار أي خلاف أو تراجع عن قرارات الطرف الآخر أمام الطفل لضمان الحفاظ على هيبة كلا الوالدين." },
-                                    { q: "كيف تستطيع الأم التوفيق النفسي بين العمل ومراعاة شؤون طفلها الرضيع؟", a: "تحديد وقت نوعي ومكثف للطفل عند العودة من العمل، وبناء شبكة دعم موثوقة (سواء حضانة معتمدة أو رعاية الجدة)، وتجنب جلد الذات، فالتوازن يُبنى بالتدريج وليس دفعة واحدة." }
-                                ]}
-                            />
-
-                            <InteractionsPanel articleId={`bayn-albayt-walshoghl-${activeInvestigation}`} />
-                        </div>
                     </div>
 
                     {/* Left Side: Sidebar Widgets */}
                     <div className="w-full space-y-6 lg:sticky lg:top-24">
-                        <InteractivePoll 
-                            question="هل تؤيدين تقاسم أعباء تنظيف وتنسيق المنزل بالتساوي بين الزوج والزوجة كشرط أساسي لنجاح العلاقة الزوجية؟" 
+                        <InteractivePoll
+                            question="هل تؤيدين تقاسم أعباء تنظيف وتنسيق المنزل بالتساوي بين الزوج والزوجة كشرط أساسي لنجاح العلاقة الزوجية؟"
                             pollKey="bayn-albayt-walshoghl"
                             options={["نعم، التشارك ضروري", "لا، هي مسؤولية الأم بالأساس"]}
                         />
 
-                        <DailyCaricature 
-                            caption="صراع الأولويات: العمل ضد البيت" 
+                        <DailyCaricature
+                            caption="صراع الأولويات: العمل ضد البيت"
                             desc="عندما تحاول الأم الموازنة بين لوحة المفاتيح في العمل ومكنسة المنزل."
                             emoji="👩‍💻🧹"
                         />
 
-                        {/* صندوق تفاعلي سفلي عريض لدعوة القارئات للمشاركة والتمكين */}
-                        <section className="bg-white border border-slate-100 rounded-3xl p-6 text-center shadow-xs transition-transform duration-300 hover:scale-[1.01]">
-                            <div className="w-12 h-12 bg-[#faf9f6] rounded-full flex items-center justify-center text-2xl mx-auto mb-4 shadow-2xs">
-                                ⚖️
-                            </div>
-                            <h4 className="text-lg font-bold text-brand-ink mb-1">هل تودين مشاركة تجربتكِ الميدانية؟</h4>
-                            <p className="text-slate-600 max-w-md mx-auto mb-4 text-xs leading-relaxed">
-                                نحن في فريق التوعية القانونية والبحث الميداني نستمع لشهادات النساء بخصوصية وأمان مطلق لبناء مجتمع أكثر عدالة.
-                            </p>
-                            <button className="w-full bg-brand-ink text-white font-bold py-2.5 px-4 rounded-xl hover:bg-brand-accent transition-colors duration-300 shadow-xs text-xs">
-                                تواصلِ مع فريق التوعية الميدانية
-                            </button>
-                        </section>
+
                     </div>
                 </div>
             </main>
-            
+
             {/* Table of Contents Modal (portal) */}
             {showTOC && (
                 <Modal onClose={() => setShowTOC(false)} className="modal-scroll bg-white w-full max-w-md rounded-lg shadow-2xl overflow-y-auto">
@@ -367,7 +336,7 @@ export default function SawtohaMasmouaPage() {
                     </div>
                     <div className="p-6 space-y-4">
                         {currentInvestigation.content.map((s, i) => (
-                            <button key={i} onClick={() => scrollToSection(i)} className="w-full text-right p-3 rounded-lg bg-[#faf9f6] hover:bg-slate-100 text-slate-700">{String(i+1).padStart(2,'0')}. {s.heading}</button>
+                            <button key={i} onClick={() => scrollToSection(i)} className="w-full text-right p-3 rounded-lg bg-[#faf9f6] hover:bg-slate-100 text-slate-700">{String(i + 1).padStart(2, '0')}. {s.heading}</button>
                         ))}
                     </div>
                 </Modal>

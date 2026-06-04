@@ -138,14 +138,14 @@ export default function SanaOlaOmomaPage() {
               </div>
             </div>
 
-            <InteractivePoll 
-              question="هل عانيتِ أو تخشين من التعرض لأعراض 'اكتئاب ما بعد الولادة' دون العثور على توعية أو رعاية نفسية كافية؟" 
+            <InteractivePoll
+              question="هل عانيتِ أو تخشين من التعرض لأعراض 'اكتئاب ما بعد الولادة' دون العثور على توعية أو رعاية نفسية كافية؟"
               pollKey="sana-ola-omoma"
               options={["نعم، عانيت أو أخشى ذلك جداً", "لا، أشعر بالدعم الكافي حولي"]}
             />
 
-            <DailyCaricature 
-              caption="الأمومة المثالية!" 
+            <DailyCaricature
+              caption="الأمومة المثالية!"
               desc="بين واقع كحكة والرضيع الذي لا ينام، وصورة السوشيال ميديا الحالمة."
               emoji="👶🤱😵‍💫"
             />
@@ -162,9 +162,9 @@ export default function SanaOlaOmomaPage() {
             </div>
 
             {sections.map((section, index) => (
-              <section 
-                key={section.title} 
-                id={`section-${index}`} 
+              <section
+                key={section.title}
+                id={`section-${index}`}
                 className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
                 style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
               >
@@ -177,22 +177,7 @@ export default function SanaOlaOmomaPage() {
               </section>
             ))}
 
-            <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
-              <VideoMediaGallery 
-                title="توجيهات السنة الأولى"
-                clips={[
-                  { title: "فيديو إرشادي: طرق مبتكرة لتنظيم نوم الرضيع ومساعدة الأم الجديدة على الراحة", dur: "٥:٣٠" },
-                  { title: "ميداني: لقاءات مع أمهات يشاركن تجاربهن الصادقة في التغلب على قلق الشهور الأولى", dur: "٤:١٠" }
-                ]}
-              />
 
-              <ExpertAdviceDesk 
-                qaList={[
-                  { q: "كيف أفرق بين حزن الولادة العابر (Baby Blues) واكتئاب ما بعد الولادة الحقيقي؟", a: "الحزن العابر يستمر من عدة أيام إلى أسبوعين بعد الولادة ويزول تدريجياً، أما اكتئاب ما بعد الولادة فيستمر لعدة أشهر وتصاحبه رغبة شديدة في العزلة، بكاء مستمر، وتراجع القدرة على رعاية الرضيع، ويتطلب استشارة طبيب متخصص فوراً." },
-                  { q: "ما هي أبسط الطرق التي يمكن للأب تقديمها كشراكة حقيقية في رعاية الرضيع؟", a: "المشاركة لا تقتصر على المهام الكبيرة؛ إسناد مناوبة إطعام الرضيع أو تهدئته ليلاً للأب يتيح للأم ساعات نوم متصلة، بالإضافة إلى إدارته للمسؤوليات المنزلية اليومية لتخفيف العبء الجسدي عنها." }
-                ]}
-              />
-            </div>
 
             <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg">
               <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">الخلاصة</div>

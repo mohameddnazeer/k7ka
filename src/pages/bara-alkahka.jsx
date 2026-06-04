@@ -169,9 +169,9 @@ export default function BaraAlkahkaPage() {
         <div className="relative min-h-screen bg-[#faf9f6] font-arabic overflow-x-hidden selection:bg-brand-secondary/20" dir="rtl">
             <BackgroundSVG />
             <NavBar />
-            
+
             <main className="relative z-10 mx-auto px-4 pb-20 pt-10 sm:px-6 lg:px-8 max-w-7xl">
-                
+
                 {/* Hero Editorial Header Banner */}
                 <div className="relative mb-8 overflow-hidden rounded-2xl bg-white border border-slate-200/60 p-8 sm:p-14 text-right shadow-sm">
                     <div className="absolute top-0 left-0 w-80 h-80 bg-brand-secondary/5 rounded-full blur-[90px] -translate-x-14 -translate-y-14 pointer-events-none"></div>
@@ -190,7 +190,7 @@ export default function BaraAlkahkaPage() {
 
                 {/* Two-Column Layout (Content Grid + Sidebar) */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-12">
-                    
+
                     {/* Main Content Area: Filter & Topic Cards */}
                     <div className="lg:col-span-2 space-y-6">
                         {/* Filter Navigation Category Tabs */}
@@ -201,14 +201,13 @@ export default function BaraAlkahkaPage() {
                                 { id: "street", label: "أمان الشارع" },
                                 { id: "home", label: "البيت والأسواق" }
                             ].map((btn) => (
-                                <button 
-                                    key={btn.id} 
+                                <button
+                                    key={btn.id}
                                     onClick={() => setActiveSection(btn.id)}
-                                    className={`rounded-xl px-5 py-2.5 text-xs font-black transition-all duration-300 outline-none border ${
-                                        activeSection === btn.id 
-                                            ? "bg-brand-ink text-white border-brand-ink shadow-md shadow-brand-ink/10 scale-[1.02]" 
-                                            : "bg-white text-slate-600 border-slate-200/80 hover:bg-[#faf9f6] hover:text-brand-ink"
-                                    }`}
+                                    className={`rounded-xl px-5 py-2.5 text-xs font-black transition-all duration-300 outline-none border ${activeSection === btn.id
+                                        ? "bg-brand-ink text-white border-brand-ink shadow-md shadow-brand-ink/10 scale-[1.02]"
+                                        : "bg-white text-slate-600 border-slate-200/80 hover:bg-[#faf9f6] hover:text-brand-ink"
+                                        }`}
                                 >
                                     {btn.label}
                                 </button>
@@ -219,22 +218,21 @@ export default function BaraAlkahkaPage() {
                             {filteredTopics.map((topic, index) => {
                                 // Create an alternating featured card width layout for an editorial magazine feel
                                 const isFeatured = index === 0 && filteredTopics.length > 1
-                                
+
                                 return (
-                                    <div 
-                                        key={topic.id} 
+                                    <div
+                                        key={topic.id}
                                         onClick={() => setSelectedTopic(topic)}
-                                        className={`group relative rounded-2xl overflow-hidden border border-slate-200/70 bg-white transition-all duration-300 hover:shadow-md hover:border-slate-300/90 cursor-pointer flex flex-col justify-between min-h-[240px] p-6 animate-fadeInUp opacity-0 ${
-                                            isFeatured ? "sm:col-span-2" : "sm:col-span-1"
-                                        }`}
+                                        className={`group relative rounded-2xl overflow-hidden border border-slate-200/70 bg-white transition-all duration-300 hover:shadow-md hover:border-slate-300/90 cursor-pointer flex flex-col justify-between min-h-[240px] p-6 animate-fadeInUp opacity-0 ${isFeatured ? "sm:col-span-2" : "sm:col-span-1"
+                                            }`}
                                         style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
                                     >
                                         {topic.bgImage && (
                                             <>
                                                 <div className="absolute inset-0 z-0">
-                                                    <img 
-                                                        src={topic.bgImage} 
-                                                        alt={topic.title} 
+                                                    <img
+                                                        src={topic.bgImage}
+                                                        alt={topic.title}
                                                         className="w-full h-full object-cover grayscale opacity-15 transition-all duration-500 group-hover:scale-105 group-hover:opacity-20 group-hover:grayscale-0"
                                                     />
                                                 </div>
@@ -268,14 +266,14 @@ export default function BaraAlkahkaPage() {
 
                     {/* Sidebar Youm7 widgets */}
                     <div className="w-full space-y-6 lg:sticky lg:top-6">
-                        <InteractivePoll 
-                            question="هل تؤيدين فرض قيود صارمة ورقابة أبوية إلزامية على تطبيقات الفيديوهات القصيرة لحماية المراهقات من التريندات الخطيرة؟" 
+                        <InteractivePoll
+                            question="هل تؤيدين فرض قيود صارمة ورقابة أبوية إلزامية على تطبيقات الفيديوهات القصيرة لحماية المراهقات من التريندات الخطيرة؟"
                             pollKey="bara-alkahka"
                             options={["نعم، أؤيد وبشدة", "لا، التوعية الذاتية أفضل"]}
                         />
 
-                        <DailyCaricature 
-                            caption="مخاطر الشاشات والأطفال" 
+                        <DailyCaricature
+                            caption="مخاطر الشاشات والأطفال"
                             desc="عندما تبتلع الشاشات الصغيرة براءة الطفولة والواقع."
                             emoji="🧟‍♀️📱"
                         />
@@ -283,35 +281,20 @@ export default function BaraAlkahkaPage() {
                 </div>
 
                 {/* Bottom Media Gallery & Expert Advice Column */}
-                <div className="mt-12 space-y-8">
-                    <VideoMediaGallery 
-                        title="تقارير ميدانية: بره الكحكة"
-                        clips={[
-                            { title: "مخاطر التريندات: لقاءات مع أخصائيين نفسيين حول هوس الانتشار", dur: "٤:٢٠" },
-                            { title: "أمان الشارع: مبادرة فتيات مصر لإنهاء التحرش اللفظي", dur: "٣:٥٠" }
-                        ]}
-                    />
 
-                    <ExpertAdviceDesk 
-                        qaList={[
-                            { q: "كيف أتصرف قانونياً إذا تعرضت للتحرش اللفظي أو الملاحقة في الشارع؟", a: "عليكِ التوجه لأقرب قسم شرطة وتحرير محضر بالواقعة مع تقديم أي شهود أو تسجيلات كاميرات مراقبة قريبة، حيث يعاقب القانون المصري على التحرش اللفظي بعقوبات رادعة تشمل الحبس والغرامة." },
-                            { q: "ابنتي المراهقة تقضى ساعات طوال على تطبيقات التسوق الإلكتروني، كيف أنصحها؟", a: "قومي بمناقشة مفهوم الادخار وتخصيص ميزانية شهرية محددة لها، وتجنبي النقد المباشر؛ بل ساعديها على ملء أوقات فراغها بأنشطة حية ورياضية تقلل من الهروب النفسي نحو الشاشات." }
-                        ]}
-                    />
-                </div>
             </main>
 
             {/* Immersive Reader Modal View Layout */}
             {selectedTopic && (
-                <div 
+                <div
                     className="fixed inset-0 z-[9999] flex justify-center items-stretch md:items-center bg-brand-ink/40 p-0 md:p-6 backdrop-blur-sm overflow-y-auto animate-fade-in"
                     onClick={() => setSelectedTopic(null)}
                 >
-                    <div 
+                    <div
                         className="relative w-full max-w-5xl flex flex-col md:flex-row bg-white md:rounded-2xl overflow-hidden min-h-screen md:min-h-0 md:max-h-[88vh] shadow-2xl border border-slate-200/50 animate-slide-up"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        
+
                         {/* Mobile Top App-bar Header Layer */}
                         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 bg-white sticky top-0 z-30 md:hidden shadow-xs">
                             <span className="text-[11px] font-bold text-brand-secondary bg-brand-secondary/5 rounded px-2 py-0.5">{selectedTopic.category}</span>
@@ -330,7 +313,7 @@ export default function BaraAlkahkaPage() {
                             ) : (
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-secondary/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
                             )}
-                            
+
                             <div className="relative z-10 space-y-2">
                                 <span className="text-brand-secondary font-black text-xs uppercase tracking-widest block">بره الكحكة</span>
                                 <div className="h-1 w-8 bg-brand-secondary rounded"></div>
@@ -348,10 +331,10 @@ export default function BaraAlkahkaPage() {
 
                         {/* Content Scroll Feed Frame Wrapper */}
                         <div className="flex-1 flex flex-col min-w-0 bg-white">
-                            
+
                             {/* Desktop Absolute Top Floating Exit Button */}
-                            <button 
-                                onClick={() => setSelectedTopic(null)} 
+                            <button
+                                onClick={() => setSelectedTopic(null)}
                                 className="absolute left-6 top-6 z-50 rounded-xl bg-slate-900 text-white p-2.5 transition-all hover:bg-brand-secondary shadow-md outline-none hidden md:block group"
                                 title="إغلاق نافذة القراءة"
                             >
@@ -361,7 +344,7 @@ export default function BaraAlkahkaPage() {
                             {/* Scroll Area Container View */}
                             <div className="overflow-y-auto flex-1 p-6 md:p-12 text-right bg-white [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-brand-secondary/20 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-brand-secondary/40">
                                 <div className="max-w-3xl space-y-8">
-                                    
+
                                     {/* Abstract Blockquote Frame */}
                                     <div className="border-r-4 border-brand-secondary bg-[#faf9f6]/70 p-5 rounded-l-xl">
                                         <p className="text-base sm:text-lg font-bold text-[#1F2937] leading-relaxed italic">
@@ -409,7 +392,7 @@ export default function BaraAlkahkaPage() {
                     </div>
                 </div>
             )}
-            
+
             <Footer />
         </div>
     )

@@ -124,7 +124,7 @@ export default function AlaAlhameshPage() {
         <div className="relative min-h-screen bg-slate-50 text-slate-800 overflow-hidden" dir="rtl">
             <BackgroundSVG />
             <NavBar />
-            
+
             <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
                 <section className="relative mb-10 overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.26),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.16),transparent_28%)]"></div>
@@ -196,7 +196,7 @@ export default function AlaAlhameshPage() {
 
                 {/* الهيكل التفاعلي المتطور لعرض الدوسيهات الصحفية (Sidebar + Main Dossier Layer) */}
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
-                    
+
                     {/* القائمة الجانبية: عناوين التقارير السبعة للتنقل السريع */}
                     <nav className="w-full lg:w-1/3 bg-white/95 border border-slate-100 rounded-[2rem] p-6 shadow-sm space-y-2 sticky top-6 backdrop-blur-sm">
                         <div className="mb-4 flex items-center justify-between gap-4 px-3">
@@ -215,11 +215,10 @@ export default function AlaAlhameshPage() {
                                 <button
                                     key={id}
                                     onClick={() => setActiveReport(Number(id))}
-                                    className={`w-full text-right p-4 rounded-xl flex items-center gap-4 transition-all duration-200 ${
-                                        isSelected 
-                                        ? 'bg-brand-ink text-white font-bold shadow-md shadow-brand-ink/10 scale-[1.01] ring-2 ring-brand-accent/20' 
+                                    className={`w-full text-right p-4 rounded-xl flex items-center gap-4 transition-all duration-200 ${isSelected
+                                        ? 'bg-brand-ink text-white font-bold shadow-md shadow-brand-ink/10 scale-[1.01] ring-2 ring-brand-accent/20'
                                         : 'bg-slate-50 hover:bg-slate-100 text-slate-700 font-medium border border-transparent hover:border-slate-200'
-                                    }`}
+                                        }`}
                                 >
                                     <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm ${isSelected ? 'bg-white/10 text-brand-accent' : 'bg-white text-slate-400'}`}>
                                         {id}
@@ -234,13 +233,13 @@ export default function AlaAlhameshPage() {
                         })}
 
                         <div className="mt-6 space-y-6">
-                            <InteractivePoll 
-                                question="هل تؤيدين تقديم قروض متناهية الصغر معفاة تماماً من الفوائد والضمانات البنكية المعقدة كحل جذري لظاهرة الغارمات؟" 
+                            <InteractivePoll
+                                question="هل تؤيدين تقديم قروض متناهية الصغر معفاة تماماً من الفوائد والضمانات البنكية المعقدة كحل جذري لظاهرة الغارمات؟"
                                 pollKey="ala-alhamesh"
                             />
 
-                            <DailyCaricature 
-                                caption="المرأة المعيلة تتسلق صخور الصعاب اليومية" 
+                            <DailyCaricature
+                                caption="المرأة المعيلة تتسلق صخور الصعاب اليومية"
                                 desc="عندما تتحول الظروف الصعبة إلى صخور، تصبح الإرادة هي حبل الصعود الوحيد."
                                 emoji="👵🧗‍♀️"
                             />
@@ -250,7 +249,7 @@ export default function AlaAlhameshPage() {
                     {/* مساحة العرض الرئيسية: تفاصيل الدوسيه الصحفي النشط */}
                     <article className="w-full lg:w-2/3 bg-white border border-slate-100 rounded-[2.5rem] p-8 sm:p-12 shadow-sm space-y-10 min-h-[600px] animate-fadeIn relative overflow-hidden">
                         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-ink opacity-80"></div>
-                        
+
                         <TrendingTags tags={["على_الهامش", "المرأة_المعيلة", "الغارمات", "أم_المعاق", "صمود_النساء"]} />
 
                         {/* رأس التقرير الحالي */}
@@ -289,24 +288,7 @@ export default function AlaAlhameshPage() {
                             </p>
                         </div>
 
-                        {/* المحاور والتحليلات الداخلية المكتوبة */}
-                        <div className="rounded-3xl border border-slate-100 bg-slate-50/80 p-4 sm:p-6">
-                            <div className="mb-4 flex items-center justify-between">
-                                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">فهرس سريع للمحاور</h4>
-                                <span className="text-xs font-bold text-brand-secondary">اقرئي بالترتيب</span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                                {currentReport.sections.map((sec, idx) => (
-                                    <a
-                                        key={idx}
-                                        href={`#report-section-${idx}`}
-                                        className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-brand-inkMuted shadow-sm transition hover:bg-brand-accent hover:text-white"
-                                    >
-                                        {String(idx + 1).padStart(2, '0')}. {sec.subtitle || sec.heading}
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
+
 
                         <div className="space-y-8">
                             {currentReport.sections.map((sec, idx) => (
@@ -322,51 +304,13 @@ export default function AlaAlhameshPage() {
                             ))}
                         </div>
 
-                        {/* خلاصة واستنتاج المحرر الاستقصائي */}
-                        <div className="bg-brand-ink text-white p-8 rounded-2xl space-y-3 shadow-sm relative overflow-hidden">
-                            <div className="absolute top-0 left-0 w-2 h-full bg-brand-accent"></div>
-                            <h5 className="text-brand-accent font-bold text-xs uppercase tracking-wider">الخلاصة التقريرية لـ كحكة</h5>
-                            <p className="text-slate-200 leading-relaxed text-justify text-base font-medium">
-                                {currentReport.conclusion}
-                            </p>
-                        </div>
 
-                        {/* المصادر والمراجع الميدانية للتقرير الحالي */}
-                        {currentReport.sources && (
-                            <div className="pt-6 border-t border-slate-100">
-                                <h6 className="text-xs font-bold text-slate-400 mb-3">المصادر والتوثيقات الميدانية:</h6>
-                                <ul className="list-disc list-inside text-xs text-slate-400 space-y-1">
-                                    {currentReport.sources.map((src, sIdx) => (
-                                        <li key={sIdx}>{src}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
 
-                        <div className="mt-8 space-y-8">
-                            <VideoMediaGallery 
-                                title="ملفات على الهامش الميدانية"
-                                clips={[
-                                    { title: "شهادات حية لأمهات أطفال ذوي الاحتياجات حول صعوبة الدمج", dur: "٣:١٥" },
-                                    { title: "فصل النور: سيدة في عمر الستين تخط أولى كلماتها وتفرح", dur: "٤:٥٠" },
-                                    { title: "المرأة المعيلة ومشاريع الخبز المنزلي في الريف", dur: "٢:٤٠" }
-                                ]}
-                            />
-
-                            <ExpertAdviceDesk 
-                                qaList={[
-                                    { q: "كيف أحمي نفسي من التوقيع على إيصالات أمانة على بياض عند الاستدانة لتجهيز ابنتي؟", a: "يُنصح بعدم التوقيع على أي ورقة خالية من أرقام المبالغ المحددة صراحةً باللغة العربية والأرقام. يُفضل توقيع عقد قرض مدني محدد الأجل وبحضور شهود وتوثيقه، وتجنب الإيصالات العشوائية تماماً." },
-                                    { q: "ما هي أولى خطوات الدمج المدرسي الرسمي لطفل من ذوي الهمم (توحد أو داون)؟", a: "التوجه فوراً للإدارة التعليمية وتقديم ملف طبي معتمد من التأمين الصحي العام، حيث ينص القانون على حق الطفل في الحصول على مقعد دمج وإتاحة مدرس مرافق إذا لزم الأمر، وأي مدرسة ترفض ذلك تقع تحت طائلة المساءلة القانونية." }
-                                ]}
-                            />
-
-                            <InteractionsPanel articleId={`ala-alhamesh-${activeReport}`} />
-                        </div>
                     </article>
 
                 </div>
             </main>
-            
+
             <Footer />
         </div>
     )

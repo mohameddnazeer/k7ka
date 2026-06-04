@@ -243,7 +243,7 @@ export default function GowaAlkahkaPage() {
         <div className="relative min-h-screen overflow-x-hidden bg-[#faf9f6] font-arabic" dir="rtl">
             <BackgroundSVG />
             <NavBar />
-            
+
             <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
                 {/* Header Section */}
                 <div className="mb-12 text-center animate-fadeIn">
@@ -262,20 +262,20 @@ export default function GowaAlkahkaPage() {
 
                 {/* Two-Column Sidebar Layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-16">
-                    
+
                     {/* Right column: Content & Grid */}
                     <div className="lg:col-span-2 space-y-16">
                         {/* Articles Grid */}
                         <div className="grid gap-6 sm:grid-cols-2">
                             {articles.map((article, idx) => (
-                                <article 
+                                <article
                                     key={article.id}
                                     className="group flex flex-col overflow-hidden rounded-3xl border border-brand-surface/70 bg-brand-surface shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md animate-fadeInUp opacity-0"
                                     style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                                 >
                                     <div className="relative aspect-[16/10] overflow-hidden bg-brand-surface-muted">
-                                        <img 
-                                            src={article.image} 
+                                        <img
+                                            src={article.image}
                                             alt={article.title}
                                             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                                             loading="lazy"
@@ -286,7 +286,7 @@ export default function GowaAlkahkaPage() {
                                             </span>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex flex-1 flex-col p-6 text-right">
                                         <h2 className="mb-4 text-xl font-black text-brand-ink leading-snug transition-colors group-hover:text-brand-secondary">
                                             {article.title}
@@ -295,7 +295,7 @@ export default function GowaAlkahkaPage() {
                                             {article.content}
                                         </p>
                                         <div className="mt-auto pt-4 border-t border-brand-offwhite/40">
-                                            <button 
+                                            <button
                                                 onClick={() => setSelectedArticle(article)}
                                                 className="inline-flex items-center gap-2 text-sm font-bold text-brand-accent transition-colors hover:text-brand-secondary"
                                             >
@@ -310,167 +310,95 @@ export default function GowaAlkahkaPage() {
                             ))}
                         </div>
 
-                        {/* Sociological Glossary */}
-                        <section className="pt-8">
-                            <div className="mb-8 text-right">
-                                <h2 className="text-2xl font-black text-brand-ink mb-2">قاموس المفاهيم</h2>
-                                <div className="h-1 w-16 bg-brand-accent rounded-full"></div>
-                            </div>
-                            <div className="grid gap-6 sm:grid-cols-3">
-                                {[
-                                    { title: "متلازمة السوبر وومان", desc: "الضغط النفسي الناتج عن محاولة الكمال في كل الأدوار (العمل، البيت، المظهر) في وقت واحد." },
-                                    { title: "العبء العاطفي", desc: "المجهود غير المرئي الذي تبذله المرأة لإدارة مشاعر من حولها والحفاظ على توازن البيت." },
-                                    { title: "فخ الاستقلال", desc: "عندما يتحول الاعتماد على الذات من قوة إلى عزلة تمنع الفتاة من طلب الدعم عند الحاجة." }
-                                ].map((item, i) => (
-                                    <div key={i} className="p-6 rounded-2xl bg-brand-surface border border-brand-surface/60 shadow-sm text-right hover:border-brand-accent/30 transition-colors">
-                                        <h3 className="text-base font-black mb-2 text-brand-secondary">{item.title}</h3>
-                                        <p className="text-brand-inkMuted/90 font-medium text-xs leading-relaxed">{item.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
+
 
                         {/* Additional Content: Perspectives & Experts */}
-                        <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
-                            <div className="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-surface/70 relative overflow-hidden group shadow-sm text-right">
-                                <h3 className="text-lg font-black text-brand-ink mb-3 relative z-10">منظور اجتماعي للأجيال</h3>
-                                <p className="text-sm text-brand-inkMuted/90 leading-relaxed font-medium mb-4 relative z-10">
-                                    كيف تساهم التغيرات الاقتصادية المتسارعة في تشكيل مخاوف الجيل الجديد من الالتزام؟ نقاش مع خبراء علم الاجتماع حول تحول العلاقات من مربع "الواجب المفروض" إلى "الشراكة الواعية والاختيارية".
-                                </p>
-                                <div className="flex flex-wrap gap-2 relative z-10">
-                                    {["أثر الاستقلال المادي", "صراع الأجيال", "مفهوم السكن النفسي"].map((tag, i) => (
-                                        <span key={i} className="inline-flex items-center gap-1.5 text-[10px] font-bold text-brand-accent bg-brand-accent/5 px-2.5 py-0.5 rounded-full">
-                                            <span className="w-1 h-1 rounded-full bg-brand-accent"></span>
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
 
-                            <div className="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-brand-surface/70 relative overflow-hidden group shadow-sm text-right">
-                                <h3 className="text-lg font-black text-brand-ink mb-3 relative z-10">استشارات ودعم نفسي</h3>
-                                <p className="text-sm text-brand-inkMuted/90 leading-relaxed font-medium mb-4 relative z-10">
-                                    مساحتنا تقدم لكِ قراءات مستمرة بالتعاون مع أخصائيين نفسيين لتفكيك العقد الاجتماعية وضغوطات الحياة اليومية وتوفير أدوات مرنة لحماية سلامك الداخلي.
-                                </p>
-                                <div className="flex flex-wrap gap-2 relative z-10">
-                                    {["جلسات استماع", "تفريغ انفعالي", "وعي بالذات"].map((tag, i) => (
-                                        <span key={i} className="inline-flex items-center gap-1.5 text-[10px] font-bold text-brand-secondary bg-brand-secondary/5 px-2.5 py-0.5 rounded-full">
-                                            <span className="w-1 h-1 rounded-full bg-brand-secondary"></span>
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
+
+
                     </div>
 
                     {/* Left column: Sidebar Widgets */}
-                    <div className="w-full space-y-6 lg:sticky lg:top-6">
-                        <InteractivePoll 
-                            question="هل تشعرين أن لقب “البنت القوية” أصبح حملاً إضافياً يمنعكِ من إظهار التعب أو طلب المساعدة من المحيطين بكِ؟" 
-                            pollKey="gowa-alkahka"
-                            options={["نعم، أوافق تماماً", "لا، أراه حافزاً إيجابياً"]}
-                        />
 
-                        <DailyCaricature 
-                            caption="قناع السوبر وومان" 
-                            desc="عندما تحاول المرأة الابتسام وحمل أثقال الجبال بمفردها."
-                            emoji="🦸‍♀️🎒"
-                        />
-                    </div>
                 </div>
 
-                {/* Bottom Media Gallery & Expert Advice Column */}
-                <div className="mt-12 space-y-8">
-                    <VideoMediaGallery 
-                        title="تقارير وحلقات جوه الكحكة"
-                        clips={[
-                            { title: "جلسة نقاشية: فتيات يتحدثن بصراحة عن مخاوفهن من الالتزام وشروط شريك الحياة", dur: "٦:١٠" },
-                            { title: "رأي الطب النفسي: متلازمة الاحتراق الداخلي وكيفية حماية سلامكِ النفسي", dur: "٤:٥٠" }
-                        ]}
-                    />
 
-                    <ExpertAdviceDesk 
-                        qaList={[
-                            { q: "كيف أتخلص من جلد الذات المستمر وشعور التقصير عند تعبي من المسؤوليات المتراكمة؟", a: "تذكري دائماً أن الضعف والتعب صفات بشرية طبيعية وليست فشلاً، وضعي حدوداً واضحة لأعبائك اليومية، واطلبي الدعم صراحة من المحيطين بكِ، فالأمومة والرعاية مسؤوليات تشاركية." },
-                            { q: "ما هي المعايير النفسية الأهم التي يجب التركيز عليها عند اختيار شريك الحياة؟", a: "الأمان النفسي والقدرة على التفاهم وحل الخلافات بنضج واحترام متبادل تتفوق على أي شروط مادية، لأن الشراكة الحقيقية تدعم الصحة النفسية وتواجه الأزمات معاً." }
-                        ]}
-                    />
-                </div>
-            </main>
+            </main >
 
             {/* Modal Reader Overlay */}
-            {selectedArticle && (
-                <div 
-                    className="fixed inset-0 z-[9999] bg-brand-ink/40 backdrop-blur-md flex justify-center items-start md:items-center overflow-y-auto p-0 md:p-6"
-                    onClick={() => setSelectedArticle(null)}
-                >
-                    <div 
-                        className="relative w-full max-w-5xl flex flex-col md:flex-row bg-brand-surface md:rounded-3xl min-h-screen md:min-h-0 md:max-h-[85vh] shadow-2xl border border-brand-surface/80 overflow-hidden animate-scaleUp"
-                        onClick={(e) => e.stopPropagation()}
+            {
+                selectedArticle && (
+                    <div
+                        className="fixed inset-0 z-[9999] bg-brand-ink/40 backdrop-blur-md flex justify-center items-start md:items-center overflow-y-auto p-0 md:p-6"
+                        onClick={() => setSelectedArticle(null)}
                     >
-                        {/* Sticky Header for Mobile */}
-                        <div className="sticky top-0 left-0 right-0 flex items-center justify-between p-4 border-b border-brand-offwhite bg-brand-surface/90 backdrop-blur-md z-30 md:hidden">
-                            <h2 className="text-base font-black text-brand-ink leading-tight line-clamp-1">{selectedArticle.title}</h2>
-                            <button 
-                                onClick={() => setSelectedArticle(null)} 
-                                className="p-2 rounded-full bg-brand-secondary/10 text-brand-secondary hover:bg-brand-secondary hover:text-white transition-colors"
-                                aria-label="إغلاق النافذة"
-                            >
-                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
-                            </button>
-                        </div>
+                        <div
+                            className="relative w-full max-w-5xl flex flex-col md:flex-row bg-brand-surface md:rounded-3xl min-h-screen md:min-h-0 md:max-h-[85vh] shadow-2xl border border-brand-surface/80 overflow-hidden animate-scaleUp"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {/* Sticky Header for Mobile */}
+                            <div className="sticky top-0 left-0 right-0 flex items-center justify-between p-4 border-b border-brand-offwhite bg-brand-surface/90 backdrop-blur-md z-30 md:hidden">
+                                <h2 className="text-base font-black text-brand-ink leading-tight line-clamp-1">{selectedArticle.title}</h2>
+                                <button
+                                    onClick={() => setSelectedArticle(null)}
+                                    className="p-2 rounded-full bg-brand-secondary/10 text-brand-secondary hover:bg-brand-secondary hover:text-white transition-colors"
+                                    aria-label="إغلاق النافذة"
+                                >
+                                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M6 18L18 6M6 6l12 12" /></svg>
+                                </button>
+                            </div>
 
-                        {/* Sidebar (Desktop Only) */}
-                        <div className="hidden md:flex md:w-1/3 bg-soft-sheen p-10 flex-col justify-center text-brand-ink relative overflow-hidden border-l border-brand-offwhite text-right">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-white/40 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
-                            <span className="text-brand-accent font-black text-xs uppercase tracking-wider mb-3 block">تحقيق خاص</span>
-                            <h2 className="text-3xl font-black leading-snug mb-4 relative z-10">{selectedArticle.title}</h2>
-                            <div className="w-12 h-1 bg-brand-accent/60 mb-4 relative z-10 rounded-full"></div>
-                            <p className="text-brand-inkMuted text-sm font-medium relative z-10">{selectedArticle.category}</p>
-                        </div>
+                            {/* Sidebar (Desktop Only) */}
+                            <div className="hidden md:flex md:w-1/3 bg-soft-sheen p-10 flex-col justify-center text-brand-ink relative overflow-hidden border-l border-brand-offwhite text-right">
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-white/40 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
+                                <span className="text-brand-accent font-black text-xs uppercase tracking-wider mb-3 block">تحقيق خاص</span>
+                                <h2 className="text-3xl font-black leading-snug mb-4 relative z-10">{selectedArticle.title}</h2>
+                                <div className="w-12 h-1 bg-brand-accent/60 mb-4 relative z-10 rounded-full"></div>
+                                <p className="text-brand-inkMuted text-sm font-medium relative z-10">{selectedArticle.category}</p>
+                            </div>
 
-                        {/* Main Modal Content Scroll Area */}
-                        <div className="flex-1 overflow-y-auto p-6 md:p-12 text-right bg-white [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-brand-secondary/20 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-brand-secondary/40">
-                            {/* Close button for desktop */}
-                            <button 
-                                onClick={() => setSelectedArticle(null)}
-                                className="hidden md:block absolute top-6 left-6 p-2 rounded-full bg-brand-offwhite text-brand-inkMuted hover:bg-brand-secondary/10 hover:text-brand-secondary transition-colors"
-                            >
-                                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
+                            {/* Main Modal Content Scroll Area */}
+                            <div className="flex-1 overflow-y-auto p-6 md:p-12 text-right bg-white [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-brand-secondary/20 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-brand-secondary/40">
+                                {/* Close button for desktop */}
+                                <button
+                                    onClick={() => setSelectedArticle(null)}
+                                    className="hidden md:block absolute top-6 left-6 p-2 rounded-full bg-brand-offwhite text-brand-inkMuted hover:bg-brand-secondary/10 hover:text-brand-secondary transition-colors"
+                                >
+                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
 
-                            <div className="max-w-3xl space-y-8">
-                                {selectedArticle.fullContent ? (
-                                    selectedArticle.fullContent.map((paragraph, index) => (
-                                        <div 
-                                            key={`${selectedArticle.id}-${index}`} 
-                                            className="space-y-3 animate-fadeInUp opacity-0"
-                                            style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
-                                        >
-                                            <h3 className="text-xl font-black text-brand-ink leading-tight">
-                                                {paragraph.heading}
-                                            </h3>
-                                            <p className="text-brand-inkMuted text-base leading-relaxed font-medium whitespace-pre-wrap">
-                                                {paragraph.text}
-                                            </p>
-                                        </div>
-                                    ))
-                                ) : (
-                                    <p className="text-brand-inkMuted text-base leading-relaxed font-medium whitespace-pre-wrap">
-                                        {selectedArticle.content}
-                                    </p>
-                                )}
+                                <div className="max-w-3xl space-y-8">
+                                    {selectedArticle.fullContent ? (
+                                        selectedArticle.fullContent.map((paragraph, index) => (
+                                            <div
+                                                key={`${selectedArticle.id}-${index}`}
+                                                className="space-y-3 animate-fadeInUp opacity-0"
+                                                style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+                                            >
+                                                <h3 className="text-xl font-black text-brand-ink leading-tight">
+                                                    {paragraph.heading}
+                                                </h3>
+                                                <p className="text-brand-inkMuted text-base leading-relaxed font-medium whitespace-pre-wrap">
+                                                    {paragraph.text}
+                                                </p>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p className="text-brand-inkMuted text-base leading-relaxed font-medium whitespace-pre-wrap">
+                                            {selectedArticle.content}
+                                        </p>
+                                    )}
 
-                                <InteractionsPanel articleId={`gowa-alkahka-${selectedArticle.id}`} />
+                                    <InteractionsPanel articleId={`gowa-alkahka-${selectedArticle.id}`} />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )
+            }
             <Footer />
-        </div>
+        </div >
     )
 }

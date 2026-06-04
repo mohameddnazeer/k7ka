@@ -149,13 +149,13 @@ export default function SawtohaMasmouaPage() {
     };
 
     // جلب بيانات التحقيق النشط حالياً بناءً على الاختيار
-    const currentInvestigation = investigationsData[activeInvestigation ];
+    const currentInvestigation = investigationsData[activeInvestigation];
 
     return (
         <div className="relative min-h-screen overflow-hidden bg-[#faf9f6]" dir="rtl">
             <BackgroundSVG />
             <NavBar />
-            
+
             <main className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-24 pt-12 sm:px-8">
                 {/* الرأس الرئيسي للصفحة */}
                 <header className="mb-16 text-center animate-fadeIn">
@@ -169,12 +169,12 @@ export default function SawtohaMasmouaPage() {
                 </header>
 
                 <div className="grid lg:grid-cols-3 gap-8 items-start">
-                    
+
                     {/* القسم الأيمن: عرض التحقيق النشط والمختار */}
                     <div className="lg:col-span-2">
                         <article key={activeInvestigation} className="glass-card p-6 sm:p-12 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm transition-all duration-300 animate-fadeInUp relative overflow-hidden">
                             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-ink opacity-80"></div>
-                            
+
                             <TrendingTags tags={["صوتها_مسموع", "نسوية_رقمية", "تمكين_المرأة", "سقوف_زجاجية", "العمل_التنفيذي", "بيئة_عمل_عادلة"]} />
 
                             {/* رأس التحقيق */}
@@ -192,7 +192,7 @@ export default function SawtohaMasmouaPage() {
                                 <p className="text-xl font-medium text-brand-ink bg-brand-secondary/5 p-5 rounded-2xl border-r-4 border-brand-secondary">
                                     {currentInvestigation.intro}
                                 </p>
-                                
+
                                 {/* المحاور والمقاطع الداخلية للتحقيق */}
                                 {currentInvestigation.content.map((section, index) => (
                                     <div key={index} className="space-y-3 pt-4">
@@ -210,24 +210,7 @@ export default function SawtohaMasmouaPage() {
                                 </div>
                             </div>
 
-                            <div className="mt-8 space-y-8">
-                                <VideoMediaGallery 
-                                    title="ملفات صوتها مسموع المرئية"
-                                    clips={[
-                                        { title: "مائدة مستديرة: رائدات أعمال يشاركن تجارب تخطي العقبات القيادية", dur: "٥:٤٠" },
-                                        { title: "عقبات صامتة: كيف تبدو بيئة العمل في القطاعات الهندسية التقليدية؟", dur: "٤:١٥" }
-                                    ]}
-                                />
 
-                                <ExpertAdviceDesk 
-                                    qaList={[
-                                        { q: "كيف أتعامل مع التفرقة غير المعلنة في الترقيات داخل المؤسسات التي يغلب عليها الذكور؟", a: "ثقفي نفسكِ بالوصف الوظيفي ومعايير التقييم الرسمية، وقومي بتوثيق إنجازاتكِ بانتظام وتقارير الأداء الفترية، وعند مناقشة الترقية اعتمدي على لغة الأرقام والمساهمات الفعلية للمؤسسة بدلاً من الوعود الشفهية." },
-                                        { q: "هل يحق لي كعاملة في القطاع الخاص المطالبة ببيئة عمل مهيأة وتوفير مرافق لائقة؟", a: "نعم، قانون العمل ينص صراحةً على التزام المنشآت بتوفير بيئة عمل صحية وآمنة وتجهيزات مناسبة وملائمة للنوع الاجتماعي، وأي مخالفة يمكن الإبلاغ عنها عبر مكاتب التفتيش بوزارة العمل." }
-                                    ]}
-                                />
-
-                                <InteractionsPanel key={activeInvestigation} articleId={`sawtoha-masmoua-${activeInvestigation}`} />
-                            </div>
                         </article>
                     </div>
 
@@ -240,7 +223,7 @@ export default function SawtohaMasmouaPage() {
                             <p className="text-sm text-brand-inkMuted mb-6">
                                 اضغطي على عنوان التحقيق بالأسفل للمطالعة الفورية للملف الميداني الكامل بكل محاوره الفكرية والقانونية.
                             </p>
-                            
+
                             <div className="space-y-3">
                                 {Object.entries(investigationsData).map(([id, inv]) => {
                                     const isSelected = activeInvestigation === Number(id);
@@ -248,11 +231,10 @@ export default function SawtohaMasmouaPage() {
                                         <button
                                             key={id}
                                             onClick={() => setActiveInvestigation(Number(id))}
-                                            className={`w-full text-right p-4 rounded-2xl border transition-all duration-200 block ${
-                                                isSelected 
-                                                ? 'bg-white border-brand-accent/30 shadow-xs ring-1 ring-brand-accent/10' 
+                                            className={`w-full text-right p-4 rounded-2xl border transition-all duration-200 block ${isSelected
+                                                ? 'bg-white border-brand-accent/30 shadow-xs ring-1 ring-brand-accent/10'
                                                 : 'bg-white/60 border-slate-100 opacity-85 hover:opacity-100 hover:bg-white'
-                                            }`}
+                                                }`}
                                         >
                                             <div className="flex justify-between items-start gap-2 mb-1">
                                                 <h4 className={`font-bold text-sm ${isSelected ? 'text-brand-accent' : 'text-brand-ink'}`}>
@@ -273,32 +255,25 @@ export default function SawtohaMasmouaPage() {
 
                         {/* صناديق تفاعلية إضافية للرأي والكاريكاتير والتواصل */}
                         <div className="space-y-6">
-                            <InteractivePoll 
-                                question="هل ترين أن السوشيال ميديا ساهمت فعلياً في تمكين المرأة قانونياً واجتماعياً أم أنها مجرد وهم وتريند رقمي؟" 
+                            <InteractivePoll
+                                question="هل ترين أن السوشيال ميديا ساهمت فعلياً في تمكين المرأة قانونياً واجتماعياً أم أنها مجرد وهم وتريند رقمي؟"
                                 pollKey="sawtoha-masmoua"
                                 options={["ساهمت بالتمكين ورفع الوعي", "مجرد وهم وتريند مؤقت"]}
                             />
 
-                            <DailyCaricature 
-                                caption="النسوية الرقمية وفقاعات التريند" 
+                            <DailyCaricature
+                                caption="النسوية الرقمية وفقاعات التريند"
                                 desc="بين تضخيم الفقاعة الزرقاء والتأثير الحقيقي على أرض الواقع."
                                 emoji="📱⚖️"
                             />
 
-                            <div className="bg-brand-surface border border-slate-100 rounded-3xl p-6 text-center shadow-xs">
-                                <span className="text-2xl mb-2 block">⚖️</span>
-                                <h4 className="font-bold text-brand-ink mb-1">هل تودين مشاركة تجربتكِ؟</h4>
-                                <p className="text-xs text-brand-inkMuted mb-4">نحن في فريق التوعية القانونية والبحث الميداني نستمع لشهادات النساء بخصوصية وأمان مطلق.</p>
-                                <button className="w-full bg-brand-ink text-white text-sm font-bold py-2.5 px-4 rounded-xl hover:bg-brand-ink/90 transition-colors">
-                                    تواصلِ مع فريق التوعية
-                                </button>
-                            </div>
+
                         </div>
                     </div>
 
                 </div>
             </main>
-            
+
             <Footer />
         </div>
     )

@@ -143,30 +143,30 @@ const articles = [
 ];
 
 const faqData = [
-    { 
+    {
         category: "قانون الأحوال الشخصية",
-        q: "كيف أحصل على قرار تمكين من مسكن الزوجية؟", 
-        a: "يتم تقديم طلب للنيابة العامة مرفقاً به قسيمة الزواج وشهادات ميلاد الأطفال. تقوم النيابة بإجراء تحريات المباحث للتأكد من إقامة الزوجة، ثم يصدر قرار التمكين العاجل بتمكين الحاضنة من مسكن الزوجية بشكل مشترك أو منفرد حسب الحالة." 
+        q: "كيف أحصل على قرار تمكين من مسكن الزوجية؟",
+        a: "يتم تقديم طلب للنيابة العامة مرفقاً به قسيمة الزواج وشهادات ميلاد الأطفال. تقوم النيابة بإجراء تحريات المباحث للتأكد من إقامة الزوجة، ثم يصدر قرار التمكين العاجل بتمكين الحاضنة من مسكن الزوجية بشكل مشترك أو منفرد حسب الحالة."
     },
-    { 
+    {
         category: "قانون الأحوال الشخصية",
-        q: "ما هي عقوبة عدم الإنفاق على الزوجة والأبناء؟", 
-        a: "في حالة صدور حكم نهائي بالنفقة وامتناع الزوج عن الدفع، يحق للزوجة تفعيل المادة 293 من قانون العقوبات (دعوى حبس متجمد نفقة)، والتي تصل عقوبتها للحبس مدة سنة بعد التنبيه عليه بالدفع أو التسوية." 
+        q: "ما هي عقوبة عدم الإنفاق على الزوجة والأبناء؟",
+        a: "في حالة صدور حكم نهائي بالنفقة وامتناع الزوج عن الدفع، يحق للزوجة تفعيل المادة 293 من قانون العقوبات (دعوى حبس متجمد نفقة)، والتي تصل عقوبتها للحبس مدة سنة بعد التنبيه عليه بالدفع أو التسوية."
     },
-    { 
+    {
         category: "قانون الأحوال الشخصية",
-        q: "هل يسقط حق الأم في الحضانة بزواجها؟", 
-        a: "نعم، يسقط الحق في الحضانة للأم بزواجها من أجنبي عن المحضون (غير محرم)، وتنتقل الحضانة مباشرة إلى الجدة لأم، ثم الجدة لأب، صعوداً وفقاً للترتيب القانوني، إلا إذا ثبت أن مصلحة الصغير تقتضي غير ذلك." 
+        q: "هل يسقط حق الأم في الحضانة بزواجها؟",
+        a: "نعم، يسقط الحق في الحضانة للأم بزواجها من أجنبي عن المحضون (غير محرم)، وتنتقل الحضانة مباشرة إلى الجدة لأم، ثم الجدة لأب، صعوداً وفقاً للترتيب القانوني، إلا إذا ثبت أن مصلحة الصغير تقتضي غير ذلك."
     },
-    { 
+    {
         category: "الجرائم الإلكترونية",
-        q: "ماذا أفعل إذا تعرضت لابتزاز إلكتروني بصور مفبركة بالذكاء الاصطناعي؟", 
-        a: "خطوتك الأولى هي عدم مسح الرسائل أو المحتوى المفبرك. قومي بأخذ لقطات شاشة (Screenshots) واضحة، ثم توجهي فوراً إلى 'مباحث الإنترنت' في وزارة الداخلية أو تقديم بلاغ عبر الخط الساخن (108). القانون يعاقب على التزييف والابتزاز بعقوبات تصل للسجن المشدد." 
+        q: "ماذا أفعل إذا تعرضت لابتزاز إلكتروني بصور مفبركة بالذكاء الاصطناعي؟",
+        a: "خطوتك الأولى هي عدم مسح الرسائل أو المحتوى المفبرك. قومي بأخذ لقطات شاشة (Screenshots) واضحة، ثم توجهي فوراً إلى 'مباحث الإنترنت' في وزارة الداخلية أو تقديم بلاغ عبر الخط الساخن (108). القانون يعاقب على التزييف والابتزاز بعقوبات تصل للسجن المشدد."
     },
-    { 
+    {
         category: "قانون العمل",
-        q: "هل يعتبر إثبات العمل ضرورياً إذا لم يكن هناك عقد مكتوب؟", 
-        a: "وفقاً لقانون العمل، إذا لم يقم صاحب العمل بكتابة عقد، يحق للعاملة إثبات علاقة العمل بكافة طرق الإثبات القانونية، مثل: شهادة الشهود، التحويلات البنكية للراتب، الرسائل الإلكترونية (واتساب/إيميل)، أو محاضر إثبات الحالة من مكتب العمل." 
+        q: "هل يعتبر إثبات العمل ضرورياً إذا لم يكن هناك عقد مكتوب؟",
+        a: "وفقاً لقانون العمل، إذا لم يقم صاحب العمل بكتابة عقد، يحق للعاملة إثبات علاقة العمل بكافة طرق الإثبات القانونية، مثل: شهادة الشهود، التحويلات البنكية للراتب، الرسائل الإلكترونية (واتساب/إيميل)، أو محاضر إثبات الحالة من مكتب العمل."
     }
 ];
 
@@ -179,7 +179,7 @@ function HighlightedText({ text, search }) {
     const parts = text.split(regex);
     return (
         <span>
-            {parts.map((part, i) => 
+            {parts.map((part, i) =>
                 regex.test(part) ? (
                     <mark key={i} className="bg-yellow-100 text-brand-ink px-1 rounded font-bold">{part}</mark>
                 ) : part
@@ -201,7 +201,7 @@ function ArticleCard({ article, searchQuery, onOpen }) {
                 title: article.title,
                 text: article.content,
                 url: window.location.href
-            }).catch(() => {});
+            }).catch(() => { });
         } else {
             navigator.clipboard.writeText(`${window.location.href}#article-${article.id}`);
             alert('تم نسخ رابط المقال المباشر!');
@@ -212,8 +212,8 @@ function ArticleCard({ article, searchQuery, onOpen }) {
         <article className="group flex flex-col overflow-hidden rounded-3xl border border-slate-100 bg-brand-surface transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
             <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 flex items-center justify-center">
                 {!imgError ? (
-                    <img 
-                        src={article.image} 
+                    <img
+                        src={article.image}
                         alt={article.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         onError={() => setImgError(true)}
@@ -228,22 +228,22 @@ function ArticleCard({ article, searchQuery, onOpen }) {
                     </div>
                 )}
             </div>
-            
+
             <div className="flex flex-1 flex-col p-6 text-right">
                 <span className="badge-soft mb-2 inline-block bg-brand-accent/5 text-brand-accent px-2 py-0.5 rounded text-[10px] font-bold w-fit">
                     {article.category}
                 </span>
-                
+
                 <h3 className="mb-3 text-lg font-black text-brand-ink leading-snug group-hover:text-brand-accent transition-colors">
                     <HighlightedText text={article.title} search={searchQuery} />
                 </h3>
-                
+
                 <p className="mb-4 line-clamp-3 text-xs leading-relaxed text-brand-inkMuted/80 font-medium">
                     <HighlightedText text={article.content} search={searchQuery} />
                 </p>
-                
+
                 <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <button 
+                    <button
                         onClick={() => onOpen(article)}
                         className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-accent transition-colors hover:text-brand-secondary"
                     >
@@ -252,8 +252,8 @@ function ArticleCard({ article, searchQuery, onOpen }) {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
-                    
-                    <button 
+
+                    <button
                         onClick={handleShare}
                         className="p-1.5 rounded-lg bg-[#faf9f6] text-slate-400 hover:text-brand-secondary transition"
                         title="مشاركة الرابط"
@@ -297,7 +297,7 @@ export default function KalamQanun() {
         <div className="relative min-h-screen bg-[#faf9f6] text-[#1F2937] font-arabic overflow-x-hidden" dir="rtl">
             <BackgroundSVG />
             <NavBar />
-            
+
             <main className="relative z-10 mx-auto w-full px-4 pb-24 sm:px-6 lg:px-8 max-w-7xl">
                 <TrendingTags tags={["كلام_قانون", "الولاية_التعليمية", "الخلع_والطلاق", "العنف_المنزلي", "جرائم_إلكترونية", "تزييف_عميق"]} />
 
@@ -328,7 +328,7 @@ export default function KalamQanun() {
                         {/* Search & Filter Controls */}
                         <div className="mb-12 flex flex-col md:flex-row gap-6 items-center justify-between bg-brand-surface p-6 rounded-3xl border border-brand-surface/70 shadow-sm">
                             <div className="w-full md:w-1/3 relative">
-                                <input 
+                                <input
                                     type="text"
                                     placeholder="بحث في المقالات القانونية..."
                                     value={searchQuery}
@@ -346,11 +346,10 @@ export default function KalamQanun() {
                                     <button
                                         key={cat}
                                         onClick={() => setSelectedCategory(cat)}
-                                        className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 ${
-                                            selectedCategory === cat 
-                                                ? 'bg-brand-accent text-white shadow-md shadow-brand-accent/20' 
-                                                : 'bg-[#faf9f6] text-brand-inkMuted hover:bg-slate-100 border border-slate-100'
-                                        }`}
+                                        className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 ${selectedCategory === cat
+                                            ? 'bg-brand-accent text-white shadow-md shadow-brand-accent/20'
+                                            : 'bg-[#faf9f6] text-brand-inkMuted hover:bg-slate-100 border border-slate-100'
+                                            }`}
                                     >
                                         {cat}
                                     </button>
@@ -364,15 +363,15 @@ export default function KalamQanun() {
                                 {filteredArticles.length > 0 ? (
                                     <div className="grid gap-6 sm:grid-cols-2">
                                         {filteredArticles.map((article, idx) => (
-                                            <div 
+                                            <div
                                                 key={article.id}
                                                 className="animate-fadeInUp opacity-0"
                                                 style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                                             >
-                                                <ArticleCard 
-                                                    article={article} 
+                                                <ArticleCard
+                                                    article={article}
                                                     searchQuery={searchQuery}
-                                                    onOpen={setSelectedArticle} 
+                                                    onOpen={setSelectedArticle}
                                                 />
                                             </div>
                                         ))}
@@ -385,14 +384,14 @@ export default function KalamQanun() {
                             </div>
 
                             <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
-                                <InteractivePoll 
-                                    question="هل تؤيدين فرض عقوبات جنائية مشددة فورية على أصحاب العمل الذين يشغلون الفتيات بدون عقود عمل مكتوبة وموثقة؟" 
+                                <InteractivePoll
+                                    question="هل تؤيدين فرض عقوبات جنائية مشددة فورية على أصحاب العمل الذين يشغلون الفتيات بدون عقود عمل مكتوبة وموثقة؟"
                                     pollKey="kalam-qanun"
                                     options={["نعم، أؤيد وبشدة", "لا، أرى التوعية كافية"]}
                                 />
 
-                                <DailyCaricature 
-                                    caption="حماية القانون للمرأة" 
+                                <DailyCaricature
+                                    caption="حماية القانون للمرأة"
                                     desc="ميزان العدالة يحمي الحقوق من الضياع."
                                     emoji="⚖️🛡️"
                                 />
@@ -402,155 +401,16 @@ export default function KalamQanun() {
                         {/* ==========================================
                             UPGRADED FAQ SECTION (القسم المطور والمحدث)
                            ========================================== */}
-                        <section className=" bg-gradient-to-b from-transparent to-slate-100/50 pt-12 pb-8  rounded-[3rem]">
-                            {/* عنوان القسم */}
-                            <div className="mb-10 text-center">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-secondary/10 text-brand-secondary text-xs font-bold mb-3">
-                                    <span>💡</span> الأسئلة الأكثر تداولاً
-                                </div>
-                                <h2 className="text-3xl font-black text-brand-ink sm:text-4xl mb-4">
-                                    موسوعة الأسئلة القانونية الشائعة
-                                </h2>
-                                <p className="mx-auto max-w-xl text-sm sm:text-base text-brand-inkMuted/80 font-medium leading-relaxed">
-                                    إجابات قانونية سريعة ومبسطة لأكثر المواقف الحياتية والقانونية التي تواجه النساء في المجتمع.
-                                </p>
-                                <div className="mx-auto mt-4 h-1 w-20 bg-brand-accent rounded-full"></div>
-                            </div>
 
-                            {/* أدوات البحث والتصفية للأسئلة الشائعة */}
-                            <div className="max-w-4xl mx-auto mb-8 px-4 flex flex-col md:flex-row gap-4 items-center justify-between">
-                                {/* التبويبات الفئوية للأسئلة */}
-                                <div className="flex flex-wrap gap-2 justify-start w-full md:w-auto">
-                                    {faqTabs.map((tab) => (
-                                        <button
-                                            key={tab}
-                                            onClick={() => {
-                                                setActiveFaqTab(tab);
-                                                setOpenFaqIdx(null); // غلق أي سؤال مفتوح عند تغيير التبويب
-                                            }}
-                                            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                                                activeFaqTab === tab
-                                                    ? 'bg-brand-secondary text-white shadow-sm'
-                                                    : 'bg-white text-brand-inkMuted hover:bg-[#faf9f6] border border-slate-200'
-                                            }`}
-                                        >
-                                            {tab}
-                                        </button>
-                                    ))}
-                                </div>
-
-                                {/* حقل البحث الخاص بالأسئلة */}
-                                <div className="relative w-full md:w-72">
-                                    <input 
-                                        type="text"
-                                        placeholder="ابحثي عن سؤال معين..."
-                                        value={faqSearch}
-                                        onChange={(e) => {
-                                            setFaqSearch(e.target.value);
-                                            setOpenFaqIdx(null);
-                                        }}
-                                        className="w-full pl-4 pr-9 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-brand-secondary/30 focus:border-brand-secondary transition-all"
-                                    />
-                                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
-                                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* قائمة الأسئلة (Accordion) */}
-                            <div className="grid gap-4 max-w-4xl mx-auto px-4">
-                                {filteredFaqs.length > 0 ? (
-                                    filteredFaqs.map((faq, idx) => {
-                                        const isOpen = openFaqIdx === idx;
-                                        return (
-                                            <div 
-                                                key={idx} 
-                                                className={`bg-white rounded-2xl border transition-all duration-200 ${
-                                                    isOpen 
-                                                        ? 'border-brand-accent/30 shadow-md shadow-brand-accent/5 ring-1 ring-brand-accent/10' 
-                                                        : 'border-slate-100 hover:border-slate-200 shadow-sm'
-                                                }`}
-                                            >
-                                                <button
-                                                    onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
-                                                    aria-expanded={isOpen}
-                                                    className="w-full flex items-start justify-between p-5 text-right font-black text-base sm:text-lg text-brand-secondary hover:text-brand-accent transition-colors focus:outline-none gap-4"
-                                                >
-                                                    <div className="flex gap-3 items-start">
-                                                        <span className={`text-xs px-2 py-0.5 mt-1 rounded-md font-bold whitespace-nowrap hidden sm:inline-block ${
-                                                            isOpen ? 'bg-brand-accent/10 text-brand-accent' : 'bg-slate-100 text-slate-500'
-                                                        }`}>
-                                                            {faq.category}
-                                                        </span>
-                                                        <span className="leading-tight">
-                                                            <HighlightedText text={faq.q} search={faqSearch} />
-                                                        </span>
-                                                    </div>
-                                                    <span className={`flex-shrink-0 mt-1 p-1 rounded-full bg-[#faf9f6] text-brand-accent transition-transform duration-300 ${isOpen ? 'rotate-180 bg-brand-accent/10' : ''}`}>
-                                                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                                
-                                                <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] border-t border-slate-50 bg-[#faf9f6]/40' : 'grid-rows-[0fr]'}`}>
-                                                    <div className="overflow-hidden">
-                                                        <div className="p-5 text-sm sm:text-base text-brand-inkMuted/90 font-medium leading-relaxed flex gap-3 items-start">
-                                                            <span className="text-brand-accent font-black text-lg select-none">جـ:</span>
-                                                            <p className="whitespace-pre-line">
-                                                                <HighlightedText text={faq.a} search={faqSearch} />
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    })
-                                ) : (
-                                    <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-slate-200">
-                                        <p className="text-sm font-bold text-slate-400">لا توجد أسئلة تطابق بحثك حالياً.</p>
-                                    </div>
-                                )}
-                            </div>
-                        </section>
 
                         {/* Legal Contact Card */}
-                        <section className="mt-24 bg-brand-secondary/5 rounded-[3rem] p-10 sm:p-16 text-brand-ink relative overflow-hidden border border-brand-secondary/10">
-                            <div className="absolute top-0 left-0 w-64 h-64 bg-brand-accent/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-                            <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-                                <div>
-                                    <h2 className="text-4xl font-black mb-6 text-brand-ink">الدعم والاستشارات القانونية</h2>
-                                    <p className="text-xl text-brand-inkMuted mb-8 font-medium leading-relaxed">
-                                        توفر مؤسسة قضايا المرأة المصرية خطوطاً ساخنة وخدمات الدعم القانوني المباشر للسيدات. نحن هنا لتقديم المشورة والمساعدة اللازمة لضمان حماية حقوقكن.
-                                    </p>
-                                    <div className="flex flex-wrap gap-4 justify-start">
-                                        <div className="bg-brand-surface backdrop-blur-md px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
-                                            <span className="block text-xs uppercase font-bold text-brand-inkSubtle mb-1">الخط الساخن للمؤسسة</span>
-                                            <span className="text-2xl font-black text-brand-accent">022511223</span>
-                                        </div>
-                                        <div className="bg-brand-surface backdrop-blur-md px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
-                                            <span className="block text-xs uppercase font-bold text-brand-inkSubtle mb-1">المقر الرئيسي</span>
-                                            <span className="text-xl font-black text-brand-ink">القاهرة - الجيزة</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="bg-brand-surface/80 backdrop-blur-sm rounded-[2rem] p-8 border border-slate-100 shadow-sm">
-                                    <h4 className="text-xl font-bold mb-4 text-brand-secondary">"إن الوعي بالحقوق القانونية هو الخطوة الأولى والأساسية لاستعادتها وحمايتها."</h4>
-                                    <div className="flex items-center gap-4 justify-start">
-                                        <div className="w-12 h-12 rounded-full bg-brand-accent/10 flex items-center justify-center text-brand-accent font-bold">⚖️</div>
-                                        <span className="font-bold text-brand-ink">فريق التوعية القانونية — مشروع الكحكة</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+
                     </>
                 ) : (
                     <div className="pt-10 pb-20 animate-fadeIn max-w-7xl mx-auto">
                         {/* زر الرجوع */}
                         <div className="flex justify-between items-center border-b border-slate-200 pb-6 mb-8">
-                            <button 
+                            <button
                                 onClick={() => setSelectedArticle(null)}
                                 className="flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-secondary border border-brand-secondary bg-white px-4 py-2 rounded-xl hover:bg-brand-secondary/5 transition"
                             >
@@ -565,9 +425,9 @@ export default function KalamQanun() {
                                 {/* صورة الغلاف */}
                                 {selectedArticle.image && (
                                     <div className="w-full h-64 sm:h-96 relative overflow-hidden rounded-2xl border border-slate-200 shadow-xs">
-                                        <img 
-                                            src={selectedArticle.image} 
-                                            alt={selectedArticle.title} 
+                                        <img
+                                            src={selectedArticle.image}
+                                            alt={selectedArticle.title}
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
@@ -583,11 +443,11 @@ export default function KalamQanun() {
                                     <p className="text-sm sm:text-base text-slate-600 font-bold leading-relaxed border-r-4 border-brand-accent pr-4">
                                         {selectedArticle.content}
                                     </p>
-                                    
+
                                     <div className="space-y-8 pt-4">
                                         {selectedArticle.fullContent?.map((section, idx) => (
-                                            <div 
-                                                key={`${selectedArticle.id}-${idx}`} 
+                                            <div
+                                                key={`${selectedArticle.id}-${idx}`}
                                                 className="border-b border-slate-100 pb-6 last:border-0 animate-fadeInUp opacity-0"
                                                 style={{ animationDelay: `${idx * 100}ms`, animationFillMode: 'forwards' }}
                                             >
@@ -601,7 +461,7 @@ export default function KalamQanun() {
                                 </div>
 
                                 <div className="mt-12 space-y-8">
-                                    <VideoMediaGallery 
+                                    <VideoMediaGallery
                                         title="تقارير كلام قانون المصورة"
                                         clips={[
                                             { title: "تغطية ميدانية: ندوة مؤسسة قضايا المرأة حول مخاطر التزييف العميق والابتزاز", dur: "٥:٤٠" },
@@ -609,7 +469,7 @@ export default function KalamQanun() {
                                         ]}
                                     />
 
-                                    <ExpertAdviceDesk 
+                                    <ExpertAdviceDesk
                                         qaList={[
                                             { q: "كيف أتحقق من جدية عقد العمل قبل التوقيع والبدء في الوظيفة؟", a: "تأكدي من كتابة نسختين من العقد على الأقل، وأن يتضمن اسم الشركة وعنوانها، قيمة الراتب الصافي صراحةً، ومسمى الوظيفة وعدد ساعات العمل، ولا تسلمي أوراقك الأصلية دون استلام إيصال بذلك." },
                                             { q: "ما هي المدة المتوقعة لصدور قرار الولاية التعليمية للحاضنة من قاضي الأمور المستعجلة؟", a: "الولاية التعليمية للحاضن بقوة القانون، وفي حال النزاعات، يصدر القاضي أمراً وقتياً في غضون أسبوع إلى أسبوعين على الأكثر لحماية مصلحة الطفل ومسيرته التعليمية." }
@@ -626,7 +486,7 @@ export default function KalamQanun() {
                                     <h3 className="text-base font-black text-brand-ink mb-4 border-b border-slate-100 pb-3">مواضيع قانونية ذات صلة</h3>
                                     <div className="space-y-4">
                                         {articles.filter(a => a.id !== selectedArticle.id).map(a => (
-                                            <button 
+                                            <button
                                                 key={a.id}
                                                 onClick={() => setSelectedArticle(a)}
                                                 className="w-full text-right group flex flex-col gap-1 transition-all hover:bg-[#faf9f6] p-2.5 rounded-xl"
@@ -638,14 +498,14 @@ export default function KalamQanun() {
                                     </div>
                                 </div>
 
-                                <InteractivePoll 
-                                    question="هل تؤيدين فرض عقوبات جنائية مشددة فورية على أصحاب العمل الذين يشغلون الفتيات بدون عقود عمل مكتوبة وموثقة؟" 
+                                <InteractivePoll
+                                    question="هل تؤيدين فرض عقوبات جنائية مشددة فورية على أصحاب العمل الذين يشغلون الفتيات بدون عقود عمل مكتوبة وموثقة؟"
                                     pollKey="kalam-qanun"
                                     options={["نعم، أؤيد وبشدة", "لا، أرى التوعية كافية"]}
                                 />
 
-                                <DailyCaricature 
-                                    caption="حماية القانون للمرأة" 
+                                <DailyCaricature
+                                    caption="حماية القانون للمرأة"
                                     desc="ميزان العدالة يحمي الحقوق من الضياع."
                                     emoji="⚖️🛡️"
                                 />

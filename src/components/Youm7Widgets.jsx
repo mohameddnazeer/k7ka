@@ -7,8 +7,8 @@ export function TrendingTags({ tags = [] }) {
     <div className="flex flex-wrap items-center gap-2 border-b border-gray-200 pb-3 mb-6">
       <span className="text-xs font-black text-[#A91D22] ml-2">الوسوم النشطة:</span>
       {tags.map((tag, idx) => (
-        <span 
-          key={idx} 
+        <span
+          key={idx}
           className="text-[10px] font-bold text-gray-500 bg-gray-150/70 border border-gray-200 px-2 py-0.5 rounded-full hover:bg-[#A91D22]/10 hover:text-[#A91D22] transition cursor-pointer"
         >
           #{tag}
@@ -35,69 +35,12 @@ export function InteractivePoll({ question, options = ["نعم، أؤيد وبش
     }
   };
 
-  return (
-    <div className="bg-[#faf9f6] border border-gray-200 p-5 rounded-2xl space-y-3">
-      <span className="bg-[#A91D22] text-white text-[9px] font-black px-2 py-0.5 rounded shadow-2xs">استفتاء اليوم السابع التفاعلي</span>
-      <h4 className="text-xs font-bold text-slate-800 leading-relaxed">{question}</h4>
-      
-      {!voted ? (
-        <div className="grid grid-cols-2 gap-2 pt-1">
-          <button 
-            onClick={() => handleVote(1)}
-            className="bg-white border border-gray-200 text-[10px] font-black py-2 rounded-lg hover:bg-slate-50 transition active:scale-95"
-          >
-            👍 {options[0]}
-          </button>
-          <button 
-            onClick={() => handleVote(2)}
-            className="bg-white border border-gray-200 text-[10px] font-black py-2 rounded-lg hover:bg-slate-50 transition active:scale-95"
-          >
-            👎 {options[1]}
-          </button>
-        </div>
-      ) : (
-        <div className="space-y-2 pt-1">
-          <div className="space-y-1">
-            <div className="flex justify-between text-[10px] font-bold text-slate-700">
-              <span>{options[0]}</span>
-              <span>{results.opt1}%</span>
-            </div>
-            <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-              <div className="bg-[#A91D22] h-full" style={{ width: `${results.opt1}%` }}></div>
-            </div>
-          </div>
-          <div className="space-y-1">
-            <div className="flex justify-between text-[10px] font-bold text-slate-700">
-              <span>{options[1]}</span>
-              <span>{results.opt2}%</span>
-            </div>
-            <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-              <div className="bg-gray-400 h-full" style={{ width: `${results.opt2}%` }}></div>
-            </div>
-          </div>
-          <p className="text-[9px] text-gray-400 text-center font-bold">تم تسجيل صوتكِ بسرية. شكراً لمشاركتكِ!</p>
-        </div>
-      )}
-    </div>
-  );
+
 }
 
 // 3. كاريكاتير الجريدة اليومي
 export function DailyCaricature({ caption, desc, emoji = "👵🧗‍♀️" }) {
-  return (
-    <div className="bg-slate-50 border border-gray-200 p-4 rounded-2xl text-center space-y-3">
-      <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest block">ريشة كحكة - كاريكاتير اليوم 🎨</span>
-      <div className="relative aspect-square bg-white border border-gray-200 rounded-xl overflow-hidden flex items-center justify-center p-2 shadow-inner">
-        <span className="text-6xl select-none">{emoji}</span>
-        <div className="absolute bottom-2 left-2 right-2 bg-black/60 text-white text-[9px] font-bold p-1.5 rounded">
-          {caption}
-        </div>
-      </div>
-      <p className="text-[10px] text-slate-500 font-bold leading-relaxed">
-        "{desc}"
-      </p>
-    </div>
-  );
+
 }
 
 // 4. معرض التغطية المرئية والبودكاست
@@ -110,12 +53,12 @@ export function VideoMediaGallery({ title = "تقارير ميدانية مصو�
         </h5>
         <span className="text-[10px] font-bold text-slate-400">بث ميداني حصري</span>
       </div>
-      
+
       <div className="grid gap-4 md:grid-cols-12 items-center">
         <div className="md:col-span-7 relative aspect-video rounded-2xl overflow-hidden bg-slate-900 border border-gray-200 group shadow-xs">
-          <img 
-            src="/imgs/carousel/The-mother-of-the-disabled-a-superhero-no-one-sees.jpeg" 
-            alt="تغطية مرئية" 
+          <img
+            src="/imgs/carousel/The-mother-of-the-disabled-a-superhero-no-one-sees.jpeg"
+            alt="تغطية مرئية"
             className="w-full h-full object-cover opacity-75 group-hover:scale-102 transition duration-500"
           />
           <div className="absolute inset-0 flex items-center justify-center">
@@ -150,7 +93,7 @@ export function ExpertAdviceDesk({ qaList = [] }) {
         </h5>
         <span className="text-[10px] font-bold text-slate-400">إرشادات تهمكِ</span>
       </div>
-      
+
       <div className="space-y-3">
         {qaList.map((item, idx) => (
           <div key={idx} className="bg-slate-50 p-4 rounded-2xl border border-gray-200 space-y-2 text-right">
