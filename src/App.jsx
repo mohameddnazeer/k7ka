@@ -1,4 +1,4 @@
-﻿import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Index from './pages/index.jsx'
 import AlaAlhamesh from './pages/ala-alhamesh.jsx'
 import Alaaqa from './pages/alaaqa.jsx'
@@ -14,6 +14,7 @@ import MahwElOmya from './pages/mahw-el-omya.jsx'
 import RoTeenTanzeefAlManzel from './pages/roteen-tanzeef-almanzel.jsx'
 import SanaOlaOmoma from './pages/sana-ola-omoma.jsx'
 import SawtohaMasmoua from './pages/sawtoha-masmoua.jsx'
+import Infographic from './pages/infographic.jsx'
 import './App.css'
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route path="/roteen-tanzeef-almanzel" element={<RoTeenTanzeefAlManzel />} />
         <Route path="/sana-ola-omoma" element={<SanaOlaOmoma />} />
         <Route path="/sawtoha-masmoua" element={<SawtohaMasmoua />} />
+        <Route path="/infographic" element={<Infographic />} />
       </Routes>
     </div>
   )

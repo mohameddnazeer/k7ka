@@ -32,6 +32,7 @@ export default function NavBar() {
         { href: '/hikayat-settat', label: 'حكايات ستات' },
         { href: '/ala-alhamesh', label: 'على الهامش' },
         { href: '/gowa-alkahka', label: 'جوه الكحكة' },
+        { href: '/infographic', label: 'إنفوجرافيك' },
     ]
 
     const breakingNews = [
@@ -120,9 +121,9 @@ export default function NavBar() {
                                 <Link
                                     key={link.href}
                                     to={link.href}
-                                    className={`shrink-0 snap-center rounded-lg px-3.5 py-2 text-xs sm:text-sm font-black transition-all duration-200 ${isActive
-                                        ? 'bg-[#A91D22] text-white shadow-sm font-bold'
-                                        : 'text-slate-700 hover:text-[#A91D22] hover:bg-slate-50'
+                                    className={`shrink-0 snap-center rounded-lg px-3.5 py-2 text-xs sm:text-sm transition-all duration-200 ${isActive
+                                        ? 'bg-[#A91D22] text-white shadow-sm font-black'
+                                        : 'text-slate-700 hover:text-[#A91D22] hover:bg-slate-50 '
                                         }`}
                                 >
                                     {link.label}

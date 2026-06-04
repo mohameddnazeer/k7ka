@@ -37,7 +37,7 @@ const articles = [
         time: "٠٩:٣٠ ص",
         views: 9820,
         likes: 410,
-        image: "/imgs/10.png",
+        image: "/imgs/10.jpeg",
         to: "/ala-alhamesh",
         content: [
             { heading: "الصراع اليومي بين لقمة العيش وتربية الأبناء", text: "تستيقظ المرأة المعيلة في الفجر لتكسب قوت يومها من بيع البضائع البسيطة أو العمل في مهن شاقة. تقضي يومها في توازن حرج ومؤلم بين كسب المال لتدبير الإيجار ومصاريف المدارس، وبين غيابها الاضطراري عن المنزل لمراقبة سلوك أطفالها." },
@@ -579,7 +579,7 @@ export default function Home() {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
                         {/* العمود الأيمن: الخبر الرئيسي المميز (50% عرض) */}
-                        <section className="lg:col-span-6 space-y-4">
+                        <section className="lg:col-span-8 space-y-4">
                             <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
                                 <span className="w-3.5 h-3.5 bg-[#A91D22] block"></span>
                                 <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">الخبر الرئيسي</h2>
@@ -668,7 +668,7 @@ export default function Home() {
                         </section>
 
                         {/* العمود الأوسط: شريط العناوين الأحدث (25% عرض) */}
-                        <section className="lg:col-span-3 space-y-4">
+                        <section className="lg:col-span-4 space-y-4">
                             <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
                                 <span className="w-3.5 h-3.5 bg-gray-600 block"></span>
                                 <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">شريط الأخبار</h2>
@@ -702,15 +702,6 @@ export default function Home() {
                                 ))}
                             </div>
                         </section>
-
-                        {/* العمود الأيسر: منبر الرأي والتحليلات والخدمات التفاعلية (25% عرض) */}
-                        <aside className="lg:col-span-3 space-y-6">
-
-
-
-
-
-                        </aside>
 
                     </div>
 
