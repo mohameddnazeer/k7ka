@@ -406,6 +406,18 @@ const renderStatsLine = (article, className = '') => (
     </div>
 );
 
+const infographicsData = Array.from({ length: 23 }, (_, index) => {
+    const displayId = index + 1
+    const fileId = 50 + index
+    return {
+        id: displayId,
+        src: `/imgs/infographic/${fileId}.jpeg`,
+        title: `إنفوجرافيك كحكة - ملف رقم ${displayId}`,
+        category: displayId % 2 === 0 ? "قضايا مجتمعية" : "حقوق المرأة والأسرة",
+        desc: `رسم توضيحي إحصائي مبسط يسلط الضوء على البيانات، القوانين والمفاهيم التوعوية الهامة للمجتمع.`
+    }
+})
+
 export default function Home() {
     const location = useLocation();
     const [selectedArticle, setSelectedArticle] = useState(null);
@@ -429,6 +441,9 @@ export default function Home() {
     const [consultType, setConsultType] = useState('legal');
     const [consultText, setConsultText] = useState('');
     const [consultSubmitted, setConsultSubmitted] = useState(false);
+    const [infoIndex, setInfoIndex] = useState(0);
+    const [infoPlaying, setInfoPlaying] = useState(true);
+    const [copiedInfoId, setCopiedInfoId] = useState(null);
 
     const handleConsultSubmit = (e) => {
         e.preventDefault();
@@ -504,6 +519,24 @@ export default function Home() {
             audioElement.pause();
         }
     }, [playingEpisode, isPlaying]);
+
+    useEffect(() => {
+        if (selectedArticle || !infoPlaying) return;
+        const timer = setInterval(() => {
+            setInfoIndex(prev => (prev + 1) % 23);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [selectedArticle, infoPlaying]);
+
+    const handleCopyInfoLink = (id) => {
+        const shareUrl = `${window.location.origin}${window.location.pathname}#/infographic?id=${id}`;
+        navigator.clipboard?.writeText(shareUrl).then(() => {
+            setCopiedInfoId(id);
+            setTimeout(() => setCopiedInfoId(null), 3000);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    };
 
     const playEpisode = (episode) => {
         setPlayingEpisode(episode);
@@ -1353,7 +1386,116 @@ export default function Home() {
                         </div>
                     </section>
 
+                    {/* قسم الإنفوجرافيك التوضيحي */}
+                    <section className="space-y-4   animate-fadeIn  mx-auto">
+                        <div className="flex justify-between items-center border-b border-gray-300 pb-2">
+                            <div className="flex items-center gap-2">
+                                <span className="w-3.5 h-3.5 bg-[#A91D22] block"></span>
+                                <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">إنفوجرافيك كحكة</h2>
+                            </div>
+                            <Link
+                                to="/infographic"
+                                className="text-xs font-black text-[#A91D22] hover:underline"
+                            >
+                                عرض المعرض بالكامل ←
+                            </Link>
+                        </div>
 
+                        {/* Slider Card exact match */}
+                        <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden p-6 sm:p-8 relative text-right">
+                            {/* Slide Indicator badge */}
+                            <div className="absolute top-8 right-8 z-10 bg-black/60 backdrop-blur-xs text-white text-xs font-bold px-3 py-1 rounded-full">
+                                {infoIndex + 1} / {infographicsData.length}
+                            </div>
+
+                           
+
+                            {/* Image Viewer Container */}
+                            <div className="relative aspect-[4/5] sm:aspect-[16/10] w-full max-h-[600px] overflow-hidden bg-slate-50 rounded-2xl flex items-center justify-center group mb-6 border border-slate-100">
+                                <img
+                                    src={infographicsData[infoIndex].src}
+                                    alt={infographicsData[infoIndex].title}
+                                    className="h-full w-full object-contain transition-all duration-500 ease-out"
+                                />
+
+                                {/* Carousel Navigation Arrows */}
+                                <button
+                                    onClick={() => {
+                                        setInfoPlaying(false);
+                                        setInfoIndex(prevIndex => (prevIndex - 1 + infographicsData.length) % infographicsData.length);
+                                    }}
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#A91D22] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
+                                    aria-label="الصورة السابقة"
+                                >
+                                    <span className="text-xl font-bold">→</span>
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        setInfoPlaying(false);
+                                        setInfoIndex(prevIndex => (prevIndex + 1) % infographicsData.length);
+                                    }}
+                                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#A91D22] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
+                                    aria-label="الصورة التالية"
+                                >
+                                    <span className="text-xl font-bold">←</span>
+                                </button>
+                            </div>
+
+                            {/* Active Slide Info & Actions Layout */}
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-t border-slate-100 pt-6">
+                                <div className="space-y-2 max-w-xl">
+                                    <h2 className="text-2xl font-black text-slate-850 font-serif leading-snug">
+                                        {infographicsData[infoIndex].title}
+                                    </h2>
+                                    <p className="text-sm text-slate-500 font-medium">
+                                        {infographicsData[infoIndex].desc}
+                                    </p>
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="flex flex-wrap items-center gap-3 shrink-0">
+                                    {/* Link to Page */}
+                                    <Link
+                                        to={`/infographic?id=${infographicsData[infoIndex].id}`}
+                                        className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-all duration-200 shadow-xs"
+                                    >
+                                        🔍 عرض في المعرض
+                                    </Link>
+
+                                    {/* Autoplay Switch */}
+                                    <button
+                                        onClick={() => setInfoPlaying(!infoPlaying)}
+                                        className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 border shadow-xs ${
+                                            infoPlaying 
+                                                ? 'bg-amber-500 border-amber-600 text-white hover:bg-amber-600' 
+                                                : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                                        }`}
+                                    >
+                                        <span>{infoPlaying ? '⏸️ إيقاف التدوير' : '▶️ تشغيل تلقائي'}</span>
+                                    </button>
+
+                                    {/* Share Link */}
+                                    <button
+                                        onClick={() => handleCopyInfoLink(infographicsData[infoIndex].id)}
+                                        className="px-4 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-xs"
+                                    >
+                                        <span>🔗 {copiedInfoId === infographicsData[infoIndex].id ? 'تم نسخ الرابط!' : 'مشاركة'}</span>
+                                    </button>
+
+                                    {/* Download Image */}
+                                    <a
+                                        href={infographicsData[infoIndex].src}
+                                        download={`k7ka-infographic-${infographicsData[infoIndex].id}.jpeg`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="px-4 py-2.5 bg-[#A91D22] hover:bg-[#8f1519] text-white rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-sm"
+                                    >
+                                        <span>📥 تحميل الصورة</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
                 </main>
             ) : (

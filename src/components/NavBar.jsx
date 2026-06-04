@@ -32,7 +32,7 @@ export default function NavBar() {
         { href: '/hikayat-settat', label: 'حكايات ستات' },
         { href: '/ala-alhamesh', label: 'على الهامش' },
         { href: '/gowa-alkahka', label: 'جوه الكحكة' },
-        { href: '/infographic', label: 'إنفوجرافيك' },
+        // { href: '/infographic', label: 'إنفوجرافيك' },
     ]
 
     const breakingNews = [
