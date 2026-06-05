@@ -20,11 +20,11 @@ export default function AlaAlhameshSection({ articles, openArticleDetails }) {
                         style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                     >
                         <div className="space-y-4">
-                            <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 border border-gray-100 news-zoom-container">
+                            <div className="relative w-full aspect-[9/10] rounded-xl overflow-hidden bg-slate-100 border border-gray-100 news-zoom-container">
                                 <img
                                     src={art.image}
                                     alt={art.title}
-                                    className="w-full h-full object-cover news-zoom-img"
+                                    className="w-full h-full object-cover object-center news-zoom-img"
                                 />
                             </div>
                             <div className="space-y-2 text-right">
