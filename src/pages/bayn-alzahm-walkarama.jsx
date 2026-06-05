@@ -74,60 +74,15 @@ export default function BaynAlZahmWalkaramaPage() {
                 هذا التحقيق يرصد أبعاد الظاهرة، من خلال شهادات خبراء وتحليل اجتماعي ونفسي واقتصادي، ليكشف أن ما يحدث داخل المواصلات ليس مجرد “زحام”، بل انعكاس لمشكلة أعمق في الثقافة والسلوك العام.
               </p>
 
-              <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-                {stats.map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-slate-100 bg-white/80 p-4 shadow-sm backdrop-blur-sm">
-                    <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">{item.label}</div>
-                    <div className="mt-2 text-lg font-black text-brand-ink">{item.value}</div>
-                  </div>
-                ))}
-              </div>
+
             </div>
 
-            <aside className="rounded-[2rem] border border-slate-100 bg-brand-ink p-6 text-white shadow-lg">
-              <div className="flex items-center gap-3 text-brand-accent">
-                <span className="text-2xl">✦</span>
-                <span className="text-xs font-bold uppercase tracking-[0.25em]">ملخص المحور</span>
-              </div>
-              <h2 className="mt-4 text-2xl font-black leading-tight">التنقل حين يفقد معناه الآمن</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-200">
-                هذه المادة تتابع كيف تتحول وسيلة النقل من حق يومي بديهي إلى اختبار متكرر للصبر والكرامة، وما الذي يمكن تغييره حتى تعود المواصلات مساحة آمنة للجميع.
-              </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                <div className="rounded-2xl bg-white/10 p-4">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">المحاور</div>
-                  <div className="mt-1 text-2xl font-black">{sections.length}</div>
-                </div>
-                <div className="rounded-2xl bg-white/10 p-4">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">التركيز</div>
-                  <div className="mt-1 text-lg font-black">الكرامة في الفضاء العام</div>
-                </div>
-              </div>
-            </aside>
           </div>
         </section>
 
         <section className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <aside className="lg:sticky lg:top-6 space-y-6">
-            <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm">
-              <div className="mb-4 flex items-center justify-between">
-                <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">فهرس سريع</h3>
-                <span className="rounded-full bg-brand-secondary/10 px-3 py-1 text-xs font-bold text-brand-secondary">{sections.length} أقسام</span>
-              </div>
-              <div className="space-y-2">
-                {sections.map((section, index) => (
-                  <button
-                    key={section.title}
-                    type="button"
-                    onClick={() => scrollToSection(index)}
-                    className="block w-full rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right text-sm font-bold text-brand-inkMuted transition hover:border-brand-accent hover:bg-brand-accent hover:text-white"
-                  >
-                    <span className="block text-[11px] uppercase tracking-[0.2em] opacity-60">{String(index + 1).padStart(2, '0')}</span>
-                    <span className="block mt-1 leading-6">{section.title}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
+
 
             <InteractivePoll
               question="هل تؤيدين تخصيص عربات أو وسائل نقل عامة (أتوبيسات) حصرية بالكامل للنساء والفتيات كحل فوري لمواجهة الزحام والمضايقات؟"
@@ -135,11 +90,7 @@ export default function BaynAlZahmWalkaramaPage() {
               options={["نعم، أؤيد بشدة", "لا، أرى الرقابة والتثقيف كحل أفضل"]}
             />
 
-            <DailyCaricature
-              caption="الكرامة داخل المترو"
-              desc="بين حلم الوصول بسلام وبين واقع التدافع والزحام اليومي."
-              emoji="🚇🚶‍♀️"
-            />
+
           </aside>
 
           <article className="space-y-6">
