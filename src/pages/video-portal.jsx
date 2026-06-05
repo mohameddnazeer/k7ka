@@ -212,14 +212,14 @@ const VideoListItem = ({ video, isSelected, onClick, currentlyPlaying, onPlaySta
   const togglePlay = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    if (videoRef.current) {
+    if (videoRef.current) {/*
       if (isPlaying) {
         videoRef.current.pause()
         onPlayStateChange(null)
       } else {
         videoRef.current.play()
         onPlayStateChange(video.id)
-      }
+      }*/
     }
   }
 
@@ -406,11 +406,10 @@ export default function VideoPortalPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`shrink-0 px-4 py-2 rounded-full text-xs font-black transition-all duration-200 ${
-                    activeCategory === cat
-                      ? 'bg-[#6551a0] text-white shadow-sm'
-                      : 'bg-white text-gray-700 border border-gray-300 hover:border-[#6551a0] hover:text-[#6551a0]'
-                  }`}
+                  className={`shrink-0 px-4 py-2 rounded-full text-xs font-black transition-all duration-200 ${activeCategory === cat
+                    ? 'bg-[#6551a0] text-white shadow-sm'
+                    : 'bg-white text-gray-700 border border-gray-300 hover:border-[#6551a0] hover:text-[#6551a0]'
+                    }`}
                 >
                   {cat}
                 </button>
