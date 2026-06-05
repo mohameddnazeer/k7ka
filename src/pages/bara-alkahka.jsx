@@ -170,9 +170,9 @@ export default function BaraAlkahkaPage() {
             <BackgroundSVG />
             <NavBar />
 
-            <main className="relative z-10 mx-auto px-4 pb-20 pt-10 sm:px-6 lg:px-8 max-w-7xl">
+            <main className="relative z-10 mx-auto px-4 pb-20  sm:px-6 lg:px-8 max-w-7xl">
 
-            <header className="relative z-10 pt-16 pb-12 text-center px-4 max-w-4xl mx-auto">
+            <header className="relative z-10 pt-10 pb-12 text-center px-4 max-w-4xl mx-auto">
                 <span className="text-xs font-bold tracking-widest text-brand-accent uppercase bg-brand-accent/10 px-3 py-1 rounded-full mb-4 inline-block">
                     ملفات استقصائية خاصة
                 </span>

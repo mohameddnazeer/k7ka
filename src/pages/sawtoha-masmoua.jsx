@@ -172,7 +172,8 @@ export default function SawtohaMasmouaPage() {
             <main className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-24 pt-12 sm:px-8">
                 <header className="mb-16 text-center animate-fadeIn">
                     <div className="mb-4 inline-block">
-                        <span className="badge-soft px-4 py-1.5 text-sm font-semibold tracking-wide">الملفات الاستقصائية</span>
+                                                        <span className="inline-flex rounded-full bg-brand-accent/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">
+الملفات الاستقصائية</span>
                     </div>
                     <h1 className="mb-4 text-4xl font-black text-brand-ink sm:text-6xl tracking-tight">صوتها مسموع</h1>
                     <div className="mb-6 flex flex-col items-center justify-center gap-2">

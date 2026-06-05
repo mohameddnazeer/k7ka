@@ -125,22 +125,18 @@ export default function AlaAlhameshPage() {
             <BackgroundSVG />
             <NavBar />
 
-            <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-12 sm:px-8">
-                <section className="relative mb-10 overflow-hidden rounded-[2.5rem] border border-slate-100 bg-white shadow-sm">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(178,201,255,0.26),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(181,114,232,0.16),transparent_28%)]"></div>
+            <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24  sm:px-8">
+                <section className="relative mb-10 overflow-hidden ">
                     <div className="relative p-8 sm:p-12">
                         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-                            <div className="max-w-3xl text-right">
+                            <div className="max-w-4xl text-center mx-auto">
                                 <span className="inline-flex rounded-full bg-brand-accent/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">
-                                    ملفات على الهامش
+                                    ملفات استقصائية خاصة
                                 </span>
-                                <h1 className="mt-5 text-4xl font-black tracking-tight text-brand-ink sm:text-5xl">
+                                <h1 className="mt-4 text-5xl font-black tracking-tight text-brand-ink sm:text-7xl">
                                     قصص نساء غير مرئيات
                                 </h1>
-                                <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-                                    ملفات صحفية استقصائية تعالج قضايا ومآسي حقيقية تعيشها النساء على الهامش بمهنية عالية، وتسلط الضوء على التحديات الاجتماعية والاقتصادية العميقة التي تواجههن.
-                                </p>
-                                <div className="mt-4 flex items-center justify-start gap-2">
+                                <div className="mt-6 flex flex-col items-center justify-center gap-2">
                                     <img
                                         src="/imgs/15.jpeg"
                                         alt="صورة الكاتبة"
@@ -150,6 +146,9 @@ export default function AlaAlhameshPage() {
                                         كتبت: إسراء احمد
                                     </span>
                                 </div>
+                                <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl max-w-2xl mx-auto">
+                                    ملفات صحفية استقصائية تعالج قضايا ومآسي حقيقية تعيشها النساء على الهامش بمهنية عالية، وتسلط الضوء على التحديات الاجتماعية والاقتصادية العميقة التي تواجههن.
+                                </p>
                             </div>
 
 
@@ -162,56 +161,7 @@ export default function AlaAlhameshPage() {
                 {/* الهيكل التفاعلي المتطور لعرض الدوسيهات الصحفية (Sidebar + Main Dossier Layer) */}
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
 
-                    {/* القائمة الجانبية: عناوين التقارير السبعة للتنقل السريع */}
-                    <nav className="w-full lg:w-1/3 bg-white/95 border border-slate-100 rounded-[2rem] p-6 shadow-sm space-y-2 sticky top-6 backdrop-blur-sm">
-                        <div className="mb-4 flex items-center justify-between gap-4 px-3">
-                            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.25em]">فهرس التقارير</h3>
-                            <span className="rounded-full bg-brand-ink/5 px-3 py-1 text-xs font-bold text-brand-ink">{filteredReports.length} نتائج</span>
-                        </div>
-                        {filteredReports.length === 0 && (
-                            <div className="mx-3 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-5 text-center">
-                                <p className="text-sm font-bold text-brand-ink">لا توجد تقارير تطابق البحث</p>
-                                <p className="mt-1 text-xs leading-6 text-slate-500">جرّبي كلمات أبسط أو امسحي البحث للعودة إلى الفهرس الكامل.</p>
-                            </div>
-                        )}
-                        {filteredReports.map(([id, rep]) => {
-                            const isSelected = activeReport === Number(id);
-                            return (
-                                <button
-                                    key={id}
-                                    onClick={() => setActiveReport(Number(id))}
-                                    className={`w-full text-right p-4 rounded-xl flex items-center gap-4 transition-all duration-200 ${isSelected
-                                        ? 'bg-brand-ink text-white font-bold shadow-md shadow-brand-ink/10 scale-[1.01] ring-2 ring-brand-accent/20'
-                                        : 'bg-slate-50 hover:bg-slate-100 text-slate-700 font-medium border border-transparent hover:border-slate-200'
-                                        }`}
-                                >
-                                    <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm ${isSelected ? 'bg-white/10 text-brand-accent' : 'bg-white text-slate-400'}`}>
-                                        {id}
-                                    </span>
-                                    <span className="text-sm flex-1 truncate">
-                                        <span className="block text-[11px] uppercase tracking-[0.2em] opacity-70">{rep.tag}</span>
-                                        <span className="block mt-0.5">{rep.title.split(":")[0]}</span>
-                                    </span>
-                                    <span className="text-lg">{rep.icon}</span>
-                                </button>
-                            );
-                        })}
-
-                        <div className="mt-6 space-y-6">
-                            <InteractivePoll
-                                question="هل تؤيدين تقديم قروض متناهية الصغر معفاة تماماً من الفوائد والضمانات البنكية المعقدة كحل جذري لظاهرة الغارمات؟"
-                                pollKey="ala-alhamesh"
-                            />
-
-                            <DailyCaricature
-                                caption="المرأة المعيلة تتسلق صخور الصعاب اليومية"
-                                desc="عندما تتحول الظروف الصعبة إلى صخور، تصبح الإرادة هي حبل الصعود الوحيد."
-                                emoji="👵🧗‍♀️"
-                            />
-                        </div>
-                    </nav>
-
-                    {/* مساحة العرض الرئيسية: تفاصيل الدوسيه الصحفي النشط */}
+ {/* مساحة العرض الرئيسية: تفاصيل الدوسيه الصحفي النشط */}
                     <article className="w-full lg:w-2/3 bg-white border border-slate-100 rounded-[2.5rem] p-8 sm:p-12 shadow-sm space-y-10 min-h-[600px] animate-fadeIn relative overflow-hidden">
                         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-ink opacity-80"></div>
 
@@ -269,6 +219,56 @@ export default function AlaAlhameshPage() {
 
 
                     </article>
+                    {/* القائمة الجانبية: عناوين التقارير السبعة للتنقل السريع */}
+                    <nav className="w-full lg:w-1/3 bg-white/95 border border-slate-100 rounded-[2rem] p-6 shadow-sm space-y-2 sticky top-6 backdrop-blur-sm">
+                        <div className="mb-4 flex items-center justify-between gap-4 px-3">
+                            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.25em]">فهرس التقارير</h3>
+                            <span className="rounded-full bg-brand-ink/5 px-3 py-1 text-xs font-bold text-brand-ink">{filteredReports.length} نتائج</span>
+                        </div>
+                        {filteredReports.length === 0 && (
+                            <div className="mx-3 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-5 text-center">
+                                <p className="text-sm font-bold text-brand-ink">لا توجد تقارير تطابق البحث</p>
+                                <p className="mt-1 text-xs leading-6 text-slate-500">جرّبي كلمات أبسط أو امسحي البحث للعودة إلى الفهرس الكامل.</p>
+                            </div>
+                        )}
+                        {filteredReports.map(([id, rep]) => {
+                            const isSelected = activeReport === Number(id);
+                            return (
+                                <button
+                                    key={id}
+                                    onClick={() => setActiveReport(Number(id))}
+                                    className={`w-full text-right p-4 rounded-xl flex items-center gap-4 transition-all duration-200 ${isSelected
+                                        ? 'bg-brand-ink text-white font-bold shadow-md shadow-brand-ink/10 scale-[1.01] ring-2 ring-brand-accent/20'
+                                        : 'bg-slate-50 hover:bg-slate-100 text-slate-700 font-medium border border-transparent hover:border-slate-200'
+                                        }`}
+                                >
+                                    <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm ${isSelected ? 'bg-white/10 text-brand-accent' : 'bg-white text-slate-400'}`}>
+                                        {id}
+                                    </span>
+                                    <span className="text-sm flex-1 truncate">
+                                        <span className="block text-[11px] uppercase tracking-[0.2em] opacity-70">{rep.tag}</span>
+                                        <span className="block mt-0.5">{rep.title.split(":")[0]}</span>
+                                    </span>
+                                    <span className="text-lg">{rep.icon}</span>
+                                </button>
+                            );
+                        })}
+
+                        <div className="mt-6 space-y-6">
+                            <InteractivePoll
+                                question="هل تؤيدين تقديم قروض متناهية الصغر معفاة تماماً من الفوائد والضمانات البنكية المعقدة كحل جذري لظاهرة الغارمات؟"
+                                pollKey="ala-alhamesh"
+                            />
+
+                            <DailyCaricature
+                                caption="المرأة المعيلة تتسلق صخور الصعاب اليومية"
+                                desc="عندما تتحول الظروف الصعبة إلى صخور، تصبح الإرادة هي حبل الصعود الوحيد."
+                                emoji="👵🧗‍♀️"
+                            />
+                        </div>
+                    </nav>
+
+                   
 
                 </div>
             </main>

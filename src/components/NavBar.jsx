@@ -56,7 +56,7 @@ export default function NavBar() {
 
                     {/* شريط الأخبار العاجلة الدوار */}
                     <div className="flex items-center flex-1 mx-4 overflow-hidden relative h-full">
-                        <div className="bg-[#A91D22] text-white px-3 py-1 font-bold text-[10px] sm:text-xs tracking-wider shrink-0 flex items-center gap-1.5 z-10 shadow-md">
+                        <div className="bg-[#6551a0] text-white px-3 py-1 font-bold text-[10px] sm:text-xs tracking-wider shrink-0 flex items-center gap-1.5 z-10 shadow-md">
                             <span className="h-2 w-2 rounded-full bg-white animate-ping"></span>
                             <span>عاجل</span>
                         </div>
@@ -122,7 +122,7 @@ export default function NavBar() {
                                     key={link.href}
                                     to={link.href}
                                     className={`shrink-0 snap-center rounded-lg px-3.5 py-2 text-xs sm:text-sm transition-all duration-200 ${isActive
-                                        ? 'bg-[#A91D22] text-white shadow-sm font-black'
+                                        ? 'bg-[#6551a0] text-white shadow-sm font-black'
                                         : 'text-white hover:text-white hover:bg-white/20'
                                         }`}
                                 >

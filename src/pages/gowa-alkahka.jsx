@@ -271,7 +271,7 @@ export default function GowaAlkahkaPage() {
                 <TrendingTags tags={["جوه_الكحكة", "الضغوط_النفسية", "البنت_القوية", "الخوف_من_الزواج", "شريك_الحياة", "الاستقلال_النفسي"]} />
 
                 {/* Two-Column Sidebar Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mb-16">
 
                     {/* Right column: Content & Grid */}
                     <div className="lg:col-span-2 space-y-16">
@@ -320,15 +320,8 @@ export default function GowaAlkahkaPage() {
                             ))}
                         </div>
 
-
-
-                        {/* Additional Content: Perspectives & Experts */}
-
-
-
                     </div>
 
-                    {/* Left column: Sidebar Widgets */}
 
                 </div>
 
