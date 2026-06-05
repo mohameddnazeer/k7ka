@@ -834,39 +834,33 @@ export default function Home() {
                             <Link to="/sawtoha-masmoua" className="text-xs font-black text-[#A91D22] hover:underline">عرض ملف صوتها مسموع بالكامل ←</Link>
                         </div>
 
-                        <div className="grid gap-6 lg:grid-cols-12 items-stretch">
-                            {/* اقتباس تحريري مميز (4 أعمدة) */}
-
-
-                            {/* المقالات التابعة للقسم (8 أعمدة) */}
-                            <div className="lg:col-span-12 grid gap-6 sm:grid-cols-2">
-                                {sawtohaHighlights.map((item, idx) => (
-                                    <Link
-                                        key={item.id}
-                                        to="/sawtoha-masmoua"
-                                        state={{ investigationId: item.investigationId }}
-                                        className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
-                                        style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
-                                    >
-                                        <div className="space-y-3">
-                                            <div className="flex justify-between items-center text-[10px] font-bold text-gray-400">
-                                                <span className="bg-red-50 text-[#A91D22] px-2 py-0.5 rounded border border-red-100">{item.category}</span>
-                                                <span>👁️ {item.views.toLocaleString()}</span>
-                                            </div>
-                                            <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
-                                                {item.title}
-                                            </h3>
-                                            <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
-                                                {item.subtitle}
-                                            </p>
+                        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+                            {sawtohaHighlights.map((item, idx) => (
+                                <Link
+                                    key={item.id}
+                                    to="/sawtoha-masmoua"
+                                    state={{ investigationId: item.investigationId }}
+                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
+                                >
+                                    <div className="space-y-3">
+                                        <div className="flex justify-between items-center text-[10px] font-bold text-gray-400">
+                                            <span className="bg-red-50 text-[#A91D22] px-2 py-0.5 rounded border border-red-100">{item.category}</span>
+                                            <span>👁️ {item.views.toLocaleString()}</span>
                                         </div>
-                                        <div className="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
-                                            <span>التحقيق الاستقصائي بالكامل</span>
-                                            <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
-                                        </div>
-                                    </Link>
-                                ))}
-                            </div>
+                                        <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
+                                            {item.subtitle}
+                                        </p>
+                                    </div>
+                                    <div className="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
+                                        <span>التحقيق الاستقصائي بالكامل</span>
+                                        <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
+                                    </div>
+                                </Link>
+                            ))}
                         </div>
                     </section>
 
