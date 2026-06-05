@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
@@ -6,8 +7,15 @@ import InteractionsPanel from '../components/InteractionsPanel'
 import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 export default function SawtohaMasmouaPage() {
+    const location = useLocation();
+
+    const isValidInvestigationId = (id) => Number.isInteger(id) && id >= 1 && id <= 6;
+    const requestedInvestigationId = Number(location.state?.investigationId);
+
     // تحديد التحقيق النشط حالياً في الصفحة
-    const [activeInvestigation, setActiveInvestigation] = useState(1);
+    const [activeInvestigation, setActiveInvestigation] = useState(
+        isValidInvestigationId(requestedInvestigationId) ? requestedInvestigationId : 1
+    );
 
     const investigationsData = {
         1: {
@@ -146,6 +154,15 @@ export default function SawtohaMasmouaPage() {
 
     // جلب بيانات التحقيق النشط حالياً بناءً على الاختيار
     const currentInvestigation = investigationsData[activeInvestigation];
+
+    useEffect(() => {
+        const nextInvestigationId = Number(location.state?.investigationId);
+
+        if (isValidInvestigationId(nextInvestigationId)) {
+            setActiveInvestigation(nextInvestigationId);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }, [location.state]);
 
     return (
         <div className="relative min-h-screen overflow-hidden bg-[#faf9f6]" dir="rtl">

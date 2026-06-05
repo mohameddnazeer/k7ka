@@ -352,6 +352,32 @@ const societyArticles = articles.filter(art => art.category === 'قضايا ال
 const legalArticles = articles.filter(art => art.category === 'كلام قانون');
 const successArticles = articles.filter(art => art.category === 'قصص ملهمة' || art.category === 'حكايات ستات');
 const gowaArticles = articles.filter(art => art.category === 'جوه الكحكة');
+const sawtohaHighlights = [
+    {
+        id: 1,
+        investigationId: 1,
+        category: 'صوتها مسموع',
+        title: 'النسوية على السوشيال ميديا… بين تمكين النساء وصناعة الوهم الرقمي',
+        subtitle: 'تحقيق يرصد كيف تصنع الخوارزميات خطابا مرتفع الصوت بين الوعي الحقيقي وضغط التريند.',
+        views: 18243
+    },
+    {
+        id: 2,
+        investigationId: 2,
+        category: 'صوتها مسموع',
+        title: 'المرأة والعمل التنفيذي… كسر السقف الزجاجي في الإدارات العليا',
+        subtitle: 'قراءة ميدانية في فجوة الترقي، التشكيك المبطن، وصناعة القرار داخل بيئات العمل التنفيذية.',
+        views: 13920
+    },
+    {
+        id: 3,
+        investigationId: 3,
+        category: 'صوتها مسموع',
+        title: 'في قلب المكاتب الصامتة وبيئة العمل الذكورية',
+        subtitle: 'شهادات حية تكشف العزل المهني غير المعلن والتحديات اليومية للعاملات في القطاعات المغلقة.',
+        views: 12107
+    }
+];
 const heroStories = [
     {
         id: 1,
@@ -813,31 +839,32 @@ export default function Home() {
 
 
                             {/* المقالات التابعة للقسم (8 أعمدة) */}
-                            <div className="lg:col-span-8 grid gap-6 sm:grid-cols-2">
-                                {articles.filter(art => art.category === 'صوتها مسموع').slice(0, 2).map((art, idx) => (
-                                    <article
-                                        key={art.id}
-                                        onClick={() => openArticleDetails(art)}
+                            <div className="lg:col-span-12 grid gap-6 sm:grid-cols-2">
+                                {sawtohaHighlights.map((item, idx) => (
+                                    <Link
+                                        key={item.id}
+                                        to="/sawtoha-masmoua"
+                                        state={{ investigationId: item.investigationId }}
                                         className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
                                         style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                                     >
                                         <div className="space-y-3">
                                             <div className="flex justify-between items-center text-[10px] font-bold text-gray-400">
-                                                <span className="bg-red-50 text-[#A91D22] px-2 py-0.5 rounded border border-red-100">{art.category}</span>
-                                                <span>👁️ {art.views.toLocaleString()}</span>
+                                                <span className="bg-red-50 text-[#A91D22] px-2 py-0.5 rounded border border-red-100">{item.category}</span>
+                                                <span>👁️ {item.views.toLocaleString()}</span>
                                             </div>
                                             <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
-                                                {art.title}
+                                                {item.title}
                                             </h3>
                                             <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
-                                                {art.subtitle}
+                                                {item.subtitle}
                                             </p>
                                         </div>
                                         <div className="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
                                             <span>التحقيق الاستقصائي بالكامل</span>
                                             <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
                                         </div>
-                                    </article>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
