@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import AlaAlhameshSection from '../components/AlaAlhameshSection'
 
 
 const articles = [
@@ -352,6 +353,65 @@ const societyArticles = articles.filter(art => art.category === 'قضايا ال
 const legalArticles = articles.filter(art => art.category === 'كلام قانون');
 const successArticles = articles.filter(art => art.category === 'قصص ملهمة' || art.category === 'حكايات ستات');
 const gowaArticles = articles.filter(art => art.category === 'جوه الكحكة');
+const alaAlhameshArticles = [
+    {
+        id: 1,
+        title: "المرأة المعيلة: القيادة الفردية في مهب الأزمات الاقتصادية وتآكل الدخل",
+        subtitle: "تعيل النساء ما يقارب ثلث الأسر المصرية والعربية وتواجه أعباءً مضاعفة بين العمل الشاق والرعاية.",
+        category: "على الهامش",
+        author: "عائشة حسين",
+        date: "٢ يونيو ٢٠٢٦",
+        time: "٠٩:٣٠ ص",
+        views: "",
+        likes: "",
+        image: "/imgs/11.jpeg",
+        to: "/ala-alhamesh",
+        content: [
+            { heading: "الصراع اليومي بين لقمة العيش وتربية الأبناء", text: "تستيقظ المرأة المعيلة في الفجر لتكسب قوت يومها من بيع البضائع البسيطة أو العمل في مهن شاقة. تقضي يومها في توازن حرج ومؤلم بين كسب المال لتدبير الإيجار ومصاريف المدارس، وبين غيابها الاضطراري عن المنزل لمراقبة سلوك أطفالها." },
+            { heading: "التمييز الفج في الأجور ومحدودية الفرص", text: "رغم الكفاءة والجهد المضاعف، تعاني المرأة المعيلة من تمييز واضح في الأجور في القطاعات الحرة مقارنة بالرجال، كما تصطدم بغياب القروض الميسرة التي تمكنها من تكبير تجارتها أو مشروعها الصغير دون شروط معقدة." },
+            { heading: "أهمية الدعم المؤسسي المستدام والتأمين الصحي", text: "تفتقر الغالبية العظمى من النساء المعيلات لغطاء تأميني وصحي يحميهن في حال المرض؛ فمرض المرأة المعيلة يعني توقف دخل الأسرة كاملاً. من هنا تنبع المطالبات بضم هذه الفئة إلى مظلات تأمينية شاملة ومعاشات كريمة تضمن صون كرامتهن." }
+        ],
+        comments: [
+            { user: "بهاء جمال", text: "أحيي كل امرأة معيلة تكافح بمفردها لبناء مستقبل أبنائها." }
+        ]
+    },
+    {
+        id: 2,
+        title: "إنجاب البنات: موروث ثقافي في مواجهة الحقيقة البيولوجية والدينية للنوع",
+        subtitle: "تفاصيل التحقيق الاجتماعي حول تفضيل الذكور وتأثير ذلك على استقرار الأسر والصحة النفسية للأمهات.",
+        category: "على الهامش",
+        author: "بسمه رضا",
+        date: "١ يونيو ٢٠٢٦",
+        time: "٠٢:١٥ م",
+        views: "",
+        likes: "",
+        image: "/imgs/13.jpeg",
+        to: "/ala-alhamesh",
+        content: [
+            { heading: "جذور تاريخية لا تزال حاضرة", text: "تشير الدراسات الاجتماعية إلى أن تفضيل الذكور ليس ظاهرة حديثة، بل يمتد إلى عصور قديمة ارتبطت فيها قيمة الفرد بقدرته على العمل والحماية. في تلك الفترات، اعتُبر الذكر مصدر قوة، بينما نُظر إلى الأنثى كعبء اقتصادي." },
+            { heading: "الدين يحسم الجدل", text: "على خلاف ما يعتقد البعض، لا يدعم الدين أي تمييز بين الذكور والإناث. بل على العكس، يرفع من مكانة البنات ويحث على الإحسان إليهن. ويؤكد علماء الدين أن رفض إنجاب البنات يتنافس مع جوهر القيم الإنسانية والدينية." }
+        ],
+        comments: []
+    },
+    {
+        id: 3,
+        title: "ام المعاق سوبر هيرو لا يراه أحد",
+        subtitle: "شهادات حية لأمهات أطفال ذوي الاحتياجات الخاصة وتحديات الدمج وغياب الدعم المؤسسي والنفسي.",
+        category: "على الهامش",
+        author: "اسراء جمال",
+        date: "٣١ مايو ٢٠٢٦",
+        time: "١١:٠٠ ص",
+        views: "",
+        likes: "",
+        image: "/imgs/15.jpeg",
+        to: "/om-eltifl-dhawi-al-eaahaq",
+        content: [
+            { heading: "العزلة الاجتماعية والانسحاب من الحياة", text: "تجد أم الطفل المعاق نفسها مجبرة على التخلي عن وظيفتها وحياتها الاجتماعية لتتحول إلى مرافق دائم على مدار الساعة. تضيق مساحتها الشخصية وتصبح طموحاتها مؤجلة لأجل غير مسمى في ظل غياب مراكز رعاية حكومية مجانية وموثوقة." },
+            { heading: "غياب الدعم النفسي للأم كشريك أساسي", text: "يركز الجميع على تأهيل الطفل، بينما تترك الأم لتواجه التوتر الشديد، والاحتراق النفسي، والقلق الدائم حول مستقبل الابن بعد رحيلها. تحتاج هذه الفئة إلى برامج دعم نفسي حكومية ومجتمعية إلزامية." }
+        ],
+        comments: []
+    }
+];
 const sawtohaHighlights = [
     {
         id: 1,
@@ -864,53 +924,7 @@ export default function Home() {
                         </div>
                     </section>
 
-                    {/* ملف خاص: على الهامش - الغارمات، المعيلات وصمود الأمهات */}
-                    <section className="space-y-6">
-                        <div className="flex items-center justify-between border-b border-gray-300 pb-3">
-                            <div className="flex items-center gap-2">
-                                <span className="w-4 h-4 bg-slate-800 block"></span>
-                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">ملف على الهامش: تحديات صامتة وأسر تديرها نساء</h2>
-                            </div>
-                            <Link to="/ala-alhamesh" className="text-xs font-black text-[#A91D22] hover:underline">زيارة ملف على الهامش بالكامل ←</Link>
-                        </div>
-
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {articles.filter(art => art.category === 'على الهامش' || art.to === '/ala-alhamesh').slice(0, 3).map((art, idx) => (
-                                <article
-                                    key={art.id}
-                                    onClick={() => openArticleDetails(art)}
-                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
-                                    style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
-                                >
-                                    <div className="space-y-4">
-                                        <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-100 border border-gray-100 news-zoom-container">
-                                            <img
-                                                src={art.image}
-                                                alt={art.title}
-                                                className="w-full h-full object-cover news-zoom-img"
-                                            />
-                                        </div>
-                                        <div className="space-y-2 text-right">
-                                            <div className="flex justify-between items-center text-[10px] font-bold text-gray-400">
-                                                <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200">{art.category}</span>
-                                                <span>🗓️ {art.date}</span>
-                                            </div>
-                                            <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
-                                                {art.title}
-                                            </h3>
-                                            <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
-                                                {art.subtitle}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="mt-5 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
-                                        <span>قراءة المزيد</span>
-                                        <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
-                                    </div>
-                                </article>
-                            ))}
-                        </div>
-                    </section>
+                    <AlaAlhameshSection articles={alaAlhameshArticles} openArticleDetails={openArticleDetails} />
 
                     {/* 3. قسم المرأة والأسرة وشؤون المجتمع (مكثف ومزدوج) */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
