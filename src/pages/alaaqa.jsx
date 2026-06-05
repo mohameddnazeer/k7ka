@@ -186,35 +186,11 @@ export default function AlaaqaPage() {
                             />
                         </div>
 
-                        <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg">
-                            <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">إعلان الموقع</div>
-                            <h2 className="mt-3 text-2xl font-black sm:text-3xl">هذا الموقع مساحة معرفة لا موضوع واحد</h2>
-                            <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
-                                نحن نعرض موضوعات متعددة ضمن إطار واحد: محتوى عربي واضح، صفحات منسقة، وروابط تساعد القارئ على التنقل بين الأقسام بسهولة.
-                            </p>
-                        </section>
+
 
                         <InteractionsPanel articleId="alaaqa" />
 
-                        <section id="contact" className="rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm">
-                            <div className="mb-5 flex items-center justify-between gap-4">
-                                <div>
-                                    <div className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400">اتصل بنا</div>
-                                    <h2 className="mt-2 text-2xl font-black text-brand-ink">للتواصل أو المقترحات</h2>
-                                </div>
-                                <span className="rounded-full bg-brand-accent/10 px-4 py-2 text-xs font-bold text-brand-accent">متاح للتطوير</span>
-                            </div>
-                            <div className="grid gap-3 sm:grid-cols-2">
-                                <div className="rounded-2xl bg-slate-50 p-4">
-                                    <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">البريد</div>
-                                    <div className="mt-2 text-sm font-bold text-brand-ink">info@example.com</div>
-                                </div>
-                                <div className="rounded-2xl bg-slate-50 p-4">
-                                    <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">نوع الموقع</div>
-                                    <div className="mt-2 text-sm font-bold text-brand-ink">محتوى تحريري وتعريفي</div>
-                                </div>
-                            </div>
-                        </section>
+
                     </article>
                 </section>
             </main>

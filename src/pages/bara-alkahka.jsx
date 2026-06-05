@@ -180,6 +180,16 @@ export default function BaraAlkahkaPage() {
                             بره الكحكة • ٠٧ ملفات تحريرية
                         </span>
                         <h1 className="text-4xl font-black md:text-5xl text-brand-ink tracking-tight">بره الكحكة</h1>
+                        <div className="flex items-center gap-3 py-1">
+                            <img
+                                src="/imgs/11.jpeg"
+                                alt="صورة الكاتبة"
+                                className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
+                            />
+                            <span className="text-2xl font-bold text-slate-700">
+                                كتبت: عائشة حسين
+                            </span>
+                        </div>
                         <p className="text-sm sm:text-base leading-relaxed text-slate-600 font-medium">
                             جولة واقعية وتحليلات ميدانية معمقة ترصد تداخلات العالم الافتراضي ومتاهات السوشيال ميديا وأخلاقيات الفضاء العام للشارع والبيت.
                         </p>

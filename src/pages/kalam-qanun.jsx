@@ -311,6 +311,16 @@ export default function KalamQanun() {
                             <h1 className="text-4xl font-black text-brand-ink sm:text-6xl mb-6 tracking-tight">
                                 كلام قانون
                             </h1>
+                            <div className="mb-6 flex flex-col items-center justify-center gap-2">
+                                <img
+                                    src="/imgs/12.jpeg"
+                                    alt="صورة الكاتبة"
+                                    className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
+                                />
+                                <span className="text-2xl font-bold text-slate-700">
+                                    كتب: بهاء جمال
+                                </span>
+                            </div>
                             <p className="mx-auto max-w-2xl text-lg text-brand-inkMuted/80 font-medium leading-relaxed">
                                 تبسيط المفاهيم القانونية بالتعاون مع خبراء قانونيين ومؤسسة قضايا المرأة المصرية. الوعي هو أول خطوة لحماية حقوقك.
                             </p>

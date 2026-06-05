@@ -13,9 +13,9 @@ const articles = [
         author: "اسراء أحمد",
         date: "٢ يونيو ٢٠٢٦",
         time: "١٠:١٥ ص",
-        views: 12450,
-        likes: 520,
-        image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg",
+        views: "",
+        likes: "",
+        image: "/imgs/15.jpeg",
         to: "/kalam-qanun",
         content: [
             { heading: "ما هي الولاية التعليمية؟", text: "هي السلطة القانونية التي تمنح صاحبها الحق في التقديم للأطفال في المدارس، أو نقل ملفاتهم، أو اختيار نوع التعليم المناسب لهم. الهدف الأساسي منها هو حماية مصلحة الطفل الفضلى ومنع استخدام التعليم كوسيلة للضغط بين الطرفين." },
@@ -35,9 +35,9 @@ const articles = [
         author: "عائشة حسين",
         date: "٢ يونيو ٢٠٢٦",
         time: "٠٩:٣٠ ص",
-        views: 9820,
-        likes: 410,
-        image: "/imgs/10.jpeg",
+        views: "",
+        likes: "",
+        image: "/imgs/11.jpeg",
         to: "/ala-alhamesh",
         content: [
             { heading: "الصراع اليومي بين لقمة العيش وتربية الأبناء", text: "تستيقظ المرأة المعيلة في الفجر لتكسب قوت يومها من بيع البضائع البسيطة أو العمل في مهن شاقة. تقضي يومها في توازن حرج ومؤلم بين كسب المال لتدبير الإيجار ومصاريف المدارس، وبين غيابها الاضطراري عن المنزل لمراقبة سلوك أطفالها." },
@@ -56,13 +56,13 @@ const articles = [
         author: "بهاء جمال",
         date: "١ يونيو ٢٠٢٦",
         time: "٠٦:٤٥ م",
-        views: 15600,
-        likes: 830,
-        image: "/imgs/3.png",
+        views: "",
+        likes: "",
+        image: "/imgs/12.jpeg",
         to: "/sawtoha-masmoua",
         content: [
             { heading: "من النخبة إلى الترند: كيف تغيّرت ملامح النسوية؟", text: "في السابق، ارتبطت النسوية بخطابات فكرية معقدة، وأسماء أكاديمية، ونقاشات تدور في نطاق ضيق نسبيًا. لكن مع صعود السوشيال ميديا، انتقلت هذه القضايا إلى المجال العام، حيث باتت تُطرح في فيديوهات قصيرة ومنشورات مختصرة تصل إلى ملايين المتابعين خلال ساعات. ما حدث هو تبسيط واسع للمفاهيم، وهو أمر إيجابي من حيث الانتشار، لكنه خطير من حيث فقدان العمق." },
-            { heading: "تمكين حقيقي أم أداء رقمي؟", text: "رصد التحقيق عشرات الحسابات التي تقدم محتوى نسويًا، وتبيّن أن جزءًا منها يلعب دورًا مهمًا في رفع الوعي، من خلال مناقشة قضايا مثل الاستقلال الاقتصادي، والحقوق القانونية، والعنف ضد المرأة. لكن في المقابل، يرى خبراء الإعلام أن هناك نمطًا آخر من المحتوى يعتمد على الاستفزاز كوسيلة للانتشار وجذب التفاعل." },
+            { heading: "تمكين حقيقي أم أداء رقمي؟", text: "رصد التحقيق عشرات الحسابات التي تقدم محتوى نسويًا، وتبيّن أن جزءًا منها يلعب دورًا مهمًا في رفع الوعي، من خلال مناقشة قضايا مثل الاستقلال الاقتصادي، والحقوق القانونية، والعنف ضد المرأة. لكن في المقابل، يرى خبراء الإعلام الرقمي أن هناك نمطًا آخر من المحتوى يعتمد على الاستفزاز كوسيلة للانتشار وجذب التفاعل." },
             { heading: "من يصنع الصوت؟ خوارزميات تتحكم في الوعي", text: "التحقيق يكشف أن ما يظهر على السوشيال ميديا ليس بالضرورة انعكاسًا حقيقيًا للواقع، بل نتيجة لاختيارات خوارزمية تعتمد على التفاعل. خبراء الإعلام الرقمي يؤكدون أن المحتوى الأكثر إثارة للجدل هو الأكثر انتشارًا، وهو ما يعني أن الأصوات المعتدلة قد لا تحظى بنفس الظهور." }
         ],
         comments: [
@@ -77,9 +77,9 @@ const articles = [
         author: "بسمه رضا",
         date: "١ يونيو ٢٠٢٦",
         time: "٠٢:١٥ م",
-        views: 8430,
-        likes: 310,
-        image: "/imgs/7.png",
+        views: "",
+        likes: "",
+        image: "/imgs/13.jpeg",
         to: "/ala-alhamesh",
         content: [
             { heading: "جذور تاريخية لا تزال حاضرة", text: "تشير الدراسات الاجتماعية إلى أن تفضيل الذكور ليس ظاهرة حديثة، بل يمتد إلى عصور قديمة ارتبطت فيها قيمة الفرد بقدرته على العمل والحماية. في تلك الفترات، اعتُبر الذكر مصدر قوة، بينما نُظر إلى الأنثى كعبء اقتصادي." },
@@ -89,15 +89,15 @@ const articles = [
     },
     {
         id: 5,
-        title: "أم المعاق: المعركة اليومية الصامتة في مواجهة مجتمع وبنية تحتية غير مهيأة",
+        title: "",
         subtitle: "شهادات حية لأمهات أطفال ذوي الاحتياجات الخاصة وتحديات الدمج وغياب الدعم المؤسسي والنفسي.",
         category: "على الهامش",
-        author: "بسمه رضا",
+        author: "اسراء جمال",
         date: "٣١ مايو ٢٠٢٦",
         time: "١١:٠٠ ص",
-        views: 7910,
-        likes: 290,
-        image: "/imgs/carousel/The-mother-of-the-disabled-a-superhero-no-one-sees.jpeg",
+        views: "",
+        likes: "",
+        image: "/imgs/15.jpeg",
         to: "/om-eltifl-dhawi-al-eaahaq",
         content: [
             { heading: "العزلة الاجتماعية والانسحاب من الحياة", text: "تجد أم الطفل المعاق نفسها مجبرة على التخلي عن وظيفتها وحياتها الاجتماعية لتتحول إلى مرافق دائم على مدار الساعة. تضيق مساحتها الشخصية وتصبح طموحاتها مؤجلة لأجل غير مسمى في ظل غياب مراكز رعاية حكومية مجانية وموثوقة." },
@@ -113,8 +113,8 @@ const articles = [
         author: "عائشة حسين",
         date: "٣٠ مايو ٢٠٢٦",
         time: "٠٨:١٥ ص",
-        views: 11200,
-        likes: 670,
+        views: "",
+        likes: "",
         image: "/imgs/carousel/suffering-of-women-on-public-transportation.jpeg",
         to: "/bayn-alzahm-walkarama",
         content: [
@@ -131,8 +131,8 @@ const articles = [
         author: "احمد ابراهيم",
         date: "٢٩ مايو ٢٠٢٦",
         time: "٠٤:٣٠ م",
-        views: 14200,
-        likes: 810,
+        views: "",
+        likes: "",
         image: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
         to: "/hous-eltagmeel",
         content: [
@@ -149,9 +149,9 @@ const articles = [
         author: "بسمه رضا",
         date: "٢٨ مايو ٢٠٢٦",
         time: "٠٢:٠٠ م",
-        views: 6540,
-        likes: 210,
-        image: "/imgs/carousel/First-year-of-motherhood.jpeg",
+        views: "",
+        likes: "",
+        image: "/imgs/14.jpeg",
         to: "/sana-ola-omoma",
         content: [
             { heading: "صدمة التحول والهوية الجديدة", text: "بين دفء الرضيع والمسؤوليات الضخمة المفاجئة، تعيش الأم الجديدة اضطرابات نفسية حادة وجروح جسدية وتغييراً كاملاً في جدول نومها وحياتها الاجتماعية، وهو ما يتطلب تفهماً ومساندة حقيقية من الزوج والأسرة." }
@@ -166,33 +166,16 @@ const articles = [
         author: "احمد ابراهيم",
         date: "٢٧ مايو ٢٠٢٦",
         time: "٠٩:٠٠ ص",
-        views: 5200,
-        likes: 180,
-        image: "/imgs/carousel/house-cleaning-routine.jpeg",
+        views: "",
+        likes: "",
+        image: "/imgs/15.jpeg",
         to: "/roteen-tanzeef-almanzel",
         content: [
             { heading: "العمل غير المرئي في المنزل", text: "الطبخ، التنظيف، الغسيل، ومتابعة دراسة الأطفال؛ أعمال يومية متكررة تستهلك طاقة المرأة وتأخذ وقتاً هائلاً، لكن يُنظر إليها كمسلمات وواجبات افتراضية خالية من القيمة المهنية والمالية." }
         ],
         comments: []
     },
-    {
-        id: 10,
-        title: "الطلاق للضرر أم الخلع؟ دليل المرأة لاتخاذ القرار الصحيح وحفظ حقوقها المالية",
-        subtitle: "شرح الفروق القانونية والإجرائية والمادية والزمنية لمسارات فك الرابطة الزوجية.",
-        category: "كلام قانون",
-        author: "عائشة حسين",
-        date: "٢٦ مايو ٢٠٢٦",
-        time: "١٢:٣٠ م",
-        views: 11050,
-        likes: 490,
-        image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg",
-        to: "/kalam-qanun",
-        content: [
-            { heading: "الخلع: السرعة مقابل التنازل المالي", text: "يتميز الخلع بسرعة الفصل القضائي، حيث تقرر الزوجة التنازل عن كامل حقوقها الشرعية والمالية (مؤخر الصداق، نفقة المتعة والعدة) لتسترد حريتها سريعاً." },
-            { heading: "الطلاق للضرر: حقوق كاملة ولكن بزمن أطول", text: "يطلب إثبات أسباب واضحة (التعدي، الهجر، سوء المعاشرة) بشهادة الشهود أو المستندات، وميزته هي احتفاظ الزوجة بكامل مستحقاتها المالية لكنه قد يطول في المحاكم." }
-        ],
-        comments: []
-    },
+
     {
         id: 11,
         title: "الجرائم الإلكترونية والتزييف العميق: التهديد التقني الجديد لسمعة وحياة المرأة",
@@ -201,8 +184,8 @@ const articles = [
         author: "بهاء جمال",
         date: "٢٥ مايو ٢٠٢٦",
         time: "١٠:٠٠ ص",
-        views: 13900,
-        likes: 720,
+        views: "",
+        likes: "",
         image: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
         to: "/kalam-qanun",
         content: [
@@ -219,8 +202,8 @@ const articles = [
         author: "بهاء جمال",
         date: "٢٤ مايو ٢٠٢٦",
         time: "٠٣:٠٠ م",
-        views: 7120,
-        likes: 380,
+        views: "",
+        likes: "",
         image: "/imgs/2.png",
         to: "/mahw-el-omya",
         content: [
@@ -230,14 +213,14 @@ const articles = [
     },
     {
         id: 13,
-        title: "صراع الأدوار والمسؤوليات: دليل الأم العاملة للتوازن الصعب",
+        title: "روتين تنظيف المنزل",
         subtitle: "تحقيق يبحث في التوفيق بين التطلعات المهنية والالتزام العائلي دون احتراق نفسي.",
         category: "بين البيت والشغل",
         author: "حوريه اسامه",
         date: "٢٣ مايو ٢٠٢٦",
         time: "١١:١٥ ص",
-        views: 8900,
-        likes: 340,
+        views: "",
+        likes: "",
         image: "/imgs/carousel/house-cleaning-routine.jpeg",
         to: "/bayn-albayt-walshoghl",
         content: [
@@ -253,8 +236,8 @@ const articles = [
         author: "حوريه اسامه",
         date: "٢٢ مايو ٢٠٢٦",
         time: "٠٤:٠٠ م",
-        views: 12100,
-        likes: 540,
+        views: "",
+        likes: "",
         image: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
         to: "/gowa-alkahka",
         content: [
@@ -270,8 +253,8 @@ const articles = [
         author: "حوريه اسامه",
         date: "٢١ مايو ٢٠٢٦",
         time: "١٠:١٥ ص",
-        views: 14300,
-        likes: 710,
+        views: "",
+        likes: "",
         image: "/imgs/3.png",
         to: "/gowa-alkahka",
         content: [
@@ -281,14 +264,14 @@ const articles = [
     },
     {
         id: 16,
-        title: "التريندات القاتلة وتحديات الفضاء الرقمي: فخ الشهرة السريعة",
+        title: "محو أميه المرأة",
         subtitle: "كيف تسحب خوارزميات السوشيال ميديا المراهقات إلى مسارات خطرة تهدد سلامتهن؟",
         category: "بره الكحكة",
         author: "اسراء أحمد",
         date: "٢٠ مايو ٢٠٢٦",
         time: "٠٩:٠٠ ص",
-        views: 18500,
-        likes: 920,
+        views: "",
+        likes: "",
         image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg",
         to: "/bara-alkahka",
         content: [
@@ -304,8 +287,8 @@ const articles = [
         author: "اسراء أحمد",
         date: "١٩ مايو ٢٠٢٦",
         time: "١٢:٠٠ م",
-        views: 15300,
-        likes: 800,
+        views: "",
+        likes: "",
         image: "/imgs/carousel/suffering-of-women-on-public-transportation.jpeg",
         to: "/bara-alkahka",
         content: [
@@ -315,14 +298,14 @@ const articles = [
     },
     {
         id: 18,
-        title: "حكايات ستات: مذكرات أم مغتربة بين شوق الأوطان ورعاية الصغار",
+        title: "سنة اولي أمومة",
         subtitle: "سرديات وقصص واقعية تروي اليوميات المليئة بالتحديات والدروس والمسؤوليات للأمهات.",
         category: "حكايات ستات",
         author: "احمد ابراهيم",
         date: "١٨ مايو ٢٠٢٦",
         time: "٠٢:٣٠ م",
-        views: 6200,
-        likes: 190,
+        views: "",
+        likes: "",
         image: "/imgs/carousel/First-year-of-motherhood.jpeg",
         to: "/hikayat-settat",
         content: [
@@ -700,41 +683,7 @@ export default function Home() {
                             </article>
                         </section>
 
-                        {/* العمود الأوسط: شريط العناوين الأحدث (25% عرض) */}
-                        <section className="lg:col-span-4 space-y-4">
-                            <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
-                                <span className="w-3.5 h-3.5 bg-gray-600 block"></span>
-                                <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">شريط الأخبار</h2>
-                            </div>
 
-                            <div className="divide-y divide-gray-200 bg-white border border-gray-200 px-4 shadow-2xs">
-                                {latestArticles.map((art, idx) => (
-                                    <article
-                                        key={art.id}
-                                        onClick={() => handleNewsTickerClick(art)}
-                                        className="py-3.5 px-2 -mx-2 rounded-xl cursor-pointer group flex items-start gap-3 transition-all duration-300 hover:bg-slate-50 hover:translate-x-[-4px] animate-fadeInUp opacity-0"
-                                        style={{ animationDelay: `${idx * 80}ms`, animationFillMode: 'forwards' }}
-                                    >
-                                        <div className="w-16 h-16 shrink-0 bg-slate-50 overflow-hidden border border-gray-100 news-zoom-container">
-                                            <img
-                                                src={art.image}
-                                                alt={art.title}
-                                                className="w-full h-full object-cover news-zoom-img"
-                                            />
-                                        </div>
-                                        <div className="flex-1 space-y-1">
-                                            <div className="flex justify-between items-center gap-1.5">
-                                                <span className="text-[10px] font-bold text-[#A91D22] uppercase">{art.category}</span>
-                                                <span className="text-[9px] font-medium text-gray-400">{art.time}</span>
-                                            </div>
-                                            <h4 className="text-xs font-bold text-gray-800 leading-tight line-clamp-2 group-hover:text-[#A91D22] transition duration-150">
-                                                {art.title}
-                                            </h4>
-                                        </div>
-                                    </article>
-                                ))}
-                            </div>
-                        </section>
 
                     </div>
 
@@ -1408,7 +1357,7 @@ export default function Home() {
                                 {infoIndex + 1} / {infographicsData.length}
                             </div>
 
-                           
+
 
                             {/* Image Viewer Container */}
                             <div className="relative aspect-[4/5] sm:aspect-[16/10] w-full max-h-[600px] overflow-hidden bg-slate-50 rounded-2xl flex items-center justify-center group mb-6 border border-slate-100">
@@ -1465,11 +1414,10 @@ export default function Home() {
                                     {/* Autoplay Switch */}
                                     <button
                                         onClick={() => setInfoPlaying(!infoPlaying)}
-                                        className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 border shadow-xs ${
-                                            infoPlaying 
-                                                ? 'bg-amber-500 border-amber-600 text-white hover:bg-amber-600' 
-                                                : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
-                                        }`}
+                                        className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 border shadow-xs ${infoPlaying
+                                            ? 'bg-amber-500 border-amber-600 text-white hover:bg-amber-600'
+                                            : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                                            }`}
                                     >
                                         <span>{infoPlaying ? '⏸️ إيقاف التدوير' : '▶️ تشغيل تلقائي'}</span>
                                     </button>

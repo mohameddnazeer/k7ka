@@ -155,37 +155,21 @@ export default function HikayatSettatPage() {
                                         حكايات ستات
                                     </span>
                                     <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold text-brand-ink">حوارات كحكة</h1>
+
                                     <p className="mt-2 text-sm text-slate-600 max-w-2xl">ستة حوارات وملفات معمقة تعبر عن صوت المرأة بعيداً عن التنميط، وترسم ملامح القوة والوعي النفسي في تفاصيل الحياة اليومية.</p>
-                                </div>
-
-                                <div className="flex-1 max-w-xl">
-                                    <label className="relative block">
-                                        <input
-                                            aria-label="بحث"
-                                            value={query}
-                                            onChange={(e) => setQuery(e.target.value)}
-                                            className="w-full pr-12 pl-4 py-3 rounded-2xl border border-slate-200 bg-white placeholder-slate-400 text-right"
-                                            placeholder="ابحث في الحكايات والعناوين..."
+                                    <div className="mt-4 flex items-center justify-start gap-2">
+                                        <img
+                                            src="/imgs/14.jpeg"
+                                            alt="صورة الكاتبة"
+                                            className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
                                         />
-                                        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔎</div>
-                                    </label>
-
-                                    <div className="mt-3 flex gap-3 flex-wrap justify-end">
-                                        <button
-                                            onClick={() => setActiveBadge(null)}
-                                            className={`text-xs px-3 py-1 rounded-full ${!activeBadge ? 'bg-brand-secondary text-white' : 'bg-slate-100 text-slate-600'}`}>
-                                            الكل
-                                        </button>
-                                        {badges.map((b) => (
-                                            <button
-                                                key={b}
-                                                onClick={() => setActiveBadge(prev => prev === b ? null : b)}
-                                                className={`text-xs px-3 py-1 rounded-full ${activeBadge === b ? 'bg-brand-ink text-white' : 'bg-slate-100 text-slate-600'}`}>
-                                                {b}
-                                            </button>
-                                        ))}
+                                        <span className="text-2xl font-bold text-slate-700">
+                                            كتب: احمد ابراهيم
+                                        </span>
                                     </div>
                                 </div>
+
+
                             </div>
                         </header>
 
@@ -220,14 +204,14 @@ export default function HikayatSettatPage() {
 
                             {/* Sidebar widgets (33%) */}
                             <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-6">
-                                <InteractivePoll 
-                                    question="هل ترين أن المسلسلات والأفلام الأجنبية ساهمت في رفع سقف توقعات البنات من العلاقات العاطفية بشكل غير واقعي قد يهدد استقرار الزواج؟" 
+                                <InteractivePoll
+                                    question="هل ترين أن المسلسلات والأفلام الأجنبية ساهمت في رفع سقف توقعات البنات من العلاقات العاطفية بشكل غير واقعي قد يهدد استقرار الزواج؟"
                                     pollKey="hikayat-settat"
                                     options={["نعم، رفعت التوقعات بشكل خيالي", "لا، بل زادت الوعي بالحقوق العاطفية"]}
                                 />
 
-                                <DailyCaricature 
-                                    caption="الوهم الرومانسي ضد الواقع" 
+                                <DailyCaricature
+                                    caption="الوهم الرومانسي ضد الواقع"
                                     desc="عندما تبحث الفتاة عن بطل الفيلم السينمائي في شوارع الواقع المزدحمة."
                                     emoji="🍿💔"
                                 />
@@ -238,7 +222,7 @@ export default function HikayatSettatPage() {
                     <div className="pt-4 pb-20 animate-fadeIn max-w-7xl mx-auto space-y-8">
                         {/* زر الرجوع والتصنيف */}
                         <div className="flex justify-between items-center border-b border-slate-200 pb-6 mb-8">
-                            <button 
+                            <button
                                 onClick={() => setSelectedTopic(null)}
                                 className="flex items-center gap-2 text-xs sm:text-sm font-bold text-brand-secondary border border-brand-secondary bg-white px-4 py-2 rounded-xl hover:bg-brand-secondary/5 transition"
                             >
@@ -262,8 +246,8 @@ export default function HikayatSettatPage() {
 
                                 <div className="space-y-8">
                                     {selectedTopic.content.map((item, idx) => (
-                                        <section 
-                                            key={`${selectedTopic.title}-${idx}`} 
+                                        <section
+                                            key={`${selectedTopic.title}-${idx}`}
                                             className="space-y-3 border-b border-slate-50 pb-6 last:border-0 animate-fadeInUp opacity-0"
                                             style={{ animationDelay: `${idx * 100}ms`, animationFillMode: 'forwards' }}
                                         >
@@ -278,7 +262,7 @@ export default function HikayatSettatPage() {
                                     <p className="text-sm leading-relaxed text-slate-100 font-medium">{selectedTopic.summary}</p>
                                 </div>
 
-                                 {selectedTopic.sources && (
+                                {selectedTopic.sources && (
                                     <div className="pt-6 border-t border-slate-100 mt-8">
                                         <h6 className="text-xs font-bold text-slate-400 mb-3">المصادر والمراجع:</h6>
                                         <ul className="list-disc list-inside text-xs text-slate-400 space-y-1">
@@ -288,7 +272,7 @@ export default function HikayatSettatPage() {
                                 )}
 
                                 <div className="mt-12 space-y-8">
-                                    <VideoMediaGallery 
+                                    <VideoMediaGallery
                                         title="تقارير مصورة: حكايات ستات"
                                         clips={[
                                             { title: "ميداني: كيف تبدو علاقات (بلا تعريف) لدى الجيل الجديد ومخاطرها النفسية؟", dur: "٥:١٥" },
@@ -296,7 +280,7 @@ export default function HikayatSettatPage() {
                                         ]}
                                     />
 
-                                    <ExpertAdviceDesk 
+                                    <ExpertAdviceDesk
                                         qaList={[
                                             { q: "كيف أحمي نفسي عاطفياً من الدخول في علاقة سريعة أو غير واضحة المعالم؟", a: "كوني صريحة وواضحة منذ البداية بشأن توقعاتكِ، وتجنبي التمادي في التعلق إذا كان الطرف الآخر يرفض تحديد طبيعة العلاقة أو الالتزام، فالصمت العاطفي يزيد المعاناة لاحقاً." },
                                             { q: "أهلي يضغطون علي للزواج بسبب تقدمي في السن، كيف أتعامل معهم بهدوء؟", a: "تحدثي معهم بحوار مبني على الاحترام والواقع، وأوضحي أن جودة العلاقة واختيار شريك متوافق فكرياً ونفسياً أهم بكثير من توقيت الزواج لضمان عدم حدوث طلاق سريع." }
@@ -313,7 +297,7 @@ export default function HikayatSettatPage() {
                                     <h3 className="text-base font-black text-brand-ink mb-4 border-b border-slate-100 pb-3">حكايات أخرى</h3>
                                     <div className="space-y-4">
                                         {Object.entries(topicsData).filter(([, t]) => t.title !== selectedTopic.title).map(([id, t]) => (
-                                            <button 
+                                            <button
                                                 key={id}
                                                 onClick={() => setSelectedTopic(t)}
                                                 className="w-full text-right group flex flex-col gap-1 transition-all hover:bg-[#faf9f6] p-2.5 rounded-xl"
@@ -325,14 +309,14 @@ export default function HikayatSettatPage() {
                                     </div>
                                 </div>
 
-                                <InteractivePoll 
-                                    question="هل ترين أن المسلسلات والأفلام الأجنبية ساهمت في رفع سقف توقعات البنات من العلاقات العاطفية بشكل غير واقعي قد يهدد استقرار الزواج؟" 
+                                <InteractivePoll
+                                    question="هل ترين أن المسلسلات والأفلام الأجنبية ساهمت في رفع سقف توقعات البنات من العلاقات العاطفية بشكل غير واقعي قد يهدد استقرار الزواج؟"
                                     pollKey="hikayat-settat"
                                     options={["نعم، رفعت التوقعات بشكل خيالي", "لا، بل زادت الوعي بالحقوق العاطفية"]}
                                 />
 
-                                <DailyCaricature 
-                                    caption="الوهم الرومانسي ضد الواقع" 
+                                <DailyCaricature
+                                    caption="الوهم الرومانسي ضد الواقع"
                                     desc="عندما تبحث الفتاة عن بطل الفيلم السينمائي في شوارع الواقع المزدحمة."
                                     emoji="🍿💔"
                                 />

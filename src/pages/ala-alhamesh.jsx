@@ -140,57 +140,22 @@ export default function AlaAlhameshPage() {
                                 <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
                                     ملفات صحفية استقصائية تعالج قضايا ومآسي حقيقية تعيشها النساء على الهامش بمهنية عالية، وتسلط الضوء على التحديات الاجتماعية والاقتصادية العميقة التي تواجههن.
                                 </p>
-                                <div className="mt-6 flex flex-wrap gap-3">
-                                    <span className="rounded-full bg-brand-ink px-4 py-2 text-xs font-bold text-white shadow-sm">
-                                        {Object.keys(reportsData).length} تحقيقات موثقة
-                                    </span>
-                                    <span className="rounded-full bg-white px-4 py-2 text-xs font-bold text-brand-inkMuted shadow-sm border border-slate-200">
-                                        {sectionCount} محاور داخل التقرير
-                                    </span>
-                                    <span className="rounded-full bg-brand-secondary/10 px-4 py-2 text-xs font-bold text-brand-secondary shadow-sm">
-                                        الآن: التقرير {reportPosition}
+                                <div className="mt-4 flex items-center justify-start gap-2">
+                                    <img
+                                        src="/imgs/15.jpeg"
+                                        alt="صورة الكاتبة"
+                                        className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
+                                    />
+                                    <span className="text-2xl font-bold text-slate-700">
+                                        كتبت: إسراء احمد
                                     </span>
                                 </div>
                             </div>
 
-                            <div className="grid gap-3 sm:grid-cols-3 lg:w-[420px]">
-                                <div className="rounded-2xl border border-slate-100 bg-white/85 p-4 shadow-sm backdrop-blur-sm">
-                                    <div className="text-xl font-black text-brand-ink">7</div>
-                                    <div className="mt-1 text-xs font-bold text-brand-secondary">قضايا استقصائية حرجة</div>
-                                </div>
-                                <div className="rounded-2xl border border-slate-100 bg-white/85 p-4 shadow-sm backdrop-blur-sm">
-                                    <div className="text-xl font-black text-brand-ink">شهادات</div>
-                                    <div className="mt-1 text-xs font-bold text-brand-secondary">واقعية من قلب التهميش</div>
-                                </div>
-                                <div className="rounded-2xl border border-slate-100 bg-white/85 p-4 shadow-sm backdrop-blur-sm">
-                                    <div className="text-xl font-black text-brand-ink">توثيق</div>
-                                    <div className="mt-1 text-xs font-bold text-brand-secondary">بآراء الخبراء والمصادر</div>
-                                </div>
-                            </div>
+
                         </div>
 
-                        <div className="mt-8 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-                            <label className="relative block">
-                                <input
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    placeholder="ابحثي في العناوين أو الخلاصة..."
 
-                                    className="w-full rounded-2xl border border-slate-200 bg-white py-3 pr-12 pl-4 text-right text-sm text-slate-700 outline-none transition focus:border-brand-accent focus:ring-4 focus:ring-brand-accent/10"
-                                />
-                            </label>
-
-                            <div className="flex flex-wrap items-center justify-start gap-2 lg:justify-end">
-                                {reportTags.map((tag) => (
-                                    <span
-                                        key={tag}
-                                        className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-brand-inkMuted shadow-sm"
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
                     </div>
                 </section>
 
@@ -269,10 +234,7 @@ export default function AlaAlhameshPage() {
                                 <h2 className="text-3xl font-black text-brand-ink leading-tight max-w-3xl">
                                     {currentReport.title}
                                 </h2>
-                                <div className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-right min-w-[180px]">
-                                    <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">زمن القراءة التقريبي</div>
-                                    <div className="mt-1 text-lg font-black text-brand-ink">5-7 دقائق</div>
-                                </div>
+
                             </div>
                             <div className="w-24 h-1 bg-brand-secondary rounded-full"></div>
                         </header>

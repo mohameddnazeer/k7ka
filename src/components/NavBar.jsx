@@ -44,12 +44,12 @@ export default function NavBar() {
     ]
 
     return (
-        <nav className="w-full bg-white text-[#1F2937] relative z-40" dir="rtl" aria-label="التنقل الرئيسي للصحيفة">
+        <nav className="w-full bg-[#1F2937] text-white font-bold relative z-40" dir="rtl" aria-label="التنقل الرئيسي للصحيفة">
             {/* 1. الطبقة العليا: الشريط الإخباري العاجل والوقت والشبكات الاجتماعية */}
-            <div className="bg-[#1F2937] text-white text-xs border-b border-gray-800">
+            <div className="bg-[#B572E8] text-white text-xs ">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9 overflow-hidden">
                     {/* التاريخ والوقت */}
-                    <div className="hidden md:flex items-center gap-4 shrink-0 font-medium text-gray-300">
+                    <div className="hidden md:flex items-center gap-4 shrink-0 font-medium text-white font-bold">
                         <span>🗓️ {currentDate}</span>
                         <span>⏰ {currentTime}</span>
                     </div>
@@ -84,11 +84,11 @@ export default function NavBar() {
             </div>
 
             {/* 2. الطبقة الوسطى: شعار الجريدة والهوية الصحفية */}
-            <div className="border-b border-gray-200 py-5 bg-white">
+            <div className="border-b border-gray-800 py-5 bg-[#B572E8]">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
                     {/* اللوجو والعنوان */}
                     <Link to="/" className="flex items-center gap-4 group">
-                        <div className="relative h-16 w-20 overflow-hidden rounded-full border border-gray-200 bg-white p-1 shadow-sm transition group-hover:border-[#A91D22]">
+                        <div className="relative h-16 w-20 overflow-hidden rounded-full border border-gray-700 bg-white p-1 shadow-sm transition ">
                             <img
                                 src="/imgs/newlogo-removebg-preview.png"
                                 alt="شعار بوابة كحكة"
@@ -96,10 +96,10 @@ export default function NavBar() {
                             />
                         </div>
                         <div className="text-right">
-                            <h1 className="text-3xl font-black tracking-wide text-[#1F2937] font-serif group-hover:text-[#A91D22] transition duration-200">
+                            <h1 className="text-3xl font-black tracking-wide text-white font-serif ">
                                 بوابة كحكة الإخبارية
                             </h1>
-                            <p className="text-xs font-black tracking-normal text-gray-500 mt-1">
+                            <p className="text-xs font-black tracking-normal text-white mt-1">
                                 المنبر الإعلامي المستقل لقضايا المرأة والأسرة والمجتمع
                             </p>
                         </div>
@@ -110,7 +110,7 @@ export default function NavBar() {
             </div>
 
             {/* 3. الطبقة السفلى: التبويبات والبحث والبث المباشر */}
-            <div className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-xs">
+            <div className="sticky top-0 z-40 bg-[#B49EF4] font-bold border-b border-purple-400/20 shadow-sm">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
                     {/* التبويبات الفئوية */}
@@ -123,7 +123,7 @@ export default function NavBar() {
                                     to={link.href}
                                     className={`shrink-0 snap-center rounded-lg px-3.5 py-2 text-xs sm:text-sm transition-all duration-200 ${isActive
                                         ? 'bg-[#A91D22] text-white shadow-sm font-black'
-                                        : 'text-slate-700 hover:text-[#A91D22] hover:bg-slate-50 '
+                                        : 'text-white hover:text-white hover:bg-white/20'
                                         }`}
                                 >
                                     {link.label}

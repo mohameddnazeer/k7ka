@@ -253,6 +253,16 @@ export default function GowaAlkahkaPage() {
                     <h1 className="text-4xl font-black text-brand-ink sm:text-6xl mb-6 tracking-tight leading-tight">
                         الضغوط النفسية والمشاعر
                     </h1>
+                    <div className="mb-6 flex flex-col items-center justify-center gap-2">
+                        <img
+                            src="/imgs/13.jpeg"
+                            alt="صورة الكاتبة"
+                            className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
+                        />
+                        <span className="text-2xl font-bold text-slate-700">
+                            كتبت: بسمه رضا
+                        </span>
+                    </div>
                     <p className="mx-auto max-w-2xl text-lg text-brand-inkMuted/90 font-medium leading-relaxed">
                         مساحة لاستكشاف الصراعات الداخلية، المشاعر، وتجارب النساء الواقعية في مواجهة توقعات المجتمع.
                     </p>

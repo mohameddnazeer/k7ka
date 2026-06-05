@@ -3,16 +3,18 @@
 @tailwind utilities;
 
 :root {
-    --brand-brown: #2C2844; /* primary brand brown — configurable */
+    --brand-brown: #2C2844;
+    /* primary brand brown — configurable */
 }
 
 @layer base {
+
     html,
     body {
         min-height: 100%;
         margin: 0;
         font-family: 'Cairo', sans-serif;
-        background-color: #E6E6E6;
+        background-color: #ffffff;
         color: #2C2844;
     }
 
@@ -41,33 +43,38 @@
     .badge-soft {
         @apply inline-flex items-center gap-2 rounded-full bg-brand-accent/25 px-4 py-1.5 text-sm font-bold text-brand-ink;
     }
-    
-        /* Modal custom scrollbar */
-        .modal-scroll {
-            scrollbar-width: thin; /* Firefox */
-            scrollbar-color: var(--brand-brown) transparent;
-            scrollbar-gutter: stable;
-        }
-        .modal-scroll::-webkit-scrollbar {
-            width: 10px;
-        }
-        .modal-scroll::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .modal-scroll::-webkit-scrollbar-thumb {
-            background-color: var(--brand-brown);
-            border-radius: 9999px;
-            border: 2px solid rgba(255, 255, 255, 0.06);
-        }
-        .modal-scroll::-webkit-scrollbar-thumb:hover {
-            filter: brightness(0.9);
-        }
-    
-        /* Optional: subtle inner shadow to cue overflow */
-        .modal-scroll:before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
+
+    /* Modal custom scrollbar */
+    .modal-scroll {
+        scrollbar-width: thin;
+        /* Firefox */
+        scrollbar-color: var(--brand-brown) transparent;
+        scrollbar-gutter: stable;
+    }
+
+    .modal-scroll::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .modal-scroll::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .modal-scroll::-webkit-scrollbar-thumb {
+        background-color: var(--brand-brown);
+        border-radius: 9999px;
+        border: 2px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .modal-scroll::-webkit-scrollbar-thumb:hover {
+        filter: brightness(0.9);
+    }
+
+    /* Optional: subtle inner shadow to cue overflow */
+    .modal-scroll:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
 }

@@ -182,6 +182,16 @@ export default function SawtohaMasmouaPage() {
                 <h1 className="text-5xl sm:text-7xl font-black text-brand-ink tracking-tight mt-2 mb-6">
                     قضايا المرأة والمنزل والعمل
                 </h1>
+                <div className="mb-6 flex flex-col items-center justify-center gap-2">
+                    <img
+                        src="/imgs/10.jpeg"
+                        alt="صورة الكاتبة"
+                        className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
+                    />
+                    <span className="text-2xl font-bold text-slate-700">
+                        كتبت: حورية أسامة
+                    </span>
+                </div>
                 <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto font-medium">
                     سلسلة تحقيقات تغطي سبعة موضوعات مركزية: دور الحضانة وأهميتها، علاقة الأم بتنظيف البيت، عمل المرأة واستقرار المنزل، مشاكل الرجل والمرأة في التربية، أسباب الانفصال، السنة الأولى من الأمومة، ودور المرأة في إدارة المالية المنزلية.
                 </p>
