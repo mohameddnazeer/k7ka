@@ -352,7 +352,69 @@ const societyArticles = articles.filter(art => art.category === 'قضايا ال
 const legalArticles = articles.filter(art => art.category === 'كلام قانون');
 const successArticles = articles.filter(art => art.category === 'قصص ملهمة' || art.category === 'حكايات ستات');
 const gowaArticles = articles.filter(art => art.category === 'جوه الكحكة');
-const featuredStories = [articles[0], articles[2], articles[5], articles[9], articles[12], articles[15], articles[17]].filter(Boolean);
+const heroStories = [
+    {
+        id: 1,
+        articleId: 1,
+        title: "سنة أولى أمومة  ",
+        subtitle: "القانون المصري يمنح الحاضن الولاية التعليمية بقوة القانون لمنع استخدام التعليم كورقة ضغط بين الطرفين.",
+        category: "كلام قانون",
+        time: "١٠:١٥ ص",
+        image: "/imgs/carousel/First-year-of-motherhood.jpeg"
+    },
+    {
+        id: 2,
+        articleId: 3,
+        title: "ام المعاق سوبر هيرو لا يراه أحد",
+        subtitle: "تفكيك نقدي لخطاب النسوية الرقمية والتأثير النفسي والاجتماعي المترتب على صراعات الخوارزميات.",
+        category: "صوتها مسموع",
+        time: "٠٦:٤٥ م",
+        image: "/imgs/carousel/The-mother-of-the-disabled-a-superhero-no-one-sees.jpeg"
+    },
+    {
+        id: 3,
+        articleId: 6,
+        title: "بين الزحام والكرامة: رحلة المرأة اليومية في الشارع والمواصلات",
+        subtitle: "قراءة في ضغوط التنقل اليومية والحاجة إلى حماية فعلية للنساء في الفضاء العام.",
+        category: "بين الزحام والكرامة",
+        time: "٠٤:٤٥ م",
+        image: "/imgs/carousel/suffering-of-women-on-public-transportation.jpeg"
+    },
+    {
+        id: 4,
+        articleId: 9,
+        title: "محو أمية المرأة ",
+        subtitle:"معركة الوعي الغائب خلف الأرقام",
+        category: "المرأة والأسرة",
+        time: "٠٩:٠٠ ص",
+        image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg"
+    },
+    {
+        id: 5,
+        articleId: 13,
+        title: "روتين تنظيف المنزل",
+        subtitle: "تحقيق يبحث في التوفيق بين التطلعات المهنية والالتزام العائلي دون احتراق نفسي.",
+        category: "بين البيت والشغل",
+        time: "٠١:٢٠ م",
+        image: "/imgs/carousel/house-cleaning-routine.jpeg"
+    },
+    
+    {
+        id: 6,
+        articleId: 18,
+        title: "هوس النساء بالتجميل  ",
+        subtitle: "عندما تتحول المراة الي ساحه ضغط نفسي واجتماعي ",
+        category: "صحة وجمال",
+        time: "٠٣:٣٠ م",
+        image: "/imgs/carousel/Women-obsession-with-beauty.jpeg"
+    }
+];
+const featuredStories = heroStories
+    .map(story => {
+        const article = articles.find(item => item.id === story.articleId);
+        return article ? { ...article, ...story, image: story.image || article.image, article } : null;
+    })
+    .filter(Boolean);
 const breakingTickerItems = [...articles.slice(0, 8), ...articles.slice(0, 4)];
 const flashStories = [...articles, ...articles.slice(0, 12)].slice(0, 26);
 const continuousFeedItems = [...articles, ...articles.slice(0, 12)];
@@ -595,7 +657,7 @@ export default function Home() {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
                         {/* العمود الأيمن: الخبر الرئيسي المميز (50% عرض) */}
-                        <section className="lg:col-span-8 space-y-4">
+                        <section className="lg:col-span-12 space-y-4">
                             <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
                                 <span className="w-3.5 h-3.5 bg-[#A91D22] block"></span>
                                 <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">الخبر الرئيسي</h2>
