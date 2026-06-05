@@ -364,7 +364,7 @@ export default function HikayatSettatPage() {
               </h1>
               <div className="mb-6 flex flex-col items-center justify-center gap-2">
                 <img
-                  src="/imgs/14.jpeg"
+                  src="/imgs/19.jpeg"
                   alt="صورة الكاتبة"
                   className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
                 />
@@ -582,11 +582,7 @@ export default function HikayatSettatPage() {
                   ]}
                 />
 
-                <DailyCaricature
-                  caption="الوهم الرومانسي ضد الواقع"
-                  desc="عندما تبحث الفتاة عن بطل الفيلم السينمائي في شوارع الواقع المزدحمة."
-                  emoji="🍿💔"
-                />
+
               </div>
             </div>
           </div>
