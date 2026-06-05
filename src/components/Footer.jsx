@@ -71,10 +71,10 @@ export default function Footer() {
               <ul className="space-y-2.5 text-xs font-bold">
                 {[
                   { name: "عن بوابة كحكة", to: "/alaaqa" },
-                  { name: "فريق العمل الصحفي", to: "/hikayat-settat" },
-                  { name: "سياسة الخصوصية", to: "/kalam-qanun" },
-                  { name: "شروط الاستخدام", to: "/kalam-qanun" },
-                  { name: "حقوق الملكية الفكرية", to: "/sawtoha-masmoua" }
+                  { name: "فريق العمل الصحفي", to: "/team" },
+                  // { name: "سياسة الخصوصية", to: "/kalam-qanun" },
+                  // { name: "شروط الاستخدام", to: "/kalam-qanun" },
+                  // { name: "حقوق الملكية الفكرية", to: "/sawtoha-masmoua" }
                 ].map((item) => (
                   <li key={item.name}>
                     <Link

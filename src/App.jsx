@@ -17,6 +17,7 @@ import SanaOlaOmoma from './pages/sana-ola-omoma.jsx'
 import SawtohaMasmoua from './pages/sawtoha-masmoua.jsx'
 import Infographic from './pages/infographic.jsx'
 import VideoPortal from './pages/video-portal.jsx'
+import TeamPage from './pages/TeamPage.jsx'
 import './App.css'
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/sawtoha-masmoua" element={<SawtohaMasmoua />} />
         <Route path="/infographic" element={<Infographic />} />
         <Route path="/horayat-sahafiya" element={<VideoPortal />} />
+        <Route path="/team" element={<TeamPage />} />
       </Routes>
     </div>
   )

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
@@ -47,6 +48,10 @@ const stats = [
 ]
 
 export default function BaynAlZahmWalkaramaPage() {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
+
   const scrollToSection = (index) => {
     const element = document.getElementById(`section-${index}`)
     if (!element) return

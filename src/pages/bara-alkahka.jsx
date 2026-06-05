@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import BackgroundSVG from "../components/BackgroundSVG"
 import NavBar from "../components/NavBar"
@@ -71,6 +71,10 @@ const homeTopics = [
 ]
 
 export default function BaraAlkahkaPage() {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
+
     const [activeSection, setActiveSection] = useState("all")
 
     const filteredTopics = [...socialMediaTopics, ...streetTopics, ...homeTopics].filter(topic => {

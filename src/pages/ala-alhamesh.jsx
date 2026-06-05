@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import BackgroundSVG from '../components/BackgroundSVG'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
@@ -6,6 +6,10 @@ import InteractionsPanel from '../components/InteractionsPanel'
 import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, ExpertAdviceDesk } from '../components/Youm7Widgets'
 
 export default function AlaAlhameshPage() {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
+
     // تحديد التقرير النشط حالياً للعرض (يبدأ بالتقرير الأول)
     const [activeReport, setActiveReport] = useState(1);
     const [query, setQuery] = useState('');

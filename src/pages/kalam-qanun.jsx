@@ -274,6 +274,11 @@ export default function KalamQanun() {
     const [openFaqIdx, setOpenFaqIdx] = useState(null);
     const [faqSearch, setFaqSearch] = useState('');
 
+    // Scroll to top on page load
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' })
+    }, []);
+
     const categories = ['الكل', 'قانون الأحوال الشخصية', 'قانون العقوبات والمجتمع', 'قانون العمل', 'الجرائم الإلكترونية'];
     const faqTabs = ['الكل', 'قانون الأحوال الشخصية', 'الجرائم الإلكترونية', 'قانون العمل'];
 

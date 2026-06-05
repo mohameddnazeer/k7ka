@@ -19,6 +19,11 @@ export default function SawtohaMasmouaPage() {
   const [showTOC, setShowTOC] = useState(false);
   const tocRef = useRef(null);
 
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, []);
+
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") setShowTOC(false);

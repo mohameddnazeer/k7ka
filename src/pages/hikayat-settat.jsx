@@ -15,6 +15,11 @@ export default function HikayatSettatPage() {
   // حالة التحكم في فتح وإغلاق تفاصل الموضوع المختار
   const [selectedTopic, setSelectedTopic] = useState(null);
 
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, []);
+
   // الـ 6 موضوعات كاملة المحتوى والتأليف
   const topicsData = {
     1: {

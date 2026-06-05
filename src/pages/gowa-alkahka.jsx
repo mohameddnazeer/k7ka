@@ -209,6 +209,11 @@ export default function GowaAlkahkaPage() {
     const [selectedArticle, setSelectedArticle] = useState(null)
     const [pollVoted, setPollVoted] = useState(false)
 
+    // Scroll to top on page load
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' })
+    }, []);
+
     // إدارة السكرول عند فتح الـ Modal وإغلاقه عبر الـ Keyboard (Escape)
     useEffect(() => {
         if (selectedArticle) {

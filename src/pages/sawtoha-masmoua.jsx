@@ -9,6 +9,11 @@ import { TrendingTags, InteractivePoll, DailyCaricature, VideoMediaGallery, Expe
 export default function SawtohaMasmouaPage() {
     const location = useLocation();
 
+    // Scroll to top on page load
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' })
+    }, []);
+
     const isValidInvestigationId = (id) => Number.isInteger(id) && id >= 1 && id <= 6;
     const requestedInvestigationId = Number(location.state?.investigationId);
 

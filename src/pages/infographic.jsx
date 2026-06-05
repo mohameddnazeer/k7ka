@@ -24,6 +24,11 @@ export default function InfographicPage() {
     const [copiedId, setCopiedId] = useState(null)
     const sliderRef = useRef(null)
 
+    // Scroll to top on page load
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' })
+    }, [])
+
     // Handle deep linking / routing to a specific infographic ID from URL
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search || window.location.hash.split('?')[1] || '')
