@@ -1597,13 +1597,13 @@ export default function Home() {
                     </div>
 
                     {/* صورة الغلاف */}
-                    <div className="w-full h-64 sm:h-96 relative overflow-hidden bg-slate-100 rounded-xl border border-gray-200 shadow-sm group">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 rounded-[2.5rem] border border-gray-200 shadow-sm group">
                         <img
                             src={selectedArticle.image}
                             alt={selectedArticle.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
+                            className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                     </div>
 
                     {/* المحتوى التفصيلي */}
