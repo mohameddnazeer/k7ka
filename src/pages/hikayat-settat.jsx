@@ -341,13 +341,13 @@ export default function HikayatSettatPage() {
 
   return (
     <div
-      className="relative min-h-screen bg-[#faf9f6] text-[#1F2937] overflow-hidden"
+      className="relative min-h-screen bg-slate-50 text-[#1F2937] overflow-hidden"
       dir="rtl"
     >
       <BackgroundSVG />
       <NavBar />
 
-      <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 mt-8 sm:px-8">
+      <main className="relative z-10 mx-auto w-full max-w-7xl px-4  mt-8 sm:px-8">
         {!selectedTopic ? (
           <>
             <header className="relative z-10 pt-4 pb-12 text-center px-4 max-w-4xl mx-auto">
@@ -376,7 +376,7 @@ export default function HikayatSettatPage() {
             {/* List View Two-Column Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
               {/* List cards (66%) */}
-              <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {filtered.map(([id, topic], idx) => (
                   <article
                     key={id}
@@ -414,7 +414,7 @@ export default function HikayatSettatPage() {
               </div>
 
               {/* Sidebar widgets (33%) */}
-              <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-6">
+              {/* <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-6">
                 <InteractivePoll
                   question="هل ترين أن المسلسلات والأفلام الأجنبية ساهمت في رفع سقف توقعات البنات من العلاقات العاطفية بشكل غير واقعي قد يهدد استقرار الزواج؟"
                   pollKey="hikayat-settat"
@@ -429,7 +429,7 @@ export default function HikayatSettatPage() {
                   desc="عندما تبحث الفتاة عن بطل الفيلم السينمائي في شوارع الواقع المزدحمة."
                   emoji="🍿💔"
                 />
-              </div>
+              </div> */}
             </div>
           </>
         ) : (

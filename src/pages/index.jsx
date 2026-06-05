@@ -730,7 +730,7 @@ export default function Home() {
     };
 
     return (
-        <div className="relative min-h-screen bg-[#faf9f6] text-slate-900 font-sans selection:bg-[#A91D22]/10 selection:text-[#A91D22]" dir="rtl">
+        <div className="relative min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#A91D22]/10 selection:text-[#A91D22]" dir="rtl">
             <NavBar />
 
 

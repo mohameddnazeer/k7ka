@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export function TrendingTags({ tags = [] }) {
   if (!tags.length) return null;
   return (
-    <div className="flex flex-wrap gap-2 mb-8">
+    <div className="flex flex-wrap gap-2 ">
       {tags.map((tag, idx) => (
         <span
           key={idx}

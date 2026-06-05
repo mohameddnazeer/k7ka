@@ -165,7 +165,7 @@ export default function SawtohaMasmouaPage() {
     }, [location.state]);
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-[#faf9f6]" dir="rtl">
+        <div className="relative min-h-screen overflow-hidden bg-slate-50" dir="rtl">
             <BackgroundSVG />
             <NavBar />
 
@@ -277,7 +277,7 @@ export default function SawtohaMasmouaPage() {
                         </div>
 
                         {/* صناديق تفاعلية إضافية للرأي والكاريكاتير والتواصل */}
-                        <div className="space-y-6">
+                        {/* <div className="space-y-6">
                             <InteractivePoll
                                 question="هل ترين أن السوشيال ميديا ساهمت فعلياً في تمكين المرأة قانونياً واجتماعياً أم أنها مجرد وهم وتريند رقمي؟"
                                 pollKey="sawtoha-masmoua"
@@ -291,7 +291,7 @@ export default function SawtohaMasmouaPage() {
                             />
 
 
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>

@@ -166,7 +166,7 @@ export default function BaraAlkahkaPage() {
     })
 
     return (
-        <div className="relative min-h-screen bg-[#faf9f6] font-arabic overflow-x-hidden selection:bg-brand-secondary/20" dir="rtl">
+        <div className="relative min-h-screen bg-slate-50 font-arabic overflow-x-hidden selection:bg-brand-secondary/20" dir="rtl">
             <BackgroundSVG />
             <NavBar />
 
@@ -197,7 +197,7 @@ export default function BaraAlkahkaPage() {
                 <TrendingTags tags={["بره_الكحكة", "التريندات_القاتلة", "التحرش_اللفظي", "أمان_الشارع", "إدمان_الشراء", "حقوق_المرأة"]} />
 
                 {/* Two-Column Layout (Content Grid + Sidebar) */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-12">
+                <div className="grid grid-cols-1  gap-8 items-start my-12">
 
                     {/* Main Content Area: Filter & Topic Cards */}
                     <div className="lg:col-span-2 space-y-6">
@@ -273,7 +273,7 @@ export default function BaraAlkahkaPage() {
                     </div>
 
                     {/* Sidebar Youm7 widgets */}
-                    <div className="w-full space-y-6 lg:sticky lg:top-6">
+                    {/* <div className="w-full space-y-6 lg:sticky lg:top-6">
                         <InteractivePoll
                             question="هل تؤيدين فرض قيود صارمة ورقابة أبوية إلزامية على تطبيقات الفيديوهات القصيرة لحماية المراهقات من التريندات الخطيرة؟"
                             pollKey="bara-alkahka"
@@ -285,7 +285,7 @@ export default function BaraAlkahkaPage() {
                             desc="عندما تبتلع الشاشات الصغيرة براءة الطفولة والواقع."
                             emoji="🧟‍♀️📱"
                         />
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Bottom Media Gallery & Expert Advice Column */}

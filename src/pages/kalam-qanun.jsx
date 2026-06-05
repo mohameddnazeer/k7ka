@@ -294,11 +294,11 @@ export default function KalamQanun() {
     }, [activeFaqTab, faqSearch]);
 
     return (
-        <div className="relative min-h-screen bg-[#faf9f6] text-[#1F2937] font-arabic overflow-x-hidden" dir="rtl">
+        <div className="relative min-h-screen bg-slate-50 text-[#1F2937] font-arabic overflow-x-hidden" dir="rtl">
             <BackgroundSVG />
             <NavBar />
 
-            <main className="relative z-10 mx-auto w-full px-4 pb-24 sm:px-6 lg:px-8 max-w-7xl">
+            <main className="relative z-10 mx-auto w-full px-4  sm:px-6 lg:px-8 max-w-7xl">
 
                 {!selectedArticle ? (
                     <>
@@ -368,7 +368,7 @@ export default function KalamQanun() {
 
                         {/* Articles Grid (with Sidebar) */}
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-12">
-                            <div className="lg:col-span-2">
+                            <div className="lg:col-span-4">
                                 {filteredArticles.length > 0 ? (
                                     <div className="grid gap-6 sm:grid-cols-2">
                                         {filteredArticles.map((article, idx) => (
@@ -392,7 +392,7 @@ export default function KalamQanun() {
                                 )}
                             </div>
 
-                            <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
+                            {/* <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
                                 <InteractivePoll
                                     question="هل تؤيدين فرض عقوبات جنائية مشددة فورية على أصحاب العمل الذين يشغلون الفتيات بدون عقود عمل مكتوبة وموثقة؟"
                                     pollKey="kalam-qanun"
@@ -404,7 +404,7 @@ export default function KalamQanun() {
                                     desc="ميزان العدالة يحمي الحقوق من الضياع."
                                     emoji="⚖️🛡️"
                                 />
-                            </div>
+                            </div> */}
                         </div>
 
                         {/* ==========================================

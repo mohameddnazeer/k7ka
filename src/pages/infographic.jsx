@@ -82,7 +82,7 @@ export default function InfographicPage() {
     }
 
     return (
-        <div className="relative min-h-screen bg-[#faf9f6] text-[#1F2937] overflow-hidden" dir="rtl">
+        <div className="relative min-h-screen bg-slate-50 text-[#1F2937] overflow-hidden" dir="rtl">
             <BackgroundSVG />
             <NavBar />
 

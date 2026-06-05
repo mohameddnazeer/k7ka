@@ -62,7 +62,7 @@ export default function MahwElOmyaPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#faf9f6] text-[#1F2937]" dir="rtl">
+    <div className="relative min-h-screen overflow-hidden bg-slate-50 text-[#1F2937]" dir="rtl">
       <BackgroundSVG />
       <NavBar />
 

@@ -125,7 +125,7 @@ export default function AlaAlhameshPage() {
             <BackgroundSVG />
             <NavBar />
 
-            <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24  sm:px-8">
+            <main className="relative z-10 mx-auto w-full max-w-7xl px-4   sm:px-8">
                 <section className="relative mb-10 overflow-hidden ">
                     <div className="relative p-8 sm:p-12">
                         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -254,7 +254,7 @@ export default function AlaAlhameshPage() {
                             );
                         })}
 
-                        <div className="mt-6 space-y-6">
+                        {/* <div className="mt-6 space-y-6">
                             <InteractivePoll
                                 question="هل تؤيدين تقديم قروض متناهية الصغر معفاة تماماً من الفوائد والضمانات البنكية المعقدة كحل جذري لظاهرة الغارمات؟"
                                 pollKey="ala-alhamesh"
@@ -265,7 +265,7 @@ export default function AlaAlhameshPage() {
                                 desc="عندما تتحول الظروف الصعبة إلى صخور، تصبح الإرادة هي حبل الصعود الوحيد."
                                 emoji="👵🧗‍♀️"
                             />
-                        </div>
+                        </div> */}
                     </nav>
 
                    

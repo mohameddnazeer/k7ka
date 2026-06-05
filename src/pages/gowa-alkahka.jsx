@@ -240,7 +240,7 @@ export default function GowaAlkahkaPage() {
     }
 
     return (
-        <div className="relative min-h-screen overflow-x-hidden bg-[#faf9f6] font-arabic" dir="rtl">
+        <div className="relative min-h-screen overflow-x-hidden bg-slate-50 font-arabic" dir="rtl">
             <BackgroundSVG />
             <NavBar />
 
@@ -271,7 +271,7 @@ export default function GowaAlkahkaPage() {
                 <TrendingTags tags={["جوه_الكحكة", "الضغوط_النفسية", "البنت_القوية", "الخوف_من_الزواج", "شريك_الحياة", "الاستقلال_النفسي"]} />
 
                 {/* Two-Column Sidebar Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mb-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mb-16 mt-6">
 
                     {/* Right column: Content & Grid */}
                     <div className="lg:col-span-2 space-y-16">
