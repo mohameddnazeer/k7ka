@@ -9,7 +9,7 @@ const videosData = [
         id: 1,
         title: "اختراق هاتف الجوال: كيف تحميين نفسك",
         category: "تقنية",
-        views: "١٢٠ ألف",
+        views: "",
         date: "٤ يونيو ٢٠٢٦",
         duration: "٥:٣٢",
         videoUrl: "/videos/اعرفي حقك.mp4",
@@ -22,7 +22,7 @@ const videosData = [
         id: 2,
         title: "رحلة الأمومة الأولى مع الدكتورة سارة",
         category: "صحة",
-        views: "٨٥ ألف",
+        views: "",
         date: "٣ يونيو ٢٠٢٦",
         duration: "١٢:١٥",
         videoUrl: "/videos/الصحه.mp4",
@@ -35,7 +35,7 @@ const videosData = [
         id: 3,
         title: "حقوقك في الطلاق: ما الذي تنص عليه القوانين؟",
         category: "قانون",
-        views: "٢٠٠ ألف",
+        views: "",
         date: "٢ يونيو ٢٠٢٦",
         duration: "٨:٤٥",
         videoUrl: "/videos/الطلاق.mp4",
@@ -48,7 +48,7 @@ const videosData = [
         id: 4,
         title: "المرأة وزيرة مالية في بيتها",
         category: "اقتصاد",
-        views: "٩٥ ألف",
+        views: "",
         date: "١ يونيو ٢٠٢٦",
         duration: "١٠:٢٠",
         videoUrl: "/videos/عماد المجتمع.mp4",
@@ -61,7 +61,7 @@ const videosData = [
         id: 5,
         title: "كيف تتعاملين مع التواصل في العلاقات",
         category: "علاقات",
-        views: "٧٥ ألف",
+        views: "",
         date: "٣١ مايو ٢٠٢٦",
         duration: "٧:٠٠",
         videoUrl: "/videos/نتفاهم.mp4",
@@ -74,7 +74,7 @@ const videosData = [
         id: 6,
         title: "كريم أساسي للبشرة الجافة",
         category: "جمال",
-        views: "١٥٠ ألف",
+        views: "",
         date: "٣٠ مايو ٢٠٢٦",
         duration: "٠:٣٠",
         videoUrl: "/videos/ريلز Instagram الجمال بلون أبيض ووردي.mp4",
@@ -87,7 +87,7 @@ const videosData = [
         id: 7,
         title: "مرآة المرأة الحديثة",
         category: "مجتمع",
-        views: "٦٠ ألف",
+        views: "",
         date: "٢٩ مايو ٢٠٢٦",
         duration: "٩:١٠",
         videoUrl: "/videos/أخضر ذهبي عصري تصميم جرافيكي فيديو للهاتف الجوال.mp4",
@@ -121,7 +121,7 @@ const VideoCard = ({ video, isSelected, onClick, isShort = false }) => {
 
     return (
         <div
-            className={`group cursor-pointer bg-white border-2 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 ease-out ${isSelected ? 'border-[#A91D22] bg-red-50' : 'border-gray-200 hover:border-[#A91D22] hover:scale-[1.01]'} ${isShort ? '' : 'p-5'}`}
+            className={`group cursor-pointer bg-white border-2 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 ease-out ${isSelected ? 'border-[#6551a0] bg-red-50' : 'border-gray-200 hover:border-[#6551a0] hover:scale-[1.01]'} ${isShort ? '' : 'p-5'}`}
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -133,13 +133,13 @@ const VideoCard = ({ video, isSelected, onClick, isShort = false }) => {
                     className="w-full h-full object-cover"
                     onClick={togglePlay}
                 />
-                
+
                 {/* Play/Stop Button Overlay */}
-                <div 
+                <div
                     className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 cursor-pointer ${isPlaying && !isHovered ? 'opacity-0' : 'opacity-100'}`}
                     onClick={togglePlay}
                 >
-                    <div className="h-14 w-14 rounded-full bg-[#A91D22]/90 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110">
+                    <div className="h-14 w-14 rounded-full bg-[#6551a0]/90 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110">
                         {isPlaying ? (
                             // Stop/Pause Icon
                             <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -164,7 +164,7 @@ const VideoCard = ({ video, isSelected, onClick, isShort = false }) => {
 
                 {/* Category Badge */}
                 {!isShort && (
-                    <span className="absolute top-3 right-3 bg-white/90 text-[#A91D22] text-[9px] font-black px-2 py-0.5 rounded-full border border-gray-200">
+                    <span className="absolute top-3 right-3 bg-white/90 text-[#6551a0] text-[9px] font-black px-2 py-0.5 rounded-full border border-gray-200">
                         {video.category}
                     </span>
                 )}
@@ -176,7 +176,7 @@ const VideoCard = ({ video, isSelected, onClick, isShort = false }) => {
             </div>
 
             <div className={`space-y-2 ${isShort ? 'p-4' : ''}`}>
-                <h3 className={`font-black font-serif leading-snug line-clamp-2 group-hover:text-[#A91D22] transition ${isShort ? 'text-sm ' : 'text-base text-[#1F2937]'}`}>
+                <h3 className={`font-black font-serif leading-snug line-clamp-2 group-hover:text-[#6551a0] transition ${isShort ? 'text-sm ' : 'text-base text-[#1F2937]'}`}>
                     {video.title}
                 </h3>
                 {!isShort && (
@@ -214,9 +214,9 @@ const VideoListItem = ({ video, isSelected, onClick }) => {
     }
 
     return (
-        <div 
-            key={video.id} 
-            className={`flex gap-3 cursor-pointer group p-3 rounded-xl transition border-2 ${isSelected ? 'border-[#A91D22] bg-red-50' : 'border-transparent hover:bg-slate-50 hover:border-gray-200'}`}
+        <div
+            key={video.id}
+            className={`flex gap-3 cursor-pointer group p-3 rounded-xl transition border-2 ${isSelected ? 'border-[#6551a0] bg-red-50' : 'border-transparent hover:bg-slate-50 hover:border-gray-200'}`}
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -228,13 +228,13 @@ const VideoListItem = ({ video, isSelected, onClick }) => {
                     className="w-full h-full object-cover"
                     onClick={togglePlay}
                 />
-                
+
                 {/* Play/Stop Button Overlay */}
-                <div 
+                <div
                     className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 cursor-pointer ${isPlaying && !isHovered ? 'opacity-0' : 'opacity-100'}`}
                     onClick={togglePlay}
                 >
-                    <div className="h-6 w-6 rounded-full bg-[#A91D22]/90 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110">
+                    <div className="h-6 w-6 rounded-full bg-[#6551a0]/90 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110">
                         {isPlaying ? (
                             <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="currentColor">
                                 <rect x="6" y="4" width="4" height="16" rx="1" />
@@ -253,7 +253,7 @@ const VideoListItem = ({ video, isSelected, onClick }) => {
                 </span>
             </div>
             <div className="flex-1 space-y-2">
-                <h4 className="text-sm font-black font-serif line-clamp-2 group-hover:text-[#A91D22] transition">
+                <h4 className="text-sm font-black font-serif line-clamp-2 group-hover:text-[#6551a0] transition">
                     {video.title}
                 </h4>
                 <div className="text-[10px] font-bold text-gray-500">
@@ -295,7 +295,7 @@ export default function VideoPortalPage() {
         <div className="min-h-screen bg-white text-[#1F2937]" dir="rtl">
             <NavBar />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 ">
-                
+
                 {/* Hero Section */}
                 <section className="mb-10">
                     <div className="grid gap-8 lg:grid-cols-3">
@@ -311,7 +311,7 @@ export default function VideoPortalPage() {
                             </div>
                             <div className="p-6 space-y-4">
                                 <div className="flex items-center gap-3">
-                                    <span className="bg-[#A91D22] text-white px-3 py-1 rounded-full text-[10px] font-black">
+                                    <span className="bg-[#6551a0] text-white px-3 py-1 rounded-full text-[10px] font-black">
                                         {featuredVideo.category}
                                     </span>
                                     <span className="text-[10px] font-bold text-gray-500">
@@ -330,7 +330,7 @@ export default function VideoPortalPage() {
                         {/* Trending Sidebar */}
                         <div className="space-y-4">
                             <div className="flex items-center gap-2 pb-3 border-b border-gray-300">
-                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <span className="w-4 h-4 bg-[#6551a0] block"></span>
                                 <h3 className="text-xl font-black font-serif text-[#1F2937]">الأكثر مشاهدة</h3>
                             </div>
                             <div className="space-y-4">
@@ -351,7 +351,7 @@ export default function VideoPortalPage() {
                 {breakingVideos.length > 0 && (
                     <section className="mb-10">
                         <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-300">
-                            <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                            <span className="w-4 h-4 bg-[#6551a0] block"></span>
                             <h3 className="text-xl font-black font-serif text-[#1F2937]">فيديوهات كحكه</h3>
                         </div>
                         <div className="no-scrollbar flex gap-6 overflow-x-auto pb-4">
@@ -378,7 +378,7 @@ export default function VideoPortalPage() {
                                 placeholder="ابحث عن فيديو..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-white border border-gray-300 rounded-full py-3 px-6 pr-12 text-sm focus:outline-none focus:border-[#A91D22] focus:ring-1 focus:ring-[#A91D22] font-medium"
+                                className="w-full bg-white border border-gray-300 rounded-full py-3 px-6 pr-12 text-sm focus:outline-none focus:border-[#6551a0] focus:ring-1 focus:ring-[#6551a0] font-medium"
                             />
                             <svg className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -391,11 +391,10 @@ export default function VideoPortalPage() {
                                 <button
                                     key={cat}
                                     onClick={() => setActiveCategory(cat)}
-                                    className={`shrink-0 px-4 py-2 rounded-full text-xs font-black transition-all duration-200 ${
-                                        activeCategory === cat
-                                            ? 'bg-[#A91D22] text-white shadow-sm'
-                                            : 'bg-white text-gray-700 border border-gray-300 hover:border-[#A91D22] hover:text-[#A91D22]'
-                                    }`}
+                                    className={`shrink-0 px-4 py-2 rounded-full text-xs font-black transition-all duration-200 ${activeCategory === cat
+                                        ? 'bg-[#6551a0] text-white shadow-sm'
+                                        : 'bg-white text-gray-700 border border-gray-300 hover:border-[#6551a0] hover:text-[#6551a0]'
+                                        }`}
                                 >
                                     {cat}
                                 </button>
@@ -419,7 +418,7 @@ export default function VideoPortalPage() {
                             ))}
                         </div>
 
-                        
+
                     </div>
 
                     {/* Shorts Section */}

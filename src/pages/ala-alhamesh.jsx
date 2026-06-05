@@ -138,12 +138,12 @@ export default function AlaAlhameshPage() {
                                 </h1>
                                 <div className="mt-6 flex flex-col items-center justify-center gap-2">
                                     <img
-                                        src="/imgs/15.jpeg"
+                                        src="/imgs/16.jpeg"
                                         alt="صورة الكاتبة"
                                         className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
                                     />
                                     <span className="text-2xl font-bold text-slate-700">
-                                        كتبت: إسراء احمد
+                                        كتب : احمد ايمن
                                     </span>
                                 </div>
                                 <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl max-w-2xl mx-auto">
@@ -161,7 +161,7 @@ export default function AlaAlhameshPage() {
                 {/* الهيكل التفاعلي المتطور لعرض الدوسيهات الصحفية (Sidebar + Main Dossier Layer) */}
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
 
- {/* مساحة العرض الرئيسية: تفاصيل الدوسيه الصحفي النشط */}
+                    {/* مساحة العرض الرئيسية: تفاصيل الدوسيه الصحفي النشط */}
                     <article className="w-full lg:w-2/3 bg-white border border-slate-100 rounded-[2.5rem] p-8 sm:p-12 shadow-sm space-y-10 min-h-[600px] animate-fadeIn relative overflow-hidden">
                         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-ink opacity-80"></div>
 
@@ -268,7 +268,7 @@ export default function AlaAlhameshPage() {
                         </div> */}
                     </nav>
 
-                   
+
 
                 </div>
             </main>

@@ -90,7 +90,7 @@ export default function InfographicPage() {
                 {/* Header Section */}
                 <header className="mb-12 text-center animate-fadeIn">
                     <div className="mb-4 inline-block">
-                        <span className="bg-[#A91D22]/10 text-[#A91D22] text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider">
+                        <span className="bg-[#6551a0]/10 text-[#6551a0] text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider">
                             الصحافة البصرية
                         </span>
                     </div>
@@ -105,13 +105,13 @@ export default function InfographicPage() {
                 {/* Main Carousel Display */}
                 <section ref={sliderRef} className="max-w-4xl mx-auto mb-16 animate-fadeInUp">
                     <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden p-6 sm:p-8 relative">
-                        
+
                         {/* Slide Indicator badge */}
                         <div className="absolute top-8 right-8 z-10 bg-black/60 backdrop-blur-xs text-white text-xs font-bold px-3 py-1 rounded-full">
                             {activeIndex + 1} / {infographicsData.length}
                         </div>
 
-                      
+
 
                         {/* Image Viewer Container */}
                         <div className="relative aspect-[4/5] sm:aspect-[16/10] w-full max-h-[600px] overflow-hidden bg-slate-50 rounded-2xl flex items-center justify-center group mb-6 border border-slate-100">
@@ -124,14 +124,14 @@ export default function InfographicPage() {
                             {/* Carousel Navigation Arrows */}
                             <button
                                 onClick={handlePrev}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#A91D22] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
+                                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#6551a0] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
                                 aria-label="الصورة السابقة"
                             >
                                 <span className="text-xl font-bold">→</span>
                             </button>
                             <button
                                 onClick={handleNext}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#A91D22] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
+                                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#6551a0] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
                                 aria-label="الصورة التالية"
                             >
                                 <span className="text-xl font-bold">←</span>
@@ -154,11 +154,10 @@ export default function InfographicPage() {
                                 {/* Autoplay Switch */}
                                 <button
                                     onClick={() => setIsPlaying(!isPlaying)}
-                                    className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 border shadow-xs ${
-                                        isPlaying 
-                                            ? 'bg-amber-500 border-amber-600 text-white hover:bg-amber-600' 
+                                    className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 border shadow-xs ${isPlaying
+                                            ? 'bg-amber-500 border-amber-600 text-white hover:bg-amber-600'
                                             : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
-                                    }`}
+                                        }`}
                                 >
                                     <span>{isPlaying ? '⏸️ إيقاف التدوير' : '▶️ تشغيل تلقائي'}</span>
                                 </button>
@@ -177,7 +176,7 @@ export default function InfographicPage() {
                                     download={`k7ka-infographic-${currentImage.id}.jpeg`}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="px-4 py-2.5 bg-[#A91D22] hover:bg-[#8f1519] text-white rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-sm"
+                                    className="px-4 py-2.5 bg-[#6551a0] hover:bg-[#8f1519] text-white rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-sm"
                                 >
                                     <span>📥 تحميل الإنفوجرافيك</span>
                                 </a>
@@ -188,7 +187,7 @@ export default function InfographicPage() {
 
                 {/* Grid Gallery Title */}
                 <div className="flex items-center gap-2 border-b border-gray-300 pb-3 mb-8 max-w-6xl mx-auto">
-                    <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                    <span className="w-4 h-4 bg-[#6551a0] block"></span>
                     <h2 className="text-2xl font-black tracking-tight text-slate-800 font-serif">كل الإنفوجرافيكس ({infographicsData.length})</h2>
                 </div>
 
@@ -200,11 +199,10 @@ export default function InfographicPage() {
                             <div
                                 key={item.id}
                                 onClick={() => selectImage(index)}
-                                className={`bg-white rounded-2xl border overflow-hidden p-3 shadow-xs cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                                    isActive 
-                                        ? 'border-2 border-[#A91D22] ring-4 ring-[#A91D22]/10 scale-98' 
-                                        : 'border-slate-200/80 hover:border-[#A91D22]/50'
-                                }`}
+                                className={`bg-white rounded-2xl border overflow-hidden p-3 shadow-xs cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${isActive
+                                        ? 'border-2 border-[#6551a0] ring-4 ring-[#6551a0]/10 scale-98'
+                                        : 'border-slate-200/80 hover:border-[#6551a0]/50'
+                                    }`}
                             >
                                 <div className="aspect-[4/5] bg-slate-50 rounded-xl overflow-hidden relative mb-3 group">
                                     <img
@@ -214,13 +212,13 @@ export default function InfographicPage() {
                                         loading="lazy"
                                     />
                                     {isActive && (
-                                        <div className="absolute inset-0 bg-[#A91D22]/10 flex items-center justify-center">
-                                            <span className="bg-[#A91D22] text-white text-[10px] font-bold px-2 py-1 rounded-md">معروض حالياً</span>
+                                        <div className="absolute inset-0 bg-[#6551a0]/10 flex items-center justify-center">
+                                            <span className="bg-[#6551a0] text-white text-[10px] font-bold px-2 py-1 rounded-md">معروض حالياً</span>
                                         </div>
                                     )}
                                 </div>
                                 <div className="text-right space-y-1">
-                                    <h3 className={`text-xs font-black truncate ${isActive ? 'text-[#A91D22]' : 'text-slate-800'}`}>
+                                    <h3 className={`text-xs font-black truncate ${isActive ? 'text-[#6551a0]' : 'text-slate-800'}`}>
                                         إنفوجرافيك رقم {item.id}
                                     </h3>
                                 </div>

@@ -33,12 +33,12 @@ const articles = [
         title: "المرأة المعيلة: القيادة الفردية في مهب الأزمات الاقتصادية وتآكل الدخل",
         subtitle: "تعيل النساء ما يقارب ثلث الأسر المصرية والعربية وتواجه أعباءً مضاعفة بين العمل الشاق والرعاية.",
         category: "على الهامش",
-        author: "عائشة حسين",
+        author: "حورية اسامه",
         date: "٢ يونيو ٢٠٢٦",
         time: "٠٩:٣٠ ص",
         views: "",
         likes: "",
-        image: "/imgs/11.jpeg",
+        image: "/imgs/10.jpeg",
         to: "/ala-alhamesh",
         content: [
             { heading: "الصراع اليومي بين لقمة العيش وتربية الأبناء", text: "تستيقظ المرأة المعيلة في الفجر لتكسب قوت يومها من بيع البضائع البسيطة أو العمل في مهن شاقة. تقضي يومها في توازن حرج ومؤلم بين كسب المال لتدبير الإيجار ومصاريف المدارس، وبين غيابها الاضطراري عن المنزل لمراقبة سلوك أطفالها." },
@@ -90,10 +90,10 @@ const articles = [
     },
     {
         id: 5,
-        title: "",
+        title: "امومة من نوع مختلف: رعاية بلا توقف",
         subtitle: "شهادات حية لأمهات أطفال ذوي الاحتياجات الخاصة وتحديات الدمج وغياب الدعم المؤسسي والنفسي.",
         category: "على الهامش",
-        author: "اسراء جمال",
+        author: "اسراء احمد",
         date: "٣١ مايو ٢٠٢٦",
         time: "١١:٠٠ ص",
         views: "",
@@ -152,7 +152,7 @@ const articles = [
         time: "٠٢:٠٠ م",
         views: "",
         likes: "",
-        image: "/imgs/14.jpeg",
+        image: "/imgs/13.jpeg",
         to: "/sana-ola-omoma",
         content: [
             { heading: "صدمة التحول والهوية الجديدة", text: "بين دفء الرضيع والمسؤوليات الضخمة المفاجئة، تعيش الأم الجديدة اضطرابات نفسية حادة وجروح جسدية وتغييراً كاملاً في جدول نومها وحياتها الاجتماعية، وهو ما يتطلب تفهماً ومساندة حقيقية من الزوج والأسرة." }
@@ -164,7 +164,7 @@ const articles = [
         title: "دوامة الأعمال المنزلية الرتيبة: المجهود الخفي غير المرئي لإبقاء التوازن",
         subtitle: "تفكيك عبء الرعاية المنزلية الذي يقع بالكامل على عاتق الزوجة دون تقدير مادي أو معنوي.",
         category: "المرأة والأسرة",
-        author: "احمد ابراهيم",
+        author: "اسراء احمد",
         date: "٢٧ مايو ٢٠٢٦",
         time: "٠٩:٠٠ ص",
         views: "",
@@ -398,12 +398,12 @@ const alaAlhameshArticles = [
         title: "ام المعاق سوبر هيرو لا يراه أحد",
         subtitle: "شهادات حية لأمهات أطفال ذوي الاحتياجات الخاصة وتحديات الدمج وغياب الدعم المؤسسي والنفسي.",
         category: "على الهامش",
-        author: "اسراء جمال",
+        author: "عائشة حسين",
         date: "٣١ مايو ٢٠٢٦",
         time: "١١:٠٠ ص",
         views: "",
         likes: "",
-        image: "/imgs/13.jpeg",
+        image: "/imgs/11.jpeg",
         to: "/om-eltifl-dhawi-al-eaahaq",
         content: [
             { heading: "العزلة الاجتماعية والانسحاب من الحياة", text: "تجد أم الطفل المعاق نفسها مجبرة على التخلي عن وظيفتها وحياتها الاجتماعية لتتحول إلى مرافق دائم على مدار الساعة. تضيق مساحتها الشخصية وتصبح طموحاتها مؤجلة لأجل غير مسمى في ظل غياب مراكز رعاية حكومية مجانية وموثوقة." },
@@ -419,7 +419,7 @@ const sawtohaHighlights = [
         category: 'صوتها مسموع',
         title: 'النسوية على السوشيال ميديا… بين تمكين النساء وصناعة الوهم الرقمي',
         subtitle: 'تحقيق يرصد كيف تصنع الخوارزميات خطابا مرتفع الصوت بين الوعي الحقيقي وضغط التريند.',
-        views: 18243
+        views: ""
     },
     {
         id: 2,
@@ -427,7 +427,7 @@ const sawtohaHighlights = [
         category: 'صوتها مسموع',
         title: 'المرأة والعمل التنفيذي… كسر السقف الزجاجي في الإدارات العليا',
         subtitle: 'قراءة ميدانية في فجوة الترقي، التشكيك المبطن، وصناعة القرار داخل بيئات العمل التنفيذية.',
-        views: 13920
+        views: ""
     },
     {
         id: 3,
@@ -435,7 +435,7 @@ const sawtohaHighlights = [
         category: 'صوتها مسموع',
         title: 'في قلب المكاتب الصامتة وبيئة العمل الذكورية',
         subtitle: 'شهادات حية تكشف العزل المهني غير المعلن والتحديات اليومية للعاملات في القطاعات المغلقة.',
-        views: 12107
+        views: ""
     }
 ];
 const heroStories = [
@@ -470,7 +470,7 @@ const heroStories = [
         id: 4,
         articleId: 9,
         title: "محو أمية المرأة ",
-        subtitle:"معركة الوعي الغائب خلف الأرقام",
+        subtitle: "معركة الوعي الغائب خلف الأرقام",
         category: "المرأة والأسرة",
         time: "٠٩:٠٠ ص",
         image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg"
@@ -484,7 +484,7 @@ const heroStories = [
         time: "٠١:٢٠ م",
         image: "/imgs/carousel/house-cleaning-routine.jpeg"
     },
-    
+
     {
         id: 6,
         articleId: 18,
@@ -730,7 +730,7 @@ export default function Home() {
     };
 
     return (
-        <div className="relative min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#A91D22]/10 selection:text-[#A91D22]" dir="rtl">
+        <div className="relative min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#6551a0]/10 selection:text-[#6551a0]" dir="rtl">
             <NavBar />
 
 
@@ -745,7 +745,7 @@ export default function Home() {
                         {/* العمود الأيمن: الخبر الرئيسي المميز (50% عرض) */}
                         <section className="lg:col-span-12 space-y-4">
                             <div className="flex items-center gap-2 border-b border-gray-300 pb-2">
-                                <span className="w-3.5 h-3.5 bg-[#A91D22] block"></span>
+                                <span className="w-3.5 h-3.5 bg-[#B49EF4] block"></span>
                                 <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">الخبر الرئيسي</h2>
                             </div>
 
@@ -753,7 +753,7 @@ export default function Home() {
                                 onClick={() => openHeroStory(featuredArticle)}
                                 onMouseEnter={() => setHeroPaused(true)}
                                 onMouseLeave={() => setHeroPaused(false)}
-                                className="bg-white border border-gray-200 p-3 shadow-xs cursor-pointer group hover:border-[#A91D22] hover:shadow-md transition-all duration-300 ease-out animate-fadeIn overflow-hidden"
+                                className="bg-white border border-gray-200 p-3 shadow-xs cursor-pointer group hover:border-[#6551a0] hover:shadow-md transition-all duration-300 ease-out animate-fadeIn overflow-hidden"
                             >
                                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 news-zoom-container rounded-xl">
                                     <img
@@ -762,7 +762,7 @@ export default function Home() {
                                         className="w-full h-full object-cover news-zoom-img"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                                    <div className="absolute top-3 right-3 bg-[#A91D22] text-white text-[10px] font-black px-2.5 py-1 rounded shadow-sm uppercase">
+                                    <div className="absolute top-3 right-3 bg-[#B49EF4] text-white text-[10px] font-black px-2.5 py-1 rounded shadow-sm uppercase">
                                         {featuredArticle.category}
                                     </div>
 
@@ -818,12 +818,12 @@ export default function Home() {
                                                     event.stopPropagation();
                                                     setHeroIndex(index);
                                                 }}
-                                                className={`h-2.5 rounded-full transition-all ${index === heroIndex ? 'w-6 bg-[#A91D22]' : 'w-2.5 bg-gray-300 hover:bg-gray-400'}`}
+                                                className={`h-2.5 rounded-full transition-all ${index === heroIndex ? 'w-6 bg-[#B49EF4]' : 'w-2.5 bg-gray-300 hover:bg-gray-400'}`}
                                                 aria-label={`الخبر ${index + 1}`}
                                             />
                                         ))}
                                     </div>
-                                    <span className="inline-flex items-center gap-1.5 text-xs font-black text-[#A91D22] border-b-2 border-transparent group-hover:border-[#A91D22] transition duration-200">
+                                    <span className="inline-flex items-center gap-1.5 text-xs font-black text-[#B572E8] border-b-2 border-transparent group-hover:border-[#B49EF4] transition duration-200">
                                         اقرأ التقرير الكامل
                                         <span>←</span>
                                     </span>
@@ -842,7 +842,7 @@ export default function Home() {
                     <section className="space-y-6">
                         <div className="flex items-center justify-between border-b border-gray-300 pb-3">
                             <div className="flex items-center gap-2">
-                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <span className="w-4 h-4 bg-[#6551a0] block"></span>
                                 <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">تحقيقات وتقارير استقصائية</h2>
                             </div>
                             <span className="text-xs font-black text-gray-500 bg-white border border-gray-200 px-3 py-1 rounded">الملف الاستقصائي لـ كحكة</span>
@@ -853,7 +853,7 @@ export default function Home() {
                                 <article
                                     key={art.id}
                                     onClick={() => openArticleDetails(art)}
-                                    className="bg-white border border-gray-200 p-4 shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.015] hover:shadow-md transition-all duration-300 ease-out animate-fadeInUp opacity-0"
+                                    className="bg-white border border-gray-200 p-4 shadow-3xs cursor-pointer group hover:border-[#B572E8] hover:scale-[1.015] hover:shadow-md transition-all duration-300 ease-out animate-fadeInUp opacity-0"
                                     style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                                 >
                                     <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 mb-3.5 news-zoom-container">
@@ -867,12 +867,12 @@ export default function Home() {
                                         </span>
                                     </div>
                                     <div className="space-y-2">
-                                        <div className="text-[10px] font-bold text-[#A91D22] flex items-center gap-1.5">
+                                        <div className="text-[10px] font-bold text-[#6551a0] flex items-center gap-1.5">
                                             <span>{art.category}</span>
                                             <span>•</span>
                                             <span>{art.date}</span>
                                         </div>
-                                        <h3 className="text-base font-black text-[#1F2937] leading-snug line-clamp-2 group-hover:text-[#A91D22] transition font-serif">
+                                        <h3 className="text-base font-black text-[#1F2937] leading-snug line-clamp-2 group-hover:text-[#6551a0] transition font-serif">
                                             {art.title}
                                         </h3>
                                         <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
@@ -888,10 +888,10 @@ export default function Home() {
                     <section className="space-y-6">
                         <div className="flex items-center justify-between border-b border-gray-300 pb-3">
                             <div className="flex items-center gap-2">
-                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <span className="w-4 h-4 bg-[#6551a0] block"></span>
                                 <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">ملف صوتها مسموع: القيادة والتأثير الرقمي</h2>
                             </div>
-                            <Link to="/sawtoha-masmoua" className="text-xs font-black text-[#A91D22] hover:underline">عرض ملف صوتها مسموع بالكامل ←</Link>
+                            <Link to="/sawtoha-masmoua" className="text-xs font-black text-[#6551a0] hover:underline">عرض ملف صوتها مسموع بالكامل ←</Link>
                         </div>
 
                         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
@@ -900,22 +900,22 @@ export default function Home() {
                                     key={item.id}
                                     to="/sawtoha-masmoua"
                                     state={{ investigationId: item.investigationId }}
-                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#6551a0] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
                                     style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                                 >
                                     <div className="space-y-3">
                                         <div className="flex justify-between items-center text-[10px] font-bold text-gray-400">
-                                            <span className="bg-red-50 text-[#A91D22] px-2 py-0.5 rounded border border-red-100">{item.category}</span>
+                                            <span className="bg-red-50 text-[#6551a0] px-2 py-0.5 rounded border border-red-100">{item.category}</span>
                                             <span>👁️ {item.views.toLocaleString()}</span>
                                         </div>
-                                        <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                        <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#6551a0] transition">
                                             {item.title}
                                         </h3>
                                         <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
                                             {item.subtitle}
                                         </p>
                                     </div>
-                                    <div className="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
+                                    <div className="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#6551a0]">
                                         <span>التحقيق الاستقصائي بالكامل</span>
                                         <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
                                     </div>
@@ -941,7 +941,7 @@ export default function Home() {
                                     <article
                                         key={art.id}
                                         onClick={() => openArticleDetails(art)}
-                                        className="bg-white border border-gray-100 p-4 shadow-3xs cursor-pointer flex gap-4 group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out animate-fadeInUp opacity-0"
+                                        className="bg-white border border-gray-100 p-4 shadow-3xs cursor-pointer flex gap-4 group hover:border-[#6551a0] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out animate-fadeInUp opacity-0"
                                         style={{ animationDelay: `${idx * 100}ms`, animationFillMode: 'forwards' }}
                                     >
                                         <div className="w-24 h-24 shrink-0 bg-slate-100 overflow-hidden border border-gray-200 news-zoom-container">
@@ -953,8 +953,8 @@ export default function Home() {
                                         </div>
                                         <div className="flex-1 flex flex-col justify-between">
                                             <div className="space-y-1">
-                                                <span className="text-[9px] font-bold text-[#A91D22]">{art.category}</span>
-                                                <h3 className="text-xs sm:text-sm font-black text-gray-800 leading-snug line-clamp-2 group-hover:text-[#A91D22] transition font-serif">
+                                                <span className="text-[9px] font-bold text-[#6551a0]">{art.category}</span>
+                                                <h3 className="text-xs sm:text-sm font-black text-gray-800 leading-snug line-clamp-2 group-hover:text-[#6551a0] transition font-serif">
                                                     {art.title}
                                                 </h3>
                                             </div>
@@ -969,10 +969,10 @@ export default function Home() {
                             <div className="space-y-3">
                                 <div className="flex items-center justify-between border-b border-gray-100 pb-3">
                                     <div className="flex items-center gap-2">
-                                        <span className="w-3.5 h-3.5 bg-indigo-600 block rounded-full"></span>
+                                        <span className="w-3.5 h-3.5 text-[#6551a0] block rounded-full"></span>
                                         <h2 className="text-lg font-black text-gray-800 font-serif">بين البيت والشغل: صراع الأدوار</h2>
                                     </div>
-                                    <Link to="/bayn-albayt-walshoghl" className="text-xs font-black text-indigo-600 hover:underline">الملف الكامل ←</Link>
+                                    <Link to="/bayn-albayt-walshoghl" className="text-xs text-[#6551a0] text-indigo-600 hover:underline">الملف الكامل ←</Link>
                                 </div>
                                 <p className="text-xs text-gray-500 leading-relaxed">
                                     دليل عملي وتحقيقات ميدانية تبحث في تحديات التوفيق وصراع الأدوار للأم العاملة وكيفية النجاة من الاحتراق العصبي والجسدي.
@@ -985,8 +985,8 @@ export default function Home() {
                                             onClick={() => openArticleDetails(art)}
                                             className="group cursor-pointer bg-slate-50 p-4 rounded-xl border border-gray-100 hover:border-indigo-600 hover:bg-white hover:shadow-xs transition duration-300"
                                         >
-                                            <span className="text-[9px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100 inline-block mb-2">تحقيق الأمومة العاملة</span>
-                                            <h3 className="text-sm font-black text-gray-800 group-hover:text-indigo-600 transition leading-snug font-serif">
+                                            <span className="text-[9px] font-bold text-[#6551a0] bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100 inline-block mb-2">تحقيق الأمومة العاملة</span>
+                                            <h3 className="text-sm font-black text-gray-800 group-hover:text-[#6551a0]0 transition leading-snug font-serif">
                                                 {art.title}
                                             </h3>
                                             <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
@@ -1055,7 +1055,7 @@ export default function Home() {
                         </section>
 
 
-
+text-[#6551a0]
                     </div> */}
 
                     {/* 4. كلام قانون - Legal Desk (قسم بطاقات الأسئلة والأجوبة السريعة) */}
@@ -1065,7 +1065,7 @@ export default function Home() {
                                 <span className="w-4 h-4 bg-slate-800 block"></span>
                                 <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">كلام قانون</h2>
                             </div>
-                            <span className="text-xs font-bold text-[#A91D22] bg-red-50 border border-red-200 px-3 py-1 rounded">حقوقكِ في خطوات مبسطة</span>
+                            <span className="text-xs font-bold text-[#6551a0] bg-red-50 border border-red-200 px-3 py-1 rounded">حقوقكِ في خطوات مبسطة</span>
                         </div>
 
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -1073,7 +1073,7 @@ export default function Home() {
                                 <article
                                     key={art.id}
                                     onClick={() => openArticleDetails(art)}
-                                    className="bg-white border border-gray-200 rounded-xl p-5 shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    className="bg-white border border-gray-200 rounded-xl p-5 shadow-3xs cursor-pointer group hover:border-[#6551a0] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
                                     style={{ animationDelay: `${idx * 120}ms`, animationFillMode: 'forwards' }}
                                 >
                                     <div className="space-y-3">
@@ -1081,14 +1081,14 @@ export default function Home() {
                                             <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded">{art.category}</span>
                                             <span>🗓️ {art.date}</span>
                                         </div>
-                                        <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                        <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#6551a0] transition">
                                             {art.title}
                                         </h3>
                                         <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
                                             {art.subtitle}
                                         </p>
                                     </div>
-                                    <div className="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
+                                    <div className="mt-4 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#6551a0]">
                                         <span>مراجعة قانونية معتمدة ⚖️</span>
                                         <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
                                     </div>
@@ -1101,13 +1101,13 @@ export default function Home() {
 
                     {/* 5. قسم البودكاست والوسائط المتعددة (جوه الكحكة - Dark Section) */}
                     <section id="podcast-section" className="bg-[#111111] text-white rounded-2xl p-6 sm:p-10 relative overflow-hidden shadow-xl scroll-mt-24">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(169,29,34,0.15),transparent_60%)]"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(182, 11, 235, 0.15),transparent_60%)]"></div>
 
                         <div className="relative z-10 space-y-8">
                             {/* ترويسة القسم */}
                             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-4">
                                 <div className="space-y-1">
-                                    <span className="text-[#A91D22] font-black text-xs uppercase tracking-widest bg-red-500/10 px-2.5 py-0.5 rounded">البث المسموع والمرئي</span>
+                                    <span className="text-[#6551a0] font-black text-xs uppercase tracking-widest bg-red-500/10 px-2.5 py-0.5 rounded">البث المسموع والمرئي</span>
                                     <h2 className="text-2xl sm:text-3xl font-black font-serif">بودكاست جوه الكحكة</h2>
                                 </div>
                                 <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
@@ -1120,7 +1120,7 @@ export default function Home() {
                                 {/* المشغل (4 أعمدة) */}
                                 <div className="lg:col-span-4 bg-white/5 border border-white/10 rounded-xl p-5 flex flex-col justify-between items-center text-center shadow-md">
                                     <div className="space-y-4 w-full">
-                                        <div className={`w-20 h-20 bg-[#A91D22]/10 rounded-full border border-[#A91D22]/20 flex items-center justify-center text-3xl mx-auto shadow-inner transition-all duration-500 ${isPlaying ? 'animate-pulse scale-105 bg-[#A91D22]/20 border-[#A91D22]/30' : ''}`}>
+                                        <div className={`w-20 h-20 bg-[#6551a0]/10 rounded-full border border-[#6551a0]/20 flex items-center justify-center text-3xl mx-auto shadow-inner transition-all duration-500 ${isPlaying ? 'animate-pulse scale-105 bg-[#6551a0]/20 border-[#6551a0]/30' : ''}`}>
                                             📻
                                         </div>
                                         <div className="space-y-1.5">
@@ -1128,9 +1128,9 @@ export default function Home() {
                                                 {playingEpisode ? playingEpisode.title : "راديو كحكة الإخباري"}
                                                 {isPlaying && (
                                                     <div className="flex items-end gap-0.5 h-4 mb-0.5">
-                                                        <span className="w-0.5 bg-[#A91D22] rounded-full animate-wave" style={{ animationDelay: '0.1s' }}></span>
-                                                        <span className="w-0.5 bg-[#A91D22] rounded-full animate-wave" style={{ animationDelay: '0.3s' }}></span>
-                                                        <span className="w-0.5 bg-[#A91D22] rounded-full animate-wave" style={{ animationDelay: '0.5s' }}></span>
+                                                        <span className="w-0.5 bg-[#6551a0] rounded-full animate-wave" style={{ animationDelay: '0.1s' }}></span>
+                                                        <span className="w-0.5 bg-[#6551a0] rounded-full animate-wave" style={{ animationDelay: '0.3s' }}></span>
+                                                        <span className="w-0.5 bg-[#6551a0] rounded-full animate-wave" style={{ animationDelay: '0.5s' }}></span>
                                                     </div>
                                                 )}
                                             </h3>
@@ -1145,7 +1145,7 @@ export default function Home() {
                                         {/* شريط التقدم */}
                                         <div className="space-y-1">
                                             <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden">
-                                                <div className={`bg-[#A91D22] h-full ${isPlaying ? 'w-[40%] transition-all duration-1000' : 'w-0'}`}></div>
+                                                <div className={`bg-[#6551a0] h-full ${isPlaying ? 'w-[40%] transition-all duration-1000' : 'w-0'}`}></div>
                                             </div>
                                             <div className="flex justify-between text-[8px] text-slate-400 font-bold">
                                                 <span>{isPlaying ? '٠٨:٢٥' : '٠٠:٠٠'}</span>
@@ -1165,7 +1165,7 @@ export default function Home() {
 
                                                     setIsPlaying(prev => !prev)
                                                 }}
-                                                className={`w-12 h-12 rounded-full bg-[#A91D22] text-white font-bold flex items-center justify-center hover:bg-red-700 shadow-md transition-all duration-300 ${isPlaying ? 'animate-pulseGlow' : ''}`}
+                                                className={`w-12 h-12 rounded-full bg-[#6551a0] text-white font-bold flex items-center justify-center hover:bg-red-700 shadow-md transition-all duration-300 ${isPlaying ? 'animate-pulseGlow' : ''}`}
                                             >
                                                 {isPlaying ? '⏸️' : '▶️'}
                                             </button>
@@ -1183,14 +1183,14 @@ export default function Home() {
                                                 key={ep.id}
                                                 onClick={() => playEpisode(ep)}
                                                 className={`p-4 rounded-xl cursor-pointer border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 animate-fadeInRight opacity-0 transition-all duration-300 ${isCurrent
-                                                    ? 'bg-[#A91D22]/10 border-[#A91D22]/40 text-white scale-[1.01]'
+                                                    ? 'bg-[#6551a0]/10 border-[#6551a0]/40 text-white scale-[1.01]'
                                                     : 'bg-white/5 border-white/5 text-slate-300 hover:bg-white/10 hover:text-white hover:scale-[1.005]'
                                                     }`}
                                                 style={{ animationDelay: `${idx * 120}ms`, animationFillMode: 'forwards' }}
                                             >
                                                 <div className="space-y-1">
                                                     <h4 className="text-xs font-black flex items-center gap-2">
-                                                        <span className={`w-1.5 h-1.5 rounded-full ${isCurrent ? 'bg-[#A91D22]' : 'bg-slate-400'}`}></span>
+                                                        <span className={`w-1.5 h-1.5 rounded-full ${isCurrent ? 'bg-[#6551a0]' : 'bg-slate-400'}`}></span>
                                                         {ep.title}
                                                     </h4>
                                                     <p className="text-[10px] text-slate-400 font-medium leading-relaxed">
@@ -1217,10 +1217,10 @@ export default function Home() {
                     <section className="space-y-6">
                         <div className="flex items-center justify-between border-b border-gray-300 pb-3">
                             <div className="flex items-center gap-2">
-                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <span className="w-4 h-4 bg-[#6551a0] block"></span>
                                 <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">منتدى جوه الكحكة (المشاعر والصراعات النفسية)</h2>
                             </div>
-                            <Link to="/gowa-alkahka" className="text-xs font-black text-[#A91D22] hover:underline">عرض جميع موضوعات القسم ←</Link>
+                            <Link to="/gowa-alkahka" className="text-xs font-black text-[#6551a0] hover:underline">عرض جميع موضوعات القسم ←</Link>
                         </div>
 
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -1228,7 +1228,7 @@ export default function Home() {
                                 <article
                                     key={art.id}
                                     onClick={() => openArticleDetails(art)}
-                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#6551a0] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
                                     style={{ animationDelay: `${idx * 120}ms`, animationFillMode: 'forwards' }}
                                 >
                                     <div className="space-y-3 text-right">
@@ -1236,14 +1236,14 @@ export default function Home() {
                                             <span className="bg-purple-50 text-purple-700 px-2 py-0.5 rounded">{art.category}</span>
                                             <span>👁️ {art.views.toLocaleString()}</span>
                                         </div>
-                                        <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                        <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#6551a0] transition">
                                             {art.title}
                                         </h3>
                                         <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
                                             {art.subtitle}
                                         </p>
                                     </div>
-                                    <div className="mt-5 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#A91D22]">
+                                    <div className="mt-5 pt-3 border-t border-gray-50 flex justify-between items-center text-xs font-bold text-[#6551a0]">
                                         <span>تفريغ ودعم نفسي 🧠</span>
                                         <span className="group-hover:translate-x-[-4px] transition-transform">←</span>
                                     </div>
@@ -1272,7 +1272,7 @@ export default function Home() {
                                 <span className="w-4 h-4 bg-slate-800 block"></span>
                                 <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">ملف بره الكحكة (الفضاء الرقمي والشارع)</h2>
                             </div>
-                            <Link to="/bara-alkahka" className="text-xs font-black text-[#A91D22] hover:underline">تصفح ملفات الشارع والإنترنت ←</Link>
+                            <Link to="/bara-alkahka" className="text-xs font-black text-[#6551a0] hover:underline">تصفح ملفات الشارع والإنترنت ←</Link>
                         </div>
 
                         <div className="grid gap-6 sm:grid-cols-2">
@@ -1280,7 +1280,7 @@ export default function Home() {
                                 <article
                                     key={art.id}
                                     onClick={() => openArticleDetails(art)}
-                                    className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col sm:flex-row gap-6 animate-fadeInUp opacity-0"
+                                    className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs cursor-pointer group hover:border-[#6551a0] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col sm:flex-row gap-6 animate-fadeInUp opacity-0"
                                     style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                                 >
                                     <div className="sm:w-1/3 aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 border border-gray-100 news-zoom-container shrink-0">
@@ -1293,7 +1293,7 @@ export default function Home() {
                                     <div className="flex-1 flex flex-col justify-between space-y-3 text-right">
                                         <div className="space-y-1.5">
                                             <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100/50 inline-block">{art.category}</span>
-                                            <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                            <h3 className="text-base font-black text-gray-800 leading-snug font-serif group-hover:text-[#6551a0] transition">
                                                 {art.title}
                                             </h3>
                                             <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-2">
@@ -1302,7 +1302,7 @@ export default function Home() {
                                         </div>
                                         <div className="flex justify-between items-center text-xs font-bold text-gray-400">
                                             <span>✍️ {art.author}</span>
-                                            <span className="text-[#A91D22] group-hover:translate-x-[-4px] transition-transform">اقرئي التحقيق الكامل ←</span>
+                                            <span className="text-[#6551a0] group-hover:translate-x-[-4px] transition-transform">اقرئي التحقيق الكامل ←</span>
                                         </div>
                                     </div>
                                 </article>
@@ -1315,7 +1315,7 @@ export default function Home() {
                     <section className="space-y-6">
                         <div className="flex items-center justify-between border-b border-gray-300 pb-3 animate-fadeIn">
                             <div className="flex items-center gap-2">
-                                <span className="w-4 h-4 bg-[#A91D22] block"></span>
+                                <span className="w-4 h-4 bg-[#6551a0] block"></span>
                                 <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">دليل أبواب منصة كحكة التحريرية الكامل</h2>
                             </div>
                             <span className="text-xs font-bold text-gray-400 font-serif">١٤ باباً استقصائياً وتوعوياً بالكامل</span>
@@ -1439,15 +1439,15 @@ export default function Home() {
                                 <Link
                                     key={item.path}
                                     to={item.path}
-                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#A91D22] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#6551a0] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
                                     style={{ animationDelay: `${idx * 50}ms`, animationFillMode: 'forwards' }}
                                 >
                                     <div className="space-y-3.5 text-right">
                                         <div className="flex justify-between items-center text-[10px] font-black">
-                                            <span className="bg-red-50 text-[#A91D22] px-2 py-0.5 rounded border border-red-100">{item.tag}</span>
+                                            <span className="bg-red-50 text-[#6551a0] px-2 py-0.5 rounded border border-red-100">{item.tag}</span>
                                             <span className="text-xl">{item.icon}</span>
                                         </div>
-                                        <h3 className="text-base font-black text-slate-800 leading-snug font-serif group-hover:text-[#A91D22] transition">
+                                        <h3 className="text-base font-black text-slate-800 leading-snug font-serif group-hover:text-[#6551a0] transition">
                                             {item.title}
                                         </h3>
                                         <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
@@ -1462,7 +1462,7 @@ export default function Home() {
                                                 </span>
                                             ))}
                                         </div>
-                                        <div className="flex justify-end items-center text-xs font-black text-[#A91D22] pt-1">
+                                        <div className="flex justify-end items-center text-xs font-black text-[#6551a0] pt-1">
                                             <span className="group-hover:translate-x-[-4px] transition-transform">دخول الباب ←</span>
                                         </div>
                                     </div>
@@ -1475,12 +1475,12 @@ export default function Home() {
                     <section className="space-y-4   animate-fadeIn  mx-auto">
                         <div className="flex justify-between items-center border-b border-gray-300 pb-2">
                             <div className="flex items-center gap-2">
-                                <span className="w-3.5 h-3.5 bg-[#A91D22] block"></span>
+                                <span className="w-3.5 h-3.5 bg-[#6551a0] block"></span>
                                 <h2 className="text-lg font-black tracking-tight text-[#1F2937] font-serif">إنفوجرافيك كحكة</h2>
                             </div>
                             <Link
                                 to="/infographic"
-                                className="text-xs font-black text-[#A91D22] hover:underline"
+                                className="text-xs font-black text-[#6551a0] hover:underline"
                             >
                                 عرض المعرض بالكامل ←
                             </Link>
@@ -1509,7 +1509,7 @@ export default function Home() {
                                         setInfoPlaying(false);
                                         setInfoIndex(prevIndex => (prevIndex - 1 + infographicsData.length) % infographicsData.length);
                                     }}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#A91D22] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#6551a0] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
                                     aria-label="الصورة السابقة"
                                 >
                                     <span className="text-xl font-bold">→</span>
@@ -1519,7 +1519,7 @@ export default function Home() {
                                         setInfoPlaying(false);
                                         setInfoIndex(prevIndex => (prevIndex + 1) % infographicsData.length);
                                     }}
-                                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#A91D22] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
+                                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-[#6551a0] hover:text-white text-slate-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-10 focus:outline-none"
                                     aria-label="الصورة التالية"
                                 >
                                     <span className="text-xl font-bold">←</span>
@@ -1550,8 +1550,8 @@ export default function Home() {
                                     {/* Autoplay Switch */}
                                     <button
                                         onClick={() => setInfoPlaying(!infoPlaying)}
-                                        className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 border shadow-xs ${infoPlaying
-                                            ? 'bg-amber-500 border-amber-600 text-white hover:bg-amber-600'
+                                        className={`px-4 py-2.5 bg-[#B572E8] rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 border shadow-xs ${infoPlaying
+                                            ? 'bg-[#B572E8] border-[#B572E8] text-white hover:bg-[#B572E8]'
                                             : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
                                             }`}
                                     >
@@ -1572,7 +1572,7 @@ export default function Home() {
                                         download={`k7ka-infographic-${infographicsData[infoIndex].id}.jpeg`}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="px-4 py-2.5 bg-[#A91D22] hover:bg-[#8f1519] text-white rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-sm"
+                                        className="px-4 py-2.5 bg-[#B572E8] hover:bg-[#B572E8] text-white rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-sm"
                                     >
                                         <span>📥 تحميل الصورة</span>
                                     </a>
@@ -1589,7 +1589,7 @@ export default function Home() {
                     <div className="flex justify-between items-center border-b border-gray-200 pb-4">
                         <button
                             onClick={() => setSelectedArticle(null)}
-                            className="flex items-center gap-2 text-xs sm:text-sm font-black text-[#A91D22] border border-[#A91D22] bg-white px-4 py-2 rounded-lg hover:bg-red-50 hover:translate-x-[4px] active:scale-95 transition-all duration-300"
+                            className="flex items-center gap-2 text-xs sm:text-sm font-black text-[#B572E8] border border-[#6551a0] bg-white px-4 py-2 rounded-lg hover:bg-red-50 hover:translate-x-[4px] active:scale-95 transition-all duration-300"
                         >
                             ← العودة إلى الرئيسية
                         </button>
@@ -1610,7 +1610,7 @@ export default function Home() {
                     <div className="space-y-6">
 
                         <div className="space-y-3 border-b border-gray-200 pb-5">
-                            <span className="inline-block bg-red-50 text-[#A91D22] border border-red-200 text-xs font-black px-3 py-1 rounded">
+                            <span className="inline-block bg-red-50 text-[#B572E8] border border-red-200 text-xs font-black px-3 py-1 rounded">
                                 {selectedArticle.category}
                             </span>
                             <h1 className="text-2xl sm:text-4xl font-black text-[#1F2937] leading-tight font-serif">
@@ -1625,7 +1625,7 @@ export default function Home() {
                                 <span>🗓️ تاريخ النشر: {selectedArticle.date}</span>
                                 <span>⏰ توقيت النشر: {selectedArticle.time}</span>
                                 <span>⏱️ وقت القراءة: ٤-٦ دقائق</span>
-                                <span className="text-[#A91D22]">👁️ {selectedArticle.views.toLocaleString()} قراءة</span>
+                                <span className="text-[#B572E8]">👁️ {selectedArticle.views.toLocaleString()} قراءة</span>
                             </div>
                         </div>
 
@@ -1635,7 +1635,7 @@ export default function Home() {
                                 selectedArticle.content.map((sec, idx) => (
                                     <div
                                         key={idx}
-                                        className="space-y-2 border-r-4 border-[#A91D22]/40 pr-4 animate-fadeInUp opacity-0"
+                                        className="space-y-2 border-r-4 border-[#6551a0]/40 pr-4 animate-fadeInUp opacity-0"
                                         style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                                     >
                                         <h3 className="text-lg font-black text-[#1F2937]">{sec.heading}</h3>
@@ -1653,7 +1653,7 @@ export default function Home() {
 
                             <Link
                                 to={selectedArticle.to}
-                                className="bg-[#1F2937] hover:bg-[#A91D22] text-white text-xs font-black px-5 py-2.5 rounded-lg shadow-sm transition"
+                                className="bg-[#1F2937] hover:bg-[#6551a0] text-white text-xs font-black px-5 py-2.5 rounded-lg shadow-sm transition"
                             >
                                 عرض الملف الكامل للقسم
                             </Link>
@@ -1669,7 +1669,7 @@ export default function Home() {
                                     <div
                                         key={art.id}
                                         onClick={() => openArticleDetails(art)}
-                                        className="cursor-pointer group space-y-2 text-right bg-slate-50/50 p-2 border border-slate-100 rounded-xl hover:border-[#A91D22] hover:scale-[1.02] hover:shadow-md transition-all duration-300 ease-out"
+                                        className="cursor-pointer group space-y-2 text-right bg-slate-50/50 p-2 border border-slate-100 rounded-xl hover:border-[#6551a0] hover:scale-[1.02] hover:shadow-md transition-all duration-300 ease-out"
                                     >
                                         <div className="aspect-video w-full overflow-hidden bg-slate-100 rounded-lg">
                                             <img
@@ -1678,8 +1678,8 @@ export default function Home() {
                                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                             />
                                         </div>
-                                        <span className="text-[8px] font-bold text-[#A91D22]">{art.category}</span>
-                                        <h4 className="text-xs font-bold text-gray-800 line-clamp-2 leading-tight group-hover:text-[#A91D22] transition-colors duration-200 font-serif">
+                                        <span className="text-[8px] font-bold text-[#6551a0]">{art.category}</span>
+                                        <h4 className="text-xs font-bold text-gray-800 line-clamp-2 leading-tight group-hover:text-[#6551a0] transition-colors duration-200 font-serif">
                                             {art.title}
                                         </h4>
                                     </div>

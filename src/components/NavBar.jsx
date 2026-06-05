@@ -25,14 +25,16 @@ export default function NavBar() {
 
     const links = [
         { href: '/', label: 'الرئيسية' },
-        { href: '/horayat-sahafiya', label: 'الحوارات الصحافية' },
-        { href: '/sawtoha-masmoua', label: 'صوتها مسموع' },
+        { href: '/gowa-alkahka', label: 'جوه الكحكة' },
         { href: '/bara-alkahka', label: 'بره الكحكة' },
-        { href: '/bayn-albayt-walshoghl', label: 'بين البيت والشغل' },
+        { href: '/sawtoha-masmoua', label: 'صوتها مسموع' },
         { href: '/kalam-qanun', label: 'كلام قانون' },
+        { href: '/bayn-albayt-walshoghl', label: 'بين البيت والشغل' },
         { href: '/hikayat-settat', label: 'حكايات ستات' },
         { href: '/ala-alhamesh', label: 'على الهامش' },
-        { href: '/gowa-alkahka', label: 'جوه الكحكة' },
+        { href: '/horayat-sahafiya', label: 'الحوارات الصحفية' },
+
+
         // { href: '/infographic', label: 'إنفوجرافيك' },
     ]
 

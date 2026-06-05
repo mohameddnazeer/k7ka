@@ -15,9 +15,9 @@ export default function Footer() {
   return (
     <>
       {/* شريط الأخبار العاجلة المتحرك */}
-      <div className="bg-[#1F2937] text-white py-2 overflow-hidden shadow-xs border-b border-[#A91D22] mt-[50px]" dir="rtl">
+      <div className="bg-[#1F2937] text-white py-2 overflow-hidden shadow-xs border-b border-[#6551a0] mt-[50px]" dir="rtl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-4">
-          <span className="bg-[#A91D22] text-white text-[10px] font-black px-2.5 py-1 rounded shrink-0 animate-pulse flex items-center gap-1.5 shadow-sm">
+          <span className="bg-[#6551a0] text-white text-[10px] font-black px-2.5 py-1 rounded shrink-0 animate-pulse flex items-center gap-1.5 shadow-sm">
             <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
             عاجل كحكة
           </span>
@@ -36,7 +36,7 @@ export default function Footer() {
       </div>
 
       <footer
-        className="w-full bg-[#111111] text-slate-300 pt-16 pb-8 border-t-4 border-[#A91D22]"
+        className="w-full bg-[#111111] text-slate-300 pt-16 pb-8 border-t-4 border-[#6551a0]"
         dir="rtl"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -47,7 +47,7 @@ export default function Footer() {
             {/* 1. قسم الهوية والتعريف بهيئة التحرير */}
             <div className="md:col-span-4 space-y-4">
               <div className="flex items-center gap-3">
-                <span className="h-2 w-2 rounded-full bg-[#A91D22]"></span>
+                <span className="h-2 w-2 rounded-full bg-[#6551a0]"></span>
                 <span className="text-2xl font-black tracking-wider text-white font-serif">
                   بوابة كحكة الإخبارية
                 </span>
@@ -65,7 +65,7 @@ export default function Footer() {
 
             {/* 2. روابط التحرير والسياسات */}
             <div className="md:col-span-2 space-y-4">
-              <h4 className="text-xs font-black tracking-wider text-white uppercase border-r-2 border-[#A91D22] pr-2">
+              <h4 className="text-xs font-black tracking-wider text-white uppercase border-r-2 border-[#6551a0] pr-2">
                 من نحن والسياسات
               </h4>
               <ul className="space-y-2.5 text-xs font-bold">
@@ -79,7 +79,7 @@ export default function Footer() {
                   <li key={item.name}>
                     <Link
                       to={item.to}
-                      className="inline-block text-slate-400 transition hover:text-[#A91D22]"
+                      className="inline-block text-slate-400 transition hover:text-[#6551a0]"
                     >
                       {item.name}
                     </Link>
@@ -90,7 +90,7 @@ export default function Footer() {
 
             {/* 3. الإعلان والتواصل */}
             <div className="md:col-span-3 space-y-4">
-              <h4 className="text-xs font-black tracking-wider text-white uppercase border-r-2 border-[#A91D22] pr-2">
+              <h4 className="text-xs font-black tracking-wider text-white uppercase border-r-2 border-[#6551a0] pr-2">
                 تواصل معنا والإعلان
               </h4>
               <ul className="space-y-3 text-xs font-bold text-slate-400">
@@ -118,7 +118,7 @@ export default function Footer() {
 
             {/* 4. الاشتراك في النشرة الإخبارية */}
             <div className="md:col-span-3 space-y-4">
-              <h4 className="text-xs font-black tracking-wider text-white uppercase border-r-2 border-[#A91D22] pr-2">
+              <h4 className="text-xs font-black tracking-wider text-white uppercase border-r-2 border-[#6551a0] pr-2">
                 النشرة البريدية للجريدة
               </h4>
               <p className="text-[11px] leading-relaxed text-slate-400 font-medium">
@@ -133,17 +133,17 @@ export default function Footer() {
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
                     required
-                    className="bg-white/5 border border-white/10 rounded px-3 py-2 text-xs text-white outline-none focus:border-[#A91D22] flex-1 font-medium"
+                    className="bg-white/5 border border-white/10 rounded px-3 py-2 text-xs text-white outline-none focus:border-[#6551a0] flex-1 font-medium"
                   />
                   <button
                     type="submit"
-                    className="bg-[#A91D22] hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded transition shadow-md"
+                    className="bg-[#6551a0] hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded transition shadow-md"
                   >
                     اشترك
                   </button>
                 </form>
               ) : (
-                <div className="bg-[#A91D22]/10 border border-[#A91D22]/20 p-3 rounded text-center text-xs font-bold text-white animate-fadeIn">
+                <div className="bg-[#6551a0]/10 border border-[#6551a0]/20 p-3 rounded text-center text-xs font-bold text-white animate-fadeIn">
                   ✓ تم الاشتراك بنجاح في نشرة الجريدة!
                 </div>
               )}
@@ -204,7 +204,7 @@ export default function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 text-slate-400 border border-white/5 transition hover:bg-[#A91D22] hover:text-white hover:border-transparent hover:-translate-y-1 outline-none"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 text-slate-400 border border-white/5 transition hover:bg-[#6551a0] hover:text-white hover:border-transparent hover:-translate-y-1 outline-none"
                   title={social.name}
                 >
                   {social.icon}

@@ -156,7 +156,7 @@ export default function BaraAlkahkaTopicPage() {
             <div className="min-h-screen flex items-center justify-center bg-[#faf9f6]">
                 <div className="text-center">
                     <h2 className="text-2xl font-black text-[#1F2937]">الموضوع غير موجود</h2>
-                    <Link to="/bara-alkahka" className="mt-4 inline-block text-[#A91D22] font-bold hover:underline">العودة إلى بره الكحكة</Link>
+                    <Link to="/bara-alkahka" className="mt-4 inline-block text-[#6551a0] font-bold hover:underline">العودة إلى بره الكحكة</Link>
                 </div>
             </div>
         )
@@ -172,7 +172,7 @@ export default function BaraAlkahkaTopicPage() {
                 <div className="mb-8 flex justify-between items-center border-b border-gray-200 pb-4">
                     <Link
                         to="/bara-alkahka"
-                        className="flex items-center gap-2 text-xs sm:text-sm font-black text-[#A91D22] border border-[#A91D22] bg-white px-4 py-2 rounded-lg hover:bg-red-50 hover:translate-x-[4px] active:scale-95 transition-all duration-300"
+                        className="flex items-center gap-2 text-xs sm:text-sm font-black text-[#6551a0] border border-[#6551a0] bg-white px-4 py-2 rounded-lg hover:bg-red-50 hover:translate-x-[4px] active:scale-95 transition-all duration-300"
                     >
                         ← العودة إلى بره الكحكة
                     </Link>
@@ -192,7 +192,7 @@ export default function BaraAlkahkaTopicPage() {
                 {/* المحتوى التفصيلي */}
                 <div className="space-y-6">
                     <div className="space-y-3 border-b border-gray-200 pb-5">
-                        <span className="inline-block bg-red-50 text-[#A91D22] border border-red-200 text-xs font-black px-3 py-1 rounded">
+                        <span className="inline-block bg-red-50 text-[#6551a0] border border-red-200 text-xs font-black px-3 py-1 rounded">
                             {topic.category}
                         </span>
                         <h1 className="text-2xl sm:text-4xl font-black text-[#1F2937] leading-tight font-serif">
@@ -209,7 +209,7 @@ export default function BaraAlkahkaTopicPage() {
                             {topic.sections.map((sec, idx) => (
                                 <div
                                     key={idx}
-                                    className="space-y-2 border-r-4 border-[#A91D22]/40 pr-4 animate-fadeInUp opacity-0"
+                                    className="space-y-2 border-r-4 border-[#6551a0]/40 pr-4 animate-fadeInUp opacity-0"
                                     style={{ animationDelay: `${idx * 150}ms`, animationFillMode: 'forwards' }}
                                 >
                                     <h3 className="text-lg font-black text-[#1F2937]">{sec.heading}</h3>
@@ -220,7 +220,7 @@ export default function BaraAlkahkaTopicPage() {
                             {/* الخلاصة */}
                             <div className="bg-[#1F2937] text-white p-8 rounded-[2.5rem] shadow-lg relative overflow-hidden mt-10">
                                 <div className="absolute -bottom-10 -left-10 text-9xl opacity-5 pointer-events-none font-serif">”</div>
-                                <h4 className="text-lg font-bold text-[#A91D22] mb-4 tracking-wide">خلاصة الموضوع</h4>
+                                <h4 className="text-lg font-bold text-[#6551a0] mb-4 tracking-wide">خلاصة الموضوع</h4>
                                 <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-medium text-justify">
                                     {topic.conclusion}
                                 </p>
