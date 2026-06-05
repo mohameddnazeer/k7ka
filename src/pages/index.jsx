@@ -965,14 +965,53 @@ export default function Home() {
                             </div>
                         </section>
 
+                        <section className="lg:col-span-4  bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs flex flex-col justify-between space-y-4">
+                            <div className="space-y-3">
+                                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-3.5 h-3.5 bg-indigo-600 block rounded-full"></span>
+                                        <h2 className="text-lg font-black text-gray-800 font-serif">بين البيت والشغل: صراع الأدوار</h2>
+                                    </div>
+                                    <Link to="/bayn-albayt-walshoghl" className="text-xs font-black text-indigo-600 hover:underline">الملف الكامل ←</Link>
+                                </div>
+                                <p className="text-xs text-gray-500 leading-relaxed">
+                                    دليل عملي وتحقيقات ميدانية تبحث في تحديات التوفيق وصراع الأدوار للأم العاملة وكيفية النجاة من الاحتراق العصبي والجسدي.
+                                </p>
 
+                                <div className="space-y-3 pt-2">
+                                    {articles.filter(art => art.to === '/bayn-albayt-walshoghl').slice(0, 1).map(art => (
+                                        <div
+                                            key={art.id}
+                                            onClick={() => openArticleDetails(art)}
+                                            className="group cursor-pointer bg-slate-50 p-4 rounded-xl border border-gray-100 hover:border-indigo-600 hover:bg-white hover:shadow-xs transition duration-300"
+                                        >
+                                            <span className="text-[9px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100 inline-block mb-2">تحقيق الأمومة العاملة</span>
+                                            <h3 className="text-sm font-black text-gray-800 group-hover:text-indigo-600 transition leading-snug font-serif">
+                                                {art.title}
+                                            </h3>
+                                            <p className="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                                                {art.subtitle}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="bg-indigo-50/30 border border-indigo-100/50 p-3.5 rounded-xl space-y-2 mt-4">
+                                <h4 className="text-xs font-black text-indigo-950">💡 نصائح سريعة للأم العاملة:</h4>
+                                <ul className="text-[10px] text-indigo-900 space-y-1 font-medium list-disc list-inside pr-1">
+                                    <li>ضعي حدوداً واضحة بين ساعات العمل والمكتب ومساحة العائلة بالمنزل.</li>
+                                    <li>شاركي المسؤوليات المنزلية مع الشريك دون حرج أو شعور بالذنب الافتراضي.</li>
+                                    <li>خصصي 15 دقيقة يومياً للتنفس والاسترخاء التام وتفريغ شحنات التوتر.</li>
+                                </ul>
+                            </div>
+                        </section>
 
                     </div>
 
                     {/* أقسام شؤون العمل والتنقل: بين البيت والشغل & بين الزحام والكرامة */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                    {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
 
-                        {/* قسم بين البيت والشغل */}
                         <section className="bg-white border border-gray-200 rounded-2xl p-6 shadow-3xs flex flex-col justify-between space-y-4">
                             <div className="space-y-3">
                                 <div className="flex items-center justify-between border-b border-gray-100 pb-3">
@@ -1017,7 +1056,7 @@ export default function Home() {
 
 
 
-                    </div>
+                    </div> */}
 
                     {/* 4. كلام قانون - Legal Desk (قسم بطاقات الأسئلة والأجوبة السريعة) */}
                     <section className="space-y-6">
