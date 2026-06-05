@@ -25,6 +25,7 @@ export default function NavBar() {
 
     const links = [
         { href: '/', label: 'الرئيسية' },
+        { href: '/horayat-sahafiya', label: 'الحوارات الصحافية' },
         { href: '/sawtoha-masmoua', label: 'صوتها مسموع' },
         { href: '/bara-alkahka', label: 'بره الكحكة' },
         { href: '/bayn-albayt-walshoghl', label: 'بين البيت والشغل' },

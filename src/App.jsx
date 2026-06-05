@@ -16,6 +16,7 @@ import RoTeenTanzeefAlManzel from './pages/roteen-tanzeef-almanzel.jsx'
 import SanaOlaOmoma from './pages/sana-ola-omoma.jsx'
 import SawtohaMasmoua from './pages/sawtoha-masmoua.jsx'
 import Infographic from './pages/infographic.jsx'
+import VideoPortal from './pages/video-portal.jsx'
 import './App.css'
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/sana-ola-omoma" element={<SanaOlaOmoma />} />
         <Route path="/sawtoha-masmoua" element={<SawtohaMasmoua />} />
         <Route path="/infographic" element={<Infographic />} />
+        <Route path="/horayat-sahafiya" element={<VideoPortal />} />
       </Routes>
     </div>
   )
