@@ -299,7 +299,6 @@ export default function KalamQanun() {
             <NavBar />
 
             <main className="relative z-10 mx-auto w-full px-4 pb-24 sm:px-6 lg:px-8 max-w-7xl">
-                <TrendingTags tags={["كلام_قانون", "الولاية_التعليمية", "الخلع_والطلاق", "العنف_المنزلي", "جرائم_إلكترونية", "تزييف_عميق"]} />
 
                 {!selectedArticle ? (
                     <>
@@ -523,6 +522,10 @@ export default function KalamQanun() {
                         </div>
                     </div>
                 )}
+                <div className='mt-6'>
+                    <TrendingTags tags={["كلام_قانون", "الولاية_التعليمية", "الخلع_والطلاق", "العنف_المنزلي", "جرائم_إلكترونية", "تزييف_عميق"]} />
+
+                </div>
             </main>
             <Footer />
         </div>
