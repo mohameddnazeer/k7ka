@@ -172,29 +172,27 @@ export default function BaraAlkahkaPage() {
 
             <main className="relative z-10 mx-auto px-4 pb-20 pt-10 sm:px-6 lg:px-8 max-w-7xl">
 
-                {/* Hero Editorial Header Banner */}
-                <div className="relative mb-8 overflow-hidden rounded-2xl bg-white border border-slate-200/60 p-8 sm:p-14 text-right shadow-sm">
-                    <div className="absolute top-0 left-0 w-80 h-80 bg-brand-secondary/5 rounded-full blur-[90px] -translate-x-14 -translate-y-14 pointer-events-none"></div>
-                    <div className="relative z-10 max-w-2xl space-y-4">
-                        <span className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-3 py-1 text-xs font-bold text-white shadow-xs">
-                            بره الكحكة • ٠٧ ملفات تحريرية
-                        </span>
-                        <h1 className="text-4xl font-black md:text-5xl text-brand-ink tracking-tight">بره الكحكة</h1>
-                        <div className="flex items-center gap-3 py-1">
-                            <img
-                                src="/imgs/11.jpeg"
-                                alt="صورة الكاتبة"
-                                className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
-                            />
-                            <span className="text-2xl font-bold text-slate-700">
-                                كتبت: عائشة حسين
-                            </span>
-                        </div>
-                        <p className="text-sm sm:text-base leading-relaxed text-slate-600 font-medium">
-                            جولة واقعية وتحليلات ميدانية معمقة ترصد تداخلات العالم الافتراضي ومتاهات السوشيال ميديا وأخلاقيات الفضاء العام للشارع والبيت.
-                        </p>
-                    </div>
+            <header className="relative z-10 pt-16 pb-12 text-center px-4 max-w-4xl mx-auto">
+                <span className="text-xs font-bold tracking-widest text-brand-accent uppercase bg-brand-accent/10 px-3 py-1 rounded-full mb-4 inline-block">
+                    ملفات استقصائية خاصة
+                </span>
+                <h1 className="text-5xl sm:text-7xl font-black text-brand-ink tracking-tight mt-2 mb-6">
+                    بره الكحكة
+                </h1>
+                <div className="mb-6 flex flex-col items-center justify-center gap-2">
+                    <img
+                        src="/imgs/11.jpeg"
+                        alt="صورة الكاتبة"
+                        className="w-60 h-60 rounded-full object-cover border-2 border-[#B572E8] shadow-xs"
+                    />
+                    <span className="text-2xl font-bold text-slate-700">
+                        كتبت: عائشة حسين
+                    </span>
                 </div>
+                <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto font-medium">
+                    جولة واقعية وتحليلات ميدانية معمقة ترصد تداخلات العالم الافتراضي ومتاهات السوشيال ميديا وأخلاقيات الفضاء العام للشارع والبيت.
+                </p>
+            </header>
 
                 <TrendingTags tags={["بره_الكحكة", "التريندات_القاتلة", "التحرش_اللفظي", "أمان_الشارع", "إدمان_الشراء", "حقوق_المرأة"]} />
 
