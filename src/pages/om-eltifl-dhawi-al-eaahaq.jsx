@@ -70,7 +70,7 @@ export default function OmEltiflDhawiAlEaahaqPage() {
                 أمهات استثنائيات
               </span>
               <h1 className="mt-5 text-4xl font-black tracking-tight text-brand-ink sm:text-5xl lg:text-6xl">
-                أمّ المعاق… سوبر هيرو لا يراه أحد
+                أمّ بطل من ذوي الاعاقة… سوبر هيرو لا يراه أحد
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
                 هذا التحقيق يفتح ملف “أم الطفل من ذوي الإعاقة”، لفهم ما تعيشه فعليًا خلف الأبواب المغلقة، وما الذي يفتقده المجتمع في دعمه لها.
