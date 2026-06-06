@@ -135,7 +135,7 @@ export default function AlaAlhameshPage() {
                         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
                             <div className="max-w-4xl text-center mx-auto">
                                 <span className="inline-flex rounded-full bg-brand-accent/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">
-                                    ملفات استقصائية خاصة
+                                    ملفات مميزة
                                 </span>
                                 <h1 className="mt-4 text-5xl font-black tracking-tight text-brand-ink sm:text-7xl">
                                     قصص نساء غير مرئيات

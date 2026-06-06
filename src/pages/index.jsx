@@ -395,7 +395,7 @@ const alaAlhameshArticles = [
     },
     {
         id: 3,
-        title: "ام المعاق سوبر هيرو لا يراه أحد",
+        title: "ام بطل من ذوي الاعاقة سوبر هيرو لا يراه أحد",
         subtitle: "شهادات حية لأمهات أطفال ذوي الاحتياجات الخاصة وتحديات الدمج وغياب الدعم المؤسسي والنفسي.",
         category: "على الهامش",
         author: "عائشة حسين",
@@ -451,7 +451,7 @@ const heroStories = [
     {
         id: 2,
         articleId: 3,
-        title: "ام المعاق سوبر هيرو لا يراه أحد",
+        title: "ام بطل من ذوي الاعاقة سوبر هيرو لا يراه أحد",
         subtitle: "تفكيك نقدي لخطاب النسوية الرقمية والتأثير النفسي والاجتماعي المترتب على صراعات الخوارزميات.",
         category: "صوتها مسموع",
         time: "٠٦:٤٥ م",
@@ -773,7 +773,7 @@ export default function Home() {
                                                 event.stopPropagation();
                                                 goToHeroSlide('prev');
                                             }}
-                                            className="h-20 w-20 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
+                                            className="h-10 w-10 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
                                             aria-label="الخبر السابق"
                                         >
                                             ←
@@ -786,7 +786,7 @@ export default function Home() {
                                                 event.stopPropagation();
                                                 goToHeroSlide('next');
                                             }}
-                                            className="h-20 w-20 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
+                                            className="h-10 w-10 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
                                             aria-label="الخبر التالي"
                                         >
                                             →

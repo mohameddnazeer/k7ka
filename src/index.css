@@ -80,7 +80,7 @@
 .animate-news-ticker {
   display: inline-flex;
   white-space: nowrap;
-  animation: news-ticker-scroll 25s linear infinite;
+  animation: news-ticker-scroll 55s linear infinite;
 }
 
 .animate-news-ticker:hover {
