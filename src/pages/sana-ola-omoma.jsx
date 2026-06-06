@@ -56,9 +56,9 @@ const stats = [
 ]
 
 export default function SanaOlaOmomaPage() {
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   const scrollToSection = (index) => {
     const element = document.getElementById(`section-${index}`)
@@ -149,11 +149,7 @@ export default function SanaOlaOmomaPage() {
               options={["نعم، عانيت أو أخشى ذلك جداً", "لا، أشعر بالدعم الكافي حولي"]}
             />
 
-            <DailyCaricature
-              caption="الأمومة المثالية!"
-              desc="بين واقع كحكة والرضيع الذي لا ينام، وصورة السوشيال ميديا الحالمة."
-              emoji="👶🤱😵‍💫"
-            />
+
           </aside>
 
           <article className="space-y-6">

@@ -274,7 +274,7 @@ const articles = [
         views: "",
         likes: "",
         image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg",
-        to: "/bara-alkahka",
+        to: "/mahw-el-omya",
         content: [
             { heading: "خوارزميات تصنع الخطر لجذب التفاعل", text: "تستهدف المنصات حاجة المراهقين للانتماء والقبول، فتعرض التحديات العنيفة والخطيرة كقصص نجاح لانتشار التريند." }
         ],
@@ -441,7 +441,7 @@ const sawtohaHighlights = [
 const heroStories = [
     {
         id: 1,
-        articleId: 1,
+        articleId: 8,
         title: "سنة أولى أمومة  ",
         subtitle: "القانون المصري يمنح الحاضن الولاية التعليمية بقوة القانون لمنع استخدام التعليم كورقة ضغط بين الطرفين.",
         category: "كلام قانون",
@@ -450,7 +450,7 @@ const heroStories = [
     },
     {
         id: 2,
-        articleId: 3,
+        articleId: 5,
         title: "ام بطل من ذوي الاعاقة سوبر هيرو لا يراه أحد",
         subtitle: "تفكيك نقدي لخطاب النسوية الرقمية والتأثير النفسي والاجتماعي المترتب على صراعات الخوارزميات.",
         category: "صوتها مسموع",
@@ -468,7 +468,7 @@ const heroStories = [
     },
     {
         id: 4,
-        articleId: 9,
+        articleId: 16,
         title: "محو أمية المرأة ",
         subtitle: "معركة الوعي الغائب خلف الأرقام",
         category: "المرأة والأسرة",
@@ -477,7 +477,7 @@ const heroStories = [
     },
     {
         id: 5,
-        articleId: 13,
+        articleId: 9,
         title: "روتين تنظيف المنزل",
         subtitle: "تحقيق يبحث في التوفيق بين التطلعات المهنية والالتزام العائلي دون احتراق نفسي.",
         category: "بين البيت والشغل",
@@ -487,7 +487,7 @@ const heroStories = [
 
     {
         id: 6,
-        articleId: 18,
+        articleId: 7,
         title: "هوس النساء بالتجميل  ",
         subtitle: "عندما تتحول المراة الي ساحه ضغط نفسي واجتماعي ",
         category: "صحة وجمال",
@@ -750,7 +750,6 @@ export default function Home() {
                             </div>
 
                             <article
-                                onClick={() => openHeroStory(featuredArticle)}
                                 onMouseEnter={() => setHeroPaused(true)}
                                 onMouseLeave={() => setHeroPaused(false)}
                                 className="bg-white border border-gray-200 p-3 shadow-xs cursor-pointer group hover:border-[#6551a0] hover:shadow-md transition-all duration-300 ease-out animate-fadeIn overflow-hidden"
@@ -825,8 +824,14 @@ export default function Home() {
                                             />
                                         ))}
                                     </div>
-                                    <span className="inline-flex items-center gap-1.5 text-xs font-black text-[#B572E8] border-b-2 border-transparent group-hover:border-[#B49EF4] transition duration-200">
-                                        قراءة المزيد                                        <span>←</span>
+                                    <span className="inline-flex items-center gap-1.5 text-xs font-black text-[#B572E8] border-b-2 border-transparent group-hover transition duration-200">
+                                        <Link
+                                            to={featuredArticle.to}
+                                            className="bg-[#B572E8] text-white px-4 py-2 rounded-full"
+                                        >
+                                            قراءة المزيد <span>←</span>
+                                        </Link>
+
                                     </span>
                                 </div>
                             </article>

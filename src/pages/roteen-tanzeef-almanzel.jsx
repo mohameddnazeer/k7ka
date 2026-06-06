@@ -56,9 +56,9 @@ const stats = [
 ]
 
 export default function RoTeenTanzeefAlManzelPage() {
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   const scrollToSection = (index) => {
     const element = document.getElementById(`section-${index}`)
@@ -144,17 +144,13 @@ export default function RoTeenTanzeefAlManzelPage() {
               </div>
             </div>
 
-            <InteractivePoll 
-              question="هل توافقين على أن مشاركة الزوج والأبناء في الأعمال المنزلية يجب أن تُطرح كواجب اجتماعي وثقافي وليس كمساعدة اختيارية للأم؟" 
+            <InteractivePoll
+              question="هل توافقين على أن مشاركة الزوج والأبناء في الأعمال المنزلية يجب أن تُطرح كواجب اجتماعي وثقافي وليس كمساعدة اختيارية للأم؟"
               pollKey="roteen-tanzeef-almanzel"
               options={["نعم، واجب تشاركي أصيل", "لا، نفضل المساعدة الودية الطوعية"]}
             />
 
-            <DailyCaricature 
-              caption="المجهود الخفي!" 
-              desc="بين تلال الصحون ومسح الأرضيات، يختفي جهد الأم اليومي خلف عبارة 'يعطيكِ العافية' دون مشاركة فعلية."
-              emoji="🧹🧼🧺"
-            />
+
           </aside>
 
           <article className="space-y-6">
@@ -165,9 +161,9 @@ export default function RoTeenTanzeefAlManzelPage() {
             </div>
 
             {sections.map((section, index) => (
-              <section 
-                key={section.title} 
-                id={`section-${index}`} 
+              <section
+                key={section.title}
+                id={`section-${index}`}
                 className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
                 style={{ animationDelay: `${(index + 1) * 100}ms` }}
               >
@@ -181,7 +177,7 @@ export default function RoTeenTanzeefAlManzelPage() {
             ))}
 
             <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
-              <VideoMediaGallery 
+              <VideoMediaGallery
                 title="البيت وإدارته الصحية"
                 clips={[
                   { title: "فيديو توعوي: كيف تتغلب الأم على العبء الذهني الناتج عن التخطيط للمهام المنزلية؟", dur: "٦:٠٥" },
@@ -189,7 +185,7 @@ export default function RoTeenTanzeefAlManzelPage() {
                 ]}
               />
 
-              <ExpertAdviceDesk 
+              <ExpertAdviceDesk
                 qaList={[
                   { q: "أشعر بالذنب والتقصير الشديد إذا تركت البيت غير منظم ليوم واحد، كيف أتحكم في هذا الشعور؟", a: "تذكري دائماً أن نظافة البيت غايتها توفير الراحة لأهله وليس التضحية بصحتكِ النفسية من أجل صورة مثالية. تدربي على غض الطرف عن الفوضى الطفيفة وجدولة المهام بمرونة." },
                   { q: "ما هي الطريقة الفعّالة لتدريب الأطفال الصغار على تنظيم غرفهم ومساعدة الأم؟", a: "ابدئي بتحويل التنظيم إلى لعبة مسلية بدلاً من الأوامر الجافة. خصصي صناديق ملونة ومصنفة للألعاب، وامنحيهم مكافآت بسيطة أو تشجيعاً لفظياً معنوياً عند إتمام ترتيب غرفهم." }

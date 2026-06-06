@@ -56,9 +56,9 @@ const stats = [
 ]
 
 export default function MahwElOmyaPage() {
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   const scrollToSection = (index) => {
     const element = document.getElementById(`section-${index}`)
@@ -142,17 +142,13 @@ export default function MahwElOmyaPage() {
               </div>
             </div>
 
-            <InteractivePoll 
-              question="هل تؤيدين ربط صرف الدعم النقدي الحكومي للأسر (مثل تكافل وكرامة) بالتزام الأمهات والفتيات بحضور فصول محو الأمية والتعليم؟" 
+            <InteractivePoll
+              question="هل تؤيدين ربط صرف الدعم النقدي الحكومي للأسر (مثل تكافل وكرامة) بالتزام الأمهات والفتيات بحضور فصول محو الأمية والتعليم؟"
               pollKey="mahw-el-omya"
               options={["نعم، أؤيد لربط الدعم بالتنمية", "لا، أفضّل توفير حوافز إيجابية طوعية"]}
             />
 
-            <DailyCaricature 
-              caption="النور يكسر الظلام" 
-              desc="عندما تخط المرأة بأصابعها أولى كلمات النور لتبدد ظلمات الجهل الطويلة."
-              emoji="📚💡"
-            />
+
           </aside>
 
           <article className="space-y-6">
@@ -163,9 +159,9 @@ export default function MahwElOmyaPage() {
             </div>
 
             {sections.map((section, index) => (
-              <section 
-                key={section.title} 
-                id={`section-${index}`} 
+              <section
+                key={section.title}
+                id={`section-${index}`}
                 className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
                 style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
               >
@@ -179,7 +175,7 @@ export default function MahwElOmyaPage() {
             ))}
 
             <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
-              <VideoMediaGallery 
+              <VideoMediaGallery
                 title="تقارير محو الأمية"
                 clips={[
                   { title: "قصة ملهمة: أم لثلاثة أطفال تتعلم القراءة وتساعدهم في المذاكرة لأول مرة", dur: "٤:٥٠" },
@@ -187,7 +183,7 @@ export default function MahwElOmyaPage() {
                 ]}
               />
 
-              <ExpertAdviceDesk 
+              <ExpertAdviceDesk
                 qaList={[
                   { q: "كيف أستطيع التسجيل مجاناً في فصول محو الأمية التابعة للدولة؟", a: "يمكن التوجه لأقرب فرع للهيئة العامة لتعليم الكبار في منطقتكِ وتقديم صورة بطاقة الرقم القومي، حيث توفر الهيئة فصولاً مسائية مجانية بالكامل وبمواعيد مرنة تناسب ظروف السيدات المنزلية." },
                   { q: "أريد التطوع لتعليم السيدات القراءة والكتابة في قريتي، ما هي الإجراءات؟", a: "ترحب الهيئة العامة لتعليم الكبار والعديد من الجمعيات الأهلية بالمتطوعين، حيث يتم تقديم دورة تدريبية مبسطة لكِ على مناهج تعليم الكبار، وتوفير الكتب والمستلزمات الدراسية مجاناً لتوزيعها على الدارسات." }

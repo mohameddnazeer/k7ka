@@ -52,9 +52,9 @@ const stats = [
 ]
 
 export default function HousEltagmeelPage() {
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   const scrollToSection = (index) => {
     const element = document.getElementById(`section-${index}`)
@@ -140,17 +140,13 @@ export default function HousEltagmeelPage() {
               </div>
             </div>
 
-            <InteractivePoll 
-              question="هل تشعرين أن منصات التواصل الاجتماعي وفلاتر الصور تؤثر سلباً على رضاكِ عن مظهركِ الطبيعي؟" 
+            <InteractivePoll
+              question="هل تشعرين أن منصات التواصل الاجتماعي وفلاتر الصور تؤثر سلباً على رضاكِ عن مظهركِ الطبيعي؟"
               pollKey="hous-eltagmeel"
               options={["نعم، تزيد ضغط المقارنة", "لا، أثق بمظهري الطبيعي"]}
             />
 
-            <DailyCaricature 
-              caption="فلتر التجميل!" 
-              desc="سعي مستمر وراء الفلاتر لتغيير الملامح التي صاغتها الطبيعة."
-              emoji="💅🤳🎭"
-            />
+
           </aside>
 
           <article className="space-y-6">
@@ -161,9 +157,9 @@ export default function HousEltagmeelPage() {
             </div>
 
             {sections.map((section, index) => (
-              <section 
-                key={section.title} 
-                id={`section-${index}`} 
+              <section
+                key={section.title}
+                id={`section-${index}`}
                 className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
                 style={{ animationDelay: `${(index + 1) * 100}ms` }}
               >
@@ -177,7 +173,7 @@ export default function HousEltagmeelPage() {
             ))}
 
             <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
-              <VideoMediaGallery 
+              <VideoMediaGallery
                 title="كواليس صناعة الجمال"
                 clips={[
                   { title: "حوار خاص: أخصائي نفسي يكشف أسباب الإدمان الجراحي لعمليات التجميل وعلاجه", dur: "٧:٢٠" },
@@ -185,7 +181,7 @@ export default function HousEltagmeelPage() {
                 ]}
               />
 
-              <ExpertAdviceDesk 
+              <ExpertAdviceDesk
                 qaList={[
                   { q: "كيف أحمي ابنتي المراهقة من هوس المقارنة مع المؤثرات على إنستغرام وتيك توك؟", a: "عززي ثقتها بنفسها بتركيز المدح على إنجازاتها العقلية والرياضية، وتحدثي معها بصراحة حول كواليس الصور الرقمية واستخدام الإضاءة والفلاتر لتعديل المظهر الحقيقي." },
                   { q: "متى تعتبر الرغبة في التجميل مؤشراً على اضطراب نفسي كاضطراب تشوه الجسد؟", a: "عندما ينصب تركيز المرأة بالكامل ولساعات طويلة على عيب طفيف أو وهمي في مظهرها، مما يمنعها من عيش حياتها الاجتماعية والمهنية بشكل طبيعي، ويتكرر لجوؤها للعمليات التجميلية دون أي رضا." }
