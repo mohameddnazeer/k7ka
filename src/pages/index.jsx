@@ -676,7 +676,7 @@ export default function Home() {
 
     const openArticleDetails = (art) => {
         setSelectedArticle(art);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
     const handleNewsTickerClick = (art) => {
@@ -684,12 +684,12 @@ export default function Home() {
         if (nextIndex >= 0) {
             setHeroIndex(nextIndex);
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
     const openHeroStory = (art) => {
         setSelectedArticle(art);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
     const goToHeroSlide = (direction) => {
