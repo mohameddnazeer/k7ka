@@ -761,11 +761,9 @@ export default function Home() {
                                         className="w-full h-full object-cover news-zoom-img"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                                    { /*    <div className="absolute top-3 right-3 bg-[#B49EF4] text-white text-[10px] font-black px-2.5 py-1 rounded shadow-sm uppercase">
-                                        {featuredArticle.category}
-                                    </div>*/}
+                                    
 
-                                    <div className="absolute left-3 top-3 flex flex-col gap-2">
+                                    <div className="absolute left-3 top-3 flex flex-col gap-2 z-[1000]">
                                         <button
                                             type="button"
                                             onClick={(event) => {
@@ -778,7 +776,7 @@ export default function Home() {
                                             ←
                                         </button>
                                     </div>
-                                    <div className="absolute right-3 top-3 flex flex-col gap-2">
+                                    <div className="absolute right-3 top-3 flex flex-col gap-2 z-[1000]">
                                         <button
                                             type="button"
                                             onClick={(event) => {
