@@ -3,19 +3,51 @@ import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
+function MemberCard({ name, image }) {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <div className="group bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 ease-out hover:border-[#6551a0] hover:-translate-y-1 flex flex-col items-center">
+      {/* Photo */}
+      <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden shadow-lg ring-2 ring-transparent group-hover:ring-[#6551a0] transition-all duration-300 group-hover:scale-105">
+        {image && !imgError ? (
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-[#A91D22] to-purple-800 flex items-center justify-center">
+            <span className="text-3xl font-black text-white">{name.charAt(0)}</span>
+          </div>
+        )}
+      </div>
+
+      {/* Name */}
+      <h3 className="text-lg font-black font-serif text-center text-[#1F2937] group-hover:text-[#6551a0] transition">
+        {name}
+      </h3>
+      <p className="text-sm text-gray-500 text-center mt-1 font-bold">
+        عضو فريق العمل
+      </p>
+    </div>
+  );
+}
+
 export default function TeamPage() {
   const teamMembers = [
-    "حوريه أسامه",
-    "بسمه رضا",
-    "عائشه حسين",
-    "مريم محمد",
-    "اسراء احمد",
-    "امل اشرف",
-    "رفعت محمد",
-    "خلود ايمن",
-    "بهاء جمال",
-    "احمد ايمن",
-    "احمد ابراهيم",
+    { name: "حوريه أسامه", image: "/imgs/10.jpeg" },
+    { name: "بسمه رضا", image: "/imgs/13.jpeg" },
+    { name: "عائشه حسين", image: "/imgs/11.jpeg" },
+    { name: "مريم محمد", image: "/imgs/17.jpeg" },
+    { name: "اسراء احمد", image: "/imgs/15.jpeg" },
+    { name: "امل اشرف", image: "/imgs/11.jpeg" },
+    { name: "رفعت محمد", image: "/imgs/2.jpeg" },
+    { name: "خلود ايمن", image: "/imgs/8.jpeg" },
+    { name: "بهاء جمال", image: "/imgs/12.jpeg" },
+    { name: "احمد ايمن", image: "/imgs/16.jpeg" },
+    { name: "احمد ابراهيم", image: "/imgs/19.jpeg" },
   ];
 
   useEffect(() => {
@@ -25,8 +57,8 @@ export default function TeamPage() {
   return (
     <div className="min-h-screen bg-white text-[#1F2937]" dir="rtl">
       <NavBar />
-      
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 ">
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16">
         {/* Back Button */}
         <div className="mb-8">
           <Link
@@ -68,35 +100,18 @@ export default function TeamPage() {
         {/* Team Members Grid */}
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-300">
-            <span className="w-4 h-4 bg-[#A91D22] block"></span>
+            <span className="w-4 h-4 bg-[#6551a0] block"></span>
             <h2 className="text-2xl font-black font-serif text-[#1F2937]">
               أعضاء الفريق
             </h2>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {teamMembers.map((name, index) => (
-              <div
-                key={index}
-                className="group bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 ease-out hover:border-[#A91D22] hover:-translate-y-1"
-              >
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#A91D22] to-purple-800 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl font-black text-white">
-                    {name.charAt(0)}
-                  </span>
-                </div>
-                <h3 className="text-lg font-black font-serif text-center text-[#1F2937] group-hover:text-[#A91D22] transition">
-                  {name}
-                </h3>
-                <p className="text-sm text-gray-500 text-center mt-2 font-bold">
-                  عضو فريق العمل
-                </p>
-              </div>
+            {teamMembers.map((member, index) => (
+              <MemberCard key={index} name={member.name} image={member.image} />
             ))}
           </div>
         </section>
-
-
       </div>
 
       <Footer />
