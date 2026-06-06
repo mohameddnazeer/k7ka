@@ -518,11 +518,11 @@ export default function KalamQanun() {
                                     options={["نعم، أؤيد وبشدة", "لا، أرى التوعية كافية"]}
                                 />
 
-                                <DailyCaricature
+                                {/* <DailyCaricature
                                     caption="حماية القانون للمرأة"
                                     desc="ميزان العدالة يحمي الحقوق من الضياع."
                                     emoji="⚖️🛡️"
-                                />
+                                /> */}
                             </div>
                         </div>
                     </div>

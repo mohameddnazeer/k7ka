@@ -198,7 +198,7 @@ export default function SawtohaMasmouaPage() {
       {/* رأس الصفحة الرئيسي بتصميم صحفي فاخر */}
       <header className="relative z-10 pt-16 pb-12 text-center px-4 max-w-4xl mx-auto">
         <span className="text-xs font-bold tracking-widest text-brand-accent uppercase bg-brand-accent/10 px-3 py-1 rounded-full mb-4 inline-block">
-          ملفات استقصائية خاصة
+          ملفات مميزة
         </span>
         <h1 className="text-5xl sm:text-7xl font-black text-brand-ink tracking-tight mt-2 mb-6">
           قضايا المرأة والمنزل والعمل
@@ -258,11 +258,10 @@ export default function SawtohaMasmouaPage() {
                   <button
                     key={id}
                     onClick={() => setActiveInvestigation(Number(id))}
-                    className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 transform active:scale-95 ${
-                      isSelected
-                        ? "bg-brand-ink text-white shadow-md shadow-brand-ink/20"
-                        : "bg-white text-slate-600 hover:text-[#1F2937] hover:bg-slate-100/80 border border-slate-200/50"
-                    }`}
+                    className={`px-5 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 transform active:scale-95 ${isSelected
+                      ? "bg-brand-ink text-white shadow-md shadow-brand-ink/20"
+                      : "bg-white text-slate-600 hover:text-[#1F2937] hover:bg-slate-100/80 border border-slate-200/50"
+                      }`}
                   >
                     {inv.tag}
                   </button>

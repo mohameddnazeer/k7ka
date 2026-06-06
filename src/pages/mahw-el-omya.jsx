@@ -56,9 +56,9 @@ const stats = [
 ]
 
 export default function MahwElOmyaPage() {
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   const scrollToSection = (index) => {
     const element = document.getElementById(`section-${index}`)
@@ -87,36 +87,9 @@ export default function MahwElOmyaPage() {
                 رغم التحولات الاجتماعية والاقتصادية، لا تزال أمية المرأة واحدة من أكثر القضايا تعقيدًا وعمقًا، لأنها تمس التعليم والأسرة والصحة النفسية والاقتصاد معًا.
               </p>
 
-              <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-                {stats.map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-slate-100 bg-white/80 p-4 shadow-sm backdrop-blur-sm">
-                    <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">{item.label}</div>
-                    <div className="mt-2 text-lg font-black text-brand-ink">{item.value}</div>
-                  </div>
-                ))}
-              </div>
+
             </div>
 
-            <aside className="rounded-[2rem] border border-slate-100 bg-brand-ink p-6 text-white shadow-lg">
-              <div className="flex items-center gap-3 text-brand-accent">
-                <span className="text-2xl">✦</span>
-                <span className="text-xs font-bold uppercase tracking-[0.25em]">ملخص المحور</span>
-              </div>
-              <h2 className="mt-4 text-2xl font-black leading-tight">الأمية ليست رقمًا فقط</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-200">
-                القضية تمتد من البيت إلى المدرسة إلى سوق العمل، وتؤثر على القدرة على اتخاذ القرار والاستقلال والكرامة.
-              </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                <div className="rounded-2xl bg-white/10 p-4">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">المحاور</div>
-                  <div className="mt-1 text-2xl font-black">{sections.length}</div>
-                </div>
-                <div className="rounded-2xl bg-white/10 p-4">
-                  <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300">التركيز</div>
-                  <div className="mt-1 text-lg font-black">التمكين بالمعرفة</div>
-                </div>
-              </div>
-            </aside>
           </div>
         </section>
 
@@ -142,17 +115,13 @@ export default function MahwElOmyaPage() {
               </div>
             </div>
 
-            <InteractivePoll 
-              question="هل تؤيدين ربط صرف الدعم النقدي الحكومي للأسر (مثل تكافل وكرامة) بالتزام الأمهات والفتيات بحضور فصول محو الأمية والتعليم؟" 
+            <InteractivePoll
+              question="هل تؤيدين ربط صرف الدعم النقدي الحكومي للأسر (مثل تكافل وكرامة) بالتزام الأمهات والفتيات بحضور فصول محو الأمية والتعليم؟"
               pollKey="mahw-el-omya"
               options={["نعم، أؤيد لربط الدعم بالتنمية", "لا، أفضّل توفير حوافز إيجابية طوعية"]}
             />
 
-            <DailyCaricature 
-              caption="النور يكسر الظلام" 
-              desc="عندما تخط المرأة بأصابعها أولى كلمات النور لتبدد ظلمات الجهل الطويلة."
-              emoji="📚💡"
-            />
+
           </aside>
 
           <article className="space-y-6">
@@ -163,9 +132,9 @@ export default function MahwElOmyaPage() {
             </div>
 
             {sections.map((section, index) => (
-              <section 
-                key={section.title} 
-                id={`section-${index}`} 
+              <section
+                key={section.title}
+                id={`section-${index}`}
                 className="scroll-mt-24 rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 shadow-sm animate-fadeInUp opacity-0"
                 style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
               >
@@ -179,7 +148,7 @@ export default function MahwElOmyaPage() {
             ))}
 
             <div className="space-y-8 bg-white p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-xs text-right">
-              <VideoMediaGallery 
+              <VideoMediaGallery
                 title="تقارير محو الأمية"
                 clips={[
                   { title: "قصة ملهمة: أم لثلاثة أطفال تتعلم القراءة وتساعدهم في المذاكرة لأول مرة", dur: "٤:٥٠" },
@@ -187,7 +156,7 @@ export default function MahwElOmyaPage() {
                 ]}
               />
 
-              <ExpertAdviceDesk 
+              <ExpertAdviceDesk
                 qaList={[
                   { q: "كيف أستطيع التسجيل مجاناً في فصول محو الأمية التابعة للدولة؟", a: "يمكن التوجه لأقرب فرع للهيئة العامة لتعليم الكبار في منطقتكِ وتقديم صورة بطاقة الرقم القومي، حيث توفر الهيئة فصولاً مسائية مجانية بالكامل وبمواعيد مرنة تناسب ظروف السيدات المنزلية." },
                   { q: "أريد التطوع لتعليم السيدات القراءة والكتابة في قريتي، ما هي الإجراءات؟", a: "ترحب الهيئة العامة لتعليم الكبار والعديد من الجمعيات الأهلية بالمتطوعين، حيث يتم تقديم دورة تدريبية مبسطة لكِ على مناهج تعليم الكبار، وتوفير الكتب والمستلزمات الدراسية مجاناً لتوزيعها على الدارسات." }
@@ -198,7 +167,7 @@ export default function MahwElOmyaPage() {
             </div>
 
             <section className="rounded-[2.25rem] bg-brand-ink p-8 text-white shadow-lg">
-              <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent">الخلاصة</div>
+              <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-accent"></div>
               <h2 className="mt-3 text-2xl font-black sm:text-3xl">استثمار في أسرة أكثر استقرارًا</h2>
               <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
                 في النهاية، يظل محو أمية المرأة أكثر من مجرد مشروع تعليمي… إنه استثمار في أسرة أكثر استقرارًا، ومجتمع أكثر وعيًا، ومستقبل أكثر عدالة.

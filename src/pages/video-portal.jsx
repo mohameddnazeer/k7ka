@@ -8,7 +8,7 @@ const videosData = [
     id: 1,
     title: "اختراق هاتف الجوال: كيف تحمين نفسك",
     category: "تقنية",
-    views: "١٢٠ ألف",
+    views: "",
     date: "٤ يونيو ٢٠٢٦",
     duration: "٥:٣٢",
     videoUrl: "/videos/اعرفي حقك.mp4",
@@ -21,7 +21,7 @@ const videosData = [
     id: 2,
     title: "رحلة الأمومة الأولى مع الدكتورة سارة",
     category: "صحة",
-    views: "٨٥ ألف",
+    views: "",
     date: "٣ يونيو ٢٠٢٦",
     duration: "١٢:١٥",
     videoUrl: "/videos/الصحه.mp4",
@@ -34,7 +34,7 @@ const videosData = [
     id: 3,
     title: "حقوقك في الطلاق: ما الذي تنص عليه القوانين؟",
     category: "قانون",
-    views: "٢٠٠ ألف",
+    views: "",
     date: "٢ يونيو ٢٠٢٦",
     duration: "٨:٤٥",
     videoUrl: "/videos/الطلاق.mp4",
@@ -47,7 +47,7 @@ const videosData = [
     id: 4,
     title: "المرأة وزيرة مالية في بيتها",
     category: "اقتصاد",
-    views: "٩٥ ألف",
+    views: "",
     date: "١ يونيو ٢٠٢٦",
     duration: "١٠:٢٠",
     videoUrl: "/videos/عماد المجتمع.mp4",
@@ -60,7 +60,7 @@ const videosData = [
     id: 5,
     title: "كيف تتعاملين مع التواصل في العلاقات",
     category: "علاقات",
-    views: "٧٥ ألف",
+    views: "",
     date: "٣١ مايو ٢٠٢٦",
     duration: "٧:٠٠",
     videoUrl: "/videos/نتفاهم.mp4",
@@ -73,7 +73,7 @@ const videosData = [
     id: 6,
     title: "كريم أساسي للبشرة الجافة",
     category: "جمال",
-    views: "١٥٠ ألف",
+    views: "",
     date: "٣٠ مايو ٢٠٢٦",
     duration: "٠:٣٠",
     videoUrl: "/videos/ريلز Instagram الجمال بلون أبيض ووردي.mp4",
@@ -86,7 +86,7 @@ const videosData = [
     id: 7,
     title: "مرآة المرأة الحديثة",
     category: "مجتمع",
-    views: "٦٠ ألف",
+    views: "",
     date: "٢٩ مايو ٢٠٢٦",
     duration: "٩:١٠",
     videoUrl: "/videos/أخضر ذهبي عصري تصميم جرافيكي فيديو للهاتف الجوال.mp4",
@@ -95,7 +95,6 @@ const videosData = [
     isShort: false,
     description: "حوار حول دور المرأة في المجتمع المعاصر."
   },
-
 ]
 
 const categories = ["الكل", "سياسة", "اقتصاد", "تقنية", "رياضة", "أخبار محلية", "تحقيقات"]
@@ -228,13 +227,13 @@ const VideoCard = ({ video, isSelected, onClick, isShort = false, currentlyPlayi
         </h3>
         {!isShort && (
           <div className="flex items-center justify-between text-[10px] font-bold text-gray-500">
-            <span>📊 {video.views}</span>
+            {/* <span>📊 {video.views}</span>*/}
             <span>📅 {video.date}</span>
           </div>
         )}
         {isShort && (
           <div className="text-[10px] font-bold ">
-            📊 {video.views} • ⏱️ {video.duration}
+            ⏱️ {video.duration}
           </div>
         )}
       </div>
@@ -250,14 +249,14 @@ const VideoListItem = ({ video, isSelected, onClick, currentlyPlaying, onPlaySta
   const togglePlay = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    if (videoRef.current) {
+    if (videoRef.current) {/*
       if (isPlaying) {
         videoRef.current.pause()
         onPlayStateChange(null)
       } else {
         videoRef.current.play()
         onPlayStateChange(video.id)
-      }
+      }*/
     }
   }
 
@@ -499,11 +498,10 @@ export default function VideoPortalPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`shrink-0 px-4 py-2 rounded-full text-xs font-black transition-all duration-200 ${
-                    activeCategory === cat
-                      ? 'bg-[#6551a0] text-white shadow-sm'
-                      : 'bg-white text-gray-700 border border-gray-300 hover:border-[#6551a0] hover:text-[#6551a0]'
-                  }`}
+                  className={`shrink-0 px-4 py-2 rounded-full text-xs font-black transition-all duration-200 ${activeCategory === cat
+                    ? 'bg-[#6551a0] text-white shadow-sm'
+                    : 'bg-white text-gray-700 border border-gray-300 hover:border-[#6551a0] hover:text-[#6551a0]'
+                    }`}
                 >
                   {cat}
                 </button>

@@ -11,12 +11,12 @@ const articles = [
         title: "الولاية التعليمية للأم وحماية الأبناء بعد الانفصال: معركة الحقوق المفقودة",
         subtitle: "القانون المصري يمنح الحاضن الولاية التعليمية بقوة القانون لمنع استخدام التعليم كورقة ضغط بين الطرفين.",
         category: "كلام قانون",
-        author: "اسراء أحمد",
+        author: "بهاء جمال",
         date: "٢ يونيو ٢٠٢٦",
         time: "١٠:١٥ ص",
         views: "",
         likes: "",
-        image: "/imgs/15.jpeg",
+        image: "/imgs/35.png",
         to: "/kalam-qanun",
         content: [
             { heading: "ما هي الولاية التعليمية؟", text: "هي السلطة القانونية التي تمنح صاحبها الحق في التقديم للأطفال في المدارس، أو نقل ملفاتهم، أو اختيار نوع التعليم المناسب لهم. الهدف الأساسي منها هو حماية مصلحة الطفل الفضلى ومنع استخدام التعليم كوسيلة للضغط بين الطرفين." },
@@ -38,7 +38,7 @@ const articles = [
         time: "٠٩:٣٠ ص",
         views: "",
         likes: "",
-        image: "/imgs/10.jpeg",
+        image: "/imgs/30.png",
         to: "/ala-alhamesh",
         content: [
             { heading: "الصراع اليومي بين لقمة العيش وتربية الأبناء", text: "تستيقظ المرأة المعيلة في الفجر لتكسب قوت يومها من بيع البضائع البسيطة أو العمل في مهن شاقة. تقضي يومها في توازن حرج ومؤلم بين كسب المال لتدبير الإيجار ومصاريف المدارس، وبين غيابها الاضطراري عن المنزل لمراقبة سلوك أطفالها." },
@@ -54,12 +54,12 @@ const articles = [
         title: "النسوية على السوشيال ميديا: بين تمكين النساء وصناعة الوهم الرقمي والتريند",
         subtitle: "تفكيك نقدي لخطاب النسوية الرقمية والتأثير النفسي والاجتماعي المترتب على صراعات الخوارزميات.",
         category: "صوتها مسموع",
-        author: "بهاء جمال",
+        author: "اسراء احمد",
         date: "١ يونيو ٢٠٢٦",
         time: "٠٦:٤٥ م",
         views: "",
         likes: "",
-        image: "/imgs/12.jpeg",
+        image: "/imgs/37.png",
         to: "/sawtoha-masmoua",
         content: [
             { heading: "من النخبة إلى الترند: كيف تغيّرت ملامح النسوية؟", text: "في السابق، ارتبطت النسوية بخطابات فكرية معقدة، وأسماء أكاديمية، ونقاشات تدور في نطاق ضيق نسبيًا. لكن مع صعود السوشيال ميديا، انتقلت هذه القضايا إلى المجال العام، حيث باتت تُطرح في فيديوهات قصيرة ومنشورات مختصرة تصل إلى ملايين المتابعين خلال ساعات. ما حدث هو تبسيط واسع للمفاهيم، وهو أمر إيجابي من حيث الانتشار، لكنه خطير من حيث فقدان العمق." },
@@ -75,12 +75,12 @@ const articles = [
         title: "إنجاب البنات: موروث ثقافي في مواجهة الحقيقة البيولوجية والدينية للنوع",
         subtitle: "تفاصيل التحقيق الاجتماعي حول تفضيل الذكور وتأثير ذلك على استقرار الأسر والصحة النفسية للأمهات.",
         category: "على الهامش",
-        author: "بسمه رضا",
+        author: "احمد ايمن",
         date: "١ يونيو ٢٠٢٦",
         time: "٠٢:١٥ م",
         views: "",
         likes: "",
-        image: "/imgs/13.jpeg",
+        image: "/imgs/31.png",
         to: "/ala-alhamesh",
         content: [
             { heading: "جذور تاريخية لا تزال حاضرة", text: "تشير الدراسات الاجتماعية إلى أن تفضيل الذكور ليس ظاهرة حديثة، بل يمتد إلى عصور قديمة ارتبطت فيها قيمة الفرد بقدرته على العمل والحماية. في تلك الفترات، اعتُبر الذكر مصدر قوة، بينما نُظر إلى الأنثى كعبء اقتصادي." },
@@ -152,7 +152,7 @@ const articles = [
         time: "٠٢:٠٠ م",
         views: "",
         likes: "",
-        image: "/imgs/13.jpeg",
+        image: "/imgs/33.png",
         to: "/sana-ola-omoma",
         content: [
             { heading: "صدمة التحول والهوية الجديدة", text: "بين دفء الرضيع والمسؤوليات الضخمة المفاجئة، تعيش الأم الجديدة اضطرابات نفسية حادة وجروح جسدية وتغييراً كاملاً في جدول نومها وحياتها الاجتماعية، وهو ما يتطلب تفهماً ومساندة حقيقية من الزوج والأسرة." }
@@ -169,7 +169,7 @@ const articles = [
         time: "٠٩:٠٠ ص",
         views: "",
         likes: "",
-        image: "/imgs/17.jpeg",
+        image: "/imgs/34.png",
         to: "/roteen-tanzeef-almanzel",
         content: [
             { heading: "العمل غير المرئي في المنزل", text: "الطبخ، التنظيف، الغسيل، ومتابعة دراسة الأطفال؛ أعمال يومية متكررة تستهلك طاقة المرأة وتأخذ وقتاً هائلاً، لكن يُنظر إليها كمسلمات وواجبات افتراضية خالية من القيمة المهنية والمالية." }
@@ -187,7 +187,7 @@ const articles = [
         time: "١٠:٠٠ ص",
         views: "",
         likes: "",
-        image: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
+        image: "/imgs/36.png",
         to: "/kalam-qanun",
         content: [
             { heading: "تحدي الابتزاز بالذكاء الاصطناعي", text: "تجد الكثير من النساء أنفسهن ضحايا لتركيب الصور ومقاطع الفيديو بدقة شديدة بهدف التشهير أو الابتزاز. القانون يعاقب على هذه الجريمة بعقوبات سجن مشددة." },
@@ -239,7 +239,7 @@ const articles = [
         time: "٠٤:٠٠ م",
         views: "",
         likes: "",
-        image: "/imgs/carousel/Women-obsession-with-beauty.jpeg",
+        image: "/imgs/38.png",
         to: "/gowa-alkahka",
         content: [
             { heading: "قناع القوة وكبت الضعف الإنساني", text: "تشعر الكثير من الفتيات بالخوف من إظهار التعب أو طلب الدعم حتى لا يفقدن لقب البنت القوية، مما يعزز العزلة النفسية والكتمان." }
@@ -251,12 +251,12 @@ const articles = [
         title: "الخوف من الزواج والارتباط: إعادة تفكيك وتشكيل مفهوم الاستقرار",
         subtitle: "دراسة اجتماعية حول عزوف وتوجس الجيل الجديد من الالتزام وبناء أسر في ظل التحولات المعاصرة.",
         category: "جوه الكحكة",
-        author: "حوريه اسامه",
+        author: "بسمه رضا",
         date: "٢١ مايو ٢٠٢٦",
         time: "١٠:١٥ ص",
         views: "",
         likes: "",
-        image: "/imgs/3.png",
+        image: "/imgs/39.png",
         to: "/gowa-alkahka",
         content: [
             { heading: "تغير الأولويات والحذر النفسي", text: "لم يعد تأخر الارتباط ناتجًا عن الرفض التام، بل عن الحذر الشديد والرغبة في تحقيق الاستقلال المالي والوعي الكامل قبل الإقدام على خطوة الشراكة." }
@@ -274,7 +274,7 @@ const articles = [
         views: "",
         likes: "",
         image: "/imgs/carousel/Eradicating-female-illiteracy.jpeg",
-        to: "/bara-alkahka",
+        to: "/mahw-el-omya",
         content: [
             { heading: "خوارزميات تصنع الخطر لجذب التفاعل", text: "تستهدف المنصات حاجة المراهقين للانتماء والقبول، فتعرض التحديات العنيفة والخطيرة كقصص نجاح لانتشار التريند." }
         ],
@@ -290,7 +290,7 @@ const articles = [
         time: "١٢:٠٠ م",
         views: "",
         likes: "",
-        image: "/imgs/carousel/suffering-of-women-on-public-transportation.jpeg",
+        image: "/imgs/50.png",
         to: "/bara-alkahka",
         content: [
             { heading: "الآثار النفسية الممتدة ومقاومة التبرير", text: "يؤدي التحرش اللفظي المتكرر لتراجع الثقة والشعور بالخوف المستمر في الفضاء العام، مما يفرض مواجهته اجتماعياً وتشريعياً دون أي تبرير للمعتدي." }
@@ -364,7 +364,7 @@ const alaAlhameshArticles = [
         time: "٠٩:٣٠ ص",
         views: "",
         likes: "",
-        image: "/imgs/10.jpeg",
+        image: "/imgs/30.png",
         to: "/ala-alhamesh",
         content: [
             { heading: "الصراع اليومي بين لقمة العيش وتربية الأبناء", text: "تستيقظ المرأة المعيلة في الفجر لتكسب قوت يومها من بيع البضائع البسيطة أو العمل في مهن شاقة. تقضي يومها في توازن حرج ومؤلم بين كسب المال لتدبير الإيجار ومصاريف المدارس، وبين غيابها الاضطراري عن المنزل لمراقبة سلوك أطفالها." },
@@ -380,12 +380,12 @@ const alaAlhameshArticles = [
         title: "إنجاب البنات: موروث ثقافي في مواجهة الحقيقة البيولوجية والدينية للنوع",
         subtitle: "تفاصيل التحقيق الاجتماعي حول تفضيل الذكور وتأثير ذلك على استقرار الأسر والصحة النفسية للأمهات.",
         category: "على الهامش",
-        author: "احمد ابراهيم",
+        author: "احمد ايمن",
         date: "١ يونيو ٢٠٢٦",
         time: "٠٢:١٥ م",
         views: "",
         likes: "",
-        image: "/imgs/14.jpeg",
+        image: "/imgs/31.png",
         to: "/ala-alhamesh",
         content: [
             { heading: "جذور تاريخية لا تزال حاضرة", text: "تشير الدراسات الاجتماعية إلى أن تفضيل الذكور ليس ظاهرة حديثة، بل يمتد إلى عصور قديمة ارتبطت فيها قيمة الفرد بقدرته على العمل والحماية. في تلك الفترات، اعتُبر الذكر مصدر قوة، بينما نُظر إلى الأنثى كعبء اقتصادي." },
@@ -395,7 +395,7 @@ const alaAlhameshArticles = [
     },
     {
         id: 3,
-        title: "ام المعاق سوبر هيرو لا يراه أحد",
+        title: "ام بطل من ذوي الاعاقة سوبر هيرو لا يراه أحد",
         subtitle: "شهادات حية لأمهات أطفال ذوي الاحتياجات الخاصة وتحديات الدمج وغياب الدعم المؤسسي والنفسي.",
         category: "على الهامش",
         author: "عائشة حسين",
@@ -403,7 +403,7 @@ const alaAlhameshArticles = [
         time: "١١:٠٠ ص",
         views: "",
         likes: "",
-        image: "/imgs/11.jpeg",
+        image: "/imgs/32.png",
         to: "/om-eltifl-dhawi-al-eaahaq",
         content: [
             { heading: "العزلة الاجتماعية والانسحاب من الحياة", text: "تجد أم الطفل المعاق نفسها مجبرة على التخلي عن وظيفتها وحياتها الاجتماعية لتتحول إلى مرافق دائم على مدار الساعة. تضيق مساحتها الشخصية وتصبح طموحاتها مؤجلة لأجل غير مسمى في ظل غياب مراكز رعاية حكومية مجانية وموثوقة." },
@@ -441,7 +441,7 @@ const sawtohaHighlights = [
 const heroStories = [
     {
         id: 1,
-        articleId: 1,
+        articleId: 8,
         title: "سنة أولى أمومة  ",
         subtitle: "القانون المصري يمنح الحاضن الولاية التعليمية بقوة القانون لمنع استخدام التعليم كورقة ضغط بين الطرفين.",
         category: "كلام قانون",
@@ -450,8 +450,8 @@ const heroStories = [
     },
     {
         id: 2,
-        articleId: 3,
-        title: "ام المعاق سوبر هيرو لا يراه أحد",
+        articleId: 5,
+        title: "ام بطل من ذوي الاعاقة سوبر هيرو لا يراه أحد",
         subtitle: "تفكيك نقدي لخطاب النسوية الرقمية والتأثير النفسي والاجتماعي المترتب على صراعات الخوارزميات.",
         category: "صوتها مسموع",
         time: "٠٦:٤٥ م",
@@ -468,7 +468,7 @@ const heroStories = [
     },
     {
         id: 4,
-        articleId: 9,
+        articleId: 16,
         title: "محو أمية المرأة ",
         subtitle: "معركة الوعي الغائب خلف الأرقام",
         category: "المرأة والأسرة",
@@ -477,7 +477,7 @@ const heroStories = [
     },
     {
         id: 5,
-        articleId: 13,
+        articleId: 9,
         title: "روتين تنظيف المنزل",
         subtitle: "تحقيق يبحث في التوفيق بين التطلعات المهنية والالتزام العائلي دون احتراق نفسي.",
         category: "بين البيت والشغل",
@@ -487,7 +487,7 @@ const heroStories = [
 
     {
         id: 6,
-        articleId: 18,
+        articleId: 7,
         title: "هوس النساء بالتجميل  ",
         subtitle: "عندما تتحول المراة الي ساحه ضغط نفسي واجتماعي ",
         category: "صحة وجمال",
@@ -750,7 +750,6 @@ export default function Home() {
                             </div>
 
                             <article
-                                onClick={() => openHeroStory(featuredArticle)}
                                 onMouseEnter={() => setHeroPaused(true)}
                                 onMouseLeave={() => setHeroPaused(false)}
                                 className="bg-white border border-gray-200 p-3 shadow-xs cursor-pointer group hover:border-[#6551a0] hover:shadow-md transition-all duration-300 ease-out animate-fadeIn overflow-hidden"
@@ -762,9 +761,9 @@ export default function Home() {
                                         className="w-full h-full object-cover news-zoom-img"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                                    <div className="absolute top-3 right-3 bg-[#B49EF4] text-white text-[10px] font-black px-2.5 py-1 rounded shadow-sm uppercase">
+                                    { /*    <div className="absolute top-3 right-3 bg-[#B49EF4] text-white text-[10px] font-black px-2.5 py-1 rounded shadow-sm uppercase">
                                         {featuredArticle.category}
-                                    </div>
+                                    </div>*/}
 
                                     <div className="absolute left-3 top-3 flex flex-col gap-2">
                                         <button
@@ -773,18 +772,20 @@ export default function Home() {
                                                 event.stopPropagation();
                                                 goToHeroSlide('prev');
                                             }}
-                                            className="h-8 w-8 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
+                                            className="h-10 w-10 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
                                             aria-label="الخبر السابق"
                                         >
                                             ←
                                         </button>
+                                    </div>
+                                    <div className="absolute right-3 top-3 flex flex-col gap-2">
                                         <button
                                             type="button"
                                             onClick={(event) => {
                                                 event.stopPropagation();
                                                 goToHeroSlide('next');
                                             }}
-                                            className="h-8 w-8 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
+                                            className="h-10 w-10 rounded-full bg-white/90 text-[#1F2937] font-black shadow-sm hover:bg-white transition"
                                             aria-label="الخبر التالي"
                                         >
                                             →
@@ -823,9 +824,14 @@ export default function Home() {
                                             />
                                         ))}
                                     </div>
-                                    <span className="inline-flex items-center gap-1.5 text-xs font-black text-[#B572E8] border-b-2 border-transparent group-hover:border-[#B49EF4] transition duration-200">
-                                        اقرأ التقرير الكامل
-                                        <span>←</span>
+                                    <span className="inline-flex items-center gap-1.5 text-xs font-black text-[#B572E8] border-b-2 border-transparent group-hover transition duration-200">
+                                        <Link
+                                            to={featuredArticle.to}
+                                            className="bg-[#B572E8] text-white px-4 py-2 rounded-full"
+                                        >
+                                            قراءة المزيد <span>←</span>
+                                        </Link>
+
                                     </span>
                                 </div>
                             </article>
@@ -839,13 +845,12 @@ export default function Home() {
 
 
                     {/* 2. قسم التحقيقات والتقارير الاستقصائية (Investigations & Reports) */}
-                    <section className="space-y-6">
+                    {/*      <section className="space-y-6">
                         <div className="flex items-center justify-between border-b border-gray-300 pb-3">
                             <div className="flex items-center gap-2">
                                 <span className="w-4 h-4 bg-[#6551a0] block"></span>
-                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">تحقيقات وتقارير استقصائية</h2>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">الأكتر قراءة</h2>
                             </div>
-                            <span className="text-xs font-black text-gray-500 bg-white border border-gray-200 px-3 py-1 rounded">الملف الاستقصائي لـ كحكة</span>
                         </div>
 
                         <div className="grid gap-6 md:grid-cols-3">
@@ -862,9 +867,7 @@ export default function Home() {
                                             alt={art.title}
                                             className="w-full h-full object-cover news-zoom-img"
                                         />
-                                        <span className="absolute top-3 right-3 bg-[#1F2937] text-white text-[9px] font-black px-2 py-0.5 rounded shadow-sm">
-                                            تحقيق ميداني
-                                        </span>
+
                                     </div>
                                     <div className="space-y-2">
                                         <div className="text-[10px] font-bold text-[#6551a0] flex items-center gap-1.5">
@@ -880,6 +883,77 @@ export default function Home() {
                                         </p>
                                     </div>
                                 </article>
+                            ))}
+                        </div>
+                    </section>  */}
+
+                    <section className="space-y-3">
+                        <div className="flex items-center justify-between border-b border-gray-300 pb-3 animate-fadeIn">
+                            <div className="flex items-center gap-2">
+                                <span className="w-4 h-4 bg-[#6551a0] block"></span>
+                                <h2 className="text-xl sm:text-2xl font-black tracking-tight text-[#1F2937] font-serif">الأكثر قراءة</h2>
+                            </div>
+                        </div>
+
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+                            {[
+                                {
+                                    title: "بره الكحكة",
+                                    path: "/bara-alkahka",
+                                    icon: /*🌐*/"",
+                                    tag: "تحديات معاصرة",
+                                    desc: "جولة واقعية في فخاخ العالم الرقمي والتريندات القاتلة، إدمان الشوبينج، والتحرش اللفظي بالشارع.",
+                                    topics: ["هوس السوشيال ميديا", "أمان الشارع للبنات", "إدمان الشراء أونلاين"]
+                                },
+                                {
+                                    title: "جوه الكحكة",
+                                    path: "/gowa-alkahka",
+                                    icon: /*🧠*/"",
+                                    tag: "الصراعات النفسية",
+                                    desc: "الضغوط النفسية الداخلية للفتاة، الخوف من الزواج، والبحث عن شريك الحياة المناسب والنضج العاطفي.",
+                                    topics: ["البنت القوية", "الخوف من الارتباط", "الراجل الصح"]
+                                },
+                                {
+                                    title: "بين البيت والشغل",
+                                    path: "/bayn-albayt-walshoghl",
+                                    icon: /*💼*/"",
+                                    tag: "شؤون العمل والبيت",
+                                    desc: "التوفيق الصعب وصراع الأدوار بين طموح العمل في المكتب والواجب الأسري والمنزلي والاحتراق النفسي.",
+                                    topics: ["الأم العاملة والذنب", "تنسيق الأولويات", "رعاية الأطفال"]
+                                },
+
+                            ].map((item, idx) => (
+                                <Link
+                                    key={item.path}
+                                    to={item.path}
+                                    className="bg-white border border-gray-200 p-5 rounded-2xl shadow-3xs cursor-pointer group hover:border-[#6551a0] hover:scale-[1.01] hover:shadow-md transition-all duration-300 ease-out flex flex-col justify-between animate-fadeInUp opacity-0"
+                                    style={{ animationDelay: `${idx * 50}ms`, animationFillMode: 'forwards' }}
+                                >
+                                    <div className="space-y-3.5 text-right">
+                                        <div className="flex justify-between items-center text-[10px] font-black">
+                                            <span className="bg-red-50 text-[#6551a0] px-2 py-0.5 rounded border border-red-100">{item.tag}</span>
+                                            <span className="text-xl">{item.icon}</span>
+                                        </div>
+                                        <h3 className="text-base font-black text-slate-800 leading-snug font-serif group-hover:text-[#6551a0] transition">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-xs text-gray-500 font-medium leading-relaxed line-clamp-3">
+                                            {item.desc}
+                                        </p>
+                                    </div>
+                                    <div className="mt-5 pt-3 border-t border-gray-100 space-y-2">
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {item.topics.map((t, i) => (
+                                                <span key={i} className="text-[9px] font-bold text-gray-400 bg-slate-50 px-1.5 py-0.5 rounded">
+                                                    {t}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <div className="flex justify-end items-center text-xs font-black text-[#6551a0] pt-1">
+                                            <span className="group-hover:translate-x-[-4px] transition-transform">دخول الباب ←</span>
+                                        </div>
+                                    </div>
+                                </Link>
                             ))}
                         </div>
                     </section>
@@ -972,7 +1046,7 @@ export default function Home() {
                                         <span className="w-3.5 h-3.5 text-[#6551a0] block rounded-full"></span>
                                         <h2 className="text-lg font-black text-gray-800 font-serif">بين البيت والشغل: صراع الأدوار</h2>
                                     </div>
-                                    <Link to="/bayn-albayt-walshoghl" className="text-xs text-[#6551a0] text-indigo-600 hover:underline">الملف الكامل ←</Link>
+                                    <Link to="/bayn-albayt-walshoghl" className="text-xs text-[#6551a0] font-bold hover:underline">الملف الكامل ←</Link>
                                 </div>
                                 <p className="text-xs text-gray-500 leading-relaxed">
                                     دليل عملي وتحقيقات ميدانية تبحث في تحديات التوفيق وصراع الأدوار للأم العاملة وكيفية النجاة من الاحتراق العصبي والجسدي.
@@ -1312,7 +1386,7 @@ text-[#6551a0]
 
                     {/* دليل الأبواب التحريرية الكامل للمنصة */}
                     {/* دليل أبواب كحكة التفاعلي الشامل */}
-                    <section className="space-y-6">
+                    {/*         <section className="space-y-6">
                         <div className="flex items-center justify-between border-b border-gray-300 pb-3 animate-fadeIn">
                             <div className="flex items-center gap-2">
                                 <span className="w-4 h-4 bg-[#6551a0] block"></span>
@@ -1326,7 +1400,7 @@ text-[#6551a0]
                                 {
                                     title: "صوتها مسموع",
                                     path: "/sawtoha-masmoua",
-                                    icon: "📢",
+                                    icon: /*📢*"",
                                     tag: "تحقيق استقصائي",
                                     desc: "تحقيقات ميدانية معمقة بخصوص التمكين الرقمي، بيئات العمل التنفيذية وسقف القيادة الزجاجي.",
                                     topics: ["النسوية الافتراضية", "العمل القيادي للمرأة", "البيئة المكتبية الذكورية"]
@@ -1334,7 +1408,7 @@ text-[#6551a0]
                                 {
                                     title: "على الهامش",
                                     path: "/ala-alhamesh",
-                                    icon: "🤰",
+                                    icon: /*🤰*"",
                                     tag: "ملفات مجتمعية",
                                     desc: "تحقيقات استقصائية حية بخصوص أسر الغارمات، ضغوط تفضيل الذكور، وكلفة إنجاب البنات النفسية.",
                                     topics: ["موروثات النوع", "أمهات بلا أمومة", "استغلال فقر المرأة"]
@@ -1342,7 +1416,7 @@ text-[#6551a0]
                                 {
                                     title: "بره الكحكة",
                                     path: "/bara-alkahka",
-                                    icon: "🌐",
+                                    icon: /*🌐*"",
                                     tag: "تحديات معاصرة",
                                     desc: "جولة واقعية في فخاخ العالم الرقمي والتريندات القاتلة، إدمان الشوبينج، والتحرش اللفظي بالشارع.",
                                     topics: ["هوس السوشيال ميديا", "أمان الشارع للبنات", "إدمان الشراء أونلاين"]
@@ -1350,7 +1424,7 @@ text-[#6551a0]
                                 {
                                     title: "جوه الكحكة",
                                     path: "/gowa-alkahka",
-                                    icon: "🧠",
+                                    icon: /*🧠*"",
                                     tag: "الصراعات النفسية",
                                     desc: "الضغوط النفسية الداخلية للفتاة، الخوف من الزواج، والبحث عن شريك الحياة المناسب والنضج العاطفي.",
                                     topics: ["البنت القوية", "الخوف من الارتباط", "الراجل الصح"]
@@ -1358,7 +1432,7 @@ text-[#6551a0]
                                 {
                                     title: "بين البيت والشغل",
                                     path: "/bayn-albayt-walshoghl",
-                                    icon: "💼",
+                                    icon: /*💼*"",
                                     tag: "شؤون العمل والبيت",
                                     desc: "التوفيق الصعب وصراع الأدوار بين طموح العمل في المكتب والواجب الأسري والمنزلي والاحتراق النفسي.",
                                     topics: ["الأم العاملة والذنب", "تنسيق الأولويات", "رعاية الأطفال"]
@@ -1366,7 +1440,7 @@ text-[#6551a0]
                                 {
                                     title: "بين الزحام والكرامة",
                                     path: "/bayn-alzahm-walkarama",
-                                    icon: "🚌",
+                                    icon: /*🚌*"",
                                     tag: "أمان الشارع",
                                     desc: "المعاناة اليومية الصامتة للمرأة في المواصلات العامة وبحثها عن الخصوصية والأمان الفعلي أثناء العبور.",
                                     topics: ["مساحات مخصصة", "كرامة التنقل", "ضغوط الزحام"]
@@ -1374,7 +1448,7 @@ text-[#6551a0]
                                 {
                                     title: "حكايات ستات",
                                     path: "/hikayat-settat",
-                                    icon: "📖",
+                                    icon: /*📖*"",
                                     tag: "سرديات وقصص",
                                     desc: "سلسلة مذكرات وقصص واقعية تروي تجارب الأمهات والفتيات اليومية الحية بكل تفاصيلها ودروسها.",
                                     topics: ["مذكرات أم مغتربة", "قصص الكفاح الصامت", "تجارب واقعية"]
@@ -1382,7 +1456,7 @@ text-[#6551a0]
                                 {
                                     title: "روتين تنظيف المنزل",
                                     path: "/roteen-tanzeef-almanzel",
-                                    icon: "🧹",
+                                    icon: /*🧹*"",
                                     tag: "شؤون المنزل",
                                     desc: "العبء العقلي غير المرئي لإدارة روتين تنظيف البيت وكيف يتأرجح بين الراحة النفسية والتوتر المرضي.",
                                     topics: ["مجهود خفي غير مرئي", "عدالة توزيع الأدوار", "فخ الكمال المنزلي"]
@@ -1390,7 +1464,7 @@ text-[#6551a0]
                                 {
                                     title: "سنة أولى أمومة",
                                     path: "/sana-ola-omoma",
-                                    icon: "🍼",
+                                    icon: /*🍼*"",
                                     tag: "دليل الرعاية",
                                     desc: "دليل عملي ونفسي يستعرض تحولات الأمومة الأولى وصدمات تغيير الهوية والاضطرابات العاطفية المترتبة.",
                                     topics: ["اكتئاب ما بعد الولادة", "احتياجات الرضيع الأولى", "دعم الشريك"]
@@ -1398,7 +1472,7 @@ text-[#6551a0]
                                 {
                                     title: "أم الطفل ذوي الاحتياجات الخاصة",
                                     path: "/om-eltifl-dhawi-al-eaahaq",
-                                    icon: "♿",
+                                    icon: /*♿*"",
                                     tag: "صمود ودعم",
                                     desc: "صمود أسر أطفال ذوي الهمم وتحديات الدمج المدرسي وغياب الدعم المؤسسي والنفسي والاجتماعي لها.",
                                     topics: ["دمج ذوي الهمم", "مرارة التنمر والشفقة", "عزلة الأم المعيلة"]
@@ -1406,7 +1480,7 @@ text-[#6551a0]
                                 {
                                     title: "كلام قانون",
                                     path: "/kalam-qanun",
-                                    icon: "⚖️",
+                                    icon: /*⚖️*"",
                                     tag: "توعية تشريعية",
                                     desc: "شرح قانوني وإجرائي مبسط لقضايا الولاية التعليمية، الطلاق للضرر، الخلع، وحماية الخصوصية الرقمية.",
                                     topics: ["الولاية التعليمية", "مسارات فك الرابطة", "مكافحة الابتزاز"]
@@ -1414,7 +1488,7 @@ text-[#6551a0]
                                 {
                                     title: "هوس التجميل",
                                     path: "/hous-eltagmeel",
-                                    icon: "💄",
+                                    icon: /*💄*"",
                                     tag: "صحة وجمال",
                                     desc: "تفكيك نقدي لمعايير الجمال العصرية المستوحاة من الفلاتر وعيادات التجميل، ودوافع التصالح وقبول الذات.",
                                     topics: ["سلطة الصور النمطية", "وراء المرآة والجمال", "التصالح مع الملامح"]
@@ -1422,7 +1496,7 @@ text-[#6551a0]
                                 {
                                     title: "محو الأمية",
                                     path: "/mahw-el-omya",
-                                    icon: "📚",
+                                    icon: /*📚*"",
                                     tag: "قصص نجاح",
                                     desc: "رحلات كفاح لسيدات قرويات تحدين الجهل لفتح فصول النور وبدء مشروعات مستقلة لضمان عيش كريم.",
                                     topics: ["تحدي الجهل ريفياً", "تأسيس مشاريع مستقلة", "أثر تعليم النساء"]
@@ -1430,7 +1504,7 @@ text-[#6551a0]
                                 {
                                     title: "علاقة (عن الموقع)",
                                     path: "/alaaqa",
-                                    icon: "🔗",
+                                    icon: /*🔗*"",
                                     tag: "عن كحكة",
                                     desc: "التعريف برسالة الموقع، ومنهجه التحريري في عرض قضايا المرأة والأسرة بلغة هادئة وصور محترمة.",
                                     topics: ["رسالة المنصة للجمهور", "منهج الحياد والتوازن", "قنوات التواصل الفوري"]
@@ -1469,7 +1543,7 @@ text-[#6551a0]
                                 </Link>
                             ))}
                         </div>
-                    </section>
+                    </section> /*}
 
                     {/* قسم الإنفوجرافيك التوضيحي */}
                     <section className="space-y-4   animate-fadeIn  mx-auto">
@@ -1689,8 +1763,9 @@ text-[#6551a0]
                     </div>
 
                 </main>
-            )}
+            )
+            }
             <Footer />
-        </div>
+        </div >
     )
 }
