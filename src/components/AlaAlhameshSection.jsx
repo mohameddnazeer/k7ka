@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function AlaAlhameshSection({ articles, openArticleDetails }) {
+    useEffect(()=>{
+        window.scrollTo({ top: 0, behavior: 'smooth' });        
+    },[])
+
     return (
         <section className="space-y-6">
             <div className="flex items-center justify-between border-b border-gray-300 pb-3">
