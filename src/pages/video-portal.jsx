@@ -100,6 +100,44 @@ const videosData = [
 
 const categories = ["الكل", "سياسة", "اقتصاد", "تقنية", "رياضة", "أخبار محلية", "تحقيقات"]
 
+const driveVideos = [
+  {
+    id: "drive-1",
+    title: "موضوعات كحـكه - المقطع الأول",
+    videoUrl: "https://drive.google.com/file/d/1vcWSfG42LieDqHbm49L-KKcT13NOww56/preview",
+    category: "كحكة",
+    date: "٥ يونيو ٢٠٢٦"
+  },
+  {
+    id: "drive-2",
+    title: "موضوعات كحـكه - المقطع الثاني",
+    videoUrl: "https://drive.google.com/file/d/1MhjjRaNGGgAYrCj3l00-_3AdXafCvrt5/preview",
+    category: "كحكة",
+    date: "٥ يونيو ٢٠٢٦"
+  },
+  {
+    id: "drive-3",
+    title: "موضوعات كحـكه - المقطع الثالث",
+    videoUrl: "https://drive.google.com/file/d/1YagwWyyW64wv1_pzxylZhb3k5dboktJT/preview",
+    category: "كحكة",
+    date: "٥ يونيو ٢٠٢٦"
+  },
+  {
+    id: "drive-4",
+    title: "موضوعات كحـكه - المقطع الرابع",
+    videoUrl: "https://drive.google.com/file/d/12oiE23R6M3ezzSw5jLQA76bOFeFD7VUh/preview",
+    category: "كحكة",
+    date: "٥ يونيو ٢٠٢٦"
+  },
+  {
+    id: "drive-5",
+    title: "موضوعات كحـكه - المقطع الخامس",
+    videoUrl: "https://drive.google.com/file/d/1Il-EJv5GATiCtZ3geiQ1TUOL5lCyYU-F/preview",
+    category: "كحكة",
+    date: "٥ يونيو ٢٠٢٦"
+  }
+]
+
 const VideoCard = ({ video, isSelected, onClick, isShort = false, currentlyPlaying, onPlayStateChange }) => {
   const videoRef = useRef(null)
   const [isHovered, setIsHovered] = useState(false)
@@ -287,6 +325,18 @@ export default function VideoPortalPage() {
   const [featuredVideo, setFeaturedVideo] = useState(videosData[0])
   const [currentlyPlaying, setCurrentlyPlaying] = useState(null)
   const featuredVideoRef = useRef(null)
+  const kahkaVideosScrollRef = useRef(null)
+
+  const handleScrollKahkaVideos = (direction) => {
+    if (kahkaVideosScrollRef.current) {
+      const container = kahkaVideosScrollRef.current
+      const scrollAmount = 350
+      container.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  }
 
   const filteredVideos = videosData.filter(video => {
     const matchesCategory = activeCategory === "الكل" || video.category === activeCategory
@@ -365,27 +415,70 @@ export default function VideoPortalPage() {
           </div>
         </section>
 
-        {breakingVideos.length > 0 && (
-          <section className="mb-10">
-            <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-300">
+        <section className="mb-10">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-300">
+            <div className="flex items-center gap-3">
               <span className="w-4 h-4 bg-[#A91D22] block"></span>
-              <h3 className="text-xl font-black font-serif text-[#1F2937]">فيديوهات عاجلة</h3>
+              <h3 className="text-xl font-black font-serif text-[#1F2937]">موضوعات كحـكه</h3>
             </div>
-            <div className="no-scrollbar flex gap-6 overflow-x-auto pb-4">
-              {breakingVideos.map((video) => (
-                <div key={video.id} className="shrink-0 w-80">
-                  <VideoCard
-                    video={video}
-                    isSelected={featuredVideo.id === video.id}
-                    onClick={() => handleSelectVideo(video)}
-                    currentlyPlaying={currentlyPlaying}
-                    onPlayStateChange={handlePlayStateChange}
-                  />
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-bold text-gray-500 animate-pulse hidden sm:inline-block bg-red-50 text-[#A91D22] px-2 py-1 rounded-full border border-red-100">
+                اسحب لليسار لرؤية المزيد ⬅️
+              </span>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleScrollKahkaVideos('right')}
+                  className="h-8 w-8 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-600 hover:border-[#A91D22] hover:text-[#A91D22] hover:bg-red-50 transition-all shadow-sm cursor-pointer"
+                  title="السابق"
+                >
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => handleScrollKahkaVideos('left')}
+                  className="h-8 w-8 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-600 hover:border-[#A91D22] hover:text-[#A91D22] hover:bg-red-50 transition-all shadow-sm cursor-pointer"
+                  title="التالي"
+                >
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div 
+            ref={kahkaVideosScrollRef}
+            className="flex gap-6 overflow-x-auto pb-4 scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#A91D22]/30 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-[#A91D22]/60"
+          >
+            {driveVideos.map((video) => (
+              <div key={video.id} className="shrink-0 w-80 sm:w-96">
+                <div className="group bg-white border-2 border-gray-200 rounded-2xl shadow-sm hover:shadow-md hover:border-[#6551a0] p-4 transition-all duration-300 ease-out hover:scale-[1.01]">
+                  <div className="relative aspect-video rounded-xl overflow-hidden bg-black border border-gray-100 w-full mb-3">
+                    <iframe
+                      src={video.videoUrl}
+                      className="w-full h-full border-0"
+                      allow="autoplay; encrypted-media"
+                      allowFullScreen
+                      title={video.title}
+                    ></iframe>
+                  </div>
+                  <div className="space-y-2">
+                    <span className="bg-red-50 text-[#A91D22] text-[9px] font-black px-2 py-0.5 rounded-full border border-red-100">
+                      {video.category}
+                    </span>
+                    <h4 className="font-black font-serif text-sm leading-snug line-clamp-2 text-[#1F2937] group-hover:text-[#6551a0] transition">
+                      {video.title}
+                    </h4>
+                    <div className="text-[10px] font-bold text-gray-500">
+                      📅 {video.date}
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className="mb-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
