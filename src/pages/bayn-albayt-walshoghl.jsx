@@ -87,7 +87,7 @@ export default function SawtohaMasmouaPage() {
         },
       ],
       summary: `تنظيف البيت مسؤولية جماعية؛ الاعتراف بالعمل المنزلي ومشاركته يحسن جودة الحياة الأسرية ويعزز المساواة.`,
-      image: "imgs/t2.jpg"
+      image: "imgs/t2+.jpg"
     },
     3: {
       tag: "التحقيق الثالث",
@@ -378,7 +378,7 @@ export default function SawtohaMasmouaPage() {
                 <img
                   src={currentInvestigation.image}
                   alt=""
-                  className="block mx-auto mt-4 w-full max-w-[600px] h-[350px] object-cover rounded-lg"
+                  className="block mx-auto mt-4 w-full max-w-[600px] h-[450px] object-cover rounded-lg"
                 />              </header>
 
               {/* مقدمة التحقيق المتميزة */}
